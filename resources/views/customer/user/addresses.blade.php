@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','Profile - SavoyFoods')
+@section('title','Addresses - SavoyFoods')
 @section('css')
     <style>
         .card-input-element {
@@ -27,14 +27,14 @@
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>Profile</h1>
+            		<h1>Addresses</h1>
                 </div>
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                     <li class="breadcrumb-item active">User</li>
-                    <li class="breadcrumb-item active">Profile</li>
+                    <li class="breadcrumb-item active">Addresses</li>
                 </ol>
             </div>
         </div>
@@ -56,17 +56,35 @@
             </div>
             <div class="col-lg-9 col-md-8">
                 <div class="tab-content dashboard_content">
-                  	<div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                    	<div class="card">
-                        	<div class="card-header">
-                                <h3>Dashboard</h3>
+                  
+                    <div class="tab-pane fade active show" id="address" role="tabpanel" aria-labelledby="address-tab">
+                    	<div class="row">
+                        	<div class="col-lg-6">
+                                <div class="card mb-3 mb-lg-0">
+                                    <div class="card-header">
+                                        <h3>Billing Address</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
+                                        <p>New York</p>
+                                        <a href="#" class="btn btn-fill-out">Edit</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body">
-                    			<p>From your account dashboard. you can easily check &amp; view your <a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent orders</a>, manage your <a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping and billing addresses</a> and <a href="javascript:void(0);" onclick="$('#account-detail-tab').trigger('click')">edit your password and account details.</a></p>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Shipping Address</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <address>House #15<br>Road #1<br>Block #C <br>Angali <br> Vedora <br>1212</address>
+                                        <p>New York</p>
+                                        <a href="#" class="btn btn-fill-out">Edit</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                  	</div>
-
+					</div>
 				</div>
 			</div>
 		</div>

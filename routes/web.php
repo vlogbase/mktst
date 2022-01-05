@@ -1,15 +1,70 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Customer\AuthController;
+use App\Http\Controllers\Customer\ContentController;
+use App\Http\Controllers\Customer\HomeController;
+use App\Http\Controllers\Customer\OrderController;
+use App\Http\Controllers\Customer\OtherController;
+use App\Http\Controllers\Customer\ProductController;
+use App\Http\Controllers\Customer\UserController;
 use Illuminate\Support\Facades\Route;
 
 
 //Customer Part
-Route::get('/', function () {
-    return view('customer.welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+//Customer Others
+Route::get('/about-us', [OtherController::class, 'about_us'])->name('about_us');
+Route::get('/contact-us', [OtherController::class, 'contact_us'])->name('contact_us');
+Route::get('/career', [OtherController::class, 'career'])->name('career');
+Route::get('/career/{job}', [OtherController::class, 'career_detail'])->name('career_detail');
+Route::get('/terms-and-conditions', [OtherController::class, 'terms_and_conditions'])->name('terms_and_conditions');
+Route::get('/search-result/{search}', [OtherController::class, 'search_result'])->name('search_result');
+Route::get('/maintenance', [OtherController::class, 'maintenance'])->name('maintenance');
+
+//Customer Auth
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/forget-password', [AuthController::class, 'forget_password'])->name('forget_password');
+Route::get('/reset-password/{token}', [AuthController::class, 'reset_password'])->name('reset_password');
+
+//Customer User Area (Middleware Guest Needed)
+Route::prefix('user')->name('user.')->group(function () {
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::get('/detail', [UserController::class, 'detail'])->name('detail');
+    Route::get('/addresses', [UserController::class, 'addresses'])->name('addresses');
+    Route::get('/orders', [UserController::class, 'orders'])->name('orders');
+    Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
 });
+
+Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/order-complete/{ordercode}', [OrderController::class, 'order_complete'])->name('order_complete');
+Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
+
+
+Route::get('/products', [ProductController::class, 'products'])->name('products');
+Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
+
+Route::prefix('blogs')->name('blogs.')->group(function () {
+    Route::get('/', [ContentController::class, 'blogs'])->name('index');
+    Route::get('/{slug}', [ContentController::class, 'blogs_detail'])->name('detail');
+});
+Route::prefix('news')->name('news.')->group(function () {
+    Route::get('/', [ContentController::class, 'news'])->name('index');
+    Route::get('/{slug}', [ContentController::class, 'news_detail'])->name('detail');
+});
+
+Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery');
+// Route::get('/video-gallery', [ContentController::class, 'video_gallery'])->name('video_gallery');
+
+//Newsletter Quit Link Need
 
 
 //Admin Part
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+Route::prefix('admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::name('admin.')->group(function () {
+        //Admin Routes
+    });
 });

@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','Home')
+@section('title','SavoyFoods | Catering Supplies | UK')
 @section('css')
 <style>
 .circle-custom {
@@ -1725,9 +1725,9 @@
                     <div class="heading_s1 mb-3">
                         <h2>Download our Mobile App!</h2>
                     </div>
-                    <a href="#"><img src="upload/other/googleplay.png" alt="f1"/></a>
-                    <a href="#"><img src="upload/other/appstore.png" alt="f2"/></a>
-                    <a href="#"><img src="upload/other/appgallery.png" alt="f2"/></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.savoyapp"><img src="upload/other/googleplay.png" alt="f1"/></a>
+                    <a href="https://apps.apple.com/tr/app/savoyapp/id1587340149?l=en"><img src="upload/other/appstore.png" alt="f2"/></a>
+                    <a href="https://appgallery.huawei.com/#/app/C104547059"><img src="upload/other/appgallery.png" alt="f2"/></a>
                 </div>
             	<div class="medium_divider clearfix"></div>
             </div>
