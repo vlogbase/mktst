@@ -26,7 +26,6 @@ class ContentSeeder extends Seeder
         WebSlider::truncate();
         AppSlider::truncate();
 
-
         Gallery::factory(20)->create();
         Blog::factory(20)->create();
         News::factory(20)->create();
