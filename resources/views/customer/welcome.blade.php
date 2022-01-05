@@ -174,7 +174,7 @@
                        
                         <p>We want to give our customers the best service. Sign up and enjoy good product supply, fast and easy service.</p>
                     </div>
-                    <a href="https://www.unileverfoodsolutions.co.uk/chef-inspiration.html" target="_blank" class="btn btn-fill-out rounded-0 staggered-animation">Become a Member!</a>
+                    <a href="{{route('register')}}"  class="btn btn-fill-out rounded-0 staggered-animation">Become a Member!</a>
                 </div>
             	<div class="medium_divider clearfix"></div>
             </div>
