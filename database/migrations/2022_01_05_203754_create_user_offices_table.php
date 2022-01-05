@@ -18,6 +18,7 @@ class CreateUserOfficesTable extends Migration
             $table->string('office_name');
             $table->string('name');
             $table->string('surname');
+            $table->string('email');
             $table->string('phone')->nullable();
             $table->string('mobile');
             $table->boolean('is_default')->default(0);

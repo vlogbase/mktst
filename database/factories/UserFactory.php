@@ -22,6 +22,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'vat' => Str::random(5),
             'registeration' => Str::random(5),
+            'code' => Str::random(10),
         ];
     }
 

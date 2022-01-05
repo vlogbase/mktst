@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('registeration')->nullable();
             $table->decimal('point', 10, 2)->default(0);
             $table->rememberToken();
+            $table->string('code');
             $table->timestamps();
         });
     }
