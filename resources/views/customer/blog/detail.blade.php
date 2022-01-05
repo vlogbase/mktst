@@ -40,7 +40,7 @@
                         <li><a href="#"><i class="ti-comments"></i> 2 Comment</a></li>
                     </ul>
                     <div class="blog_img">
-                        <img src="assets/images/blog_img1.jpg" alt="blog_img1">
+                        <img src="/customer_assets/images/blog_img1.jpg" alt="blog_img1">
                     </div>
                     <div class="blog_content">
                         <div class="blog_text">
@@ -51,12 +51,12 @@
                             <div class="row">
                             	<div class="col-sm-6">
                                 	<div class="single_img">
-                                		<img class="w-100 mb-4" src="assets/images/blog_single_img1.jpg" alt="blog_single_img1">
+                                		<img class="w-100 mb-4" src="/customer_assets/images/blog_single_img1.jpg" alt="blog_single_img1">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                 	<div class="single_img">
-                                		<img class="w-100 mb-4" src="assets/images/blog_single_img2.jpg" alt="blog_single_img2">
+                                		<img class="w-100 mb-4" src="/customer_assets/images/blog_single_img2.jpg" alt="blog_single_img2">
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="blog_post blog_style2 box_shadow1">
                                 <div class="blog_img">
                                     <a href="blog-single.html">
-                                        <img src="assets/images/blog_small_img2.jpg" alt="blog_small_img2">
+                                        <img src="/customer_assets/images/blog_small_img2.jpg" alt="blog_small_img2">
                                     </a>
                                 </div>
                                 <div class="blog_content bg-white">
@@ -119,7 +119,7 @@
                             <div class="blog_post blog_style2 box_shadow1">
                                 <div class="blog_img">
                                     <a href="blog-single.html">
-                                        <img src="assets/images/blog_small_img3.jpg" alt="blog_small_img3">
+                                        <img src="/customer_assets/images/blog_small_img3.jpg" alt="blog_small_img3">
                                     </a>
                                 </div>
                                 <div class="blog_content bg-white">
@@ -145,7 +145,7 @@
                             <li>
                                 <div class="post_footer">
                                     <div class="post_img">
-                                        <a href="#"><img src="assets/images/letest_post1.jpg" alt="letest_post1"></a>
+                                        <a href="#"><img src="/customer_assets/images/letest_post1.jpg" alt="letest_post1"></a>
                                     </div>
                                     <div class="post_content">
                                         <h6><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h6>
@@ -156,7 +156,7 @@
                             <li>
                                 <div class="post_footer">
                                     <div class="post_img">
-                                        <a href="#"><img src="assets/images/letest_post2.jpg" alt="letest_post2"></a>
+                                        <a href="#"><img src="/customer_assets/images/letest_post2.jpg" alt="letest_post2"></a>
                                     </div>
                                     <div class="post_content">
                                         <h6><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h6>
@@ -168,7 +168,7 @@
                             <li>
                                 <div class="post_footer">
                                     <div class="post_img">
-                                        <a href="#"><img src="assets/images/letest_post3.jpg" alt="letest_post3"></a>
+                                        <a href="#"><img src="/customer_assets/images/letest_post3.jpg" alt="letest_post3"></a>
                                     </div>
                                     <div class="post_content">
                                         <h6><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h6>
