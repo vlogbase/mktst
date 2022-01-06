@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class NewsletterFactory extends Factory
+class AdminAlertFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class NewsletterFactory extends Factory
     public function definition()
     {
         return [
-            'email' => $this->faker->unique()->safeEmail(),
-            'token' => $this->faker->unique()->uuid(),
+            //
         ];
     }
 }
