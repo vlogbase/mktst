@@ -3,17 +3,34 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function products()
     {
-        return view('customer.product.list');
+        $categoryCurrent = '';
+        $categories = Category::whereNull('category_id')->get();
+        return view('customer.product.list', compact('categoryCurrent', 'categories'));
+    }
+
+    public function categoryProducts($slug)
+    {
+        $categoryCurrent = Category::where('slug', $slug)->first();
+        $categories = $categoryCurrent->childrenCategories;
+        return view('customer.product.list', compact('categoryCurrent', 'categories'));
     }
 
     public function product_detail($slug)
     {
-        return view('customer.product.detail');
+        $product = Product::where('slug', $slug)->first();
+        foreach ($product->categories as $category) {
+            $related = Category::find($category->id)->products->except($product->id)->take(12);
+        }
+
+
+        return view('customer.product.detail', compact('product', 'related'));
     }
 }

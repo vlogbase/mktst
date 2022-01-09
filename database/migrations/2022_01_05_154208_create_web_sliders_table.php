@@ -21,6 +21,7 @@ class CreateWebSlidersTable extends Migration
             $table->string('button_text', 100)->default('Shop Now');
             $table->string('button_action', 100)->default('#');
             $table->string('image', 350);
+            $table->boolean('light')->default(0);
             $table->timestamps();
         });
     }

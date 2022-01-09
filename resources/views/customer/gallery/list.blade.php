@@ -31,50 +31,29 @@
 <div class="section">
 	<div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6">
+            @foreach ($items as $item)
+            <div class="col-lg-4 col-md-6 text-center">
                 <div class="blog_post blog_style2 box_shadow1">
                     <div class="blog_img">
-                        
-                            <img src="/customer_assets/images/blog_small_img3.jpg" alt="blog_small_img3">
-                        
+                            <img src="{{$item->image}}" alt="blog_small_img3">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog_post blog_style2 box_shadow1">
-                    <div class="blog_img">
-                        
-                            <img src="/customer_assets/images/blog_small_img3.jpg" alt="blog_small_img3">
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog_post blog_style2 box_shadow1">
-                    <div class="blog_img">
-                        
-                            <img src="/customer_assets/images/blog_small_img3.jpg" alt="blog_small_img3">
-                        
-                    </div>
-                </div>
-            </div>
-            
+            @endforeach
         </div>
         <div class="row">
-            <div class="col-12 mt-2 mt-md-4">
-                <ul class="pagination pagination_style1 justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1"><i class="linearicons-arrow-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="linearicons-arrow-right"></i></a></li>
-                </ul>
+            <div class="col-12 mt-2 mt-md-4 justify-content-center">
+                {{ $items->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>
 </div>
 <!-- END SECTION BLOG -->
 
+
+<!-- START SECTION SUBSCRIBE NEWSLETTER -->
+@livewire('customer.newsletter-main')
+<!-- START SECTION SUBSCRIBE NEWSLETTER -->
 </div>
 <!-- END MAIN CONTENT -->   
 @endsection

@@ -14,7 +14,7 @@ class ProductDetailFactory extends Factory
     public function definition()
     {
         return [
-            'description' => $this->faker->sentence(5),
+            'description' => $this->faker->sentence(50),
             'pack'  => '1x20kg'
         ];
     }

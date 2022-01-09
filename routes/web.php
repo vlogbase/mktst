@@ -43,6 +43,7 @@ Route::get('/order-complete/{ordercode}', [OrderController::class, 'order_comple
 Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
 
 
+Route::get('/category/{slug}', [ProductController::class, 'categoryProducts'])->name('category_products');
 Route::get('/products', [ProductController::class, 'products'])->name('products');
 Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
 

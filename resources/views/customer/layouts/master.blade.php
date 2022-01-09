@@ -7,8 +7,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<meta name="keywords" content="@yield('keywords')" />
-		<meta name="description" content="@yield('description')">
+		{{-- <meta name="keywords" content="@yield('keywords')" /> --}}
+		<meta name="description" content="@yield('description','We supply a diverse range of chilled and frozen foods as well as a comprehensive selection of retail, catering products and non-food items. Our products also include established brands as well as a competitively priced own label ranges, creating a ‘one-stop-shop’ for all our clients.')">
 		<meta name="author" content="ghospy.com">
 		<meta property="og:locale" content="en_EN" />
 		<meta property="og:type" content="website" />
@@ -53,6 +53,8 @@
         <link rel="stylesheet" href="/customer_assets/css/style.css">
         <link rel="stylesheet" href="/customer_assets/css/responsive.css">
 
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @livewireStyles
         @yield('css')
 	</head>
 	<!--end::Head-->
@@ -103,7 +105,73 @@
         <script src="/customer_assets/js/jquery.elevatezoom.js"></script>
         <!-- scripts js --> 
         <script src="/customer_assets/js/scripts.js"></script>
-        
+        @livewireScripts
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+			Livewire.on('itemAdded', postId => {
+				Toast.fire({
+					icon: 'success',
+					title: 'Added to Cart'
+				})
+			})
+			Livewire.on('itemUpdated', postId => {
+				Toast.fire({
+					icon: 'success',
+					title: 'Cart Updated'
+				})
+			})
+			Livewire.on('itemDeleted', postId => {
+				Toast.fire({
+					icon: 'success',
+					title: 'Product Deleted'
+				})
+			})
+			Livewire.on('errorShow', postId => {
+				Toast.fire({
+					icon: 'error',
+					title: postId
+				})
+			})
+			Livewire.on('succesShow', postId => {
+				Toast.fire({
+					icon: 'success',
+					title: postId
+				})
+			})
+			Livewire.on('loginShow', postId => {
+				Swal.fire({
+				title: postId,
+				icon: 'warning',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Register!',
+				showDenyButton: true,
+				denyButtonText: `Login`,
+				denyButtonColor: '#d33',
+				showCancelButton: true,
+				cancelButtonText: 'Cancel',
+				}).then((result) => {
+					if (result.isConfirmed) {
+						window.location.href="/register";
+					} else if (result.isDenied) {
+						window.location.href="/login";
+					}
+				})
+			})
+			
+			
+			
+			</script>
         @yield('js')
 	</body>
 	<!--end::Body-->

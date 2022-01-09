@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
 
         $brands = Brand::factory(5)->create();
 
-        Product::factory(20)
+        Product::factory(100)
             ->has(ProductDetail::factory()->count(1))
             ->has(ProductInfo::factory()->count(4))
             ->has(ProductImage::factory()->count(4))
@@ -40,7 +40,7 @@ class ProductSeeder extends Seeder
             ->has(
                 Category::factory()->has(
                     Category::factory()->count(3)
-                )->count(3)
+                )->count(10)
             )
             ->create();
 

@@ -39,4 +39,25 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function getCoverImage()
+    {
+        if ($this->productimages->count() > 0) {
+            $path = $this->productimages->first()->path;
+        } else {
+            $path = 'imageholderproduct.jpg';
+        }
+
+        return $path;
+    }
+
+    public function showPrice()
+    {
+        return number_format($this->unit_price - $this->discount, 2);
+    }
+
+    public function calcStock()
+    {
+        return intval($this->stock / $this->per_unit);
+    }
 }

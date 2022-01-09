@@ -30,51 +30,26 @@
 <div class="banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active background_bg" data-img-src="upload/websliders/webslider2.jpg">
+            @foreach($sliders as $slider)
+            <div class="carousel-item {{$loop->index == 0 ? 'active' : ''}} background_bg" data-img-src="{{$slider->image}}">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
                         <div class="row">
                             <div class="col-lg-7 col-9">
                                 <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Get up to 50% off Today Only!</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Woman Fashion</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
+                                	<h5 class="mb-3 staggered-animation font-weight-light {{$slider->light == 1 ? 'text-white' : ''}}" data-animation="slideInLeft" data-animation-delay="0.5s">{{$slider->top_head}}</h5>
+                                    <h2 class="staggered-animation {{$slider->light == 1 ? 'text-white' : ''}}" data-animation="slideInLeft" data-animation-delay="1s">{{$slider->mid_head}}</h2>
+                                    @if($slider->button_status)
+                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="{{$slider->button_action}}" data-animation="slideInLeft" data-animation-delay="1.5s">{{$slider->button_text}}</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div><!-- END CONTAINER-->
                 </div>
             </div>
-            <div class="carousel-item background_bg" data-img-src="upload/websliders/webslider2.jpg">
-                <div class="banner_slide_content">
-                    <div class="container"><!-- STRART CONTAINER -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">50% off in all products</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Man Fashion</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- END CONTAINER-->
-                </div>
-            </div>
-            <div class="carousel-item background_bg" data-img-src="customer_customer_assets/images/banner3.jpg">
-                <div class="banner_slide_content">
-                    <div class="container"><!-- STRART CONTAINER -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="banner_content overflow-hidden">
-                                	<h5 class="mb-3 staggered-animation font-weight-light" data-animation="slideInLeft" data-animation-delay="0.5s">Taking your Viewing Experience to Next Level</h5>
-                                    <h2 class="staggered-animation" data-animation="slideInLeft" data-animation-delay="1s">Summer Sale</h2>
-                                    <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase" href="shop-left-sidebar.html" data-animation="slideInLeft" data-animation-delay="1.5s">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- END CONTAINER-->
-                </div>
-            </div>
+            @endforeach
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev"><i class="ion-chevron-left"></i></a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next"><i class="ion-chevron-right"></i></a>
@@ -194,87 +169,20 @@
     </div>
     <div class="container mt-5 ">
         <div class="row">
-
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
+            @foreach($customerpagedata['categories'] as $category)
+                <div class="col-md-3 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
                     <!-- ============================ COMPONENT ITEM BG ================================= -->
+                    <a href="{{route('category_products',$category->slug)}}">
                     <div class="categorybox card card-banner border-0">
                         <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
+                            <img src="{{$category->image}}" style="width:180px;" alt="{{$category->name}}">
+                            <h5 class="card-title mt-2">{{$category->name}}</h5>
                         </div>
                     </div>
+                    </a>
                     <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
                 </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
-                <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;" >
-                    <!-- ============================ COMPONENT ITEM BG ================================= -->
-                    <div class="categorybox card card-banner border-0">
-                        <div class="p-3 text-center" style="width:100%">
-                            <img src="customer_assets/images/product_img11.jpg" style="width:100px;">
-                            <h5 class="card-title mt-2">CATEGORY</h5>
-                        </div>
-                    </div>
-                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                </div> <!-- col.// -->
+            @endforeach
         </div> <!-- row.// -->
 
 
@@ -283,7 +191,7 @@
 
 
 
-
+@if($featured->count() > 0 || $best_seller->count() > 0 || $new_arrival->count() > 0 || $special_offer->count() > 0)
 <!-- START SECTION SHOP -->
 <div class="section small_pt pb_70">
 	<div class="container">
@@ -298,414 +206,45 @@
         	<div class="col-12">
             	<div class="tab-style1">
                     <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        @if($featured->count() > 0)
                         <li class="nav-item">
-                            <a class="nav-link active" id="arrival-tab" data-bs-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">New Arrival</a>
+                            <a class="nav-link {{$featured->count() > 0 ? 'active' : ''}}" id="arrival-tab" data-bs-toggle="tab" href="#arrival" role="tab" aria-controls="arrival" aria-selected="true">Featured</a>
                         </li>
+                        @endif
+                        @if($best_seller->count() > 0)
                         <li class="nav-item">
-                            <a class="nav-link" id="sellers-tab" data-bs-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Best Sellers</a>
+                            <a class="nav-link {{!$featured->count() > 0 && $best_seller->count() > 0 ? 'active' : ''}}" id="sellers-tab" data-bs-toggle="tab" href="#sellers" role="tab" aria-controls="sellers" aria-selected="false">Best Sellers</a>
                         </li>
+                        @endif
+                        @if($new_arrival->count() > 0)
                         <li class="nav-item">
-                            <a class="nav-link" id="featured-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">Featured</a>
+                            <a class="nav-link {{!$featured->count() > 0 && !$best_seller->count() > 0 && $new_arrival->count() > 0 ? 'active' : ''}}" id="featured-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="false">New Arrival</a>
                         </li>
+                        @endif
+                        @if($special_offer->count() > 0)
                         <li class="nav-item">
-                            <a class="nav-link" id="special-tab" data-bs-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Special Offer
-                        </a>
+                            <a class="nav-link {{!$featured->count() > 0 && !$best_seller->count() > 0  && !$new_arrival->count() > 0 && $special_offer->count() > 0 ? 'active' : ''}}" id="special-tab" data-bs-toggle="tab" href="#special" role="tab" aria-controls="special" aria-selected="false">Special Offer</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="tab-content">
-                	<div class="tab-pane fade show active" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
+                    @if($featured->count() > 0)
+                	<div class="tab-pane fade {{$featured->count() > 0 ? 'show active' : ''}}" id="arrival" role="tabpanel" aria-labelledby="arrival-tab">
                         <div class="row shop_container">
+                            @foreach ($featured as $product)
                             <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img1.jpg" alt="product_img1">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">Blue Dress For Woman</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#87554B"></span>
-                                                <span data-color="#333333"></span>
-                                                <span data-color="#DA323F"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @livewire('customer.product-card', ['product' => $product])
                             </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img2.jpg" alt="product_img2">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">Lether Gray Tuxedo</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$55.00</span>
-                                            <del>$95.00</del>
-                                            <div class="on_sale">
-                                                <span>25% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:68%"></div>
-                                            </div>
-                                            <span class="rating_num">(15)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#847764"></span>
-                                                <span data-color="#0393B5"></span>
-                                                <span data-color="#DA323F"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <span class="pr_flash">New</span>
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img3.jpg" alt="product_img3">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">woman full sliv dress</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$68.00</span>
-                                            <del>$99.00</del>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:87%"></div>
-                                            </div>
-                                            <span class="rating_num">(25)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#333333"></span>
-                                                <span data-color="#7C502F"></span>
-                                                <span data-color="#2F366C"></span>
-                                                <span data-color="#874A3D"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img4.jpg" alt="product_img4">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">light blue Shirt</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$69.00</span>
-                                            <del>$89.00</del>
-                                            <div class="on_sale">
-                                                <span>20% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:70%"></div>
-                                            </div>
-                                            <span class="rating_num">(22)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#333333"></span>
-                                                <span data-color="#A92534"></span>
-                                                <span data-color="#B9C2DF"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img5.jpg" alt="product_img5">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">blue dress for woman</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#87554B"></span>
-                                                <span data-color="#333333"></span>
-                                                <span data-color="#5FB7D4"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <span class="pr_flash bg-danger">Hot</span>
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img6.jpg" alt="product_img6">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">Blue casual check shirt</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$55.00</span>
-                                            <del>$95.00</del>
-                                            <div class="on_sale">
-                                                <span>25% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:68%"></div>
-                                            </div>
-                                            <span class="rating_num">(15)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#87554B"></span>
-                                                <span data-color="#333333"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <span class="pr_flash bg-success">Sale</span>
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img7.jpg" alt="product_img7">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">white black line dress</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$68.00</span>
-                                            <del>$99.00</del>
-                                            <div class="on_sale">
-                                                <span>20% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:87%"></div>
-                                            </div>
-                                            <span class="rating_num">(25)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#333333"></span>
-                                                <span data-color="#7C502F"></span>
-                                                <span data-color="#2F366C"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img8.jpg" alt="product_img8">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">Men blue jins Shirt</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$69.00</span>
-                                            <del>$89.00</del>
-                                            <div class="on_sale">
-                                                <span>20% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:70%"></div>
-                                            </div>
-                                            <span class="rating_num">(22)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#333333"></span>
-                                                <span data-color="#444653"></span>
-                                                <span data-color="#B9C2DF"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
+                    @endif
+                    @if($best_seller->count() > 0)
+                    <div class="tab-pane fade {{!$featured->count() > 0 && $best_seller->count() > 0 ? 'show active' : ''}}" id="sellers" role="tabpanel" aria-labelledby="sellers-tab">
                         <div class="row shop_container">
                             <div class="col-lg-3 col-md-4 col-6">
-                                <div class="product">
-                                    <div class="product_img">
-                                        <a href="shop-product-detail.html">
-                                            <img src="customer_assets/images/product_img9.jpg" alt="product_img9">
-                                        </a>
-                                        <div class="product_action_box">
-                                            <ul class="list_none pr_action_btn">
-                                                <li class="add-to-cart"><a href="#"><i class="icon-basket-loaded"></i> Add To Cart</a></li>
-                                                <li><a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a></li>
-                                                <li><a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a></li>
-                                                <li><a href="#"><i class="icon-heart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_info">
-                                        <h6 class="product_title"><a href="shop-product-detail.html">T-Shirt Form Girls</a></h6>
-                                        <div class="product_price">
-                                            <span class="price">$45.00</span>
-                                            <del>$55.25</del>
-                                            <div class="on_sale">
-                                                <span>35% Off</span>
-                                            </div>
-                                        </div>
-                                        <div class="rating_wrap">
-                                            <div class="rating">
-                                                <div class="product_rate" style="width:80%"></div>
-                                            </div>
-                                            <span class="rating_num">(21)</span>
-                                        </div>
-                                        <div class="pr_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
-                                        </div>
-                                        <div class="pr_switch_wrap">
-                                            <div class="product_color_switch">
-                                                <span class="active" data-color="#B5B6BB"></span>
-                                                <span data-color="#333333"></span>
-                                                <span data-color="#DA323F"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="product">
@@ -1011,7 +550,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+                    @endif
+                    @if($new_arrival->count() > 0)
+                    <div class="tab-pane fade {{!$featured->count() > 0 && !$best_seller->count() > 0 && $new_arrival->count() > 0 ? 'show active' : ''}}" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                         <div class="row shop_container">
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="product">
@@ -1360,7 +901,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="special" role="tabpanel" aria-labelledby="special-tab">
+                    @endif
+                    @if($special_offer->count() > 0)
+                    <div class="tab-pane fade {{!$featured->count() > 0 && !$best_seller->count() > 0  && !$new_arrival->count() > 0 && $special_offer->count() > 0 ? 'show active' : ''}}" id="special" role="tabpanel" aria-labelledby="special-tab">
                         <div class="row shop_container">
                             <div class="col-lg-3 col-md-4 col-6">
                                 <div class="product">
@@ -1708,13 +1251,14 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div> 
     </div>
 </div>
 <!-- END SECTION SHOP -->
-
+@endif
 <!-- START SECTION SINGLE BANNER --> 
 <div class="section bg_light_blue2 pb-0 pt-md-0">
 	<div class="container">
@@ -1750,67 +1294,32 @@
             	<div class="heading_s1 text-center">
                 	<h2>Latest News</h2>
                 </div>
-                <p class="leads text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <p class="leads text-center">Read the latest news on the Savoy</p>
             </div>
         </div>
         <div class="row justify-content-center">
+            @foreach($news as $new)
         	<div class="col-lg-4 col-md-6">
             	<div class="blog_post blog_style1 box_shadow1">
                 	<div class="blog_img">
-                        <a href="blog-single.html">
-                            <img src="customer_assets/images/furniture_blog_img1.jpg" alt="furniture_blog_img1">
+                        <a href="{{route('news.detail',$new->slug)}}">
+                            <img src="{{$new->image}}" alt="{{$new->name}}">
                         </a>
                     </div>
                     <div class="blog_content bg-white">
                     	<div class="blog_text">
-                            <h5 class="blog_title"><a href="blog-single.html">But I must explain to you how all this mistaken idea</a></h5>
+                            <h5 class="blog_title"><a href="{{route('news.detail',$new->slug)}}">{{$new->name}}</a></h5>
                             <ul class="list_none blog_meta">
-                                <li><a href="#"><i class="ti-calendar"></i> April 14, 2018</a></li>
-                                <li><a href="#"><i class="ti-comments"></i> 2 Comment</a></li>
+                                <li class="text-secondary"><i class="ti-calendar"></i> {{$new->humanTime()}}</li>
+                                
                             </ul>
-                            <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything hidden in the text</p>
+                            <p>{{substr($new->text, 0, 150).'...'}}</p>
                         </div>
+                        <a href="{{route('news.detail',$new->slug)}}" class="mt-3 btn btn-fill-out rounded-0 staggered-animation ">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-            	<div class="blog_post blog_style1 box_shadow1">
-                	<div class="blog_img">
-                        <a href="blog-single.html">
-                            <img src="customer_assets/images/furniture_blog_img2.jpg" alt="furniture_blog_img2">
-                        </a>
-                    </div>
-                    <div class="blog_content bg-white">
-                    	<div class="blog_text">
-                            <h5 class="blog_title"><a href="blog-single.html">On the other hand we provide denounce with righteous</a></h5>
-                            <ul class="list_none blog_meta">
-                                <li><a href="#"><i class="ti-calendar"></i> April 14, 2018</a></li>
-                                <li><a href="#"><i class="ti-comments"></i> 2 Comment</a></li>
-                            </ul>
-                            <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything hidden in the text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-            	<div class="blog_post blog_style1 box_shadow1">
-                	<div class="blog_img">
-                        <a href="blog-single.html">
-                            <img src="customer_assets/images/furniture_blog_img3.jpg" alt="furniture_blog_img3">
-                        </a>
-                    </div>
-                    <div class="blog_content bg-white">
-                    	<div class="blog_text">
-                            <h5 class="blog_title"><a href="blog-single.html">Why is a ticket to Lagos so expensive?</a></h5>
-                            <ul class="list_none blog_meta">
-                                <li><a href="#"><i class="ti-calendar"></i> April 14, 2018</a></li>
-                                <li><a href="#"><i class="ti-comments"></i> 2 Comment</a></li>
-                            </ul>
-                            <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything hidden in the text</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -1918,25 +1427,7 @@
 <!-- END SECTION SHOP INFO -->
                     
 <!-- START SECTION SUBSCRIBE NEWSLETTER -->
-<div class="section bg_default small_pt small_pb">
-	<div class="container">	
-    	<div class="row align-items-center">	
-            <div class="col-md-6">
-                <div class="heading_s1 mb-md-0 heading_light">
-                    <h3>Subscribe Our Newsletter</h3>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="newsletter_form">
-                    <form>
-                        <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
-                        <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@livewire('customer.newsletter-main')
 <!-- START SECTION SUBSCRIBE NEWSLETTER -->
 
 @endsection
