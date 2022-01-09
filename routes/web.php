@@ -24,23 +24,31 @@ Route::get('/search-result/{search}', [OtherController::class, 'search_result'])
 Route::get('/maintenance', [OtherController::class, 'maintenance'])->name('maintenance');
 
 //Customer Auth
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::get('/forget-password', [AuthController::class, 'forget_password'])->name('forget_password');
-Route::get('/reset-password/{token}', [AuthController::class, 'reset_password'])->name('reset_password');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
 
-//Customer User Area (Middleware Guest Needed)
-Route::prefix('user')->name('user.')->group(function () {
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::get('/detail', [UserController::class, 'detail'])->name('detail');
-    Route::get('/addresses', [UserController::class, 'addresses'])->name('addresses');
-    Route::get('/orders', [UserController::class, 'orders'])->name('orders');
-    Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
+    Route::get('/forget-password', [AuthController::class, 'forget_password'])->name('forget_password');
+    Route::get('/reset-password/{token}', [AuthController::class, 'reset_password'])->name('reset_password');
 });
 
-Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
-Route::get('/order-complete/{ordercode}', [OrderController::class, 'order_complete'])->name('order_complete');
-Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
+
+Route::middleware('auth')->group(function () {
+    //Customer User Area (Middleware Guest Needed)
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+        Route::get('/detail', [UserController::class, 'detail'])->name('detail');
+        Route::get('/addresses', [UserController::class, 'addresses'])->name('addresses');
+        Route::get('/orders', [UserController::class, 'orders'])->name('orders');
+        Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
+    });
+    Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
+    Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+    Route::get('/order-complete/{ordercode}', [OrderController::class, 'order_complete'])->name('order_complete');
+    Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
+});
+
+
 
 
 Route::get('/category/{slug}', [ProductController::class, 'categoryProducts'])->name('category_products');

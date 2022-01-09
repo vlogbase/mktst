@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
     public function profile()
     {
-        return view('customer.user.profile');
+        $user = Auth::user();
+        return view('customer.user.profile', compact('user'));
     }
 
     public function detail()

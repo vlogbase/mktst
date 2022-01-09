@@ -122,10 +122,17 @@
                             </ul>
                         </div>
                         <ul class="navbar-nav attr-nav align-items-center ">
-                            <li><a href="{{route('login')}}" class="nav-link {{request()->routeIs('login') ? 'active' : ''}}">
-                                {{-- <i class="linearicons-user"></i> --}}
-                                <i class="linearicons-enter"></i>
-                            </a></li>
+                            <li>
+                                @if(Auth::check())
+                                <a href="{{route('user.profile')}}" class="nav-link "><i class="linearicons-user"></i>
+                                </a>
+                                @endif
+                                @guest
+                                <a href="{{route('login')}}" class="nav-link {{request()->routeIs('login') ? 'active' : ''}}"><i class="linearicons-enter"></i>
+                                
+                                </a>
+                                @endguest
+                               </li>
                             <li class="dropdown cart_dropdown"><a class="nav-link cart_trigger {{request()->routeIs('cart') || request()->routeIs('checkout') ? 'active' : ''}}" href="#" data-bs-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">2</span></a>
                                 <div class="cart_box dropdown-menu dropdown-menu-right">
                                     <ul class="cart_list">
@@ -157,8 +164,10 @@
                             </li>
                             
                         </ul>
+                        
                     </nav>
                 </div>
+                
             </div>
         </div>
     </div>

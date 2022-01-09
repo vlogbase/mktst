@@ -1,0 +1,166 @@
+<?php
+
+namespace App\Http\Livewire\Customer;
+
+use App\Models\Address;
+use App\Models\Newsletter;
+use App\Models\User;
+use App\Models\UserDetail;
+use App\Models\UserOffice;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\Rules\Password;
+use stdClass;
+use Illuminate\Support\Str;
+
+class RegisterForm extends Component
+{
+    public $name;
+    public $surname;
+    public $mobile;
+    public $phone;
+    public $company_name;
+    public $company_select;
+    public $vat;
+    public $registeration;
+    public $email;
+    public $password;
+    public $password_confirmation;
+    public $newsletter;
+    public $agreement;
+
+    public $companyOptions;
+    public $curSuggestions;
+
+
+
+    public function mount()
+    {
+        $this->companyOptions = collect([]);
+        $this->curSuggestions = collect([]);
+    }
+
+    public function hydrate()
+    {
+        $this->companyOptions = $this->curSuggestions;
+    }
+
+    public function findAddress()
+    {
+        if ($this->company_name != '') {
+            $this->companyOptions = collect([]);
+            $response = Http::get('https://api.getAddress.io/autocomplete/' . $this->company_name . '?api-key=FZlHxdMoXEOmwlSTnTHPoA33869')->object();
+            foreach ($response->suggestions as $opt) {
+                $opt = json_decode(json_encode($opt), true);
+                $this->companyOptions->push($opt);
+                $this->curSuggestions->push($opt);
+            }
+        } else {
+            $this->addError('company_name', 'Please type your company name');
+            $this->emit('errorShow', 'Please type your company name');
+        }
+    }
+
+    public function updatedCompanySelect()
+    {
+        $this->companyOptions = $this->curSuggestions;
+    }
+
+
+    public function registerAttempt()
+    {
+
+
+        $data =  $this->validate([
+            'password' => ['required', 'string', Password::min(8)->mixedCase()
+                ->letters()
+                ->numbers(), 'confirmed'],
+            'password_confirmation' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'name' => 'required|min:2|max:50',
+            'surname' => 'required|min:2|max:50',
+            'mobile' => 'required|min:17|max:17',
+            'phone' => 'nullable|min:17|max:17',
+            'company_name' => 'required|min:5|max:160',
+            'company_select' => 'required|min:10|max:200',
+            'vat' => 'nullable|min:9|max:15',
+            'registeration' => 'nullable|min:10|max:30',
+            'agreement' => 'required',
+            'newsletter' =>  'nullable',
+        ]);
+
+        if ($this->newsletter) {
+            $newsletterUser = Newsletter::where('email', $this->email)->first();
+            if ($newsletterUser) {
+                $this->emit('errorShow', 'Already Newsletter Subscriber');
+            } else {
+                Newsletter::create([
+                    'email' => $this->email,
+                    'token' => Str::random(15),
+                ]);
+            }
+        }
+
+        $user = User::create([
+            'name' => $this->company_name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+            'vat' => $this->vat,
+            'registeration' => $this->registeration,
+            'code' => 'SVY-' . Str::random(7),
+        ]);
+
+        //Adress
+        $response = Http::get('https://api.getAddress.io/get/' . $this->company_select . '?api-key=FZlHxdMoXEOmwlSTnTHPoA33869')->object();
+
+        $formatted = '';
+        foreach ($response->formatted_address as $fra) {
+            $formatted = $formatted . $fra;
+        }
+
+        $address = Address::create([
+            'postcode' => $response->postcode,
+            'country' => $response->country,
+            'district' => $response->district,
+            'county' => $response->county,
+            'latitude' => $response->latitude,
+            'longitude' => $response->longitude,
+            'formatted_address' => $formatted,
+        ]);
+
+        UserDetail::create([
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'phone' => $this->phone,
+            'mobile' => $this->mobile,
+            'user_id' => $user->id,
+            'address_id' => $address->id,
+        ]);
+
+        UserOffice::create([
+            'office_name' => 'Registered Office',
+            'email' => $this->email,
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'phone' => $this->phone,
+            'mobile' => $this->mobile,
+            'user_id' => $user->id,
+            'address_id' => $address->id,
+            'is_shipping' => 1,
+            'is_billing' => 1,
+        ]);
+
+        Auth::login($user, true);
+        request()->session()->regenerate();
+        return redirect()->intended('/');
+    }
+
+
+
+    public function render()
+    {
+        return view('livewire.customer.register-form');
+    }
+}
