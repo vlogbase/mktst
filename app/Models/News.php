@@ -16,4 +16,9 @@ class News extends Model
 
         return Carbon::parse($this->created_at)->diffForHumans();
     }
+
+    public function getImageAttribute($value)
+    {
+        return '/upload/' . $value;
+    }
 }

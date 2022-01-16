@@ -27,7 +27,7 @@
                     <del>£{{$product->unit_price}}</del>
                 @endif
             </div>
-            @if($product->calcStock() > 10) 
+            @if($product->calcStock() >= 10) 
             <span class="text-success mb-2">In Stock</span>
             @elseif($product->calcStock() < 10 && $product->calcStock() > 0)
             <span class="text-dark mb-2">Last {{ $product->calcStock() }} Item</span>

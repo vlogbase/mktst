@@ -18,7 +18,7 @@ class BlogFactory extends Factory
             'name' => $product_name = $this->faker->sentence(2),
             'slug' => Str::slug($product_name),
             'text' =>  $this->faker->text(5000),
-            'image' => $this->faker->imageUrl(825, 550),
+            'image' => 'contents/holder.png',
         ];
     }
 }

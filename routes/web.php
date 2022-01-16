@@ -27,12 +27,11 @@ Route::get('/maintenance', [OtherController::class, 'maintenance'])->name('maint
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
-
     Route::get('/forget-password', [AuthController::class, 'forget_password'])->name('forget_password');
     Route::get('/reset-password/{token}', [AuthController::class, 'reset_password'])->name('reset_password');
 });
 
-
+//Customer Authenticated Part
 Route::middleware('auth')->group(function () {
     //Customer User Area (Middleware Guest Needed)
     Route::prefix('user')->name('user.')->group(function () {
@@ -42,19 +41,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/orders', [UserController::class, 'orders'])->name('orders');
         Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
     });
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
     Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
     Route::get('/order-complete/{ordercode}', [OrderController::class, 'order_complete'])->name('order_complete');
-    Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
 });
 
-
-
-
+Route::get('/cart', [OrderController::class, 'cart'])->name('cart');
 Route::get('/category/{slug}', [ProductController::class, 'categoryProducts'])->name('category_products');
 Route::get('/products', [ProductController::class, 'products'])->name('products');
 Route::get('/products/{slug}', [ProductController::class, 'product_detail'])->name('product_detail');
 
+//Contents
 Route::prefix('blogs')->name('blogs.')->group(function () {
     Route::get('/', [ContentController::class, 'blogs'])->name('index');
     Route::get('/{slug}', [ContentController::class, 'blogs_detail'])->name('detail');
@@ -63,12 +61,14 @@ Route::prefix('news')->name('news.')->group(function () {
     Route::get('/', [ContentController::class, 'news'])->name('index');
     Route::get('/{slug}', [ContentController::class, 'news_detail'])->name('detail');
 });
-
 Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery');
 // Route::get('/video-gallery', [ContentController::class, 'video_gallery'])->name('video_gallery');
 
 
 //Newsletter Quit Link Need
+
+
+
 
 
 //Admin Part

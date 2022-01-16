@@ -14,7 +14,7 @@ class GalleryFactory extends Factory
     public function definition()
     {
         return [
-            'image' => $this->faker->imageUrl(540, 360),
+            'image' => 'gallery/holder.png',
         ];
     }
 }

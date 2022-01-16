@@ -9,4 +9,9 @@ class AppSlider extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function getImageAttribute($value)
+    {
+        return '/upload/' . $value;
+    }
 }

@@ -16,7 +16,7 @@ class WebSliderFactory extends Factory
         return [
             'top_head' => $this->faker->sentence(2),
             'mid_head' => $this->faker->sentence(2),
-            'image' => $this->faker->imageUrl(1920, 500),
+            'image' => 'websliders/holder.png',
         ];
     }
 }

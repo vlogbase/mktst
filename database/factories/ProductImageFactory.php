@@ -14,7 +14,7 @@ class ProductImageFactory extends Factory
     public function definition()
     {
         return [
-            'path' => $this->faker->imageUrl(500, 500),
+            'path' => 'product/imageholderproduct.jpg',
         ];
     }
 }

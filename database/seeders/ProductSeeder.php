@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
 
         $brands = Brand::factory(5)->create();
 
-        Product::factory(100)
+        $products = Product::factory(100)
             ->has(ProductDetail::factory()->count(1))
             ->has(ProductInfo::factory()->count(4))
             ->has(ProductImage::factory()->count(4))
@@ -51,12 +51,26 @@ class ProductSeeder extends Seeder
             ]);
         });
 
-        // Populate the pivot table
-        Product::all()->each(function ($product) use ($categories) {
-            $product->categories()->attach(
-                $categories->random(rand(1, 3))->pluck('id')->toArray()
-            );
-        });
+
+        foreach ($products as $product) {
+            $collection = collect([]);
+            //Level 1 
+            $category = $categories->random();
+            $collection->push($category->id);
+            //
+
+            //Level 2 
+            $subcategory = $category->categories->random();
+            $collection->push($subcategory->id);
+            //
+
+            //Level 3 
+            $sub2category = $subcategory->categories->random();
+            $collection->push($sub2category->id);
+            //
+            $product->categories()->attach($collection);
+        }
+
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

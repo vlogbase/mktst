@@ -14,7 +14,7 @@ class AppSliderFactory extends Factory
     public function definition()
     {
         return [
-            'image' => $this->faker->imageUrl(800, 500),
+            'image' => 'mobilesliders/holder.png',
         ];
     }
 }
