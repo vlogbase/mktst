@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Resources\Other\AppSliderResource;
+use App\Http\Resources\Shop\ProductResource;
 use App\Models\AppSlider;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends ApiController
@@ -15,9 +17,29 @@ class HomeController extends ApiController
         return $this->successResponse($items);
     }
 
-    public function detailsliders($id)
+    public function home_products()
     {
-        $item = new AppSliderResource(AppSlider::findOrFail($id));
-        return $this->successResponse($item);
+
+        $featured = ProductResource::collection(Product::whereHas('productdetail', function ($q) {
+            $q->where('featured', '=', '1')->where('status', 1);
+        })->get());
+        $best_seller =  ProductResource::collection(Product::whereHas('productdetail', function ($q) {
+            $q->where('best_seller', '=', '1')->where('status', 1);
+        })->get());
+        $new_arrival =  ProductResource::collection(Product::whereHas('productdetail', function ($q) {
+            $q->where('new_arrival', '=', '1')->where('status', 1);
+        })->get());
+        $special_offer =  ProductResource::collection(Product::whereHas('productdetail', function ($q) {
+            $q->where('special_offer', '=', '1')->where('status', 1);
+        })->get());
+
+        $data =
+            [
+                'featured' => $featured,
+                'best_seller' => $best_seller,
+                'new_arrival' => $new_arrival,
+                'special_offer' => $special_offer,
+            ];
+        return $this->successResponse($data);
     }
 }

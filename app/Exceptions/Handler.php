@@ -7,6 +7,7 @@ use Throwable;
 
 use App\Traits\ApiResponser;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -67,6 +68,11 @@ class Handler extends ExceptionHandler
         if ($exception instanceof HttpException) {
             return $this->errorResponse($exception->getMessage(), $exception->getStatusCode());
         }
+
+        if ($exception instanceof AuthenticationException) {
+            return $this->errorResponse('Not Authenticated', 401);
+        }
+
 
         if (config('app.debug')) {
             return parent::render($request, $exception);

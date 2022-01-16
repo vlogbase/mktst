@@ -15,7 +15,11 @@ class ProductDetailFactory extends Factory
     {
         return [
             'description' => $this->faker->sentence(50),
-            'pack'  => '1x20kg'
+            'pack'  => '1x20kg',
+            'featured' => $this->faker->boolean(10),
+            'best_seller' => $this->faker->boolean(10),
+            'new_arrival' => $this->faker->boolean(10),
+            'special_offer' => $this->faker->boolean(10),
         ];
     }
 }

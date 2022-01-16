@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+//Other
 Route::get('/sliders', [HomeController::class, 'sliders'])->name('sliders');
-Route::get('/sliders/{id}', [HomeController::class, 'detailsliders'])->name('detailsliders');
+
+//Shop
+Route::get('/home-products', [HomeController::class, 'home_products'])->name('api_home_products');
+Route::get('/products', [ShopController::class, 'products_list'])->name('api_products_list');
+Route::get('/products/{id}', [ShopController::class, 'product_detail'])->name('api_product_detail');
+Route::get('/categories/{parent_id}', [ShopController::class, 'categories'])->name('api_categories');
