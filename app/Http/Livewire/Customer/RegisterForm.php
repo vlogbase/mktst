@@ -7,6 +7,7 @@ use App\Models\Newsletter;
 use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserOffice;
+use App\Notifications\WelcomeNotification;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -85,10 +86,11 @@ class RegisterForm extends Component
             'phone' => 'nullable|min:17|max:17',
             'company_name' => 'required|min:5|max:160',
             'company_select' => 'required|min:10|max:200',
-            'vat' => 'nullable|min:9|max:15',
+            'vat' => 'nullable|min:5|max:15',
             'registeration' => 'nullable|min:10|max:30',
             'agreement' => 'required',
             'newsletter' =>  'nullable',
+            'business_type' => 'required'
         ]);
 
         if ($this->newsletter) {
@@ -103,6 +105,7 @@ class RegisterForm extends Component
             }
         }
 
+        $verify_token = Str::random(30);
         $user = User::create([
             'name' => $this->company_name,
             'email' => $this->email,
@@ -110,6 +113,7 @@ class RegisterForm extends Component
             'vat' => $this->vat,
             'registeration' => $this->registeration,
             'code' => 'SVY-' . Str::random(7),
+            'verify_token' => $verify_token
         ]);
 
         //Adress
@@ -152,8 +156,13 @@ class RegisterForm extends Component
             'is_billing' => 1,
         ]);
 
-        Auth::login($user, true);
-        request()->session()->regenerate();
+        $registeredUser = [
+            'userName' => $this->company_name,
+            'actionURL' => route('verify_email', ['email' => $this->email, 'token' => $verify_token])
+        ];
+
+        $user->notify(new WelcomeNotification($registeredUser));
+
         return redirect()->intended('/');
     }
 

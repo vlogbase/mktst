@@ -28,7 +28,8 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::get('/forget-password', [AuthController::class, 'forget_password'])->name('forget_password');
-    Route::get('/reset-password/{token}', [AuthController::class, 'reset_password'])->name('reset_password');
+    Route::get('/reset-password/{email}/{token}', [AuthController::class, 'reset_password'])->name('reset_password');
+    Route::get('/verify-email/{email}/{token}', [AuthController::class, 'verify_email'])->name('verify_email');
 });
 
 //Customer Authenticated Part

@@ -21,7 +21,6 @@ class CreateUserDetailsTable extends Migration
             $table->string('mobile');
             $table->integer('user_id')->unsigned();
             $table->integer('address_id')->unsigned();
-            $table->string('business_category');
             $table->string('business_type');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

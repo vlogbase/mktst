@@ -19,8 +19,8 @@ class CreateAddressesTable extends Migration
             $table->string('country', 150);
             $table->string('district', 300);
             $table->string('county', 300);
-            $table->string('latitude', 300);
-            $table->string('longitude', 300);
+            $table->string('latitude', 300)->nullable();
+            $table->string('longitude', 300)->nullable();
             $table->string('formatted_address', 700);
             $table->timestamps();
         });

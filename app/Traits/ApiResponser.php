@@ -14,18 +14,18 @@ trait ApiResponser
     protected function successResponse($data, $message = null, $code = 200)
     {
         return response()->json([
-            'status' => 'Success',
+            'status' => true,
             'message' => $message,
             'data' => $data
         ], $code);
     }
 
-    protected function errorResponse($message = null, $code)
+    protected function errorResponse($message = null, $code, $data = null)
     {
         return response()->json([
-            'status' => 'Error',
+            'status' => false,
             'message' => $message,
-            'data' => null
+            'data' => $data
         ], $code);
     }
 }

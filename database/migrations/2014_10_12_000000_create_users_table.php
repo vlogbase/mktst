@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->decimal('point', 10, 2)->default(0);
             $table->rememberToken();
             $table->string('code');
+            $table->string('verify_token')->nullable();
             $table->timestamps();
         });
     }

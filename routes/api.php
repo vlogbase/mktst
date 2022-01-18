@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ShopController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,16 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
-//Other
+//Home
 Route::get('/sliders', [HomeController::class, 'sliders'])->name('sliders');
+Route::get('/home-products', [HomeController::class, 'home_products'])->name('api_home_products');
 
 //Shop
-Route::get('/home-products', [HomeController::class, 'home_products'])->name('api_home_products');
 Route::get('/products', [ShopController::class, 'products_list'])->name('api_products_list');
 Route::get('/products/{id}', [ShopController::class, 'product_detail'])->name('api_product_detail');
 Route::get('/categories/{parent_id}', [ShopController::class, 'categories'])->name('api_categories');
+
+//Auth
+Route::post('/auth/login', [AuthController::class, 'login'])->name('api_login');
+Route::post('/auth/register', [AuthController::class, 'register'])->name('api_register');
+Route::post('/auth/send-verification', [AuthController::class, 'send_verification'])->name('api_send_verification');
+Route::post('/auth/forget-password', [AuthController::class, 'forget_password'])->name('api_forget_password');
+
+//Authenticated Part
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/auth/logout', [AuthController::class, 'logout'])->name('api_logout');
+    Route::get('/user/profile', [UserController::class, 'profile'])->name('api_user_profile');
+    Route::get('/user/orders', [UserController::class, 'orders'])->name('api_user_orders');
+    Route::get('/user/orders/{id}', [UserController::class, 'orders_detail'])->name('api_user_orders_detail');
+    Route::get('/user/favorites', [UserController::class, 'favorites'])->name('api_user_favorites');
+});

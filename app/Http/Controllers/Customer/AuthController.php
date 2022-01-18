@@ -19,10 +19,6 @@ class AuthController extends Controller
         return view('customer.auth.register');
     }
 
-
-
-
-
     public function forget_password()
     {
         return view('customer.auth.forget-password');
@@ -39,5 +35,10 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login');
+    }
+
+    public function verify_email($email, $token)
+    {
+        return $email . ' ' . $token;
     }
 }

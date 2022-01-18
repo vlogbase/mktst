@@ -24,8 +24,8 @@ class User extends Authenticatable
         'vat',
         'registeration',
         'point',
-        'code'
-
+        'code',
+        'verify_token'
     ];
 
     /**
@@ -71,5 +71,10 @@ class User extends Authenticatable
     public function coupons()
     {
         return $this->belongsToMany(Coupon::class);
+    }
+
+    public function userorders()
+    {
+        return $this->hasMany(Order::class);
     }
 }

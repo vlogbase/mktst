@@ -20,7 +20,6 @@ class UserDetailFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'mobile' => $this->faker->phoneNumber(),
             'business_type' => $this->faker->randomElement(['Shop', 'Hotel', 'Other']),
-            'business_category' => $this->faker->randomElement(['Shop', 'Hotel', 'Other', 'Restaurant', 'Park', 'Cafe']),
         ];
     }
 }
