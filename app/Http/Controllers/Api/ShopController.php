@@ -10,6 +10,7 @@ use App\Http\Resources\Shop\ProductResource as ShopProductResource;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends ApiController
 {
@@ -113,5 +114,20 @@ class ShopController extends ApiController
 
         $products = $products->$products = ShopProductResource::collection($products);
         return $this->successResponse($products);
+    }
+
+    public function product_is_favorited(Request $request, $id)
+    {
+        $user = $request->user();
+        $product = Product::findOrFail($id);
+
+        $toggle = DB::table('product_user')->where('product_id', $id)->where('user_id', $user->id)->first();
+
+        if ($toggle) {
+            $message = 'Favorited';
+        } else {
+            $message = 'Not Favorited';
+        }
+        return $this->successResponse(Null, $message);
     }
 }
