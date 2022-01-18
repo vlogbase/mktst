@@ -15,6 +15,8 @@ use App\Models\UserOffice;
 use App\Notifications\ForgetPasswordNotification;
 use App\Notifications\VerifyNotification;
 use App\Notifications\WelcomeNotification;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
@@ -82,7 +84,7 @@ class AuthController extends ApiController
         }
 
 
-        $verify_token = Str::random(30);
+        $verify_token =  Str::random(64);
         $user = User::create([
             'name' => $request->company_name,
             'email' => $request->email,
@@ -178,9 +180,16 @@ class AuthController extends ApiController
 
         $user = User::where('email', $request->email)->firstOrFail();
 
+        $token = Str::random(64);
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
         $registeredUser = [
             'userName' => $user->name,
-            'actionURL' => route('reset_password', ['email' => $user->email, 'token' => $user->verify_token])
+            'actionURL' => route('reset_password', ['email' => $user->email, 'token' => $token])
         ];
 
         $user->notify(new ForgetPasswordNotification($registeredUser));

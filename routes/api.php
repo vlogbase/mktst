@@ -27,7 +27,6 @@ Route::get('/products', [ShopController::class, 'products_list'])->name('api_pro
 Route::get('/products/{id}', [ShopController::class, 'product_detail'])->name('api_product_detail');
 Route::get('/categories/{parent_id}', [ShopController::class, 'categories'])->name('api_categories');
 
-
 //Auth
 Route::post('/auth/login', [AuthController::class, 'login'])->name('api_login');
 Route::post('/auth/register', [AuthController::class, 'register'])->name('api_register');
@@ -44,3 +43,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/user/favorites/toggle/{id}', [UserController::class, 'toggle_favorites'])->name('api_user_toggle_favorites');
     Route::get('/products/{id}/is-favorited', [ShopController::class, 'product_is_favorited'])->name('api_product_is_favorited');
 });
+
+//Order
+    //CartPrice - Post
+    //Coupon Apply - Post
+    //Checkout Page - Post
+    //Order Request - Post
+    //Order Result - Get

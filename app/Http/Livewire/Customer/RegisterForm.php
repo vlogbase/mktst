@@ -105,7 +105,7 @@ class RegisterForm extends Component
             }
         }
 
-        $verify_token = Str::random(30);
+        $verify_token =  Str::random(64);
         $user = User::create([
             'name' => $this->company_name,
             'email' => $this->email,
