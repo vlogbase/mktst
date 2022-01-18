@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 //Home
-Route::get('/sliders', [HomeController::class, 'sliders'])->name('sliders');
+Route::get('/api-info', [HomeController::class, 'api_info'])->name('api_info');
+Route::get('/sliders', [HomeController::class, 'sliders'])->name('api_sliders');
 Route::get('/home-products', [HomeController::class, 'home_products'])->name('api_home_products');
 
 //Shop

@@ -7,6 +7,7 @@ use App\Http\Resources\Other\AppSliderResource;
 use App\Http\Resources\Shop\ProductResource;
 use App\Models\AppSlider;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends ApiController
@@ -39,6 +40,17 @@ class HomeController extends ApiController
                 'best_seller' => $best_seller,
                 'new_arrival' => $new_arrival,
                 'special_offer' => $special_offer,
+            ];
+        return $this->successResponse($data);
+    }
+
+    public function api_info()
+    {
+        $data =
+            [
+                'version' => '1.0.23',
+                'time' => Carbon::now()->format('Y-m-d H:i:s'),
+                'time-zone' => 'Europe/London',
             ];
         return $this->successResponse($data);
     }
