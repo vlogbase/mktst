@@ -9,11 +9,14 @@ use App\Http\Resources\Shop\CategoryResource;
 use App\Http\Resources\Shop\ProductResource as ShopProductResource;
 use App\Models\Category;
 use App\Models\Product;
+use App\Traits\CartHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ShopController extends ApiController
 {
+    use CartHelper;
+
     public function product_detail($id)
     {
         $item = new ProductResource(Product::findOrFail($id));
@@ -129,5 +132,32 @@ class ShopController extends ApiController
             $message = 'Not Favorited';
         }
         return $this->successResponse(Null, $message);
+    }
+
+
+    public function cart_price(Request $request)
+    {
+        $items = $request->items;
+        $cartFinalCost = 0;
+        $cartBeforeDiscount = 0;
+        $products = collect([]);
+        if (count($items) > 0) {
+            foreach ($items as $item) {
+                $product = Product::find($item['id']);
+                $cartFinalCost += $product->showPrice() * $item['quantity'];
+                $cartBeforeDiscount += $product->unit_price * $item['quantity'];
+                $products->push($product);
+            }
+        }
+
+        $data = [
+            'prices' => [
+                'cartFinalCost' => $cartFinalCost,
+                'cartBeforeDiscount' => $cartBeforeDiscount,
+                'earn_point' => $this->pointCalculation($cartFinalCost),
+            ],
+            'item_details' => ShopProductResource::collection($products)
+        ];
+        return $this->successResponse($data);
     }
 }
