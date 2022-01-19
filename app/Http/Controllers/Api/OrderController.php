@@ -155,9 +155,12 @@ class OrderController extends ApiController
             return $this->errorResponse('Stock Not Enough', 405);
         }
 
+        $couponcode = '';
         if ($request->has('coupon_code') && $request->coupon_code != '') {
             if (!$this->checkCouponCode($request->coupon_code, $request->user()->id)) {
                 return $this->errorResponse('Coupon not valid', 405);
+            } else {
+                $couponcode = $request->coupon_code;
             }
         }
 
@@ -182,6 +185,11 @@ class OrderController extends ApiController
         if ($request->payment_id == 1) {
             //Online Payment Process
             $process = 'redirection';
+            $paymentid = $this->createPayment($ordernum, $user, $prices['final_cost'], 'app');
+            if ($paymentid == 'ERROR') {
+                return $this->errorResponse('Payment Error', 403);
+            }
+
             //Status Redirected | Pay Status Not Paid
         } else if ($request->payment_id == 6) {
             //Point Payment Process
@@ -197,7 +205,7 @@ class OrderController extends ApiController
 
         //Start Order Record
         //Order Creating
-        $this->orderCreate($ordernum, $prices, $items, $user, $request->adres_id, $request->payment_id);
+        $this->orderCreate($ordernum, $prices, $items, $user, $request->adres_id, $request->payment_id, $couponcode, 'app');
         if ($request->payment_id != 1) {
             //After Order
             $this->updateStock($items); //Stock reduce

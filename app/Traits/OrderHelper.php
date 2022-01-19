@@ -13,13 +13,14 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\UserOffice;
 use App\Notifications\OrderReceived;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 trait OrderHelper
 {
 
-    protected function orderCreate($ordercode, $prices, $items, $user, $officeid, $payid)
+    protected function orderCreate($ordercode, $prices, $items, $user, $officeid, $payid, $couponcode, $type)
     {
 
         $paymentSelected = PaymentMethod::find($payid);
@@ -38,6 +39,7 @@ trait OrderHelper
 
         $order = Order::create([
             'ordercode' => $ordercode,
+            'earn_point' => $prices['earn_point'],
             'cart_price' => $prices['cart_cost'],
             'vat_price' => $prices['vat_cost'],
             'shipment_price' => $prices['delivery_cost'],
@@ -47,6 +49,8 @@ trait OrderHelper
             'pay_status' => $paymentStatus,
             'pay_type' => $paymentSelected->name,
             'user_id' => $user->id,
+            'couponcode' => $couponcode,
+            'platform' => $type
 
         ]);
 
@@ -68,14 +72,21 @@ trait OrderHelper
             'registeration' => $user->registeration,
         ]);
 
+        $weight = 0;
         foreach ($items as $item) {
+            $product = Product::find($item['id']);
             OrderProduct::create([
                 'order_id' => $order->id,
                 'product_id' => $item['id'],
                 'quantity' => $item['quantity'],
-                'sold_price' => Product::find($item['id'])->showPrice(),
+                'sold_price' => $product->showPrice(),
             ]);
+            $weight +=  $product->productdetail->unit_weight * $item['quantity'];
         }
+
+        $order->update([
+            'weight' => $weight
+        ]);
 
         return $ordercode;
     }
@@ -134,15 +145,75 @@ trait OrderHelper
         $user->notify(new OrderReceived($registeredUser));
     }
 
-    protected function createPayment($ordercode, $user, $price)
+    protected function createPayment($ordercode, $user, $price, $type)
     {
-        // $request =  'https://demo.vivapayments.com/api/orders';    // demo environment URL
+        $request =  config('app.wiva_wallet_url') . 'api/orders';
 
-        // Your merchant ID and API Key can be found in the 'Security' settings on your profile.
-        // $merchant_id = '46b71c1d-b4d3-4dc5-920c-0d75783948ee';
-        // $api_key = 'eNt3JB';
+        $merchant_id = config('app.wiva_wallet_mercant_id');
+        $api_key = config('app.wiva_wallet_api_key');
 
-        $redirection = 'red';
+        if ($type == 'app') {
+            $source = config('app.wiva_wallet_app_source');
+        } else {
+            $source = config('app.wiva_wallet_web_source');
+        }
+
+
+        $amount = intval(100 * $price);    // Amount in cents
+        $customerTrns = "Pay for " . $ordercode . " ORDER";
+        $merchantTrns = $ordercode;
+        $paymentTimeOut = 300;
+
+        //Set some optional parameters (Full list available here: https://developer.vivawallet.com/api-reference-guide/payment-api/#tag/Payments/paths/~1orders/post)
+        $allow_recurring = 'true'; // If set to true, this flag will prompt the customer to accept recurring payments in the future.
+        $request_lang = 'en-US'; //This will display the payment page in English (default language is Greek)
+        $maxInstallments = 9;
+
+        $postargs = 'Amount=' . urlencode($amount) . '&customerTrns=' . $customerTrns . '&merchantTrns=' . $merchantTrns . '&paymentTimeOut=' . $paymentTimeOut .
+            '&email=' . $user->email . '&phone=' . $user->userdetail->mobile . '&maxInstallments=' . $maxInstallments . '&AllowRecurring=' . $allow_recurring . '&RequestLang=' . $request_lang . '&SourceCode=' . $source;
+
+        // Get the curl session object
+        $session = curl_init($request);
+
+        // Set the POST options.
+        curl_setopt($session, CURLOPT_POST, true);
+        curl_setopt($session, CURLOPT_POSTFIELDS, $postargs);
+        curl_setopt($session, CURLOPT_HEADER, true);
+        curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($session, CURLOPT_USERPWD, $merchant_id . ':' . $api_key);
+        curl_setopt($session, CURLOPT_SSL_CIPHER_LIST, 'TLSv1.2');
+
+        //FOR DEVELOPMENT
+        if (config('app.wiva_wallet_development')) {
+            curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
+        }
+
+        // Do the POST and then close the session
+        $response = curl_exec($session);
+
+        // Separate Header from Body
+        $header_len = curl_getinfo($session, CURLINFO_HEADER_SIZE);
+        $res_header = substr($response, 0, $header_len);
+        $res_body =  substr($response, $header_len);
+
+        try {
+            if (is_object(json_decode($res_body))) {
+                $result_obj = json_decode($res_body);
+            } else {
+                $redirection = 'ERROR';
+            }
+        } catch (Exception $e) {
+            $redirection = 'ERROR';
+        }
+
+        if ($result_obj->ErrorCode == 0) {    //success when ErrorCode = 0
+            $redirection = config('app.wiva_wallet_url') . "web/checkout?ref=" . $result_obj->OrderCode;
+        } else {
+            $redirection = 'ERROR';
+        }
+
+        curl_close($session);
+
 
         return $redirection;
     }

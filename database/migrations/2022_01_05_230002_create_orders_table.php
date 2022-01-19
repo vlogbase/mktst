@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ordercode', 100)->unique();
+            $table->decimal('earn_point', 10, 2)->default(0);
             $table->decimal('cart_price', 10, 2);
             $table->decimal('vat_price', 10, 2)->default(0);
             $table->decimal('shipment_price', 10, 2);
@@ -27,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('weight')->nullable();
             $table->integer('user_id')->unsigned();
             $table->string('notes', 2000)->nullable();
+            $table->string('couponcode', 150)->nullable();
             $table->string('platform', 50)->default('web');
             $table->timestamps();
         });

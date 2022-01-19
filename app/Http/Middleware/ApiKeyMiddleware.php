@@ -19,8 +19,13 @@ class ApiKeyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+
         if (!$request->has('api_key') || $request->api_key !== config('app.api_key')) {
-            return $this->errorResponse('Not Authorized', 403);
+            if ($request->is('api/payment/*')) {
+                return $next($request);
+            } else {
+                return $this->errorResponse('Not Authorized', 403);
+            }
         } else {
             return $next($request);
         }

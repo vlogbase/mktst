@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ShopController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -54,3 +55,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/coupon-apply', [OrderController::class, 'coupon_apply'])->name('api_coupon_apply');
     Route::post('/order-request', [OrderController::class, 'order_request'])->name('api_order_request');
 });
+
+//PaymentResults
+Route::get('/payment/success', [PaymentController::class, 'success_payment'])->name('api_success_payment');
+Route::get('/payment/failure', [PaymentController::class, 'failure_payment'])->name('api_failure_payment');

@@ -16,7 +16,7 @@ class CreateProductDetailsTable extends Migration
         Schema::create('product_details', function (Blueprint $table) {
             $table->increments('id');
             $table->text('description')->nullable();
-            $table->decimal('unit_weight', 10, 2)->nullable();
+            $table->decimal('unit_weight', 10, 2)->default(0);
             $table->string('meta_title', 200)->nullable();
             $table->string('meta_description', 200)->nullable();
             $table->boolean('featured')->default(0);

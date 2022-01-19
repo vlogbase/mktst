@@ -17,6 +17,16 @@ return [
 
     'api_key' => env('API_KEY'),
 
+
+    'wiva_wallet_url' => env('WIVA_WALLET_URL'),
+    'wiva_wallet_mercant_id' => env('WIVA_WALLET_MERCANT_ID'),
+    'wiva_wallet_api_key' => env('WIVA_WALLET_API_KEY'),
+    'wiva_wallet_app_source' => env('WIVA_WALLET_APP_SOURCE'),
+    'wiva_wallet_web_source' => env('WIVA_WALLET_WEB_SOURCE'),
+    'wiva_wallet_development' => env('WIVA_WALLET_DEVELOPMENT'),
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
