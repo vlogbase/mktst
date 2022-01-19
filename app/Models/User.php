@@ -68,7 +68,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class);
     }
 
-    public function coupons()
+    public function usercoupons()
     {
         return $this->belongsToMany(Coupon::class);
     }

@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('ordercode', 100)->unique();
             $table->decimal('cart_price', 10, 2);
+            $table->decimal('vat_price', 10, 2)->default(0);
             $table->decimal('shipment_price', 10, 2);
             $table->decimal('discount_price', 10, 2);
             $table->decimal('total_price', 10, 2);

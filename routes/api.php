@@ -52,8 +52,5 @@ Route::middleware('auth:sanctum')->group(function () {
     //Order
     Route::post('/checkout-price', [OrderController::class, 'checkout'])->name('api_checkout');
     Route::post('/coupon-apply', [OrderController::class, 'coupon_apply'])->name('api_coupon_apply');
-    //Coupon Apply - Post
-    //Checkout Page - Post
-    //Order Request - Post
-    //Order Result - Get
+    Route::post('/order-request', [OrderController::class, 'order_request'])->name('api_order_request');
 });

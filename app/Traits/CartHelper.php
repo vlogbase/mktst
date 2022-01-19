@@ -46,9 +46,9 @@ trait CartHelper
         return $price;
     }
 
-    public function checkCouponCode($code, $userId)
+    protected function checkCouponCode($code, $userId)
     {
-        $coupon = Coupon::where('code', $code)->where('status', 1)->where('status', 1)->first();
+        $coupon = Coupon::where('code', $code)->where('status', 1)->first();
         if ($coupon) {
             $condition2 =  DB::table('user_coupons')->where('user_id', $userId)->where('coupon_id', $coupon->id)->first();
             if ($condition2) {
@@ -62,7 +62,7 @@ trait CartHelper
         return $result;
     }
 
-    public function couponDiscountCalc($code, $price)
+    protected function couponDiscountCalc($code, $price)
     {
         $coupon = Coupon::where('code', $code)->first();
 
