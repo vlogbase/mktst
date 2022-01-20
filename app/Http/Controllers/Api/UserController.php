@@ -23,8 +23,25 @@ class UserController extends ApiController
 
     public function orders(Request $request)
     {
+
+        if ($request->offset) {
+            $offset = $request->offset;
+        } else {
+            $offset = 0;
+        }
+
         $user = $request->user();
-        $orders  = OrderResource::collection($user->userorders);
+        $orders_raw = Order::where('status', '!=', 'Waiting')->where('user_id', $user->id)->where(function ($query) use ($request) {
+            if ($request->status_type) {
+                $query->where('status', '=', $request->status_type);
+            }
+        })
+            ->latest()
+            ->offset($offset)
+            ->limit(20)
+            ->get();
+
+        $orders  = OrderResource::collection($orders_raw);
         return $this->successResponse($orders);
     }
 
