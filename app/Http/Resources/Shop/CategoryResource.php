@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'parent_id' => $this->category_id,
-            'image' => $this->image,
+            'image' => config('app.url') . $this->image,
             'product_count' => $this->products()->count(),
         ];
     }

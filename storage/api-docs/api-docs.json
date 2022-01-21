@@ -986,12 +986,12 @@
                                     },
                                     "mobile": {
                                         "type": "string",
-                                        "example": "(+90) 5303 912696"
+                                        "example": "+905303912696"
                                     },
                                     "phone": {
                                         "description": "Nullable",
                                         "type": "string",
-                                        "example": "(+90) 5303 912696"
+                                        "example": "+905303912696"
                                     },
                                     "company_name": {
                                         "type": "string",

@@ -38,7 +38,7 @@
 <script>
     $(document).ready(function(){ 
     $(".phone").inputmask({
-    mask: '(+99) 9999 999999',
+    mask: '+999999999999',
     placeholder: ' ',
     showMaskOnHover: false,
     showMaskOnFocus: false,

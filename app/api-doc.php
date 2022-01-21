@@ -398,7 +398,7 @@
  *            @OA\Property(
  *                property="image", 
  *                type="string", 
- *                example="/upload/category/holder.png", 
+ *                example="http://localhost//upload/category/holder.png", 
  *            ), 
  *            @OA\Property(
  *                property="product_count", 
@@ -969,12 +969,12 @@
  *    @OA\Property(
  *        property="mobile", 
  *        type="string", 
- *        example="(+90) 5303 912696", 
+ *        example="+905303912696", 
  *    ), 
  *    @OA\Property(
  *        property="phone", 
  *        type="string", 
- *        example="(+90) 5303 912696",
+ *        example="+905303912696",
  *        description="Nullable",   
  *    ), 
  *    @OA\Property(
