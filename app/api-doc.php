@@ -38,7 +38,7 @@
  * @OA\Get(
  *     path="/api/api-info",
  *     summary="Api Responser",
- *     tags={"Getting Started"},
+ *     tags={"Response Example"},
  *      @OA\Response(
  *          response=200,
  *          description="Status, Message and Data ",

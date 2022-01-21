@@ -13,7 +13,7 @@
         "/api/api-info": {
             "get": {
                 "tags": [
-                    "Getting Started"
+                    "Response Example"
                 ],
                 "summary": "Api Responser",
                 "responses": {
