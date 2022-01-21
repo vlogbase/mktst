@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserOffice;
 use App\Notifications\WelcomeNotification;
+use App\Traits\AddressHelper;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -18,6 +19,7 @@ use Illuminate\Support\Str;
 
 class RegisterForm extends Component
 {
+    use AddressHelper;
     public $name;
     public $surname;
     public $mobile;
@@ -52,7 +54,7 @@ class RegisterForm extends Component
     {
         if ($this->company_name != '') {
             $this->companyOptions = collect([]);
-            $response = Http::get('https://api.getAddress.io/autocomplete/' . $this->company_name . '?api-key=FZlHxdMoXEOmwlSTnTHPoA33869')->object();
+            $response = $this->getAddressList($this->company_name);
             foreach ($response->suggestions as $opt) {
                 $opt = json_decode(json_encode($opt), true);
                 $this->companyOptions->push($opt);
@@ -117,7 +119,7 @@ class RegisterForm extends Component
         ]);
 
         //Adress
-        $response = Http::get('https://api.getAddress.io/get/' . $this->company_select . '?api-key=FZlHxdMoXEOmwlSTnTHPoA33869')->object();
+        $response = $this->getSelectedAddressDetail($this->company_select);
 
         $formatted = '';
         foreach ($response->formatted_address as $fra) {

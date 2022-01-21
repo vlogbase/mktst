@@ -47,14 +47,31 @@ class UserController extends ApiController
 
     public function orders_detail(Request $request, $id)
     {
+
         $order = new OrderOrderResource(Order::findOrFail($id));
-        return $this->successResponse($order);
+        if ($request->user()->id == $order->user_id) {
+            return $this->successResponse($order);
+        } else {
+            return $this->errorResponse('Forbidden for you', 403);
+        }
     }
 
     public function favorites(Request $request)
     {
+        if ($request->offset) {
+            $offset = $request->offset;
+        } else {
+            $offset = 0;
+        }
         $user = $request->user();
-        $favorites  = ShopProductResource::collection($user->userfavorites);
+        $favorites_raw = DB::table('product_user')->where('user_id', $user->id)->latest()
+            ->offset($offset)
+            ->limit(20)
+            ->get();
+        $favorites  = $favorites_raw->map(function ($item, $key) {
+            return new ShopProductResource(Product::find($item->id));
+        });
+
         return $this->successResponse($favorites);
     }
 

@@ -15,6 +15,7 @@ use App\Models\UserOffice;
 use App\Notifications\ForgetPasswordNotification;
 use App\Notifications\VerifyNotification;
 use App\Notifications\WelcomeNotification;
+use App\Traits\AddressHelper;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Http;
 
 class AuthController extends ApiController
 {
+    use AddressHelper;
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -44,7 +46,7 @@ class AuthController extends ApiController
                         'company_name' => $request->user()->name,
                     ];
 
-                return $this->successResponse($data);
+                return $this->successResponse($data, 'Login Successful');
             } else {
                 return $this->errorResponse('Verification Error!', 403);
             }
@@ -96,7 +98,7 @@ class AuthController extends ApiController
         ]);
 
         //Adress
-        $response = Http::get('https://api.getAddress.io/get/' . $request->company_select . '?api-key=FZlHxdMoXEOmwlSTnTHPoA33869')->object();
+        $response = $this->getSelectedAddressDetail($request->company_select);
 
         $formatted = '';
         foreach ($response->formatted_address as $fra) {
@@ -138,7 +140,7 @@ class AuthController extends ApiController
 
         $registeredUser = [
             'userName' => $request->company_name,
-            'actionURL' => route('verify_email', ['email' => $request->email, 'token' => $verify_token])
+            'actionURL' => config('app.url') . '/verify-email/' . $user->email . '/' . $user->verify_token
         ];
 
         $user->notify(new WelcomeNotification($registeredUser));
@@ -158,14 +160,17 @@ class AuthController extends ApiController
 
         $user = User::where('email', $request->email)->firstOrFail();
 
-        $registeredUser = [
-            'userName' => $user->name,
-            'actionURL' => route('verify_email', ['email' => $user->email, 'token' => $user->verify_token])
-        ];
+        if ($user->email_verified_at == NULL) {
+            $registeredUser = [
+                'userName' => $user->name,
+                'actionURL' => config('app.url') . '/verify-email/' . $user->email . '/' . $user->verify_token
+            ];
 
-        $user->notify(new VerifyNotification($registeredUser));
-
-        return $this->successResponse(null, 'Verify Email Sent');
+            $user->notify(new VerifyNotification($registeredUser));
+            return $this->successResponse(null, 'Verify Email Sent');
+        } else {
+            return $this->errorResponse('This user already verified', 403);
+        }
     }
 
     public function forget_password(Request $request)
@@ -195,5 +200,19 @@ class AuthController extends ApiController
         $user->notify(new ForgetPasswordNotification($registeredUser));
 
         return $this->successResponse(null, 'Reset Email Sent');
+    }
+
+    public function address_list(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'company_name' => 'required|min:2',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorResponse('Validation Error', 403, $validator->errors());
+        }
+
+        $response =  $this->getAddressList($request->company_name);
+        return $this->successResponse($response, 'Suggessions List');
     }
 }

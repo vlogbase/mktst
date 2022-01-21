@@ -25,7 +25,7 @@ return [
     'wiva_wallet_web_source' => env('WIVA_WALLET_WEB_SOURCE'),
     'wiva_wallet_development' => env('WIVA_WALLET_DEVELOPMENT'),
 
-
+    'get_address_api_key' => env('GET_ADDRESS_API_KEY'),
 
     /*
     |--------------------------------------------------------------------------

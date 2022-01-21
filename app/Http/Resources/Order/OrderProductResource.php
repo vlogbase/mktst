@@ -21,7 +21,7 @@ class OrderProductResource extends JsonResource
             'name' => $this->product->name,
             'sku' => $this->product->sku,
             'pack' => $this->product->productdetail->pack,
-            'image' => $this->product->getCoverImage(),
+            'image' => config('app.url') . $this->product->getCoverImage(),
         ];
     }
 }

@@ -34,7 +34,6 @@ class ShopController extends ApiController
         return $this->successResponse($items);
     }
 
-
     public function category_product_get(Request $request, $order, $type, $offset)
     {
 
@@ -128,12 +127,16 @@ class ShopController extends ApiController
 
         if ($toggle) {
             $message = 'Favorited';
+            $is_favorited = true;
         } else {
             $message = 'Not Favorited';
+            $is_favorited = false;
         }
-        return $this->successResponse(Null, $message);
+        $data = [
+            'is_favorited' => $is_favorited
+        ];
+        return $this->successResponse($data, $message);
     }
-
 
     public function cart_price(Request $request)
     {

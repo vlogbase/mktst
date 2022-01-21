@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             'unit_price' => $this->unit_price,
             'discount' => $this->discount,
             'pack' => $this->productdetail->pack,
-            'image' => $this->getCoverImage(),
+            'image' => Config('app.url') . $this->getCoverImage(),
         ];
     }
 }

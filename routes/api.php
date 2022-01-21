@@ -20,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 //Home
 Route::get('/api-info', [HomeController::class, 'api_info'])->name('api_info');
 Route::get('/sliders', [HomeController::class, 'sliders'])->name('api_sliders');
@@ -35,6 +33,7 @@ Route::post('/cart-price', [ShopController::class, 'cart_price'])->name('api_car
 
 
 //Auth
+Route::post('/auth/get-addresses', [AuthController::class, 'address_list'])->name('api_address_list');
 Route::post('/auth/login', [AuthController::class, 'login'])->name('api_login');
 Route::post('/auth/register', [AuthController::class, 'register'])->name('api_register');
 Route::post('/auth/send-verification', [AuthController::class, 'send_verification'])->name('api_send_verification');
@@ -47,7 +46,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user/orders', [UserController::class, 'orders'])->name('api_user_orders');
     Route::get('/user/orders/{id}', [UserController::class, 'orders_detail'])->name('api_user_orders_detail');
     Route::get('/user/favorites', [UserController::class, 'favorites'])->name('api_user_favorites');
-    Route::put('/user/favorites/toggle/{id}', [UserController::class, 'toggle_favorites'])->name('api_user_toggle_favorites');
+    Route::get('/user/favorites/toggle/{id}', [UserController::class, 'toggle_favorites'])->name('api_user_toggle_favorites');
     Route::get('/products/{id}/is-favorited', [ShopController::class, 'product_is_favorited'])->name('api_product_is_favorited');
 
     //Order

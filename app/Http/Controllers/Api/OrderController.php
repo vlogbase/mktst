@@ -30,7 +30,7 @@ class OrderController extends ApiController
         }
 
         if ($this->checkCouponCode($request->coupon_code, $request->user()->id)) {
-            return $this->successResponse(true);
+            return $this->successResponse(true, 'Coupon Applied');
         } else {
             return $this->errorResponse('Validation Error', 403, $validator->errors());
         }
@@ -179,12 +179,14 @@ class OrderController extends ApiController
         $items = $request->items;
         $user = $request->user();
         $process = '';
+        $message = '';
         $ordernum = 'SOA-' . strtoupper(Str::random(12));
         $paymentid = '';
 
         if ($request->payment_id == 1) {
             //Online Payment Process
             $process = 'redirection';
+            $message = 'Redirected';
             $paymentid = $this->createPayment($ordernum, $user, $prices['final_cost'], 'app');
             if ($paymentid == 'ERROR') {
                 return $this->errorResponse('Payment Error', 403);
@@ -199,8 +201,10 @@ class OrderController extends ApiController
             }
             $this->spentPoint($prices['final_cost'], $user);
             $process = 'ordercomplete';
+            $message = 'Order Completed';
         } else {
             $process = 'ordercomplete';
+            $message = 'Order Completed';
         }
 
         //Start Order Record
@@ -231,6 +235,6 @@ class OrderController extends ApiController
             "earnpoint" => $prices['earn_point']
         ];
 
-        return $this->successResponse($data);
+        return $this->successResponse($data, $message);
     }
 }

@@ -1,0 +1,2330 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Savoy API Doc",
+        "description": "\r\n *      All Requests need Api_Key Authentication,\r\n *      User Pages, Checkouts and Order Request need Bearer Token Authentication",
+        "contact": {
+            "name": "Emre Demirel",
+            "email": "emredemirel4196@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/api-info": {
+            "get": {
+                "tags": [
+                    "Getting Started"
+                ],
+                "summary": "Api Responser",
+                "responses": {
+                    "200": {
+                        "description": "Status, Message and Data ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "version": {
+                                                    "type": "string",
+                                                    "example": "1.0.23"
+                                                },
+                                                "time": {
+                                                    "type": "string",
+                                                    "example": "2022-01-20 23:19:45"
+                                                },
+                                                "time-zone": {
+                                                    "type": "string",
+                                                    "example": "Europe/London"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/sliders": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Home Sliders Get",
+                "responses": {
+                    "200": {
+                        "description": "Slider Array Returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "http://localhost/upload/mobilesliders/holder.png"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/home-products": {
+            "get": {
+                "tags": [
+                    "Home"
+                ],
+                "summary": "Home Featured Products Get",
+                "responses": {
+                    "200": {
+                        "description": "Featured Products Array Returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "featured": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Accusantium dolore."
+                                                            },
+                                                            "sku": {
+                                                                "type": "string",
+                                                                "example": "sku-98754.44"
+                                                            },
+                                                            "stock": {
+                                                                "type": "number"
+                                                            },
+                                                            "sale_price": {
+                                                                "type": "string",
+                                                                "example": "74.83"
+                                                            },
+                                                            "unit_price": {
+                                                                "type": "string",
+                                                                "example": "74.83"
+                                                            },
+                                                            "discount": {
+                                                                "type": "string",
+                                                                "example": "0.00"
+                                                            },
+                                                            "pack": {
+                                                                "type": "string",
+                                                                "example": "1x20kg"
+                                                            },
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "best_seller": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Molestiae inventore ut."
+                                                            },
+                                                            "sku": {
+                                                                "type": "string",
+                                                                "example": "sku-36089.1"
+                                                            },
+                                                            "stock": {
+                                                                "type": "number"
+                                                            },
+                                                            "sale_price": {
+                                                                "type": "string",
+                                                                "example": "28.18"
+                                                            },
+                                                            "unit_price": {
+                                                                "type": "string",
+                                                                "example": "28.18"
+                                                            },
+                                                            "discount": {
+                                                                "type": "string",
+                                                                "example": "0.00"
+                                                            },
+                                                            "pack": {
+                                                                "type": "string",
+                                                                "example": "1x20kg"
+                                                            },
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "new_arrival": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Ut nihil at."
+                                                            },
+                                                            "sku": {
+                                                                "type": "string",
+                                                                "example": "sku-99280.4"
+                                                            },
+                                                            "stock": {
+                                                                "type": "number"
+                                                            },
+                                                            "sale_price": {
+                                                                "type": "string",
+                                                                "example": "29.19"
+                                                            },
+                                                            "unit_price": {
+                                                                "type": "string",
+                                                                "example": "29.19"
+                                                            },
+                                                            "discount": {
+                                                                "type": "string",
+                                                                "example": "0.00"
+                                                            },
+                                                            "pack": {
+                                                                "type": "string",
+                                                                "example": "1x20kg"
+                                                            },
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "special_offer": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Et dolore."
+                                                            },
+                                                            "sku": {
+                                                                "type": "string",
+                                                                "example": "sku-36687.1"
+                                                            },
+                                                            "stock": {
+                                                                "type": "number"
+                                                            },
+                                                            "sale_price": {
+                                                                "type": "string",
+                                                                "example": "22.84"
+                                                            },
+                                                            "unit_price": {
+                                                                "type": "string",
+                                                                "example": "22.84"
+                                                            },
+                                                            "discount": {
+                                                                "type": "string",
+                                                                "example": "0.00"
+                                                            },
+                                                            "pack": {
+                                                                "type": "string",
+                                                                "example": "1x20kg"
+                                                            },
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Categories Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "0 for main categories, Category ID for sub categories of selected category",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories Array Returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Voluptas possimus."
+                                                    },
+                                                    "parent_id": {
+                                                        "type": "string",
+                                                        "format": "nullable"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "/upload/category/holder.png"
+                                                    },
+                                                    "product_count": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Products Get",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Filter by category_id | If you fill search_text, category_id will not work.",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "search_text",
+                        "in": "query",
+                        "description": "Filter by search_text",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "min_cost",
+                        "in": "query",
+                        "description": "Filter by min_cost",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        }
+                    },
+                    {
+                        "name": "max_cost",
+                        "in": "query",
+                        "description": "Filter by max_cost",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        }
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Order by your selection",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "latest",
+                            "enum": [
+                                "latest",
+                                "cheapest",
+                                "expensive"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Limit is 20. You can change offset for pagination",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": "0"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Products Array Returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Nulla voluptatum eaque."
+                                                    },
+                                                    "sku": {
+                                                        "type": "string",
+                                                        "example": "sku-69838.03"
+                                                    },
+                                                    "stock": {
+                                                        "type": "number"
+                                                    },
+                                                    "sale_price": {
+                                                        "type": "string",
+                                                        "example": "66.17"
+                                                    },
+                                                    "unit_price": {
+                                                        "type": "string",
+                                                        "example": "66.17"
+                                                    },
+                                                    "discount": {
+                                                        "type": "string",
+                                                        "example": "0.00"
+                                                    },
+                                                    "pack": {
+                                                        "type": "string",
+                                                        "example": "1x20kg"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": "Product Detail Get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product Detail Array Returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Corrupti dolore aspernatur."
+                                                },
+                                                "sku": {
+                                                    "type": "string",
+                                                    "example": "sku-25895.66"
+                                                },
+                                                "stock": {
+                                                    "type": "number"
+                                                },
+                                                "sale_price": {
+                                                    "type": "string",
+                                                    "example": "53.37"
+                                                },
+                                                "unit_price": {
+                                                    "type": "string",
+                                                    "example": "53.37"
+                                                },
+                                                "discount": {
+                                                    "type": "string",
+                                                    "example": "0.00"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Ipsam facere dolorem tempore laboriosam nostrum molestiae non et quo earum aliquam voluptatem ratione ea occaecati quos quia qui sequi autem vitae rem nihil dolorum cumque excepturi voluptatibus est nulla dicta est rerum et harum autem est iure ut aut non soluta."
+                                                },
+                                                "pack": {
+                                                    "type": "string",
+                                                    "example": "1x20kg"
+                                                },
+                                                "images": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "details": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "key": {
+                                                                "type": "string",
+                                                                "example": "Consequatur."
+                                                            },
+                                                            "value": {
+                                                                "type": "string",
+                                                                "example": "Illum."
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/products/{id}/is-favorited": {
+            "get": {
+                "tags": [
+                    "Shop"
+                ],
+                "summary": " Has this product been favorited by the user? | Need Bearer Token Authentication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product Detail Array Returned",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not Favorited"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "is_favorited": {
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/cart-price": {
+            "post": {
+                "tags": [
+                    "Cart"
+                ],
+                "summary": " Cart Price Calculation",
+                "requestBody": {
+                    "description": "Calculate Cart Price",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "quantity": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cart Price Calculated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "prices": {
+                                                    "properties": {
+                                                        "cartFinalCost": {
+                                                            "type": "number"
+                                                        },
+                                                        "cartBeforeDiscount": {
+                                                            "type": "number"
+                                                        },
+                                                        "earn_point": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "item_details": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Corrupti dolore aspernatur."
+                                                            },
+                                                            "sku": {
+                                                                "type": "string",
+                                                                "example": "sku-25895.66"
+                                                            },
+                                                            "stock": {
+                                                                "type": "number"
+                                                            },
+                                                            "sale_price": {
+                                                                "type": "string",
+                                                                "example": "53.37"
+                                                            },
+                                                            "unit_price": {
+                                                                "type": "string",
+                                                                "example": "53.37"
+                                                            },
+                                                            "discount": {
+                                                                "type": "string",
+                                                                "example": "0.00"
+                                                            },
+                                                            "pack": {
+                                                                "type": "string",
+                                                                "example": "1x20kg"
+                                                            },
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": " Login with Crediantals",
+                "requestBody": {
+                    "description": "Credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "emredemirel4196@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12****12"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login Successfull",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string",
+                                                    "example": "5|FSASKhca14ySdXby7sGeLGWLjCFkExc9M1KwrUjc"
+                                                },
+                                                "company_name": {
+                                                    "type": "string",
+                                                    "example": "Mr. Grady Dooley DVM"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Need Email Verification",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Verification Error!"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": " Logout for Delete Tokens",
+                "responses": {
+                    "200": {
+                        "description": "Logout Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Logout Successful"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": " Register with Crediantals",
+                "requestBody": {
+                    "description": "Schema helps reqired/or not and other descriptions.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "emredemirel4196@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "EMREberke96"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "EMREberke96"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Emre"
+                                    },
+                                    "surname": {
+                                        "type": "string",
+                                        "example": "Demirel"
+                                    },
+                                    "mobile": {
+                                        "type": "string",
+                                        "example": "(+90) 5303 912696"
+                                    },
+                                    "phone": {
+                                        "description": "Nullable",
+                                        "type": "string",
+                                        "example": "(+90) 5303 912696"
+                                    },
+                                    "company_name": {
+                                        "type": "string",
+                                        "example": "SavoyFoods"
+                                    },
+                                    "company_select": {
+                                        "description": "this part must taken from get-address suggessions",
+                                        "type": "string",
+                                        "example": "YWQzZmIyNTE4MzdiNGMxIDEyOTk3NjIxIDZkMWI0MGNjNjIzMTIxNQ=="
+                                    },
+                                    "vat": {
+                                        "description": "Nullable",
+                                        "type": "string",
+                                        "example": "12345678910"
+                                    },
+                                    "registeration": {
+                                        "description": "Nullable",
+                                        "type": "string",
+                                        "example": "123456789101"
+                                    },
+                                    "agreement": {
+                                        "type": "boolean"
+                                    },
+                                    "business_type": {
+                                        "type": "string",
+                                        "example": "Shop"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registeration Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Register Successful"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/get-addresses": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": " Suggessions From Company Name ",
+                "requestBody": {
+                    "description": "Send Company Name",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "company_name": {
+                                        "type": "string",
+                                        "example": "Savoy"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Suggesion List | Use id For Company Select | Show Address to Customer",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Suggessions List"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "suggestions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "Savoycell, Unit 41, Savoy Centre, 140 Sauchiehall Street, Glasgow"
+                                                            },
+                                                            "url": {
+                                                                "type": "string",
+                                                                "example": "/get/ZmM2MjZkZDQ1Mzc5MzYyIDI3MDA2NTQ2IDZkMWI0MGNjNjIzMTIxNQ=="
+                                                            },
+                                                            "id": {
+                                                                "type": "string",
+                                                                "example": "ZmM2MjZkZDQ1Mzc5MzYyIDI3MDA2NTQ2IDZkMWI0MGNjNjIzMTIxNQ=="
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/forget-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": " Forget Password",
+                "requestBody": {
+                    "description": "Send Your Customer Email and Get Reset Password Mail",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "emredemirel4196@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sent Email",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Reset Email Sent"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/send-verification": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": " Re-send Verification",
+                "requestBody": {
+                    "description": "Send Your Customer Email and Get Verification Mail",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "emredemirel4196@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sent Email",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Reset Email Sent"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "If User Already Verified",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "This user already verified"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/api/user/profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": " User Profile",
+                "responses": {
+                    "200": {
+                        "description": "User Profile Result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Mr. Grady Dooley DVM"
+                                                },
+                                                "point": {
+                                                    "type": "number"
+                                                },
+                                                "favorites": {
+                                                    "type": "number"
+                                                },
+                                                "orders": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/favorites": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": " User Favorites",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Limit 20 and Offset min : 0 ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Favorites Result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Totam vero."
+                                                    },
+                                                    "sku": {
+                                                        "type": "string",
+                                                        "example": "sku-12665.48"
+                                                    },
+                                                    "stock": {
+                                                        "type": "number"
+                                                    },
+                                                    "sale_price": {
+                                                        "type": "string",
+                                                        "example": "35.48"
+                                                    },
+                                                    "unit_price": {
+                                                        "type": "string",
+                                                        "example": "35.48"
+                                                    },
+                                                    "discount": {
+                                                        "type": "string",
+                                                        "example": "0.00"
+                                                    },
+                                                    "pack": {
+                                                        "type": "string",
+                                                        "example": "1x20kg"
+                                                    },
+                                                    "image": {
+                                                        "type": "string",
+                                                        "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/orders": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": " User Orders",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Limit 20 and Offset min : 0 ",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "status_type",
+                        "in": "query",
+                        "description": "Filter by Status",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "New Order",
+                                "Ready Order",
+                                "Shipping Order",
+                                "Completed Order"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Orders Result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number"
+                                                    },
+                                                    "ordercode": {
+                                                        "type": "string",
+                                                        "example": "SOA-HYCFWUR0BLAY"
+                                                    },
+                                                    "total_price": {
+                                                        "type": "string",
+                                                        "example": "275.52"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "New Order"
+                                                    },
+                                                    "products": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/orders/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": " User Order Detail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Use Order ID to Find Detail",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Order Detail",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number"
+                                                },
+                                                "ordercode": {
+                                                    "type": "string",
+                                                    "example": "CmxUxCHhjQ2S"
+                                                },
+                                                "cart_price": {
+                                                    "type": "string",
+                                                    "example": "192.48"
+                                                },
+                                                "shipment_price": {
+                                                    "type": "string",
+                                                    "example": "0.00"
+                                                },
+                                                "discount_price": {
+                                                    "type": "string",
+                                                    "example": "0.00"
+                                                },
+                                                "total_price": {
+                                                    "type": "string",
+                                                    "example": "192.48"
+                                                },
+                                                "pay_type": {
+                                                    "type": "string",
+                                                    "example": "Online Payment"
+                                                },
+                                                "pay_status": {
+                                                    "type": "string",
+                                                    "example": "wait"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "New Order"
+                                                },
+                                                "notes": {
+                                                    "type": "string",
+                                                    "example": "Sunt iste et molestiae voluptatibus qui doloremque non. Est facilis porro rerum quia. Tenetur possimus soluta eos id incidunt quo sed pariatur. Sit quisquam voluptatem nihil nihil vel. Recusandae sint saepe numquam ipsum velit harum iusto dolor. Maiores consequatur rerum reiciendis molestiae. Quia iste corporis est provident atque mollitia nesciunt laboriosam. Amet placeat ea rerum est eum ex consectetur. Libero a reiciendis hic molestiae. Dolor qui eum quas maiores. Aliquid libero molestias molestias incidunt dolorum non. Laboriosam animi impedit officiis. Ipsa cumque libero ipsum at. Voluptas sit repellat voluptatem adipisci distinctio. Neque eligendi totam numquam ad dolorum. Consectetur voluptatibus ut rerum et. Quia possimus quia qui voluptatem. Et dolorem maxime et voluptas aut autem. Fugit beatae perspiciatis amet aliquid. Quia placeat explicabo assumenda culpa. Ab provident necessitatibus tempore nihil doloremque qui."
+                                                },
+                                                "products": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "sold_price": {
+                                                                "type": "string",
+                                                                "example": "73.68"
+                                                            },
+                                                            "quantity": {
+                                                                "type": "string",
+                                                                "example": "1.00"
+                                                            },
+                                                            "product_id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Illum quia."
+                                                            },
+                                                            "sku": {
+                                                                "type": "string",
+                                                                "example": "sku-2550.27"
+                                                            },
+                                                            "pack": {
+                                                                "type": "string",
+                                                                "example": "1x20kg"
+                                                            },
+                                                            "image": {
+                                                                "type": "string",
+                                                                "example": "http://localhost/upload/product/imageholderproduct.jpg"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/user/favorites/toggle/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": " Toggle Favorite Product",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "If favorited, will be removed, If not favorited, will be added",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Example Result",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Added"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/coupon-apply": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": " Coupon Apply",
+                "requestBody": {
+                    "description": "If coupon applied, Save Applied Code for After",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "coupon_code": {
+                                        "type": "string",
+                                        "example": "DKmuhEA"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Coupon Applied",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Coupon Applied"
+                                        },
+                                        "data": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Coupon Declined",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "coupon_code": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The selected coupon code is invalid."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/checkout-price": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": " Checkout Page",
+                "requestBody": {
+                    "description": "If action is no_action everyting okay! But it is update_action turn to Cart page",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "quantity": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "coupon_code": {
+                                        "type": "string",
+                                        "example": "VCYp3Uh"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Everything okay",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "products": {
+                                                    "properties": {
+                                                        "action": {
+                                                            "type": "string",
+                                                            "example": "no_action"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "quantity": {
+                                                                        "type": "number"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "item_details": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "example": "Ducimus dolores et."
+                                                                    },
+                                                                    "sku": {
+                                                                        "type": "string",
+                                                                        "example": "sku-31615.4"
+                                                                    },
+                                                                    "stock": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "sale_price": {
+                                                                        "type": "string",
+                                                                        "example": "47.76"
+                                                                    },
+                                                                    "unit_price": {
+                                                                        "type": "string",
+                                                                        "example": "47.76"
+                                                                    },
+                                                                    "discount": {
+                                                                        "type": "string",
+                                                                        "example": "0.00"
+                                                                    },
+                                                                    "pack": {
+                                                                        "type": "string",
+                                                                        "example": "1x20kg"
+                                                                    },
+                                                                    "image": {
+                                                                        "type": "string",
+                                                                        "example": "/upload/product/imageholderproduct.jpg"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "updated_products": {
+                                                            "type": "array",
+                                                            "items": {}
+                                                        },
+                                                        "delete_products": {
+                                                            "type": "array",
+                                                            "items": {}
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "prices": {
+                                                    "properties": {
+                                                        "cart_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "vat_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "delivery_cost": {
+                                                            "type": "string",
+                                                            "example": "5.00"
+                                                        },
+                                                        "discount_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "final_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "earn_point": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "address": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "dsMlpkS"
+                                                            },
+                                                            "isDefault": {
+                                                                "type": "number"
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "767 Collins Green Suite 603 New Waylon, NH 26612 15423"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "payments": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Online Payment"
+                                                            },
+                                                            "status": {
+                                                                "type": "number"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "example": "2022-01-19T14:56:43.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "example": "2022-01-19T14:56:43.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "202": {
+                        "description": "Cart Need to Update",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "products": {
+                                                    "properties": {
+                                                        "action": {
+                                                            "type": "string",
+                                                            "example": "update_cart"
+                                                        },
+                                                        "items": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "quantity": {
+                                                                        "type": "number"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "item_details": {
+                                                            "type": "array",
+                                                            "items": {}
+                                                        },
+                                                        "updated_products": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string",
+                                                                "example": "Rerum dolores repellat.-sku-11776.86"
+                                                            }
+                                                        },
+                                                        "delete_products": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string",
+                                                                "example": "Dolores aut iusto.-sku-87644.37"
+                                                            }
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "prices": {
+                                                    "properties": {
+                                                        "cart_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "vat_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "delivery_cost": {
+                                                            "type": "string",
+                                                            "example": "5.00"
+                                                        },
+                                                        "discount_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "final_cost": {
+                                                            "type": "number"
+                                                        },
+                                                        "earn_point": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "address": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "GH0seBw"
+                                                            },
+                                                            "isDefault": {
+                                                                "type": "number"
+                                                            },
+                                                            "address": {
+                                                                "type": "string",
+                                                                "example": "24827 Nikolaus Stravenue Apt. 915 North Aaliyah, WA 78803 17723"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "payments": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "number"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "example": "Online Payment"
+                                                            },
+                                                            "status": {
+                                                                "type": "number"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string",
+                                                                "example": "2022-01-19T22:02:43.000000Z"
+                                                            },
+                                                            "updated_at": {
+                                                                "type": "string",
+                                                                "example": "2022-01-19T22:02:43.000000Z"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/order-request": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": " Order Request",
+                "requestBody": {
+                    "description": "If process is ordercomplete everyting okay! But it is redirection need to redirect Payment page",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "id": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "quantity": {
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "coupon_code": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "adres_id": {
+                                        "type": "number",
+                                        "example": 1
+                                    },
+                                    "payment_id": {
+                                        "type": "number",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Order Done",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": "Order Completed"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "paymentid": {
+                                                    "type": "string"
+                                                },
+                                                "ordernum": {
+                                                    "type": "string",
+                                                    "example": "SOA-YTRLWJIRJBL0"
+                                                },
+                                                "process": {
+                                                    "type": "string",
+                                                    "example": "ordercomplete"
+                                                },
+                                                "ordercost": {
+                                                    "type": "number",
+                                                    "example": 275.52
+                                                },
+                                                "earnpoint": {
+                                                    "type": "number",
+                                                    "example": 275.52
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Payment Redirection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Redirected"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "paymentid": {
+                                                    "type": "string",
+                                                    "example": "https://demo.vivapayments.com/web/checkout?ref=7233622698262879"
+                                                },
+                                                "ordernum": {
+                                                    "type": "string",
+                                                    "example": "SOA-TMZCAOBYPBWK"
+                                                },
+                                                "process": {
+                                                    "type": "string",
+                                                    "example": "redirection"
+                                                },
+                                                "ordercost": {
+                                                    "type": "number",
+                                                    "example": 275.52
+                                                },
+                                                "earnpoint": {
+                                                    "type": "number",
+                                                    "example": 275.52
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Stock Not Enough",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Stock Not Enough"
+                                        },
+                                        "data": {
+                                            "type": "string",
+                                            "format": "nullable",
+                                            "example": null
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "api_key",
+                "in": "query"
+            },
+            "bearer_token": {
+                "type": "http",
+                "name": "bearer_token",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
