@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('admin.layouts.templates.panel')
 @section('title','Dashboard')
 @section('sub-title','sdsad')
 @section('content')

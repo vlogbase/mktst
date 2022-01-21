@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\Customer\ContentController;
 use App\Http\Controllers\Customer\HomeController;
@@ -70,12 +70,4 @@ Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery');
 
 
 
-
-
-//Admin Part
-Route::prefix('admin')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::name('admin.')->group(function () {
-        //Admin Routes
-    });
-});
+require __DIR__ . '/admin.php';

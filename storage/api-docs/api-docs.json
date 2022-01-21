@@ -362,7 +362,7 @@
                                                     },
                                                     "image": {
                                                         "type": "string",
-                                                        "example": "/upload/category/holder.png"
+                                                        "example": "http://localhost//upload/category/holder.png"
                                                     },
                                                     "product_count": {
                                                         "type": "number"
