@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules\Password;
 use stdClass;
 use Illuminate\Support\Str;
+use Manny;
 
 class RegisterForm extends Component
 {
@@ -37,6 +38,8 @@ class RegisterForm extends Component
     public $companyOptions;
     public $curSuggestions;
 
+    public $business_type;
+
 
 
     public function mount()
@@ -48,6 +51,18 @@ class RegisterForm extends Component
     public function hydrate()
     {
         $this->companyOptions = $this->curSuggestions;
+    }
+
+    public function updated($field)
+    {
+        if ($field == 'mobile') {
+            //this is where we will detect any changes to the mobile field.
+            $this->mobile = Manny::mask($this->mobile, "+111111111111");
+        }
+        if ($field == 'phone') {
+            //this is where we will detect any changes to the mobile field.
+            $this->phone = Manny::mask($this->phone, "+111111111111");
+        }
     }
 
     public function findAddress()
@@ -92,7 +107,7 @@ class RegisterForm extends Component
             'registeration' => 'nullable|min:10|max:30',
             'agreement' => 'required',
             'newsletter' =>  'nullable',
-            'business_type' => 'required'
+            'business_type' => 'required|min:2'
         ]);
 
         if ($this->newsletter) {
@@ -143,6 +158,7 @@ class RegisterForm extends Component
             'mobile' => $this->mobile,
             'user_id' => $user->id,
             'address_id' => $address->id,
+            'business_type' => $this->business_type
         ]);
 
         UserOffice::create([
@@ -167,8 +183,6 @@ class RegisterForm extends Component
 
         return redirect()->intended('/');
     }
-
-
 
     public function render()
     {

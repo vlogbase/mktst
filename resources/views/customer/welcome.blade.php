@@ -24,6 +24,15 @@
 }
 </style>
 @endsection
+@section('loader')
+<!-- LOADER -->
+<div class="preloader">
+    <div class="lds-ellipsis">
+        <img src="/upload/other/loading_gif_main.gif" alt="">
+    </div>
+</div>
+<!-- END LOADER -->
+@endsection
 @section('content')
 
 <!-- START SECTION BANNER -->
@@ -136,7 +145,7 @@
 <!-- END SECTION SHOP -->
 
 
-
+@guest
 <!-- START SECTION SINGLE BANNER --> 
 <div class="section bg_light_blue2 pb-0 pt-md-0">
 	<div class="container">
@@ -162,10 +171,12 @@
     </div>
 </div>
 <!-- END SECTION SINGLE BANNER --> 
+@endguest
 
 <section class="section-content  mt-5 mb-5">
     <div class="heading_s1 text-center">
         <h2>Product Categories</h2>
+        
     </div>
     <div class="container mt-5 ">
         <div class="row">
@@ -415,8 +426,8 @@
                         <i class="flaticon-shipped"></i>
                     </div>
                     <div class="icon_box_content">
-                        <h5>Free Delivery</h5>
-                        <p>If you are going to use of Lorem, you need to be sure there anything</p>
+                        <h5>Fast Delivery</h5>
+                        <p>We deliver your orders quickly to you.</p>
                     </div>
                 </div>
             </div>
@@ -438,7 +449,7 @@
                     </div>
                     <div class="icon_box_content">
                         <h5>27/4 Support</h5>
-                        <p>If you are going to use of Lorem, you need to be sure there anything</p>
+                        <p>7/24 Online Support Service for our customers.</p>
                     </div>
                 </div>
             </div>

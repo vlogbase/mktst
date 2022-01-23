@@ -25,7 +25,8 @@ class User extends Authenticatable
         'registeration',
         'point',
         'code',
-        'verify_token'
+        'verify_token',
+        'email_verified_at'
     ];
 
     /**

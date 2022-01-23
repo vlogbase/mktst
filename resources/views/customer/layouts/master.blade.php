@@ -61,13 +61,7 @@
 
 	<!--begin::Body-->
 	<body>
-        <!-- LOADER -->
-        <div class="preloader">
-            <div class="lds-ellipsis">
-                <img src="/upload/other/loading_gif_main.gif" alt="">
-            </div>
-        </div>
-        <!-- END LOADER -->
+        @yield('loader')
         @include('customer.layouts.partials.header')
         @yield('content')
 
@@ -168,6 +162,21 @@
 				})
 			})
 			
+            Livewire.on('succesAlert', postId => {
+				Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: postId,
+                })
+			})
+
+            Livewire.on('errorAlert', postId => {
+				Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: postId,
+                })
+			})
 			
 			
 			</script>

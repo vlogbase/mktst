@@ -18,7 +18,8 @@
             <a href="{{route('forget_password')}}">Forgot password?</a>
         </div>
         <div class="form-group mb-3">
-            <button type="submit" class="btn btn-fill-out btn-block" >Log in</button>
+            <div wire:target="loginAttempt" wire:loading.block>Processing...</div>
+            <button  type="submit" class="btn btn-fill-out btn-block" >Log in</button>
         </div>
     </form>
 </div>

@@ -35,7 +35,7 @@
 @endsection
 @section('js')
 <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-<script>
+{{-- <script>
     $(document).ready(function(){ 
     $(".phone").inputmask({
     mask: '+999999999999',
@@ -51,5 +51,5 @@
     }
     });
     });
-</script>
+</script> --}}
 @endsection

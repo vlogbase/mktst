@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "132d759a5da635a76c0db9d2da845eec",
+    "content-hash": "32cc7228d649654825e8671445df8601",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -764,16 +764,16 @@
         },
         {
             "name": "fruitcake/laravel-cors",
-            "version": "v2.0.4",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruitcake/laravel-cors.git",
-                "reference": "a8ccedc7ca95189ead0e407c43b530dc17791d6a"
+                "reference": "3a066e5cac32e2d1cdaacd6b961692778f37b5fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/a8ccedc7ca95189ead0e407c43b530dc17791d6a",
-                "reference": "a8ccedc7ca95189ead0e407c43b530dc17791d6a",
+                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/3a066e5cac32e2d1cdaacd6b961692778f37b5fc",
+                "reference": "3a066e5cac32e2d1cdaacd6b961692778f37b5fc",
                 "shasum": ""
             },
             "require": {
@@ -781,11 +781,11 @@
                 "illuminate/contracts": "^6|^7|^8|^9",
                 "illuminate/support": "^6|^7|^8|^9",
                 "php": ">=7.2",
-                "symfony/http-foundation": "^4|^5",
-                "symfony/http-kernel": "^4.3.4|^5"
+                "symfony/http-foundation": "^4|^5|^6",
+                "symfony/http-kernel": "^4.3.4|^5|^6"
             },
             "require-dev": {
-                "laravel/framework": "^6|^7|^8",
+                "laravel/framework": "^6|^7.24|^8",
                 "orchestra/testbench-dusk": "^4|^5|^6|^7",
                 "phpunit/phpunit": "^6|^7|^8|^9",
                 "squizlabs/php_codesniffer": "^3.5"
@@ -829,15 +829,19 @@
             ],
             "support": {
                 "issues": "https://github.com/fruitcake/laravel-cors/issues",
-                "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.4"
+                "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.5"
             },
             "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
                 {
                     "url": "https://github.com/barryvdh",
                     "type": "github"
                 }
             ],
-            "time": "2021-04-26T11:24:25+00:00"
+            "time": "2022-01-03T14:53:04+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1223,6 +1227,68 @@
                 }
             ],
             "time": "2021-10-06T17:43:30+00:00"
+        },
+        {
+            "name": "hallindavid/manny",
+            "version": "v1.01",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hallindavid/manny.git",
+                "reference": "b19dcb9ef2f56fc9c1a2ffc16355fe6178a5d0b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hallindavid/manny/zipball/b19dcb9ef2f56fc9c1a2ffc16355fe6178a5d0b2",
+                "reference": "b19dcb9ef2f56fc9c1a2ffc16355fe6178a5d0b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.1@dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Manny": "Manny\\Manny"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Manny\\": "src/Manny"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Hallin",
+                    "email": "hallin.david@gmail.com",
+                    "homepage": "https://davidhallin.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "a package of maniulators that hopefully come in useful for those of us who always forget regex when we need it (manny is short for manipulation)",
+            "keywords": [
+                "format",
+                "formatter",
+                "laravel",
+                "manipulation",
+                "number",
+                "regex",
+                "string",
+                "trim"
+            ],
+            "support": {
+                "issues": "https://github.com/hallindavid/manny/issues",
+                "source": "https://github.com/hallindavid/manny/tree/v1.01"
+            },
+            "time": "2021-04-16T16:47:41+00:00"
         },
         {
             "name": "laravel/framework",
