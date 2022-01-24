@@ -138,7 +138,7 @@ class RegisterForm extends Component
 
         $formatted = '';
         foreach ($response->formatted_address as $fra) {
-            $formatted = $formatted . $fra;
+            $formatted = $formatted . ' ' .  $fra;
         }
 
         $address = Address::create([
@@ -162,7 +162,7 @@ class RegisterForm extends Component
         ]);
 
         UserOffice::create([
-            'office_name' => 'Registered Office',
+            'office_name' => 'Main Office',
             'email' => $this->email,
             'name' => $this->name,
             'surname' => $this->surname,

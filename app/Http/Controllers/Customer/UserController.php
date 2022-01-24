@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,16 @@ class UserController extends Controller
     public function orders()
     {
         return view('customer.user.orders');
+    }
+
+    public function orders_detail($id)
+    {
+        $order = Order::findOrFail($id);
+        if ($order->user_id == Auth::id()) {
+            return view('customer.user.order-detail', compact('order'));
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function favorites()

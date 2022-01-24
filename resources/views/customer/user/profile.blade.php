@@ -1,25 +1,5 @@
 @extends('customer.layouts.master')
 @section('title','Profile - SavoyFoods')
-@section('css')
-    <style>
-        .card-input-element {
-            display: none;
-        }
-
-        .card-input {
-            margin: 10px;
-            padding: 00px;
-        }
-
-        .card-input:hover {
-            cursor: pointer;
-        }
-
-        .card-input-element:checked + .card-input {
-            box-shadow: 0 0 1px 1px #2ecc71;
-        }
-    </style>
-@endsection
 @section('content')
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
@@ -62,7 +42,20 @@
                                 <h3>Hi, {{$user->name}}</h3>
                             </div>
                             <div class="card-body">
-                    			<p>From your account dashboard. you can easily check &amp; view your <a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent orders</a>, manage your <a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping and billing addresses</a> and <a href="javascript:void(0);" onclick="$('#account-detail-tab').trigger('click')">edit your password and account details.</a></p>
+                    			<div class="row">
+                                    <div class="col-md-2 mx-auto mt-2 mb-2 col-6 border rounded-pill p-1 text-center">
+                                            <p><strong class="fs-3 fw-bold">{{$user->userorders->count()}}</strong><br>Total Order</p>
+                                    </div>
+                                    <div class="col-md-2 mx-auto mt-2 mb-2 col-6 border rounded-pill p-1 text-center">
+                                        <p><strong class="fs-3 fw-bold">{{$user->userfavorites->count()}}</strong><br>Total Favorites</p>
+                                </div>
+                                <div class="col-md-3 mx-auto mt-2 mb-2 col-6 border rounded-pill p-1 text-center">
+                                    <p><strong class="fs-3 fw-bold">{{$user->point}}</strong><br>Total Point</p>
+                            </div>
+                            <div class="col-md-3 mx-auto mt-2 mb-2 col-6 border rounded-pill p-1 text-center">
+                                <p><strong class="fs-3 fw-bold">{{\Carbon\Carbon::parse($user->userorders->max('created_at'))->diffForHumans()}}</strong><br>Last Order</p>
+                        </div>
+                                </div>
                             </div>
                         </div>
                   	</div>

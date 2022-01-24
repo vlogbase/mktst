@@ -102,7 +102,7 @@ class AuthController extends ApiController
 
         $formatted = '';
         foreach ($response->formatted_address as $fra) {
-            $formatted = $formatted . $fra;
+            $formatted = $formatted . ' ' . $fra;
         }
 
         $address = Address::create([
@@ -126,7 +126,7 @@ class AuthController extends ApiController
         ]);
 
         UserOffice::create([
-            'office_name' => 'Registered Office',
+            'office_name' => 'Main Office',
             'email' => $request->email,
             'name' => $request->name,
             'surname' => $request->surname,

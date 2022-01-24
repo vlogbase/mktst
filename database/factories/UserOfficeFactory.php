@@ -21,6 +21,8 @@ class UserOfficeFactory extends Factory
             'surname' => Str::random(7),
             'phone' => $this->faker->phoneNumber(),
             'mobile' => $this->faker->phoneNumber(),
+            'is_shipping' => 1,
+            'is_billing' => 1
         ];
     }
 }
