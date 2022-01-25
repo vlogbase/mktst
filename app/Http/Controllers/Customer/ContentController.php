@@ -12,8 +12,8 @@ class ContentController extends Controller
 {
     public function gallery()
     {
-        $items = Gallery::latest()->paginate(12);
-        return view('customer.gallery.list', compact('items'));
+
+        return view('customer.gallery.list');
     }
 
     public function video_gallery()
@@ -24,8 +24,8 @@ class ContentController extends Controller
 
     public function blogs()
     {
-        $items = Blog::latest()->paginate(12);
-        return view('customer.blog.list', compact('items'));
+
+        return view('customer.blog.list');
     }
 
     public function blogs_detail($slug)
@@ -39,8 +39,8 @@ class ContentController extends Controller
 
     public function news()
     {
-        $items = News::latest()->paginate(12);
-        return view('customer.news.list', compact('items'));
+
+        return view('customer.news.list');
     }
 
     public function news_detail($slug)
