@@ -9,7 +9,11 @@ class OrderController extends Controller
 {
     public function checkout()
     {
-        return view('customer.order.checkout');
+        if (count(\Cart::getContent()) > 0) {
+            return view('customer.order.checkout');
+        } else {
+            return redirect()->route('cart');
+        }
     }
 
     public function order_complete($ordercode)

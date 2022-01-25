@@ -1,4 +1,23 @@
 <div>
+    @if(session()->has('cart_alert'))
+            <h3>{{ session('cart_alert') }}</h3>
+    @endif
+    @if (session()->has('need_delete_products'))
+            <div class="alert alert-danger">
+                <h4>Deleted Products</h4>
+                    @foreach (session('need_delete_products') as $deleted)
+                        <p>{{$deleted}}</p>
+                    @endforeach
+            </div>
+    @endif
+    @if (session()->has('need_update_products'))
+            <div class="alert alert-warning">
+                <h4>Updated Products</h4>
+                @foreach (session('need_update_products') as $updated)
+                        <p>{{$updated}}</p>
+                    @endforeach
+            </div>
+        @endif
     @if(count($cartItems) > 0)
     <table class="table">
         <thead>
