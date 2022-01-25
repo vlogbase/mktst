@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Coupon;
 use App\Models\PointSystem;
+use App\Models\Product;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\DB;
 

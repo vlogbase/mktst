@@ -30,10 +30,22 @@ class FavoriteList extends Component
 
     public function addToCart($id)
     {
-        $current_stock = Product::find($id)->calcStock();
+        $product = Product::find($id);
+        $current_stock = $product->calcStock();
 
         if ($current_stock > 0) {
             //Add to Cart
+            \Cart::add([
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->showPrice(),
+                'quantity' => 1,
+                'attributes' => array(
+                    'image' => $product->getCoverImage(),
+                    'slug' => $product->slug,
+                    'tax' => $product->taxrate
+                )
+            ]);
             $this->emit('itemAdded');
         } else {
             $this->emit('errorShow', 'Not enough stock');

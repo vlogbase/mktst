@@ -6,7 +6,7 @@
         @endif
         <div class="">
             <a href="{{route('product_detail',$product->slug)}}">
-                <img src="{{$product->getCoverImage()}}" alt="product_img1">
+                <img src="{{$product->getCoverImage()}}" alt="{{$product->name}}">
             </a>
             {{-- <div class="product_action_box">
                 <ul class="list_none pr_action_btn">

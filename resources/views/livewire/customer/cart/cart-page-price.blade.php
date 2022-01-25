@@ -1,0 +1,67 @@
+<div>
+    <div class="border p-3 mb-3">
+        <form wire:submit.prevent="couponAttempt">
+            @error('coupon_code')<span class="text-danger">{{ $message }}</span> @enderror
+            <div class="coupon field_form input-group ">
+                <input type="text" wire:model="coupon_code" class="form-control form-control-sm" placeholder="Enter Coupon Code..">
+              
+                <div class="input-group-append">
+                    <button class="btn btn-fill-out btn-sm" type="submit">Apply Coupon</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    @if($applied_coupon_code != NULL)
+    <div class="border p-3 mb-3">
+        <div class="coupon field_form input-group ">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><h6>{{$applied_coupon_code}}</h6></td>
+                        <td ><a wire:click="removeCoupon" style="cursor: pointer;"><i class="ti-close"></i></a></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @endif
+    <div class="border p-3 p-md-4">
+        <div class="heading_s1 mb-3">
+            <h5>Cart Totals</h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td class="cart_total_label">Cart Subtotal</td>
+                        <td class="cart_total_amount ">£{{number_format($cart_price,2)}}</td>
+                    </tr>
+                    <tr>
+                        <td class="cart_total_label">Vat Total</td>
+                        <td class="cart_total_amount ">£{{number_format($vat_price,2)}}</td>
+                    </tr>
+                    <tr>
+                        <td class="cart_total_label">Shipping</td>
+                        @if($shipment_price > 0)
+                        <td class="cart_total_amount ">£{{number_format($shipment_price,2)}}</td>
+                        @else
+                        <td class="cart_total_amount ">Free</td>
+                        @endif
+                    </tr>
+                    @if($discount_price > 0)
+                    <tr>
+                        <td class="cart_total_label">Discount</td>
+                        <td class="cart_total_amount text-danger ">£{{number_format($discount_price,2)}}</td>
+                    </tr>
+                    @endif
+                    <tr>
+                        <td class="cart_total_label">Total</td>
+                        <td class="cart_total_amount "><strong>£{{number_format($total_price,2)}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="{{route('checkout')}}" class="btn btn-block btn-fill-out">Proceed To CheckOut</a>
+    </div>
+</div>
