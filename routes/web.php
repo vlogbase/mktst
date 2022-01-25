@@ -6,6 +6,7 @@ use App\Http\Controllers\Customer\ContentController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\OtherController;
+use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\ProductController;
 use App\Http\Controllers\Customer\UserController;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,9 @@ Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery');
 // Route::get('/video-gallery', [ContentController::class, 'video_gallery'])->name('video_gallery');
 
 
+//PaymentResults
+Route::get('/payment/success', [PaymentController::class, 'success_payment'])->name('api_success_payment');
+Route::get('/payment/failure', [PaymentController::class, 'failure_payment'])->name('api_failure_payment');
 //Newsletter Quit Link Need
 
 

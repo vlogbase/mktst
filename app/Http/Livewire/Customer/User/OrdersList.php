@@ -23,7 +23,7 @@ class OrdersList extends Component
     public function render()
     {
 
-        $orders = Order::where('user_id', $this->user->id)->latest()->paginate(10);
+        $orders = Order::where('user_id', $this->user->id)->where('status', '!=', 'Waiting')->latest()->paginate(10);
         return view('livewire.customer.user.orders-list', [
             'orders' => $orders,
         ]);

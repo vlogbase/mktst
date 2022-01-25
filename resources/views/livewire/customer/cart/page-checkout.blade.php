@@ -1,5 +1,14 @@
 <div>
     <form wire:submit.prevent="orderAttempt">
+        @if(session()->has('payment_error'))
+        <div class="row">
+            <div class="col text-center">
+                <div class="alert alert-danger" role="alert">
+                   {{ session('payment_error') }}
+                  </div>
+            </div>
+        </div>
+        @endif
     <div class="row">
         <div class="col-md-6">
             <div class="mb-4">

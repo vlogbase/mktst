@@ -49,6 +49,7 @@
 <!-- START SECTION SHOP -->
 <div class="section">
 	<div class="container">
+       
        @livewire('customer.cart.page-checkout')
       
     </div>
