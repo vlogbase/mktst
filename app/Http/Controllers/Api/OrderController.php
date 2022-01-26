@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Shop\ProductResource as ShopProductResource;
 use App\Http\Resources\User\UserOfficeResource;
+use App\Models\OrderRule;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Traits\CartHelper;
@@ -155,6 +156,8 @@ class OrderController extends ApiController
             return $this->errorResponse('Stock Not Enough', 405);
         }
 
+
+
         $couponcode = '';
         if ($request->has('coupon_code') && $request->coupon_code != '') {
             if (!$this->checkCouponCode($request->coupon_code, $request->user()->id)) {
@@ -176,6 +179,16 @@ class OrderController extends ApiController
 
         //Payment Or Record Order
         $prices = $this->calcCheckoutData($request);
+
+
+        $min_order_cost = OrderRule::where('name', 'min_order_cost')->first();
+        if ($min_order_cost->status && $min_order_cost->price > $prices['cart_cost']) {
+            return $this->errorResponse('Cart Minimum Price Error', 405);
+        }
+
+
+
+
         $items = $request->items;
         $user = $request->user();
         $process = '';

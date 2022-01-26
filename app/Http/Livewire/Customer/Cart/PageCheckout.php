@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer\Cart;
 
+use App\Models\OrderRule;
 use App\Models\PaymentMethod;
 use App\Models\PointSystem;
 use App\Models\Product;
@@ -41,12 +42,15 @@ class PageCheckout extends Component
 
     public $prices;
 
+    public $min_cart_cost;
+
     public function mount()
     {
         $this->getData();
         $this->payments = PaymentMethod::where('status', 1)->get();
         $this->officeSelect = $this->offices->where('is_shipping', 1)->first()->id;
         $this->payment_need = floatVal($this->total_price / PointSystem::first()->spend_coefficient);
+        $this->min_cart_cost = OrderRule::where('name', 'min_order_cost')->first();
     }
 
     public function hydrate()
@@ -121,6 +125,9 @@ class PageCheckout extends Component
             'agreement' => 'required'
         ]);
 
+        if ($this->min_cart_cost->status && $this->min_cart_cost->price > $this->cart_price) {
+            return redirect()->route('cart');
+        }
 
         //Stock Control
         if ($this->stockControl($this->items)) {

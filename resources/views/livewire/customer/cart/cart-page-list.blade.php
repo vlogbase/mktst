@@ -19,6 +19,7 @@
             </div>
         @endif
     @if(count($cartItems) > 0)
+    
     <table class="table">
         <thead>
             <tr>
@@ -46,6 +47,7 @@
             @endforeach
         </tbody>
     </table>
+    
     @else
         <h3>Cart Empty!</h3>
         

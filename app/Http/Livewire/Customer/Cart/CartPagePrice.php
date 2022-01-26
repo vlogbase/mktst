@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer\Cart;
 
+use App\Models\OrderRule;
 use App\Models\Shipping;
 use App\Models\User;
 use App\Traits\CartHelper;
@@ -25,10 +26,12 @@ class CartPagePrice extends Component
     public $coupon_code;
     public $applied_coupon_code = NULL;
     public User $user;
+    public $min_cart_cost;
 
     public function mount()
     {
         $this->getData();
+        $this->min_cart_cost = OrderRule::where('name', 'min_order_cost')->first();
     }
 
     public function getData()

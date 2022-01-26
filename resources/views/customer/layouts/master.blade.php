@@ -113,10 +113,20 @@
             })
 
 			Livewire.on('itemAdded', postId => {
-				Toast.fire({
-					icon: 'success',
-					title: 'Added to Cart'
-				})
+				Swal.fire({
+                icon: 'success',
+                title: 'Added to Cart',
+                showDenyButton: true,
+                confirmButtonText: 'Go to Cart',
+                denyButtonText: 'Contiune Shopping',
+                }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    window.location.href='/cart';
+                } else if (result.isDenied) {
+                   
+                }
+                })
 			})
 			Livewire.on('itemUpdated', postId => {
 				Toast.fire({

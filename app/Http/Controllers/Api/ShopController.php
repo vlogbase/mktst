@@ -8,6 +8,7 @@ use App\Http\Resources\Detail\ProductResource;
 use App\Http\Resources\Shop\CategoryResource;
 use App\Http\Resources\Shop\ProductResource as ShopProductResource;
 use App\Models\Category;
+use App\Models\OrderRule;
 use App\Models\Product;
 use App\Traits\CartHelper;
 use Illuminate\Http\Request;
@@ -153,13 +154,21 @@ class ShopController extends ApiController
             }
         }
 
+        $min_order_cost = OrderRule::where('name', 'min_order_cost')->first();
+        if ($min_order_cost->status) {
+            $min_order_cost_value = $min_order_cost->price;
+        } else {
+            $min_order_cost_value = 0;
+        }
+
         $data = [
             'prices' => [
                 'cartFinalCost' => $cartFinalCost,
                 'cartBeforeDiscount' => $cartBeforeDiscount,
                 'earn_point' => $this->pointCalculation($cartFinalCost),
             ],
-            'item_details' => ShopProductResource::collection($products)
+            'item_details' => ShopProductResource::collection($products),
+            'min_cart_cost' => $min_order_cost_value
         ];
         return $this->successResponse($data);
     }

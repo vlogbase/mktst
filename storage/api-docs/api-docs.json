@@ -758,6 +758,9 @@
                                                     },
                                                     "type": "object"
                                                 },
+                                                "min_cart_cost": {
+                                                    "type": "number"
+                                                },
                                                 "item_details": {
                                                     "type": "array",
                                                     "items": {

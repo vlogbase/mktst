@@ -754,7 +754,11 @@
  *                property="earn_point", 
  *                type="number", 
  *            ), 
- *        ), 
+ *        ),
+ *        @OA\Property(
+ *            property="min_cart_cost", 
+ *            type="number", 
+ *        ),  
  *        @OA\Property(
  *            property="item_details", 
  *            type="array", 

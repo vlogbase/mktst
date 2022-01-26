@@ -1,4 +1,11 @@
 <div>
+    @if($min_cart_cost->status &&  $min_cart_cost->price > $cart_price)
+    <div class="mb-2">
+        <div class="alert alert-warning" role="alert">
+            Minumum Cart Total must be £{{$min_cart_cost->price}}
+          </div>
+    </div>
+    @endif
     <div class="border p-3 mb-3">
         <form wire:submit.prevent="couponAttempt">
             @error('coupon_code')<span class="text-danger">{{ $message }}</span> @enderror
@@ -26,6 +33,7 @@
         </div>
     </div>
     @endif
+    
     <div class="border p-3 p-md-4">
         <div class="heading_s1 mb-3">
             <h5>Cart Totals</h5>
