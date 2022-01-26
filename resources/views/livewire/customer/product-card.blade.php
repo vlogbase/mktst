@@ -34,7 +34,7 @@
             @else
             <span class="text-danger mb-2">Out of Stock</span>
             @endif
-           
+                <br>
                 <div class="btn-group mt-2 " role="group" >
                 @if($product->calcStock() > 0) 
                 <button wire:click="addToCart" class="btn btn-sm btn-dark rounded-0 "><i class="icon-basket-loaded"></i> Add to Cart</button>
