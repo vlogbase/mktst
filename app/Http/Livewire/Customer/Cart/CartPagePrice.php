@@ -36,7 +36,10 @@ class CartPagePrice extends Component
 
     public function getData()
     {
-        $this->user = Auth::user();
+        if (Auth::check()) {
+            $this->user = Auth::user();
+        }
+
         $this->items = \Cart::getContent();
         $this->cart_price = \Cart::getSubTotal();
         if ($this->cart_price != 0) {
@@ -79,13 +82,17 @@ class CartPagePrice extends Component
             'coupon_code' => 'required|exists:coupons,code',
         ]);
 
-        if ($this->checkCouponCode($this->coupon_code, $this->user->id)) {
-            session()->put('couponcode', $this->coupon_code);
-            $this->applied_coupon_code = $this->coupon_code;
-            $this->emit('succesShow', 'Coupon Applied');
-            $this->getData();
+        if (Auth::check()) {
+            if ($this->checkCouponCode($this->coupon_code, $this->user->id)) {
+                session()->put('couponcode', $this->coupon_code);
+                $this->applied_coupon_code = $this->coupon_code;
+                $this->emit('succesShow', 'Coupon Applied');
+                $this->getData();
+            } else {
+                $this->emit('errorShow', 'Max Quantity');
+            }
         } else {
-            $this->emit('errorShow', 'Max Quantity');
+            $this->emit('loginShow', 'Login Required!');
         }
     }
 
