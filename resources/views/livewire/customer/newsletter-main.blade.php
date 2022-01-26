@@ -8,10 +8,12 @@
             </div>
             <div class="col-md-6">
                 <div class="newsletter_form">
-                    <form>
-                        <input type="text" required="" class="form-control rounded-0" placeholder="Enter Email Address">
-                        <button type="submit" class="btn btn-dark rounded-0" name="submit" value="Submit">Subscribe</button>
+                    <form wire:submit.prevent="newsletterAttempt">
+                        
+                        <input type="text" wire:model="email" class="form-control rounded-0 @error('email') is-invalid @enderror" placeholder="Enter Email Address">
+                        <button type="submit" class="btn btn-dark rounded-0" >Subscribe</button>
                     </form>
+                    @error('email') <span class="text-white">{{ $message }}</span> @enderror
                 </div>
             </div>
         </div>

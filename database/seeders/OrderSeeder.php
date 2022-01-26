@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\OrderBilling;
 use App\Models\OrderDetail;
 use App\Models\OrderProduct;
+use App\Models\OrderRule;
 use App\Models\OrderShipping;
 use App\Models\Product;
 use App\Models\User;
@@ -28,7 +29,14 @@ class OrderSeeder extends Seeder
         OrderProduct::truncate();
         OrderShipping::truncate();
         OrderBilling::truncate();
+        OrderRule::truncate();
 
+
+        OrderRule::create([
+            'name' => 'min_order_cost',
+            'price' => 100,
+
+        ]);
 
         for ($x = 0; $x < 3; $x++) {
             $users = User::all()->random(5);

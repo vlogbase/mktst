@@ -725,7 +725,7 @@
         </div>
       </div>
 
-      <div class="subscribe">
+      {{-- <div class="subscribe">
         <h4>Subscribe now to get the latest updates!</h4>
         <form action="forms/notify.php" method="post" role="form" class="php-email-form">
           <div class="subscribe-form">
@@ -737,7 +737,7 @@
             <div class="sent-message">Your notification request was sent. Thank you!</div>
           </div>
         </form>
-      </div>
+      </div> --}}
 
       <div class="row mt-5 mb-3">
           <div class="col text-center">

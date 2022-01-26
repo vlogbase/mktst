@@ -117,7 +117,7 @@ class RegisterForm extends Component
             } else {
                 Newsletter::create([
                     'email' => $this->email,
-                    'token' => Str::random(15),
+                    'token' => Str::random(40),
                 ]);
             }
         }
