@@ -14,6 +14,10 @@ class ProductPage extends Component
     public $product_max_price;
     public $order_select;
 
+    protected $listeners = [
+        'changeCount' => 'changeCount',
+    ];
+
     public function mount($categoryCurrent)
     {
         $this->categoryCurrent = $categoryCurrent;
@@ -37,6 +41,11 @@ class ProductPage extends Component
             $this->product_count = Product::all()->count();
             $this->product_max_price = Product::max('unit_price') + 1;
         }
+    }
+
+    public function changeCount($val)
+    {
+        $this->product_count = $val;
     }
 
     public function updatedOrderSelect($val)

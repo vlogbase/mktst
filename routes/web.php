@@ -22,7 +22,7 @@ Route::get('/career', [OtherController::class, 'career'])->name('career');
 Route::get('/career/{job}', [OtherController::class, 'career_detail'])->name('career_detail');
 Route::get('/terms-and-conditions', [OtherController::class, 'terms_and_conditions'])->name('terms_and_conditions');
 Route::get('/search-result/{search}', [OtherController::class, 'search_result'])->name('search_result');
-Route::get('/maintenance', [OtherController::class, 'maintenance'])->name('maintenance');
+Route::post('/search', [OtherController::class, 'search'])->name('search');
 
 //Customer Auth
 Route::middleware('guest')->group(function () {

@@ -74,12 +74,15 @@ class ProductList extends Component
 
         if ($this->categoryCurrent == null) {
             $products = Product::whereBetween('unit_price', [$this->min_cost, $this->max_cost])->orderBy($query_order, $query_order_direct)->paginate($this->limitPerPage);
+            $products_cnt = Product::whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
         } else {
             $category = Category::where('id', $this->categoryCurrent->id)->first();
             $products = $category->products()->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->orderBy($query_order, $query_order_direct)->paginate($this->limitPerPage);
+            $products_cnt = $category->products()->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
         }
 
 
+        $this->emit('changeCount', $products_cnt);
 
         $this->emit('productStore');
         return view('livewire.customer.product-list', [
