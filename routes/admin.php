@@ -10,6 +10,8 @@ Route::prefix('admin')->group(function () {
         Route::middleware('guest:admin')->group(function () {
             //Admin Guest
             Route::get('/login', [AuthController::class, 'login'])->name('login');
+            Route::get('/forget-password', [AuthController::class, 'forget'])->name('forget');
+            Route::get('/reset-password/{email}/{token}', [AuthController::class, 'reset'])->name('reset');
         });
 
         Route::middleware('auth:admin')->group(function () {

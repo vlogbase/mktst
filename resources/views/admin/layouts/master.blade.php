@@ -6,7 +6,7 @@
 		<title>@yield('title',config('app.name'))</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="shortcut icon" href="/assets/media/logos/favicon.ico" />
+		<link rel="shortcut icon" href="/upload/logos/savoyicon.ico" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -25,5 +25,34 @@
 	<!--begin::Body-->
 	@yield('body')
 	@livewireScripts
+	<script>
+		Livewire.on('succesAlert', postId => {
+			Swal.fire({
+				icon: 'success',
+				title: 'Success',
+				text: postId,
+			})
+		})
+
+		Livewire.on('errorAlert', postId => {
+			Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: postId,
+			})
+		})
+
+		Livewire.on('infoAlert', postId => {
+			Swal.fire({
+				icon: 'info',
+				title: 'Information',
+				text: postId,
+			})
+		})
+
+		
+		
+		
+		</script>
 	<!--end::Body-->
 </html>
