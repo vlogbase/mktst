@@ -89,7 +89,7 @@ class CartPagePrice extends Component
                 $this->emit('succesShow', 'Coupon Applied');
                 $this->getData();
             } else {
-                $this->emit('errorShow', 'Max Quantity');
+                $this->emit('errorShow', 'Not Available');
             }
         } else {
             $this->emit('loginShow', 'Login Required!');

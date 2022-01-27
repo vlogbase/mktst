@@ -146,7 +146,6 @@ class PageCheckout extends Component
             }
         }
 
-
         $ordernum = 'SOW-' . strtoupper(Str::random(12));
 
         //Payment Control

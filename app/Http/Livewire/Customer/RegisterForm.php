@@ -181,7 +181,7 @@ class RegisterForm extends Component
 
         $user->notify(new WelcomeNotification($registeredUser));
 
-        return redirect()->intended('/');
+        return redirect()->route('resend_verify', $user->code);
     }
 
     public function render()

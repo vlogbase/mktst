@@ -161,6 +161,9 @@
                     </div>
                     
                 </div>
+                <div class="text-center" wire:loading wire:target="orderAttempt">
+                    Processing Order...
+                </div>
                 <button type="submit" class="btn btn-fill-out btn-block">Place Order</button>
                 @if($earn_point > 0)
                 <div class="text-center">

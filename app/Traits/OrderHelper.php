@@ -121,8 +121,8 @@ trait OrderHelper
     {
         $coupon = Coupon::where('code', $code)->first();
         DB::table('user_coupons')->insert([
-            'user_id' => $coupon->id,
-            'coupon_id' => $userid
+            'user_id' => $userid,
+            'coupon_id' =>  $coupon->id,
         ]);
     }
 

@@ -45,6 +45,7 @@
                    
                   </select>
                 @error('company_select') <span class="text-danger">{{ $message }}</span> @enderror
+                <small>Address list will be open when you click find button with your company name.</small>
             </div>
             
             <div class="form-group col-md-6 mb-3">
@@ -74,7 +75,7 @@
         </div>
         <div class="form-group row ">
         <div class="form-group col-md-12 mb-3">
-            <select class="form-control @error('type_select') is-invalid @enderror" wire:model="type_select" aria-label="Default select example">
+            <select class="form-control @error('business_type') is-invalid @enderror" wire:model="business_type" aria-label="Default select example">
                 <option value="">Select Business Type</option>
                 <optgroup label="Business">
                     <option value="Office Canteen">Office Canteen</option>
@@ -119,7 +120,7 @@
                     <option value="Other">Other</option>
                 </optgroup>
               </select>
-            @error('type_select') <span class="text-danger">{{ $message }}</span> @enderror
+            @error('business_type') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
     </div>
         <div class="login_footer form-group mb-3">
