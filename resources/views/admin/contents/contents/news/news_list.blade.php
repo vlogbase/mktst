@@ -1,0 +1,13 @@
+@extends('admin.layouts.templates.panel')
+@section('title','News')
+@section('sub-title','List')
+@section('content')
+    				<!--begin::Row-->
+                    <div class="row gy-5 g-xl-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-12">
+                                News List
+                        </div>
+                        <!--end::Col-->
+                    </div>
+@endsection

@@ -145,7 +145,7 @@
 									</div>
 								</div>
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link">
+									<span class="menu-link {{request()->routeIs('admin.contents.sliders.*') ? 'active' : ''}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -162,7 +162,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.sliders.web') ? 'active' : ''}}" href="{{route('admin.contents.sliders.web')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -170,7 +170,7 @@
 											</a>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.sliders.app') ? 'active' : ''}}" href="{{route('admin.contents.sliders.app')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -180,7 +180,7 @@
 									</div>
 								</div>
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link">
+									<span class="menu-link {{(request()->routeIs('admin.contents.blogs.*') || request()->routeIs('admin.contents.news.*') || request()->routeIs('admin.contents.gallery.*')) ? 'active' : ''}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -197,7 +197,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.blogs.*') ? 'active' : ''}}" href="{{route('admin.contents.blogs.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -205,7 +205,7 @@
 											</a>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.news.*') ? 'active' : ''}}" href="{{route('admin.contents.news.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -213,7 +213,7 @@
 											</a>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.gallery.list') ? 'active' : ''}}" href="{{route('admin.contents.gallery.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -223,7 +223,7 @@
 									</div>
 								</div>
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link">
+									<span class="menu-link {{request()->routeIs('admin.contents.other.*') ? 'active' : ''}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -240,7 +240,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.other.messages.*') ? 'active' : ''}}" href="{{route('admin.contents.other.messages.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -248,19 +248,19 @@
 											</a>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Newsletter</span>
-											</a>
-										</div>
-										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+											<a class="menu-link {{request()->routeIs('admin.contents.other.jobresumes.*') ? 'active' : ''}}" href="{{route('admin.contents.other.jobresumes.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
 												<span class="menu-title">Job Resumes</span>
+											</a>
+										</div>
+										<div class="menu-item">
+											<a class="menu-link {{request()->routeIs('admin.contents.other.newsletter.list') ? 'active' : ''}}" href="{{route('admin.contents.other.newsletter.list')}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">Newsletter</span>
 											</a>
 										</div>
 									</div>
