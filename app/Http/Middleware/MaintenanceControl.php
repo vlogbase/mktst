@@ -17,7 +17,7 @@ class MaintenanceControl
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Setting::where('name', 'maintenance')->first()->status && !$request->is('admin/*') && !$request->is('admin')) {
+        if (Setting::where('name', 'maintenance')->first()->status && !$request->is('admin/*') && !$request->is('admin') && !$request->is('livewire/*')) {
             return response()->view('customer.other.maintenance', [], 503);
         }
         return $next($request);

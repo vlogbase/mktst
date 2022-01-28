@@ -1,13 +1,5 @@
-@extends('admin.layouts.templates.panel')
+@extends('admin.settings.layouts.settings_master')
 @section('title','Payment Method')
-@section('sub-title','')
-@section('content')
-    				<!--begin::Row-->
-                    <div class="row gy-5 g-xl-8">
-                        <!--begin::Col-->
-                        <div class="col-xl-12">
-                            Payment Method
-                        </div>
-                        <!--end::Col-->
-                    </div>
+@section('form-content')			
+	@livewire('admin.settings.payment-method-form')								
 @endsection

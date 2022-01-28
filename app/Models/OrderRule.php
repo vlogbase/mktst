@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class OrderRule extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }
