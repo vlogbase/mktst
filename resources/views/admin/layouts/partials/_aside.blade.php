@@ -27,7 +27,7 @@
 								</div>
 								
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.brands.*') ? 'active' : ''}}" href="{{route('admin.brands.list')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -44,7 +44,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.categories.*') ? 'active' : ''}}" href="{{route('admin.categories.list')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -61,7 +61,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.products.*') ? 'active' : ''}}" href="{{route('admin.products.list')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -78,7 +78,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.orders.*') ? 'active' : ''}}" href="{{route('admin.orders.list')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -95,7 +95,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.customers.*') ? 'active' : ''}}" href="{{route('admin.customers.list')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -112,7 +112,7 @@
 									</a>
 								</div>
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link">
+									<span class="menu-link {{request()->routeIs('admin.campaigns.*') ? 'active' : ''}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -128,8 +128,8 @@
 										<span class="menu-arrow"></span>
 									</span>
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
-										<div class="menu-item">
-											<a class="menu-link" href="?page=pages/about">
+										<div class="menu-item ">
+											<a class="menu-link {{request()->routeIs('admin.campaigns.coupons.*') ? 'active' : ''}}" href="{{route('admin.campaigns.coupons.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -271,7 +271,7 @@
 									</div>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.settings.shipping') ? 'active' : ''}}" href="{{route('admin.settings.shipping')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -288,7 +288,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.settings.order_rules') ? 'active' : ''}}" href="{{route('admin.settings.order_rules')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -305,7 +305,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.settings.payment_method') ? 'active' : ''}}" href="{{route('admin.settings.payment_method')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -322,7 +322,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.settings.point_system') ? 'active' : ''}}" href="{{route('admin.settings.point_system')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -339,7 +339,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link {{request()->routeIs('admin.dashboard') ? 'active' : ''}}" href="{{route('admin.dashboard')}}">
+									<a class="menu-link {{request()->routeIs('admin.settings.general_settings') ? 'active' : ''}}" href="{{route('admin.settings.general_settings')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 											<span class="svg-icon svg-icon-2">

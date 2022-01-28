@@ -1,9 +1,17 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CampaignController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContentController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingsController;
+use Illuminate\Support\Facades\Route;
+
 
 //Admin Part
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -20,6 +28,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         //Admin
+
+        //Contents
         Route::prefix('contents')->name('contents.')->group(function () {
             //Admin Contents
             Route::prefix('sliders')->name('sliders.')->group(function () {
@@ -53,6 +63,58 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/jobresumes', [ContentController::class, 'jobresume_list'])->name('jobresumes.list');
                 Route::get('/jobresumes/{id}', [ContentController::class, 'jobresume_detail'])->name('jobresumes.detail');
             });
+        });
+
+        //Settings
+        Route::prefix('settings')->name('settings.')->group(function () {
+            Route::get('/shipping', [SettingsController::class, 'shipping'])->name('shipping');
+            Route::get('/order-rules', [SettingsController::class, 'order_rules'])->name('order_rules');
+            Route::get('/payment-method', [SettingsController::class, 'payment_method'])->name('payment_method');
+            Route::get('/point-system', [SettingsController::class, 'point_system'])->name('point_system');
+            Route::get('/general-settings', [SettingsController::class, 'general_settings'])->name('general_settings');
+        });
+
+        //Campaigns
+        Route::prefix('campaigns')->name('campaigns.')->group(function () {
+            //Coupons
+            Route::prefix('coupons')->name('coupons.')->group(function () {
+                Route::get('/list', [CampaignController::class, 'coupon_list'])->name('list');
+                Route::get('/detail/{id}', [CampaignController::class, 'coupon_detail'])->name('detail');
+                Route::get('/add', [CampaignController::class, 'coupon_add'])->name('add');
+            });
+        });
+
+        //Customers
+        Route::prefix('customers')->name('customers.')->group(function () {
+            Route::get('/list', [CustomerController::class, 'customer_list'])->name('list');
+            Route::get('/detail/{id}', [CustomerController::class, 'customer_detail'])->name('detail');
+        });
+
+        //Orders
+        Route::prefix('orders')->name('orders.')->group(function () {
+            Route::get('/list', [OrderController::class, 'order_list'])->name('list');
+            Route::get('/detail/{id}', [OrderController::class, 'order_detail'])->name('detail');
+        });
+
+        //Products
+        Route::prefix('products')->name('products.')->group(function () {
+            Route::get('/list', [ProductController::class, 'product_list'])->name('list');
+            Route::get('/add', [ProductController::class, 'product_add'])->name('add');
+            Route::get('/detail/{id}', [ProductController::class, 'product_detail'])->name('detail');
+        });
+
+        //Categories
+        Route::prefix('categories')->name('categories.')->group(function () {
+            Route::get('/list', [CategoryController::class, 'category_list'])->name('list');
+            Route::get('/add', [CategoryController::class, 'category_add'])->name('add');
+            Route::get('/detail/{id}', [CategoryController::class, 'category_detail'])->name('detail');
+        });
+
+        //Brands
+        Route::prefix('brands')->name('brands.')->group(function () {
+            Route::get('/list', [BrandController::class, 'brand_list'])->name('list');
+            Route::get('/add', [BrandController::class, 'brand_add'])->name('add');
+            Route::get('/detail/{id}', [BrandController::class, 'brand_detail'])->name('detail');
         });
     });
 });
