@@ -58,10 +58,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::prefix('other')->name('other.')->group(function () {
                 //Admin Contents news
                 Route::get('/messages', [ContentController::class, 'message_list'])->name('messages.list');
+                Route::delete('/messages/delete/{id}', [ContentController::class, 'message_delete'])->name('messages.delete');
                 Route::get('/messages/{id}', [ContentController::class, 'message_detail'])->name('messages.detail');
                 Route::get('/newsletter', [ContentController::class, 'newsletter_list'])->name('newsletter.list');
+                Route::delete('/newsletter/delete/{id}', [ContentController::class, 'newsletter_delete'])->name('newsletter.delete');
                 Route::get('/jobresumes', [ContentController::class, 'jobresume_list'])->name('jobresumes.list');
                 Route::get('/jobresumes/{id}', [ContentController::class, 'jobresume_detail'])->name('jobresumes.detail');
+                Route::get('/jobresumes/download/{id}', [ContentController::class, 'jobresume_download'])->name('jobresumes.download');
+                Route::delete('/jobresumes/delete/{id}', [ContentController::class, 'jobresume_delete'])->name('jobresumes.delete');
             });
         });
 
