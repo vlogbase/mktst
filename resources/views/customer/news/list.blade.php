@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','items - SavoyFoods')
+@section('title','News - SavoyFoods')
 @section('content')
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
@@ -7,14 +7,14 @@
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>items</h1>
+            		<h1>News</h1>
                 </div>
             </div>
             <div class="col-md-6">
                 <ol class="breadcrumb justify-content-md-end">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                     <li class="breadcrumb-item active">Contents</li>
-                    <li class="breadcrumb-item active">items</li>
+                    <li class="breadcrumb-item active">News</li>
                 </ol>
             </div>
         </div>

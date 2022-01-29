@@ -19,6 +19,6 @@ class News extends Model
 
     public function getImageAttribute($value)
     {
-        return '/upload/' . $value;
+        return '/' . $value;
     }
 }

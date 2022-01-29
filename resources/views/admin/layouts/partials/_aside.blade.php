@@ -180,7 +180,7 @@
 									</div>
 								</div>
 								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-									<span class="menu-link {{(request()->routeIs('admin.contents.blogs.*') || request()->routeIs('admin.contents.news.*') || request()->routeIs('admin.contents.gallery.*')) ? 'active' : ''}}">
+									<span class="menu-link  {{(request()->routeIs('admin.contents.blogs.*') || request()->routeIs('admin.contents.news.*') || request()->routeIs('admin.contents.gallery.*')) ? 'active' : ''}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm007.svg-->
 											<span class="svg-icon svg-icon-2">
@@ -195,7 +195,7 @@
 										<span class="menu-title">Contents</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion menu-active-bg">
+									<div class="menu-sub menu-sub-accordion menu-active-bg ">
 										<div class="menu-item">
 											<a class="menu-link {{request()->routeIs('admin.contents.blogs.*') ? 'active' : ''}}" href="{{route('admin.contents.blogs.list')}}">
 												<span class="menu-bullet">

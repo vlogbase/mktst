@@ -51,6 +51,22 @@
 			})
 		})
 
+		Livewire.on('deletedOkay', postId => {
+			Swal.fire({
+				icon: 'info',
+				title: 'Are you sure?',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, do it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					Livewire.emit('processDone', postId)
+				}
+			})
+		})
+
+
+		
+
 		
 		
 		

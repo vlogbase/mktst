@@ -35,7 +35,8 @@ class ContentController extends Controller
 
     public function blog_edit($id)
     {
-        return view('admin.contents.contents.blogs.blog_detail');
+
+        return view('admin.contents.contents.blogs.blog_detail', compact('id'));
     }
 
     public function news_list()
@@ -50,7 +51,7 @@ class ContentController extends Controller
 
     public function news_edit($id)
     {
-        return view('admin.contents.contents.news.news_detail');
+        return view('admin.contents.contents.news.news_detail', compact('id'));
     }
 
     public function gallery_list()

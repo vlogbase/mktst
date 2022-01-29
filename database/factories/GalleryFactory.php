@@ -14,7 +14,7 @@ class GalleryFactory extends Factory
     public function definition()
     {
         return [
-            'image' => 'gallery/holder.png',
+            'image' => 'upload/gallery/holder.png',
         ];
     }
 }
