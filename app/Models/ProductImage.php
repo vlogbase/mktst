@@ -17,6 +17,6 @@ class ProductImage extends Model
 
     public function getPathAttribute($value)
     {
-        return '/upload/' . $value;
+        return '/' . $value;
     }
 }

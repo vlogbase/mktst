@@ -45,7 +45,7 @@ class Product extends Model
         if ($this->productimages->count() > 0) {
             $path = $this->productimages->first()->path;
         } else {
-            $path = 'imageholderproduct.jpg';
+            $path = '/upload/product/imageholderproduct.jpg';
         }
 
         return $path;
