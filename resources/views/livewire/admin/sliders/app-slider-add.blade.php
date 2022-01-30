@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        @error('photos.*') <span class="error">{{ $message }}</span> @enderror
+        @error('photos.*') <span class="text-danger">{{ $message }}</span> @enderror
      
     </form>
 </div>
