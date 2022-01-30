@@ -14,7 +14,7 @@ class CampaignController extends Controller
 
     public function coupon_detail($id)
     {
-        return view('admin.campaigns.coupons.coupon_detail');
+        return view('admin.campaigns.coupons.coupon_detail', compact('id'));
     }
 
     public function coupon_add()

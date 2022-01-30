@@ -41,7 +41,7 @@ class WebSliderAdd extends Component
     public function submit()
     {
         $data =  $this->validate([
-            'top_head' => 'nullable|min:2|max:20|unique:blogs,name',
+            'top_head' => 'nullable|min:2|max:20',
             'mid_head' => 'nullable|min:2|max:30',
             'image' => $this->itemid == 0 ? 'required|max:4024' : 'nullable|max:4024',
             'button_text' => $this->button_status ? 'required|min:2|max:15' : '',

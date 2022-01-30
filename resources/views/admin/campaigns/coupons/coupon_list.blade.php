@@ -2,12 +2,18 @@
 @section('title','Coupons')
 @section('sub-title','List')
 @section('content')
-    				<!--begin::Row-->
-                    <div class="row gy-5 g-xl-8">
-                        <!--begin::Col-->
-                        <div class="col-xl-12">
-                            Coupons List
+    				<!--begin::Toolbar-->
+                    <div class="d-flex flex-wrap flex-stack mb-6">
+                        <!--begin::Heading-->
+                        <h3 class="fw-bolder my-2">Coupons List</h3>
+                        <!--end::Heading-->
+                        <!--begin::Actions-->
+                        <div class="d-flex flex-wrap my-2">
+                            <a href="{{route('admin.campaigns.coupons.add')}}" class="btn btn-primary btn-sm" >New Coupon</a>
                         </div>
-                        <!--end::Col-->
+                        <!--end::Actions-->
                     </div>
+                    <!--end::Toolbar-->
+
+                    @livewire('admin.campaign.coupon.coupon-list')
 @endsection
