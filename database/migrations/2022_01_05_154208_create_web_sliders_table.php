@@ -15,11 +15,11 @@ class CreateWebSlidersTable extends Migration
     {
         Schema::create('web_sliders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('top_head', 200);
-            $table->string('mid_head', 200);
-            $table->boolean('button_status')->default(1);
+            $table->string('top_head', 200)->nullable();
+            $table->string('mid_head', 200)->nullable();
+            $table->boolean('button_status')->default(0);
             $table->string('button_text', 100)->default('Shop Now');
-            $table->string('button_action', 100)->default('#');
+            $table->string('button_action', 100)->default('/products');
             $table->string('image', 350);
             $table->boolean('light')->default(0);
             $table->timestamps();

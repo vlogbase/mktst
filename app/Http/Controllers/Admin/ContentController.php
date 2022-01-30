@@ -13,15 +13,6 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ContentController extends Controller
 {
-    public function web_sliders()
-    {
-        return view('admin.contents.sliders.web_sliders');
-    }
-
-    public function app_sliders()
-    {
-        return view('admin.contents.sliders.app_sliders');
-    }
 
     public function blog_list()
     {

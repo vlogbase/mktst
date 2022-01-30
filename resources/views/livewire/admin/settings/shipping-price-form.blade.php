@@ -34,6 +34,7 @@
         </div>
         <!--end::Input group-->
 
+        @if($campaign)
          <!--begin::Input group-->
         <div class="row mb-6">
             <!--begin::Label-->
@@ -47,6 +48,7 @@
             <!--end::Col-->
         </div>
         <!--end::Input group-->
+        @endif
     </div>
     <!--end::Card body-->
     <!--begin::Actions-->

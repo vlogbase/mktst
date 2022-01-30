@@ -14,7 +14,7 @@ class AppSliderFactory extends Factory
     public function definition()
     {
         return [
-            'image' => 'mobilesliders/holder.png',
+            'image' => 'upload/mobilesliders/holder.png',
         ];
     }
 }

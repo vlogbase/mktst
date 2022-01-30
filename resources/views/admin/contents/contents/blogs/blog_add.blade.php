@@ -9,7 +9,7 @@
                         <!--end::Heading-->
                         <!--begin::Actions-->
                         <div class="d-flex flex-wrap my-2">
-                            <a href="{{ url()->previous() }}" class="btn btn-primary btn-sm" >Back to List</a>
+                            <a href="{{ route('admin.contents.blogs.list') }}" class="btn btn-primary btn-sm" >Back to List</a>
                         </div>
                         <!--end::Actions-->
                     </div>

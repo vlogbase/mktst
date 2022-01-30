@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $sliders = WebSlider::all();
+        $sliders = WebSlider::latest()->get();
         $featured = Product::whereHas('productdetail', function ($q) {
             $q->where('featured', '=', '1');
         })->get();

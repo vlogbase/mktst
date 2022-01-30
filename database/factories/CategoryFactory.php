@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $category_name = $this->faker->unique()->sentence(2),
             'slug' => Str::slug($category_name),
-            'image' =>  'category/holder.png',
+            'image' =>  'upload/category/holder.png',
         ];
     }
 }

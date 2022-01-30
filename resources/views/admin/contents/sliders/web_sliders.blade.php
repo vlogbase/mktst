@@ -1,13 +1,19 @@
 @extends('admin.layouts.templates.panel')
 @section('title','Web Sliders')
-@section('sub-title','')
+@section('sub-title','List')
 @section('content')
-    				<!--begin::Row-->
-                    <div class="row gy-5 g-xl-8">
-                        <!--begin::Col-->
-                        <div class="col-xl-12">
-                            Web Sliders
+    				<!--begin::Toolbar-->
+                    <div class="d-flex flex-wrap flex-stack mb-6">
+                        <!--begin::Heading-->
+                        <h3 class="fw-bolder my-2">Web Sliders</h3>
+                        <!--end::Heading-->
+                        <!--begin::Actions-->
+                        <div class="d-flex flex-wrap my-2">
+                            <a href="{{route('admin.contents.sliders.web_add')}}" class="btn btn-primary btn-sm" >New Web Slider</a>
                         </div>
-                        <!--end::Col-->
+                        <!--end::Actions-->
                     </div>
+                    <!--end::Toolbar-->
+
+                    @livewire('admin.sliders.web-slider-list')
 @endsection

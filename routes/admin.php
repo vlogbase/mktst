@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DropzoneController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,16 +31,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         //Admin
 
-
         //Contents
         Route::prefix('contents')->name('contents.')->group(function () {
             //Admin Contents
             Route::prefix('sliders')->name('sliders.')->group(function () {
                 //Admin Contents Sliders
                 //Web
-                Route::get('/web-sliders', [ContentController::class, 'web_sliders'])->name('web');
+                Route::get('/web-sliders', [SliderController::class, 'web_sliders'])->name('web');
+                Route::get('/web-sliders/add', [SliderController::class, 'web_sliders_add'])->name('web_add');
+                Route::get('/web-sliders/edit/{id}', [SliderController::class, 'web_sliders_edit'])->name('web_edit');
                 //App
-                Route::get('/app-sliders', [ContentController::class, 'app_sliders'])->name('app');
+                Route::get('/app-sliders', [SliderController::class, 'app_sliders'])->name('app');
             });
             Route::prefix('blogs')->name('blogs.')->group(function () {
                 //Admin Contents Blogs

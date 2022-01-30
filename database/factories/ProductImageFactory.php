@@ -14,7 +14,7 @@ class ProductImageFactory extends Factory
     public function definition()
     {
         return [
-            'path' => 'product/imageholderproduct.jpg',
+            'path' => 'upload/product/imageholderproduct.jpg',
         ];
     }
 }
