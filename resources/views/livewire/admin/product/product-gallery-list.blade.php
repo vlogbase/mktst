@@ -49,3 +49,20 @@
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+     	Livewire.on('deletedImageOkay', postId => {
+			Swal.fire({
+				icon: 'info',
+				title: 'Are you sure?',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, do it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					Livewire.emit('processImageDone', postId)
+				}
+			})
+		})
+
+</script>
+@endpush

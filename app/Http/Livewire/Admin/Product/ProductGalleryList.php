@@ -14,7 +14,7 @@ class ProductGalleryList extends Component
     protected $paginationTheme = 'bootstrap';
 
     protected $listeners = [
-        'processDone' => 'eventOkay',
+        'processImageDone' => 'eventOkay',
         'refreshList' => 'refreshList'
     ];
 
@@ -25,7 +25,7 @@ class ProductGalleryList extends Component
 
     public function deleteItem($id)
     {
-        $this->emit('deletedOkay', $id);
+        $this->emit('deletedImageOkay', $id);
     }
 
     public function eventOkay($postId)

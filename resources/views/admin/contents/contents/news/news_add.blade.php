@@ -35,23 +35,4 @@
                     <!--end::Row-->
                    
 @endsection
-@section('js')
-<script src="/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
-
-
-<script>
-   ClassicEditor
-        .create(document.querySelector('#message'))
-        .then(editor => {
-            editor.model.document.on('change:data', () => {
-                let message = editor.getData();
-                Livewire.emit('typeCKeditor', message)
-            })
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-</script>
-@endsection
 

@@ -9,6 +9,7 @@
     <!--end::Heading-->
     <!--begin::Actions-->
     <div class="d-flex flex-wrap my-2">
+        @livewire('admin.product.delete-product',['itemid' => $id])
         <a href="{{route('admin.products.list')}}" class="btn btn-primary btn-sm" >Back to List</a>
     </div>
     <!--end::Actions-->
@@ -122,11 +123,11 @@
                                 </div>
                     
                                 <div class="tab-pane fade" id="kt_vtab_pane_5" role="tabpanel">
-                                    xxxxEEEEEEEEEY
+                                    @livewire('admin.product.product-description',['itemid' => $id])
                                 </div>
                     
                                 <div class="tab-pane fade" id="kt_vtab_pane_6" role="tabpanel">
-                                    dsfdsfdsf
+                                    @livewire('admin.product.product-advanced-details',['itemid' => $id])
                                 </div>
 
                                 <div class="tab-pane fade" id="kt_vtab_pane_7" role="tabpanel">

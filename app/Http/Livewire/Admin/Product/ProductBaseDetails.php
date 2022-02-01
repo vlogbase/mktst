@@ -106,6 +106,8 @@ class ProductBaseDetails extends Component
 
             ProductDetail::create([
                 'product_id' => $item->id,
+                'meta_title' => $this->name,
+                'meta_description' => $this->name,
             ]);
 
             $item->categories()->sync($this->categories_select);

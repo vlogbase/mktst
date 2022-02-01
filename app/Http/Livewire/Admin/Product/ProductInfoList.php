@@ -13,7 +13,7 @@ class ProductInfoList extends Component
     protected $paginationTheme = 'bootstrap';
 
     protected $listeners = [
-        'processDone' => 'eventOkay',
+        'processInfoDone' => 'eventOkay',
         'refreshList' => 'refreshList'
     ];
 
@@ -38,7 +38,7 @@ class ProductInfoList extends Component
 
     public function deleteItem($id)
     {
-        $this->emit('deletedOkay', $id);
+        $this->emit('deletedInfoOkay', $id);
     }
 
     public function eventOkay($postId)

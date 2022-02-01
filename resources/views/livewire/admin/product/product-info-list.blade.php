@@ -62,9 +62,22 @@
                 {{ $items->links() }}
             </div>
         </div>
-
     </div>
-
-               
- 
 </div>
+@push('scripts')
+<script>
+     	Livewire.on('deletedInfoOkay', postId => {
+			Swal.fire({
+				icon: 'info',
+				title: 'Are you sure?',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, do it!'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					Livewire.emit('processInfoDone', postId)
+				}
+			})
+		})
+
+</script>
+@endpush

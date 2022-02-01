@@ -44,15 +44,29 @@
              <label class="col-lg-4 col-form-label required fw-bold fs-6">Text</label>
              <!--end::Label-->
              <!--begin::Col-->
-             <div class="col-lg-8 fv-row" wire:ignore>
-                 <textarea id="message" name="message" rows="10" wire:model="message" class="form-control form-control-lg form-control-solid ">
-                    {{$message}}
-                </textarea>
-                 @error('text') <span class="text-danger">{{ $message }}</span> @enderror
+             <div class="col-lg-8 fv-row" >
+                 <div wire:ignore>
+                    <textarea id="message" name="message" rows="10"  class="form-control form-control-lg form-control-solid ">
+                        {{$text}}
+                    </textarea>
+                 </div>
              </div>
              <!--end::Col-->
          </div>
          <!--end::Input group-->
+         <!--begin::Input group-->
+         <div class="row mb-6" >
+            <!--begin::Label-->
+            <label class="col-lg-4 col-form-label required fw-bold fs-6"></label>
+            <!--end::Label-->
+            <!--begin::Col-->
+            <div class="col-lg-8 fv-row" >
+                @error('text') <span class="text-danger">{{ $message }}</span> @enderror
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Input group-->
+         
      </div>
      <!--end::Card body-->
      <!--begin::Actions-->
@@ -60,12 +74,22 @@
          <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save</button>
      </div>
      <!--end::Actions-->
-     <div style="display:none;">
-        {{$title}}
-        {{$text}}
-     </div>
-     
  </form>
  <!--end::Form-->
  </div>
  
+ @push('scripts')
+<script src="/assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
+<script>
+      ClassicEditor
+        .create(document.querySelector('#message'))
+        .then(editor => {
+            editor.model.document.on('change:data', () => {
+                @this.set('text', editor.getData());
+            })
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+@endpush
