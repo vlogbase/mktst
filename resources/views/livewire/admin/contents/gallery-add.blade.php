@@ -2,7 +2,7 @@
     <form wire:submit.prevent="submit">
         <div class="row mb-5">
             @foreach($photos as $photo)
-            <div class="col-md-2" >
+            <div class="col-md-3" >
                 <!--begin::Image input-->
                 <div class="image-input image-input-empty" wire:key="{{$loop->index}}" data-kt-image-input="true" style="background-image: url({{$photo->temporaryUrl()}})">
                     <!--begin::Image preview wrapper-->

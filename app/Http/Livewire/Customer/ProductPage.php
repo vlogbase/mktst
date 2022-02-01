@@ -34,11 +34,11 @@ class ProductPage extends Component
     {
         if ($this->categoryCurrent) {
             $this->categories = $this->categoryCurrent->childrenCategories;
-            $this->product_count = $this->categoryCurrent->products()->count();
+            $this->product_count = $this->categoryCurrent->products()->where('status', 1)->count();
             $this->product_max_price = $this->categoryCurrent->products()->max('unit_price') + 1;
         } else {
             $this->categories = Category::where('category_id', NULL)->get();
-            $this->product_count = Product::all()->count();
+            $this->product_count = Product::all()->where('status', 1)->count();
             $this->product_max_price = Product::max('unit_price') + 1;
         }
     }

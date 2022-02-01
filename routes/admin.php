@@ -106,9 +106,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         //Products
         Route::prefix('products')->name('products.')->group(function () {
-            Route::get('/list', [ProductController::class, 'product_list'])->name('list');
+            Route::get('/', [ProductController::class, 'product_list'])->name('list');
             Route::get('/add', [ProductController::class, 'product_add'])->name('add');
-            Route::get('/detail/{id}', [ProductController::class, 'product_detail'])->name('detail');
+            Route::get('/{id}', [ProductController::class, 'product_detail'])->name('detail');
         });
 
         //Categories
@@ -121,9 +121,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         //Brands
         Route::prefix('brands')->name('brands.')->group(function () {
-            Route::get('/list', [BrandController::class, 'brand_list'])->name('list');
+            Route::get('/', [BrandController::class, 'brand_list'])->name('list');
             Route::get('/add', [BrandController::class, 'brand_add'])->name('add');
-            Route::get('/detail/{id}', [BrandController::class, 'brand_detail'])->name('detail');
+            Route::get('/{id}', [BrandController::class, 'brand_detail'])->name('detail');
         });
     });
 });
