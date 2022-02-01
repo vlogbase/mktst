@@ -37,7 +37,7 @@ class ProductPage extends Component
             $this->product_count = $this->categoryCurrent->products()->count();
             $this->product_max_price = $this->categoryCurrent->products()->max('unit_price') + 1;
         } else {
-            $this->categories = Category::whereNull('category_id')->get();
+            $this->categories = Category::where('category_id', NULL)->get();
             $this->product_count = Product::all()->count();
             $this->product_max_price = Product::max('unit_price') + 1;
         }

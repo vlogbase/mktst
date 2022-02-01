@@ -30,53 +30,57 @@
                         <div id="navCatContent" class="navbar collapse">
                             <ul> 
                                 @foreach($customerpagedata['categories'] as $category)
-                                <li class="dropdown dropdown-mega-menu">
-                                    <a class="dropdown-item nav-link dropdown-toggler" data-bs-toggle="dropdown" href="{{route('category_products',$category->slug)}}" ><span>{{$category->name}}</span></a>
-                                    <div class="dropdown-menu">
-                                        <ul class="mega-menu d-lg-flex">
-                                            <li class="mega-menu-col col-lg-7">
-                                                <ul class="d-lg-flex">
-                                                    @php
-                                                        $countChild = $category->childrenCategories->count();
-                                                        if($countChild > 8)
-                                                        {
-                                                            $groups = $category->childrenCategories->split(2);
-                                                            $groups_1 =  $groups[0];
-                                                            $groups_2 =  $groups[1];
-                                                        }else{
-                                                            $groups_1 = $category->childrenCategories;
-                                                        }
-                                                    @endphp
+                                    @if($category->childrenCategories->count() > 0)
+                                    <li class="dropdown dropdown-mega-menu">
+                                        <a class="dropdown-item nav-link dropdown-toggler" data-bs-toggle="dropdown" href="{{route('category_products',$category->slug)}}" ><span>{{$category->name}}</span></a>
+                                        <div class="dropdown-menu">
+                                            <ul class="mega-menu d-lg-flex">
+                                                <li class="mega-menu-col col-lg-7">
+                                                    <ul class="d-lg-flex">
+                                                        @php
+                                                            $countChild = $category->childrenCategories->count();
+                                                            if($countChild > 8)
+                                                            {
+                                                                $groups = $category->childrenCategories->split(2);
+                                                                $groups_1 =  $groups[0];
+                                                                $groups_2 =  $groups[1];
+                                                            }else{
+                                                                $groups_1 = $category->childrenCategories;
+                                                            }
+                                                        @endphp
 
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            @foreach ($groups_1 as $childCategory) 
-                                                            <li><a class="dropdown-item nav-link nav_item" href="{{route('category_products',$childCategory->slug)}}">{{$childCategory->name}}</a></li>
-                                                            @endforeach
+                                                        <li class="mega-menu-col col-lg-6">
+                                                            <ul>
+                                                                @foreach ($groups_1 as $childCategory) 
+                                                                <li><a class="dropdown-item nav-link nav_item" href="{{route('category_products',$childCategory->slug)}}">{{$childCategory->name}}</a></li>
+                                                                @endforeach
 
-                                                        </ul>
-                                                    </li>
-                                                    @if($countChild > 8)
-                                                    <li class="mega-menu-col col-lg-6">
-                                                        <ul>
-                                                            @foreach ($groups_2 as $childCategory) 
-                                                            <li><a class="dropdown-item nav-link nav_item" href="{{route('category_products',$childCategory->slug)}}">{{$childCategory->name}}</a></li>
-                                                            @endforeach
-                                                            
-                                                        </ul>
-                                                    </li>
-                                                    @endif
-                                                </ul>
-                                            </li>
-                                            <li class="mega-menu-col col-lg-5 text-center">
-                                                <div class="header-banner2 ">
-                                                    <img style="width:200px!important;" src="{{$category->image}}" alt="{{$category->name}}">
-                                                    
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        @if($countChild > 8)
+                                                        <li class="mega-menu-col col-lg-6">
+                                                            <ul>
+                                                                @foreach ($groups_2 as $childCategory) 
+                                                                <li><a class="dropdown-item nav-link nav_item" href="{{route('category_products',$childCategory->slug)}}">{{$childCategory->name}}</a></li>
+                                                                @endforeach
+                                                                
+                                                            </ul>
+                                                        </li>
+                                                        @endif
+                                                    </ul>
+                                                </li>
+                                                <li class="mega-menu-col col-lg-5 text-center">
+                                                    <div class="header-banner2 ">
+                                                        <img style="width:200px!important;" src="{{$category->image}}" alt="{{$category->name}}">
+                                                        
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    @else
+                                    <li><a class="dropdown-item nav-link nav_item" href="{{route('category_products',$category->slug)}}">{{$category->name}}</a></li>   
+                                    @endif
                                 @endforeach
 
                                 

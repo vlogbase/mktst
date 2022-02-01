@@ -26,6 +26,7 @@
 	<!--begin::Body-->
 	@yield('body')
 	@livewireScripts
+	@stack('scripts')
 	<script>
 		Livewire.on('succesAlert', postId => {
 			Swal.fire({

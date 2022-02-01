@@ -37,13 +37,15 @@
             <div class="widget">
                 <h5 class="widget_title">Categories</h5>
                 <ul class="widget_categories">
-                    @if($categories-> count() > 0)
+                    @if($categories->count() > 0)
                         @foreach($categories as $category)
                         <li><a href="{{route('category_products',$category->slug)}}"><span class="categories_name">{{$category->name.(strlen($category->name)> 100 ? '<br>' : '')}}</span><span class="categories_num">({{$category->products->count()}})</span></a></li>
                         @endforeach
                     @else
                     <p>No Sub Categories</p>
-                    <li><a href="{{route('category_products',$categoryCurrent->parent->slug)}}"><span class="categories_name">Back to Top Category</span><span class="categories_num">({{$categoryCurrent->parent->products->count()}})</span></a></li>
+                        @if ($categoryCurrent->parent)
+                            <li><a href="{{route('category_products',$categoryCurrent->parent->slug)}}"><span class="categories_name">Back to Top Category</span><span class="categories_num">({{$categoryCurrent->parent->products->count()}})</span></a></li>
+                        @endif
                     @endif
                 </ul>
             </div>

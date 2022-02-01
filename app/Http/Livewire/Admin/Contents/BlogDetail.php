@@ -45,11 +45,21 @@ class BlogDetail extends Component
 
     public function submit()
     {
-        $data =  $this->validate([
-            'title' => 'required|min:6|max:50',
-            'text' => 'required|min:10|max:5000',
-            'image' => 'nullable|max:3024',
-        ]);
+        if ($this->list == 'blog') {
+            $data =  $this->validate([
+                'title' => 'required|min:6|max:50|unique:blogs,name,' . $this->item->id,
+                'text' => 'required|min:10|max:5000',
+                'image' => 'nullable|max:3024',
+            ]);
+        } else {
+            $data =  $this->validate([
+                'title' => 'required|min:6|max:50|unique:news,name,' . $this->item->id,
+                'text' => 'required|min:10|max:5000',
+                'image' => 'nullable|max:3024',
+            ]);
+        }
+
+
 
         if ($this->image) {
             $background = $this->image->store('upload/contents', 'public');
