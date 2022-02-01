@@ -2,36 +2,37 @@
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column w-250px w-lg-325px" data-kt-menu="true">
 												<!--begin::Heading-->
-												<div class="d-flex flex-column flex-center bgi-no-repeat rounded-top px-9 py-10" style="background-image:url('assets/media/misc/pattern-1.jpg')">
+												<div class="d-flex flex-column flex-center bgi-no-repeat rounded-top px-9 py-10" style="background-image:url('/assets/media/misc/pattern-1.jpg')">
 													<!--begin::Title-->
 													<h3 class="text-white fw-bold mb-3">Quick Links</h3>
 													<!--end::Title-->
-													<!--begin::Status-->
+													{{-- <!--begin::Status-->
 													<span class="badge bg-primary py-2 px-3">25 pending tasks</span>
-													<!--end::Status-->
+													<!--end::Status--> --}}
 												</div>
 												<!--end::Heading-->
 												<!--begin:Nav-->
 												<div class="row g-0">
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="?page=apps/projects/budget" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
+														<a href="{{route('admin.orders.list')}}" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
 															<!--begin::Svg Icon | path: icons/duotune/finance/fin009.svg-->
 															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path opacity="0.3" d="M15.8 11.4H6C5.4 11.4 5 11 5 10.4C5 9.80002 5.4 9.40002 6 9.40002H15.8C16.4 9.40002 16.8 9.80002 16.8 10.4C16.8 11 16.3 11.4 15.8 11.4ZM15.7 13.7999C15.7 13.1999 15.3 12.7999 14.7 12.7999H6C5.4 12.7999 5 13.1999 5 13.7999C5 14.3999 5.4 14.7999 6 14.7999H14.8C15.3 14.7999 15.7 14.2999 15.7 13.7999Z" fill="black" />
-																	<path d="M18.8 15.5C18.9 15.7 19 15.9 19.1 16.1C19.2 16.7 18.7 17.2 18.4 17.6C17.9 18.1 17.3 18.4999 16.6 18.7999C15.9 19.0999 15 19.2999 14.1 19.2999C13.4 19.2999 12.7 19.2 12.1 19.1C11.5 19 11 18.7 10.5 18.5C10 18.2 9.60001 17.7999 9.20001 17.2999C8.80001 16.8999 8.49999 16.3999 8.29999 15.7999C8.09999 15.1999 7.80001 14.7 7.70001 14.1C7.60001 13.5 7.5 12.8 7.5 12.2C7.5 11.1 7.7 10.1 8 9.19995C8.3 8.29995 8.79999 7.60002 9.39999 6.90002C9.99999 6.30002 10.7 5.8 11.5 5.5C12.3 5.2 13.2 5 14.1 5C15.2 5 16.2 5.19995 17.1 5.69995C17.8 6.09995 18.7 6.6 18.8 7.5C18.8 7.9 18.6 8.29998 18.3 8.59998C18.2 8.69998 18.1 8.69993 18 8.79993C17.7 8.89993 17.4 8.79995 17.2 8.69995C16.7 8.49995 16.5 7.99995 16 7.69995C15.5 7.39995 14.9 7.19995 14.2 7.19995C13.1 7.19995 12.1 7.6 11.5 8.5C10.9 9.4 10.5 10.6 10.5 12.2C10.5 13.3 10.7 14.2 11 14.9C11.3 15.6 11.7 16.1 12.3 16.5C12.9 16.9 13.5 17 14.2 17C15 17 15.7 16.8 16.2 16.4C16.8 16 17.2 15.2 17.9 15.1C18 15 18.5 15.2 18.8 15.5Z" fill="black" />
-																</svg>
+																	<path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z" fill="black"/>
+																	<path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z" fill="black"/>
+																	<path opacity="0.3" d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z" fill="black"/>
+																	</svg>
 															</span>
 															<!--end::Svg Icon-->
-															<span class="fs-5 fw-bold text-gray-800 mb-0">Accounting</span>
+															<span class="fs-5 fw-bold text-gray-800 mb-0">Orders</span>
 															<span class="fs-7 text-gray-400">eCommerce</span>
 														</a>
 													</div>
 													<!--end:Item-->
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="?page=apps/projects/settings" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
+														<a href="{{route('admin.contents.other.messages.list')}}" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
 															<!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
 															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -40,30 +41,30 @@
 																</svg>
 															</span>
 															<!--end::Svg Icon-->
-															<span class="fs-5 fw-bold text-gray-800 mb-0">Administration</span>
-															<span class="fs-7 text-gray-400">Console</span>
+															<span class="fs-5 fw-bold text-gray-800 mb-0">Messages</span>
+															<span class="fs-7 text-gray-400">Contents</span>
 														</a>
 													</div>
 													<!--end:Item-->
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="?page=apps/projects/list" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end">
+														<a href="{{route('admin.products.list')}}" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end">
 															<!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
 															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<path d="M18 21.6C16.6 20.4 9.1 20.3 6.3 21.2C5.7 21.4 5.1 21.2 4.7 20.8L2 18C4.2 15.8 10.8 15.1 15.8 15.8C16.2 18.3 17 20.5 18 21.6ZM18.8 2.8C18.4 2.4 17.8 2.20001 17.2 2.40001C14.4 3.30001 6.9 3.2 5.5 2C6.8 3.3 7.4 5.5 7.7 7.7C9 7.9 10.3 8 11.7 8C15.8 8 19.8 7.2 21.5 5.5L18.8 2.8Z" fill="black" />
-																	<path opacity="0.3" d="M21.2 17.3C21.4 17.9 21.2 18.5 20.8 18.9L18 21.6C15.8 19.4 15.1 12.8 15.8 7.8C18.3 7.4 20.4 6.70001 21.5 5.60001C20.4 7.00001 20.2 14.5 21.2 17.3ZM8 11.7C8 9 7.7 4.2 5.5 2L2.8 4.8C2.4 5.2 2.2 5.80001 2.4 6.40001C2.7 7.40001 3.00001 9.2 3.10001 11.7C3.10001 15.5 2.40001 17.6 2.10001 18C3.20001 16.9 5.3 16.2 7.8 15.8C8 14.2 8 12.7 8 11.7Z" fill="black" />
-																</svg>
+																	<path opacity="0.3" d="M5 8.04999L11.8 11.95V19.85L5 15.85V8.04999Z" fill="black"/>
+																	<path d="M20.1 6.65L12.3 2.15C12 1.95 11.6 1.95 11.3 2.15L3.5 6.65C3.2 6.85 3 7.15 3 7.45V16.45C3 16.75 3.2 17.15 3.5 17.25L11.3 21.75C11.5 21.85 11.6 21.85 11.8 21.85C12 21.85 12.1 21.85 12.3 21.75L20.1 17.25C20.4 17.05 20.6 16.75 20.6 16.45V7.45C20.6 7.15 20.4 6.75 20.1 6.65ZM5 15.85V7.95L11.8 4.05L18.6 7.95L11.8 11.95V19.85L5 15.85Z" fill="black"/>
+																	</svg>
 															</span>
 															<!--end::Svg Icon-->
-															<span class="fs-5 fw-bold text-gray-800 mb-0">Projects</span>
-															<span class="fs-7 text-gray-400">Pending Tasks</span>
+															<span class="fs-5 fw-bold text-gray-800 mb-0">Products</span>
+															<span class="fs-7 text-gray-400">eCommerce</span>
 														</a>
 													</div>
 													<!--end:Item-->
 													<!--begin:Item-->
 													<div class="col-6">
-														<a href="?page=apps/projects/users" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
+														<a href="{{route('admin.customers.list')}}" class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
 															<!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
 															<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
 																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -73,13 +74,13 @@
 															</span>
 															<!--end::Svg Icon-->
 															<span class="fs-5 fw-bold text-gray-800 mb-0">Customers</span>
-															<span class="fs-7 text-gray-400">Latest cases</span>
+															<span class="fs-7 text-gray-400">eCommerce</span>
 														</a>
 													</div>
 													<!--end:Item-->
 												</div>
 												<!--end:Nav-->
-												<!--begin::View more-->
+												{{-- <!--begin::View more-->
 												<div class="py-2 text-center border-top">
 													<a href="?page=pages/profile/activity" class="btn btn-color-gray-600 btn-active-color-primary">View All
 													<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
@@ -91,7 +92,7 @@
 													</span>
 													<!--end::Svg Icon--></a>
 												</div>
-												<!--end::View more-->
+												<!--end::View more--> --}}
 											</div>
 											<!--end::Menu-->
 											

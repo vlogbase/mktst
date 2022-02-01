@@ -86,8 +86,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('campaigns')->name('campaigns.')->group(function () {
             //Coupons
             Route::prefix('coupons')->name('coupons.')->group(function () {
-                Route::get('/list', [CampaignController::class, 'coupon_list'])->name('list');
-                Route::get('/detail/{id}', [CampaignController::class, 'coupon_detail'])->name('edit');
+                Route::get('/', [CampaignController::class, 'coupon_list'])->name('list');
+                Route::get('/{id}', [CampaignController::class, 'coupon_detail'])->name('edit');
                 Route::get('/add', [CampaignController::class, 'coupon_add'])->name('add');
             });
         });

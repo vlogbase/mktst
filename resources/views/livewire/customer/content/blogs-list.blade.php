@@ -15,7 +15,7 @@
                             <li class="text-secondary"><i class="ti-calendar"></i> {{$item->humanTime()}}</li>
                             
                         </ul>
-                        <p>{{substr($item->text, 0, 150).'...'}}</p>
+                        <p>{!!substr($item->text, 0, 150).'...'!!}</p>
                     </div>
                     <a href="{{route('blogs.detail',$item->slug)}}" class="mt-3 btn btn-dark ">Read More</a>
                 </div>

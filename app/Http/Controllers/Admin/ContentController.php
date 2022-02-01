@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\JobResume;
 use App\Models\Message;
+use App\Models\News;
 use App\Models\Newsletter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,7 +28,7 @@ class ContentController extends Controller
 
     public function blog_edit($id)
     {
-
+        Blog::findOrFail($id);
         return view('admin.contents.contents.blogs.blog_detail', compact('id'));
     }
 
@@ -42,6 +44,7 @@ class ContentController extends Controller
 
     public function news_edit($id)
     {
+        News::findOrFail($id);
         return view('admin.contents.contents.news.news_detail', compact('id'));
     }
 
@@ -110,7 +113,7 @@ class ContentController extends Controller
 
     public function message_detail($id)
     {
-        $item = Message::find($id);
+        $item = Message::findOrFail($id);
         $item->update([
             'status' => 1,
         ]);
@@ -160,7 +163,7 @@ class ContentController extends Controller
 
     public function jobresume_delete(Request $request, $id)
     {
-        JobResume::find($id)->delete();
+        JobResume::findOrFail($id)->delete();
         if ($request->ajax()) {
             return true;
         }
@@ -168,14 +171,14 @@ class ContentController extends Controller
 
     public function jobresume_detail($id)
     {
-        $item = JobResume::find($id);
+        $item = JobResume::findOrFail($id);
 
         return view('admin.contents.other.jobresume.jobresume_detail', compact('item'));
     }
 
     public function jobresume_download($id)
     {
-        $item = JobResume::find($id);
+        $item = JobResume::findOrFail($id);
         $filepath = $item->resume_path;
         return Response()->download($filepath);
     }
@@ -214,7 +217,7 @@ class ContentController extends Controller
 
     public function newsletter_delete(Request $request, $id)
     {
-        Newsletter::find($id)->delete();
+        Newsletter::findOrFail($id)->delete();
         if ($request->ajax()) {
             return true;
         }

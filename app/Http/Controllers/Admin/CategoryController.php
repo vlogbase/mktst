@@ -76,6 +76,7 @@ class CategoryController extends Controller
 
     public function category_detail($id)
     {
+        Category::findOrFail($id);
         return view('admin.categories.category_detail', compact('id'));
     }
 

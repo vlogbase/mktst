@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Http\Middleware\MaintenanceControl;
 use App\Models\Category;
+use App\Models\Message;
+use App\Models\Order;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
@@ -36,7 +38,16 @@ class AppServiceProvider extends ServiceProvider
                     ->get(),
             ];
 
-
         View::share('customerpagedata', $customerpagedata);
+
+        $notifications =
+            [
+                'new_orders' => Order::where('status', 'New Order')
+                    ->get(),
+                'new_messages' => Message::where('status', 0)
+                    ->get(),
+            ];
+
+        View::share('notifications', $notifications);
     }
 }
