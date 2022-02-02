@@ -24,6 +24,6 @@ trait AddressHelper
 
     protected function getSelectedAddressDetail($id)
     {
-        return Http::get('https://api.getAddress.io/get/' . $this->company_select . '?api-key=' . config('app.get_address_api_key'))->object();
+        return Http::get('https://api.getAddress.io/get/' . $id . '?api-key=' . config('app.get_address_api_key'))->object();
     }
 }

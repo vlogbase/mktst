@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Http;
 class AuthController extends ApiController
 {
     use AddressHelper;
+
     public function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -122,7 +123,7 @@ class AuthController extends ApiController
             'mobile' => $request->mobile,
             'user_id' => $user->id,
             'address_id' => $address->id,
-            'business_type' => $request->business_type,
+            'business_type' => $request->business_type
         ]);
 
         UserOffice::create([
