@@ -17,7 +17,7 @@ class CouponFactory extends Factory
         return [
             'code' => Str::random(7),
             'type' => $this->faker->randomElement(['price', 'percentage']),
-            'discount' => $this->faker->randomFloat(2, 1, 100),
+            'discount' => $this->faker->randomElement([10, 15, 20]),
         ];
     }
 }

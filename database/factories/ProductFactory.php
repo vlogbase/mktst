@@ -20,7 +20,7 @@ class ProductFactory extends Factory
             'sku' => 'sku-' . $this->faker->randomFloat(2, 1, 100000),
             'unit_price' => $this->faker->randomFloat(2, 1, 100),
             'stock' => $this->faker->randomFloat(2, 1, 100),
-            'per_unit' => $this->faker->randomFloat(1, 1, 10),
+            'per_unit' => $this->faker->randomElement([1, 2, 3]),
         ];
     }
 }
