@@ -1,6 +1,6 @@
 @extends('admin.layouts.templates.panel')
 @section('title','Dashboard')
-@section('sub-title','sdsad')
+@section('sub-title','')
 @section('content')
 <!--begin::Summary-->
 <div class="row gy-5 g-xl-8">
