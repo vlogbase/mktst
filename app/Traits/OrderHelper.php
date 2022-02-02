@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\AdminAlert;
 use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\OrderBilling;
@@ -12,6 +13,7 @@ use App\Models\PointSystem;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\UserOffice;
+use App\Notifications\NewOrderNotification;
 use App\Notifications\OrderReceived;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -143,6 +145,18 @@ trait OrderHelper
         ];
 
         $user->notify(new OrderReceived($registeredUser));
+
+        $adminAlerts = AdminAlert::where('order_alert', 1)->get();
+        foreach ($adminAlerts as $adminalert) {
+            $admin = $adminalert->admin;
+            $registeredUser = [
+                'userName' => $admin->name,
+                'orderCode' => $ordercode,
+                'orderOwner' => $user->name,
+            ];
+
+            $admin->notify(new NewOrderNotification($registeredUser));
+        }
     }
 
     protected function createPayment($ordercode, $user, $price, $type)
