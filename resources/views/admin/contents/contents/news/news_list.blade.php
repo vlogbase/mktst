@@ -9,7 +9,7 @@
                         <!--end::Heading-->
                         <!--begin::Actions-->
                         <div class="d-flex flex-wrap my-2">
-                            <a href="{{route('admin.contents.news.add')}}" class="btn btn-primary btn-sm" >New News</a>
+                            <a href="{{route('admin.contents.news.add')}}" class="btn btn-primary btn-sm" >Add News</a>
                         </div>
                         <!--end::Actions-->
                     </div>

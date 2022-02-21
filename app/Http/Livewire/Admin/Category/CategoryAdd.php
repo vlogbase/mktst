@@ -18,6 +18,7 @@ class CategoryAdd extends Component
     public function mount()
     {
         $this->categories = Category::all();
+        $this->parent = NULL;
     }
 
     public function submit()
@@ -37,7 +38,7 @@ class CategoryAdd extends Component
             'name' => $this->name,
             'slug' => Str::slug($this->name),
             'image' => $background,
-            'category_id' => $this->parent
+            'category_id' => $this->parent == 'NULL' ? NULL : $this->parent
         ]);
         return redirect()->route('admin.categories.detail', $item->id);
     }

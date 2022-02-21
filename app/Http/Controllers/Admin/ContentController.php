@@ -39,7 +39,7 @@ class ContentController extends Controller
 
     public function news_add()
     {
-        return view('admin.contents.contents.news.news.add');
+        return view('admin.contents.contents.news.news_add');
     }
 
     public function news_edit($id)

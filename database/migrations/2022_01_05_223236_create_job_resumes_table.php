@@ -20,7 +20,7 @@ class CreateJobResumesTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('department')->default('other');
-            $table->string('message')->nullable();
+            $table->text('message')->nullable();
             $table->string('resume_path')->nullable();
             $table->timestamps();
         });

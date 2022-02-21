@@ -6,7 +6,7 @@
          <!--begin::Input group-->
          <div class="row mb-6">
              <!--begin::Label-->
-             <label class="col-lg-4 col-form-label required fw-bold fs-6">Image</label>
+             <label class="col-lg-4 col-form-label fw-bold fs-6">Image</label>
              
              <!--end::Label-->
              <!--begin::Col-->
@@ -48,7 +48,7 @@
             <div class="col-lg-8" wire:ignore>
     
                 <select class="form-select form-select-solid" id="select2" data-placeholder="Select an option">
-                    <option >Main Category</option>
+                    <option value="NULL">Main Category</option>
                     @foreach($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
