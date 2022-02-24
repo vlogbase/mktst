@@ -6,7 +6,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Resources\Other\AppSliderResource;
 use App\Http\Resources\Shop\ProductResource;
 use App\Models\AppSlider;
+use App\Models\OrderRule;
 use App\Models\Product;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -46,11 +48,20 @@ class HomeController extends ApiController
 
     public function api_info()
     {
+        $status = Setting::where('name', 'maintenance')->first()->status;
+        $order_rule = OrderRule::where('name', 'min_order_cost')->first();
+        if ($order_rule->status) {
+            $order_min_cart_cost = $order_rule->price;
+        } else {
+            $order_min_cart_cost = 0;
+        }
         $data =
             [
                 'version' => '1.0.23',
                 'time' => Carbon::now()->format('Y-m-d H:i:s'),
                 'time-zone' => 'Europe/London',
+                'status' =>  $status ? 'Maintenance' : 'Active',
+                'min_order_cart' => $order_min_cart_cost
             ];
         return $this->successResponse($data);
     }

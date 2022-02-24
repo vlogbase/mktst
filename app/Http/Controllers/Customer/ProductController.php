@@ -18,14 +18,14 @@ class ProductController extends Controller
 
     public function categoryProducts($slug)
     {
-        $categoryCurrent = Category::where('slug', $slug)->first();
+        $categoryCurrent = Category::where('slug', $slug)->firstOrFail();
         $categories = $categoryCurrent->childrenCategories;
         return view('customer.product.list', compact('categoryCurrent', 'categories'));
     }
 
     public function product_detail($slug)
     {
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->firstOrFail();
         foreach ($product->categories as $category) {
             $related = Category::find($category->id)->products->except($product->id)->take(12);
         }
