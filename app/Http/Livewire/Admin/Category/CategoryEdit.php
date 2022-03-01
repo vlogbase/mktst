@@ -17,6 +17,7 @@ class CategoryEdit extends Component
     public $itemid;
     public $item;
     public $nowImage;
+    public $slug;
 
     public function mount($itemid)
     {
@@ -29,8 +30,10 @@ class CategoryEdit extends Component
 
     public function submit()
     {
+        $this->slug = Str::slug($this->name);
         $data =  $this->validate([
             'name' => 'required|min:2|max:50|unique:categories,name,' . $this->item->id,
+            'slug' => 'required|unique:categories,slug,' . $this->item->id,
             'image' => 'max:3024',
         ]);
 
@@ -45,7 +48,7 @@ class CategoryEdit extends Component
         $this->item->update([
             'name' => $this->name,
             'slug' => Str::slug($this->name),
-            'category_id' => $this->parent
+            'category_id' => $this->parent == 'NULL' ? NULL : $this->parent
         ]);
 
         $this->emit('succesAlert', 'Updated!');

@@ -34,6 +34,7 @@
             <div class="col-lg-8 fv-row">
                 <input type="text"  wire:model="name" class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror" />
                 @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <!--end::Col-->
         </div>

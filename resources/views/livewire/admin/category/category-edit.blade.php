@@ -38,6 +38,7 @@
             <div class="col-lg-8 fv-row">
                 <input type="text"  wire:model="name" class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror" />
                 @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+                @error('slug') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <!--end::Col-->
         </div>
@@ -52,7 +53,7 @@
             <div class="col-lg-8" wire:ignore>
     
                 <select class="form-select form-select-solid" id="select2" data-placeholder="Select an option">
-                    <option >Main Category</option>
+                    <option value="NULL">Main Category</option>
                     @foreach($categories as $category)
                     <option {{$parent == $category->id ? ' selected="selected"' : ''}} value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach

@@ -27,11 +27,11 @@
                 <!--begin::Col-->
                 <div class="col-lg-8">
                     <select class="form-select form-select-solid" wire:model="status" aria-label="Select example">
-                        <option {{$order->status == 'New Order' ? 'selected' : ''}} value="New Order">New Order</option>
-                        <option {{$order->status == 'Ready Order' ? 'selected' : ''}} value="Ready Order">Ready Order</option>
-                        <option {{$order->status == 'Shipping Order' ? 'selected' : ''}} value="Shipping Order">Shipping Order</option>
-                        <option {{$order->status == 'Completed Order' ? 'selected' : ''}} value="Completed Order">Completed Order</option>
-                        <option {{$order->status == 'Canceled Order' ? 'selected' : ''}} value="Canceled Order">Canceled Order</option>
+                        <option  value="New Order">New Order</option>
+                        <option  value="Ready Order">Ready Order</option>
+                        <option  value="Shipping Order">Shipping Order</option>
+                        <option  value="Completed Order">Completed Order</option>
+                        <option  value="Canceled Order">Canceled Order</option>
                     </select>
                 </div>
                 <!--end::Col-->
@@ -46,8 +46,8 @@
                 <!--begin::Col-->
                 <div class="col-lg-8">
                     <select class="form-select form-select-solid" wire:model="pay_status" aria-label="Select example">
-                        <option {{$order->status == 'WAIT' ? 'selected' : ''}} value="WAIT">WAIT</option>
-                        <option {{$order->status == 'PAID' ? 'selected' : ''}} value="PAID">PAID</option>
+                        <option  value="WAIT">WAIT</option>
+                        <option  value="PAID">PAID</option>
                        
                     </select>
                 </div>

@@ -6,8 +6,10 @@
         <div class="row mb-6">
             <!--begin::Label-->
             <p>
+                @if($earn_coefficient != "" && $spend_coefficient != "")
                 <small class="col-lg-4 col-form-label">Customer Earn for every <strong>£100</strong> equals to <strong>{{$earn_coefficient * 100}} Point</strong></small><br>
                 <small class="col-lg-4 col-form-label">Customer Spend with every <strong>100 Point</strong> equals to <strong>£{{100 * $spend_coefficient}}</strong></small>
+                @endif
             </p>
         </div>
         <!--begin::Input group-->

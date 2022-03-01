@@ -14,6 +14,7 @@ class CategoryAdd extends Component
     public $image;
     public $parent = '';
     public $categories;
+    public $slug;
 
     public function mount()
     {
@@ -23,8 +24,10 @@ class CategoryAdd extends Component
 
     public function submit()
     {
+        $this->slug = Str::slug($this->name);
         $data =  $this->validate([
             'name' => 'required|min:2|max:50|unique:categories,name',
+            'slug' => 'required|unique:categories,slug',
             'image' => 'max:3024',
         ]);
 

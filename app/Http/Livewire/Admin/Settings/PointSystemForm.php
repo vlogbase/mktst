@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class PointSystemForm extends Component
 {
-    public $price;
-    public $campaign;
-    public $campaign_price;
+    public $status;
+    public $spend_coefficient;
+    public $earn_coefficient;
     public PointSystem $point_system;
 
     public function mount()

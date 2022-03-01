@@ -172,7 +172,6 @@
             <div class="col-lg-8" wire:ignore>
     
                 <select class="form-select form-select-solid" id="select22" multiple  data-placeholder="Select an option">
-                    <option >Category Select</option>
                     @foreach($categories as $category)
                     <option {{collect($categories_select)->contains($category->id)  ? 'selected' : ''}}  value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
