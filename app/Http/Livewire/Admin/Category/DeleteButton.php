@@ -19,10 +19,15 @@ class DeleteButton extends Component
     public function eventOkay($postId)
     {
         $category = Category::findOrFail($postId);
-        $category->products()->detach();
-        $category->delete();
-        $this->emit('succesAlert', 'Deleted!');
-        return redirect()->route('admin.categories.list');
+
+        if ($category->childrenCategories->count() > 0) {
+            $this->emit('errorAlert', 'Category has ' . $category->childrenCategories->count() . ' childs!');
+        } else {
+            $category->products()->detach();
+            $category->delete();
+            $this->emit('succesAlert', 'Deleted!');
+            return redirect()->route('admin.categories.list');
+        }
     }
     public function render()
     {

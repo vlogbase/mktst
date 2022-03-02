@@ -15,16 +15,16 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = WebSlider::latest()->get();
-        $featured = Product::whereHas('productdetail', function ($q) {
+        $featured = Product::where('status', 1)->whereHas('productdetail', function ($q) {
             $q->where('featured', '=', '1');
         })->get();
-        $best_seller = Product::whereHas('productdetail', function ($q) {
+        $best_seller = Product::where('status', 1)->whereHas('productdetail', function ($q) {
             $q->where('best_seller', '=', '1');
         })->get();
-        $new_arrival = Product::whereHas('productdetail', function ($q) {
+        $new_arrival = Product::where('status', 1)->whereHas('productdetail', function ($q) {
             $q->where('new_arrival', '=', '1');
         })->get();
-        $special_offer = Product::whereHas('productdetail', function ($q) {
+        $special_offer = Product::where('status', 1)->whereHas('productdetail', function ($q) {
             $q->where('special_offer', '=', '1');
         })->get();
 

@@ -21,8 +21,6 @@ class BrandList extends Component
     public function updated($field)
     {
         if ($field == 'search') {
-
-
             $this->resetPage();
         }
     }
@@ -49,6 +47,8 @@ class BrandList extends Component
     {
         $this->resetPage();
     }
+
+
 
     public function render()
     {
