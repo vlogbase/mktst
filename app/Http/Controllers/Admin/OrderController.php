@@ -49,7 +49,7 @@ class OrderController extends Controller
                 })
                 ->addColumn('pay_status', function (Order $order) {
 
-                    if ($order->pay_status != 'wait') {
+                    if ($order->pay_status != 'WAIT') {
                         $spn = '<span class="text-success"><i class="far fa-check-circle text-success"></i> PAID</span>';
                     } else {
                         $spn = '<span class="text-danger"><i class="far fa-times-circle text-danger"></i> WAIT</span>';
