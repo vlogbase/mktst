@@ -18,11 +18,11 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Order Code</th>
+            <th>Company Name</th>
+            <th>Code</th>
             <th>Status</th>
             <th>Pay Type</th>
-            <th>Pay Status</th>
-            <th>Company</th>
+            <th>Pay</th>
             <th>Items</th>
             <th>Purchased</th>
             <th>Created Date</th>
@@ -58,17 +58,18 @@
     $(function () {
       
       table.DataTable({
-        order: [[ 0, "desc" ]], 
+        order: [[ 0, "desc" ]],
+ 
           processing: true,
           serverSide: true,
           ajax: "{{ route('admin.orders.list') }}",
           columns: [
               {data: 'id', name: 'id'},
+              {data: 'company', name: 'company'},
               {data: 'ordercode', name: 'ordercode'},
               {data: 'status', name: 'status'},
               {data: 'pay_type', name: 'pay_type'},
               {data: 'pay_status', name: 'pay_status'},
-              {data: 'company', name: 'company'},
               {data: 'items', name: 'items'},
               {data: 'total_price', name: 'total_price'},
               {data: 'created_at_visual', name: 'created_at'},

@@ -61,10 +61,8 @@ class OrderController extends Controller
                     return Carbon::parse($order->created_at)->diffForHumans();
                 })
                 ->addColumn('company', function (Order $order) {
-                    $btn = '<a href="/admin/customers/' . $order->user_id . '" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                    ' . $order->user->name . '
-                    </a>';
-                    return $btn;
+
+                    return $order->user->name;
                 })
                 ->addColumn('items', function (Order $order) {
                     return $order->orderproducts->count();
