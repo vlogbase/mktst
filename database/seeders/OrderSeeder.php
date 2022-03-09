@@ -49,7 +49,7 @@ class OrderSeeder extends Seeder
                     'discount_price' => 0,
                     'total_price' => $products->sum('unit_price'),
                     'pay_type' => 'Online Payment',
-                    'pay_status' => 'paid',
+                    'pay_status' => 'PAID',
                     'user_id' => $user->id,
                     'notes' => $faker->text(1000),
 

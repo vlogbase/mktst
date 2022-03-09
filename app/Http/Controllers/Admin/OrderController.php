@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function order_list(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::latest()->get();
+            $data = Order::where('status', '!=', 'Waiting')->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function (Order $order) {
@@ -49,7 +49,7 @@ class OrderController extends Controller
                 })
                 ->addColumn('pay_status', function (Order $order) {
 
-                    if ($order->pay_status != 'WAIT') {
+                    if ($order->pay_status == 'PAID') {
                         $spn = '<span class="text-success"><i class="far fa-check-circle text-success"></i> PAID</span>';
                     } else {
                         $spn = '<span class="text-danger"><i class="far fa-times-circle text-danger"></i> WAIT</span>';

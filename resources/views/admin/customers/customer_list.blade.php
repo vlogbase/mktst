@@ -18,7 +18,7 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Order Code</th>
+            <th>Verified</th>
             <th>Company</th>
             <th>Type</th>
             <th>Email</th>
@@ -58,6 +58,7 @@
     $(function () {
       
       table.DataTable({
+        order: [[ 0, "desc" ]], 
           processing: true,
           serverSide: true,
           ajax: "{{ route('admin.customers.list') }}",

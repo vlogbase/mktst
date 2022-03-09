@@ -54,7 +54,18 @@
                 <!--end::Col-->
             </div>
             <!--end::Row-->
-
+                <!--begin::Row-->
+                <div class="row mb-7">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 fw-bold text-muted">Payment Method</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+                        <span class="fw-bold text-gray-800 fs-6">{{$order->pay_type}}</span>
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Row-->
             <!--begin::Row-->
             <div class="row mb-7">
                 <!--begin::Label-->

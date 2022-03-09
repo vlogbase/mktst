@@ -70,6 +70,7 @@
     $(function () {
       
       table.DataTable({
+        order: [[ 0, "desc" ]], 
             columnDefs: [
             {"className": "align-middle", "targets": "_all"}
             ],

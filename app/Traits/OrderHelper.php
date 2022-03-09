@@ -30,13 +30,13 @@ trait OrderHelper
 
         if ($payid == 1) {
             $orderStatus = 'Waiting';
-            $paymentStatus = 'Wait';
+            $paymentStatus = 'WAIT';
         } else if ($payid == 6) {
             $orderStatus = 'New Order';
-            $paymentStatus = 'Paid';
+            $paymentStatus = 'PAID';
         } else {
             $orderStatus = 'New Order';
-            $paymentStatus = 'Not Paid';
+            $paymentStatus = 'WAIT';
         }
 
         $order = Order::create([

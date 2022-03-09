@@ -132,6 +132,7 @@ class AddressListForm extends Component
 
         $this->emit('succesAlert', 'Address Added');
         $this->addresses = Auth::user()->useroffices;
+        $this->edit = false;
     }
 
     public function deleteAddress($id)
@@ -149,6 +150,7 @@ class AddressListForm extends Component
             $this->emit('succesAlert', 'Address Deleted');
             $this->addresses = Auth::user()->useroffices;
         }
+        $this->edit = false;
     }
 
     public function defaultAddress($id)
@@ -166,6 +168,7 @@ class AddressListForm extends Component
         ]);
         $this->emit('succesAlert', 'Default Shipping Changed');
         $this->addresses = Auth::user()->useroffices;
+        $this->edit = false;
     }
 
     public function render()

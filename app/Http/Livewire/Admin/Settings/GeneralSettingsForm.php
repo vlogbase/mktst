@@ -25,7 +25,7 @@ class GeneralSettingsForm extends Component
             $post->save();
         }
 
-        $this->emit('succesAlert', 'Payment Methods updated!');
+        $this->emit('succesAlert', 'Settings updated!');
     }
     public function render()
     {

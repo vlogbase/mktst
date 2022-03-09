@@ -55,6 +55,7 @@
     $(function () {
       
       table.DataTable({
+        order: [[ 0, "desc" ]], 
           processing: true,
           serverSide: true,
           ajax: "{{ route('admin.contents.other.messages.list') }}",
