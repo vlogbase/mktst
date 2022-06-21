@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Shop;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Auth;
 
 class ProductResource extends JsonResource
 {
@@ -23,6 +24,7 @@ class ProductResource extends JsonResource
             'unit_price' => $this->unit_price,
             'discount' => $this->discount,
             'pack' => $this->productdetail->pack,
+            'is_favorited' => Auth::guard('sanctum')->check() ? $this->isFavoritedFromUser(Auth::guard('sanctum')->user()->id) : false,
             'image' => Config('app.url') . $this->getCoverImage(),
         ];
     }

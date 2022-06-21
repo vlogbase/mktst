@@ -69,7 +69,7 @@ class UserController extends ApiController
             ->limit(20)
             ->get();
         $favorites  = $favorites_raw->map(function ($item, $key) {
-            return new ShopProductResource(Product::find($item->id));
+            return new ShopProductResource(Product::find($item->product_id));
         });
 
         return $this->successResponse($favorites);

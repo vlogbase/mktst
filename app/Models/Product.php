@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -66,5 +67,19 @@ class Product extends Model
     {
 
         return Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+    public function isFavoritedFromUser($userId)
+    {
+        $toggle = DB::table('product_user')->where('product_id', $this->id)->where('user_id', $userId)->first();
+        // $toggle = true;
+
+        if ($toggle) {
+            $is_favorited = true;
+        } else {
+            $is_favorited = false;
+        }
+
+        return $is_favorited;
     }
 }
