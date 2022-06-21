@@ -23,6 +23,8 @@ class UserFactory extends Factory
             'vat' => Str::random(5),
             'registeration' => Str::random(5),
             'code' => Str::random(10),
+            'verify_token' => Str::random(64)
+
         ];
     }
 

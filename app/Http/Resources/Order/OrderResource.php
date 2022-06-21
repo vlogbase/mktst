@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Order;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class OrderResource extends JsonResource
 {
@@ -25,6 +26,7 @@ class OrderResource extends JsonResource
             'pay_status' => $this->pay_status,
             'status' => $this->status,
             'notes' => $this->notes,
+            'date' => Carbon::parse($this->created_at)->diffForHumans(),
             'products' => OrderProductResource::collection($this->orderproducts)
         ];
     }
