@@ -54,7 +54,18 @@
         <link rel="stylesheet" href="/customer_assets/css/responsive.css">
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="//code.jivosite.com/widget/R7EojPvkQm" async></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLD999SBGV"></script>
+            <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-ZLD999SBGV');
+            </script>
         @livewireStyles
+
         @yield('css')
 	</head>
 	<!--end::Head-->
