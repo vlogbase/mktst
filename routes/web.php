@@ -8,6 +8,7 @@ use App\Http\Controllers\Customer\OrderController;
 use App\Http\Controllers\Customer\OtherController;
 use App\Http\Controllers\Customer\PaymentController;
 use App\Http\Controllers\Customer\ProductController;
+use App\Http\Controllers\Customer\SitemapController;
 use App\Http\Controllers\Customer\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,6 +75,7 @@ Route::get('/payment/success', [PaymentController::class, 'success_payment'])->n
 Route::get('/payment/failure', [PaymentController::class, 'failure_payment'])->name('api_failure_payment');
 //Newsletter Quit Link Need
 
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 
 require __DIR__ . '/admin.php';
