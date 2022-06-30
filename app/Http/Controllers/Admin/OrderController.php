@@ -62,7 +62,7 @@ class OrderController extends Controller
                 })
                 ->addColumn('company', function (Order $order) {
 
-                    return $order->user->name;
+                    return $order->user ? $order->user->name : 'Deleted User';
                 })
                 ->addColumn('items', function (Order $order) {
                     return $order->orderproducts->count();

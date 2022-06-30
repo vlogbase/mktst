@@ -11,6 +11,7 @@ use App\Http\Resources\User\OrderResource;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends ApiController
@@ -91,5 +92,13 @@ class UserController extends ApiController
         }
 
         return $this->successResponse(null, $message);
+    }
+
+    public function user_delete(Request $request)
+    {
+        $request->user()->tokens()->delete();
+        $request->user()->delete();
+        
+        return $this->successResponse(null, 'User Deleted');
     }
 }

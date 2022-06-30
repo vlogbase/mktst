@@ -50,6 +50,9 @@
                         <div class="card mt-5">
                                 @livewire('customer.user.address-form')
                         </div>
+                        <div class="card mt-5">
+                                @livewire('customer.user.delete-user')
+                        </div>
 					</div>
 				</div>
 			</div>

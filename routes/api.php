@@ -48,11 +48,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user/favorites', [UserController::class, 'favorites'])->name('api_user_favorites');
     Route::get('/user/favorites/toggle/{id}', [UserController::class, 'toggle_favorites'])->name('api_user_toggle_favorites');
     Route::get('/products/{id}/is-favorited', [ShopController::class, 'product_is_favorited'])->name('api_product_is_favorited');
+    Route::post('/delete-account', [UserController::class, 'user_delete'])->name('api_user_delete_request');
 
     //Order
     Route::post('/checkout-price', [OrderController::class, 'checkout'])->name('api_checkout');
     Route::post('/coupon-apply', [OrderController::class, 'coupon_apply'])->name('api_coupon_apply');
     Route::post('/order-request', [OrderController::class, 'order_request'])->name('api_order_request');
+    
 });
 
 //PaymentResults
