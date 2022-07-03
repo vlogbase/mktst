@@ -99,12 +99,12 @@ class OrderController extends ApiController
                             'quantity' => $product->calcStock(),
                         ];
                         $new_items->push($item_new);
-                        $need_update_products->push($product->name . '-' . $product->sku);
+                        $need_update_products->push($product->id);
                     }
                 } else {
                     //Delete_products
                     $updated = true;
-                    $need_delete_products->push($product->name . '-' . $product->sku);
+                    $need_delete_products->push($product->id);
                 }
             }
         }
