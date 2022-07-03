@@ -93,6 +93,7 @@ class OrderController extends ApiController
                         $new_items->push($item_new);
                     } else {
                         //Updated_products
+                        $fine_products->push($product);
                         $updated = true;
                         $item_new = [
                             'id' => $product->id,
