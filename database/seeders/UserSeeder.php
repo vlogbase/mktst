@@ -40,12 +40,12 @@ class UserSeeder extends Seeder
             )
             ->create();
 
-        $products = Product::all();
+        /* $products = Product::all();
         User::all()->each(function ($user) use ($products) {
             $user->products()->attach(
                 $products->random(rand(1, 10))->pluck('id')->toArray()
             );
-        });
+        }); */
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

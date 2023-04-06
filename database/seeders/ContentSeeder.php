@@ -21,19 +21,19 @@ class ContentSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Blog::truncate();
-        News::truncate();
-        Gallery::truncate();
+        //Blog::truncate();
+        //News::truncate();
+        //Gallery::truncate();
         WebSlider::truncate();
         AppSlider::truncate();
-        Message::truncate();
+        //Message::truncate();
 
-        Gallery::factory(20)->create();
-        Blog::factory(20)->create();
-        News::factory(20)->create();
+        //Gallery::factory(20)->create();
+        //Blog::factory(20)->create();
+        //News::factory(20)->create();
         WebSlider::factory(3)->create();
         AppSlider::factory(3)->create();
-        Message::factory(20)->create();
+        //Message::factory(20)->create();
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

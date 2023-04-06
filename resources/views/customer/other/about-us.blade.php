@@ -32,7 +32,7 @@
             <div class="row align-items-center  mb-5">
                 <div class="col-lg-6 order-1 order-lg-1">
                     <div class="about_img scene mb-4 mb-lg-0">
-                        <img src="upload/other/savoyabout1.png" alt="about_img"/>
+                        <img src="upload/other/aboutus1.png" alt="about_img"/>
                     </div>
                 </div>
                 <div class="col-lg-6 order-2 order-lg-2">

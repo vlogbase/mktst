@@ -214,8 +214,30 @@
             </div>
 		</div>
         <div class="row">
-        	<div class="col-12">
-            	<div class="tab-style1">
+        	<div class="col-12 text-center">
+                <div class="row mt-3 ">
+                    @for($i = 0; $i<3;$i++)
+                    <div class="card col-md-3 mx-auto" aria-hidden="true">
+                        <div style="background-color: gray; height:150px;" src="#" class="card-img-top mt-2" alt="..."></div>
+                        <div class="card-body">
+                          <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                          </h5>
+                          <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                          </p>
+                          <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                        </div>
+                    </div>
+                    @endfor
+                   
+                </div>
+                <h5 class="text-muted mt-4">Coming Soon!</h5>
+            	{{-- <div class="tab-style1">
                     <ul class="nav nav-tabs justify-content-center" role="tablist">
                         @if($featured->count() > 0)
                         <li class="nav-item">
@@ -284,7 +306,7 @@
                         </div>
                     </div>
                     @endif
-                </div>
+                </div> --}}
             </div>
         </div> 
     </div>
@@ -330,28 +352,34 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            @foreach($news as $new)
-        	<div class="col-lg-4 col-md-6">
-            	<div class="blog_post blog_style1 box_shadow1">
-                	<div class="blog_img">
-                        <a href="{{route('news.detail',$new->slug)}}">
-                            <img src="{{$new->image}}" alt="{{$new->name}}">
-                        </a>
-                    </div>
-                    <div class="blog_content bg-white">
-                    	<div class="blog_text">
-                            <h5 class="blog_title"><a href="{{route('news.detail',$new->slug)}}">{{$new->name}}</a></h5>
-                            <ul class="list_none blog_meta">
-                                <li class="text-secondary"><i class="ti-calendar"></i> {{$new->humanTime()}}</li>
-                                
-                            </ul>
-                            <p>{{substr($new->text, 0, 150).'...'}}</p>
+            @if (count($news) > 0 )
+                @foreach($news as $new)
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog_post blog_style1 box_shadow1">
+                        <div class="blog_img">
+                            <a href="{{route('news.detail',$new->slug)}}">
+                                <img src="{{$new->image}}" alt="{{$new->name}}">
+                            </a>
                         </div>
-                        <a href="{{route('news.detail',$new->slug)}}" class="mt-3 btn btn-fill-out rounded-0 staggered-animation ">Read More</a>
+                        <div class="blog_content bg-white">
+                            <div class="blog_text">
+                                <h5 class="blog_title"><a href="{{route('news.detail',$new->slug)}}">{{$new->name}}</a></h5>
+                                <ul class="list_none blog_meta">
+                                    <li class="text-secondary"><i class="ti-calendar"></i> {{$new->humanTime()}}</li>
+                                    
+                                </ul>
+                                <p>{{substr($new->text, 0, 150).'...'}}</p>
+                            </div>
+                            <a href="{{route('news.detail',$new->slug)}}" class="mt-3 btn btn-fill-out rounded-0 staggered-animation ">Read More</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @endforeach
+                @endforeach
+            @else
+            <div class="col-lg-12 text-center">
+                <h5 class="text-muted">Coming Soon</h5>
+            </div>     
+            @endif
         </div>
     </div>
 </div>
