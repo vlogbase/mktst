@@ -30,7 +30,7 @@
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5 my-1">
-													<a href="?page=account/settings" class="menu-link px-5">Account Settings</a>
+													{{-- <a href="?page=account/settings" class="menu-link px-5">Account Settings</a> --}}
 												</div>
 												<!--end::Menu item-->
 												<!--begin::Menu item-->
