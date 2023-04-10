@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\JobResume;
 use App\Models\Newsletter;
+use App\Models\OrderRule;
 use App\Models\PaymentMethod;
 use App\Models\PointSystem;
 use App\Models\Setting;
@@ -31,6 +32,14 @@ class OtherSeeder extends Seeder
         JobResume::factory(20)->create();
         PointSystem::factory(1)->create();
         Shipping::factory(1)->create();
+
+        OrderRule::truncate();
+
+        OrderRule::create([
+            'name' => 'min_order_cost',
+            'price' => 100,
+
+        ]);
 
         PaymentMethod::create([
             'name' => 'Online Payment',

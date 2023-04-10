@@ -57,7 +57,7 @@ class HomeController extends ApiController
         }
         $data =
             [
-                'version' => '1.0.23',
+                'version' => '1.0.0',
                 'time' => Carbon::now()->format('Y-m-d H:i:s'),
                 'time-zone' => 'Europe/London',
                 'status' =>  $status ? 'Maintenance' : 'Active',

@@ -29,14 +29,6 @@ class OrderSeeder extends Seeder
         OrderProduct::truncate();
         OrderShipping::truncate();
         OrderBilling::truncate();
-        OrderRule::truncate();
-
-
-        OrderRule::create([
-            'name' => 'min_order_cost',
-            'price' => 100,
-
-        ]);
 
         for ($x = 0; $x < 3; $x++) {
             $users = User::all()->random(5);
