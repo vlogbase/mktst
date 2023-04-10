@@ -17,7 +17,7 @@ class AdminFactory extends Factory
         return [
             'name' => 'Emre Demirel',
             'email' => 'emredemirel4196@gmail.com',
-            'password' => bcrypt('123456789'), // password
+            'password' => bcrypt('Dev.Test.2023'), // password
             'remember_token' => Str::random(10),
         ];
     }
