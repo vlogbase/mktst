@@ -124,7 +124,7 @@ class OrderController extends ApiController
     public function checkout(Request $request)
     {
         //Cart Control
-        if (count($request->items) <= 0) {
+        if (!isset($request->items) || count($request->items) <= 0) {
             return $this->errorResponse('Cart can not be empty', 405);
         }
 
