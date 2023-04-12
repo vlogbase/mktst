@@ -19,7 +19,7 @@ class CampaignSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Coupon::truncate();
 
-        Coupon::factory(20)->create();
+        Coupon::factory(30)->create();
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

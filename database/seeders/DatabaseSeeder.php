@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ContentSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(OtherSeeder::class);
-        //$this->call(OrderSeeder::class);
+        $this->call(OrderSeeder::class);
         $this->call(AdminSeeder::class);
-        //$this->call(CampaignSeeder::class);
+        $this->call(CampaignSeeder::class);
     }
 }
