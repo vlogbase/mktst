@@ -22,14 +22,13 @@ class OtherSeeder extends Seeder
     {
         Newsletter::truncate();
         Setting::truncate();
-        JobResume::truncate();
         PointSystem::truncate();
         Shipping::truncate();
         PaymentMethod::truncate();
 
         Newsletter::factory(20)->create();
         Setting::factory(1)->create();
-        JobResume::factory(20)->create();
+       
         PointSystem::factory(1)->create();
         Shipping::factory(1)->create();
 
