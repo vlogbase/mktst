@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppSlider;
 use App\Models\Blog;
 use App\Models\News;
 use App\Models\Product;
@@ -15,6 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = WebSlider::latest()->get();
+        $sliders_2 = AppSlider::latest()->get();
         $featured = Product::where('status', 1)->whereHas('productdetail', function ($q) {
             $q->where('featured', '=', '1');
         })->get();
@@ -29,6 +31,6 @@ class HomeController extends Controller
         })->get();
 
         $news = News::orderBy('created_at')->take(3)->get();
-        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'news'));
+        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'news','sliders_2'));
     }
 }
