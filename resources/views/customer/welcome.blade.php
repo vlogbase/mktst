@@ -70,7 +70,7 @@
 <div class="d-block d-md-none banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach($sliders2 as $slider)
+            @foreach($sliders_2 as $slider)
             <div class="carousel-item {{$loop->index == 0 ? 'active' : ''}} background_bg" data-img-src="{{$slider->image}}">
                 <div class="banner_slide_content">
                     <div class="container"><!-- STRART CONTAINER -->
