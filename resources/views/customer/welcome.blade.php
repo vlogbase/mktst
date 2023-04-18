@@ -420,26 +420,6 @@
 <!-- START SECTION SINGLE BANNER --> 
 <div class="section bg_light_blue2 pb-md-5  pt-md-5">
 	<div class="container">
-    	<div class="row align-items-center flex-row-reverse pt-5">
-            <div class="col-md-6 offset-md-1">
-            	<div class="medium_divider d-none d-md-block clearfix"></div>
-            	<div class="trand_banner_text text-center text-md-start">
-                    <div class="heading_s1 mb-3">
-                       
-                        <h2>Member of Suffolk Chamber of Commerce</h2>
-                    </div>
-                    <p class="mb-4 leads">We are pleased and excited to be a new member of the Suffolk trade of commerce and look forward to forging, 
-                        and working with local/reginal businesses and building a strong community and business relationships.</p>
-                   
-                </div>
-            	<div class="medium_divider clearfix"></div>
-            </div>
-            <div class="col-md-5">
-                <div class="text-center trading_img">
-                    <img src="upload/other/memberscof.jpg" style="width:350px;" alt="tranding_img"/>
-                </div>
-            </div>
-        </div>
         <div class="row align-items-center flex-row-reverse pt-5">
             <div class="col-md-3">
                 <div class="text-center trading_img">

@@ -85,31 +85,27 @@
             	<div class="col-12 text-center">
                 	<div class="">
                         <div class="row justify-content-center">
-                            <div class="col-md-2 col-6">
+                            <div class="col-md-3 col-6">
                                 <div class="text-center trading_img">
                                     <img src="/upload/other/fairway200.png" alt="tranding_img"/>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-6">
+                            <div class="col-md-3 col-6">
                                 <div class="text-center trading_img">
                                     <img src="/upload/other/lifestylesavoy.png" alt="tranding_img"/>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-6">
+                            <div class="col-md-3 col-6">
                                 <div class="text-center trading_img">
                                     <img src="/upload/other/united200.png" alt="tranding_img"/>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-6">
+                            <div class="col-md-3 col-6">
                                 <div class="text-center trading_img">
                                     <img src="/upload/other/unitas200.png" alt="tranding_img"/>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-6">
-                                <div class="text-center trading_img">
-                                <img src="/upload/other/memberscof200.png" style="width:150px;"  alt="tranding_img"/>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
