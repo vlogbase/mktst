@@ -420,23 +420,14 @@
 <!-- START SECTION SINGLE BANNER --> 
 <div class="section bg_light_blue2 pb-md-5  pt-md-5">
 	<div class="container">
-        <div class="row align-items-center flex-row-reverse pt-5">
-            <div class="col-md-3">
+        <div class="row align-items-center pt-5">
+            <div class="col-md-6">
                 <div class="text-center trading_img">
                     <img src="upload/other/fairway200.png" alt="tranding_img"/>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="text-center trading_img">
-                    <img src="upload/other/lifestylesavoy.png" alt="tranding_img"/>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="text-center trading_img">
-                    <img src="upload/other/united200.png" alt="tranding_img"/>
-                </div>
-            </div>
-            <div class="col-md-3">
+            
+            <div class="col-md-6">
                 <div class="text-center trading_img">
                     <img src="upload/other/unitas200.png" alt="tranding_img"/>
                 </div>
