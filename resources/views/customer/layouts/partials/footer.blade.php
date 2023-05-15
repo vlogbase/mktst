@@ -9,7 +9,7 @@
                         <ul class="contact_info">
                             <li>
                                 <i class="ti-world"></i>
-                                <p>Tanner Brodin Limited T/A Savoy Catering Supplies</p>
+                                <p>Integrated Brand Delivery LTD Savoy Catering Supplies</p>
                             </li>
                             <li>
                                 <i class="ti-location-pin"></i>
