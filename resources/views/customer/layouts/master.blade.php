@@ -79,6 +79,11 @@
 
 <body>
     @yield('loader')
+    @if(config('app.env') == 'local')
+    <div class="alert alert-warning text-center mx-auto" role="alert">
+        Test Mode
+      </div>
+    @endif
     @include('customer.layouts.partials.header')
     @yield('content')
 
