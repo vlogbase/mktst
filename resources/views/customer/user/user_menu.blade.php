@@ -13,6 +13,9 @@
         <a class="nav-link {{request()->routeIs('user.detail') ? 'active' : ''}}" id="account-detail-tab" href="{{route('user.detail')}}"><i class="ti-id-badge"></i>Account details</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link {{request()->routeIs('user.payments') ? 'active' : ''}}" id="account-detail-tab" href="{{route('user.payments')}}"><i class="ti-wallet"></i>Payment Methods</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link {{request()->routeIs('user.favorites') ? 'active' : ''}}" id="account-detail-tab" href="{{route('user.favorites')}}"><i class="ti-star"></i>My Favorites</a>
       </li>
       <li class="nav-item">

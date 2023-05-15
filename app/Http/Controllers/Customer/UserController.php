@@ -32,6 +32,11 @@ class UserController extends Controller
         return view('customer.user.orders');
     }
 
+    public function payments()
+    {
+        return view('customer.user.payments');
+    }
+
     public function orders_detail($id)
     {
         $order = Order::findOrFail($id);

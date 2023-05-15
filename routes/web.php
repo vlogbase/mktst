@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/detail', [UserController::class, 'detail'])->name('detail');
         Route::get('/addresses', [UserController::class, 'addresses'])->name('addresses');
         Route::get('/orders', [UserController::class, 'orders'])->name('orders');
+        Route::get('/payments', [UserController::class, 'payments'])->name('payments');
         Route::get('/orders/{id}', [UserController::class, 'orders_detail'])->name('orders_detail');
         Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
     });
