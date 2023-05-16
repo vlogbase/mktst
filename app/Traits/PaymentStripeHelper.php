@@ -6,6 +6,7 @@ use App\Models\PaymentCard;
 use App\Models\User;
 use Carbon\Carbon;
 use Stripe\Checkout\Session;
+use Stripe\Exception\ApiErrorException;
 
 trait PaymentStripeHelper{
     use StripeHelper;
@@ -57,5 +58,30 @@ trait PaymentStripeHelper{
         PaymentCard::where('id', '!=', $paymentCard->id)
             ->where('user_id', $paymentCard->user_id)
             ->update(['is_default' => 0]);
+    }
+
+    public function deletePaymentMethod(PaymentCard $paymentCard){
+
+        try {
+            $this->deletePaymentMethodFromStripe($paymentCard->stripe_id);
+        } catch (ApiErrorException $e) {
+            // We don't care if the payment method doesn't exist on Stripe's side
+        }
+
+        if ($paymentCard->is_default) {
+            $nextPaymentMethod = PaymentCard::query()
+                ->where('id', '!=', $paymentCard->id)
+                ->where('user_id', $paymentCard->user->id)
+                ->where('is_default', false)
+                ->first();
+
+            if ($nextPaymentMethod) {
+                $this->setDefaultPaymentMethod($nextPaymentMethod);
+            }
+        }
+
+        $paymentCard->delete();
+
+       
     }
 }

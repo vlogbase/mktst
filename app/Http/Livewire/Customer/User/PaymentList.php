@@ -31,6 +31,13 @@ class PaymentList extends Component
         $this->paymentList = $this->user->paymentCards->fresh();
     }
 
+    public function deleteCard($id)
+    {
+        $paymentCard = PaymentCard::where('user_id', $this->user->id)->where('id', $id)->firstOrFail();
+        $this->deletePaymentMethod($paymentCard);
+        $this->paymentList = $this->user->paymentCards->fresh();
+    }
+
     public function render()
     {
         

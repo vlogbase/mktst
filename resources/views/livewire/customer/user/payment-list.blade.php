@@ -15,7 +15,7 @@
                         <button wire:click="defaultCard({{$item->id}})" class="btn btn-primary btn-sm">Default</button>
                     @endif
 
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    <button wire:click="deleteCard({{$item->id}})" class="btn btn-danger btn-sm">Delete</button>
                 </div>
             </div>
         </div>
