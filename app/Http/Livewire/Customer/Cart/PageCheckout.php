@@ -12,6 +12,7 @@ use App\Models\UserDetail;
 use App\Models\UserOffice;
 use App\Traits\CartHelper;
 use App\Traits\OrderHelper;
+use App\Traits\StripeHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -20,6 +21,7 @@ class PageCheckout extends Component
 {
     use CartHelper;
     use OrderHelper;
+    use StripeHelper;
 
     public $cart_price;
     public $vat_price = 0;
@@ -39,10 +41,12 @@ class PageCheckout extends Component
     public $payment_option;
     public $payment_need;
     public $agreement;
+    public $payment_cards;
 
     public $prices;
 
     public $min_cart_cost;
+    public $payment_card_select;
 
     public function mount()
     {
@@ -51,6 +55,7 @@ class PageCheckout extends Component
         $this->officeSelect = $this->offices->where('is_shipping', 1)->first()->id;
         $this->payment_need = floatVal($this->total_price / PointSystem::first()->spend_coefficient);
         $this->min_cart_cost = OrderRule::where('name', 'min_order_cost')->first();
+        $this->payment_option = $this->payments->first()->id;
     }
 
     public function hydrate()
@@ -61,6 +66,7 @@ class PageCheckout extends Component
     public function getData()
     {
         $this->user = Auth::user();
+        $this->payment_cards = $this->user->paymentCards;
         $this->items = \Cart::getContent();
         $this->offices = $this->user->useroffices;
         $this->userdetail = $this->user->userdetail;
@@ -122,7 +128,8 @@ class PageCheckout extends Component
         $data =  $this->validate([
             'payment_option' => 'required|exists:payment_methods,id',
             'officeSelect' => 'required|exists:user_offices,id',
-            'agreement' => 'required'
+            'agreement' => 'required',
+            'payment_option' => $this->payment_option == 1 ? 'required' : '',
         ]);
 
         if ($this->min_cart_cost->status && $this->min_cart_cost->price > $this->cart_price) {
@@ -158,14 +165,17 @@ class PageCheckout extends Component
             }
         }
 
-        $this->orderCreate($ordernum, $this->prices, $this->items, $this->user, $this->officeSelect, $this->payment_option, $this->coupon_code, 'web');
+        $order = $this->orderCreate($ordernum, $this->prices, $this->items, $this->user, $this->officeSelect, $this->payment_option, $this->coupon_code, 'web');
 
         if ($this->payment_option == 1) {
-            $paymentid = $this->createPayment($ordernum, $this->user, $this->prices['final_cost'], 'web');
+            /* $paymentid = $this->createPayment($ordernum, $this->user, $this->prices['final_cost'], 'web');
             if ($paymentid == 'ERROR') {
                 return $this->emit('errorAlert', 'Payment Provider Error');
-            }
-            return redirect($paymentid);
+            } */
+
+            $redirectUrl = $this->paymentIntentWithSession($this->user,$order);
+
+            return redirect($redirectUrl);
         } else {
             //Completed Process
             //After Order

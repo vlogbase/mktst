@@ -90,7 +90,7 @@ trait OrderHelper
             'weight' => $weight
         ]);
 
-        return $ordercode;
+        return $order;
     }
 
     protected function pointControl($price, $user)

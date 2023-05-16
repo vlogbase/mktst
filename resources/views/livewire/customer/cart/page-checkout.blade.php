@@ -148,6 +148,16 @@
                         </div>
                         @endforeach
                     </div>
+                    @if($payment_option == 1)
+                    <div class="">
+                        <select class="form-select" wire:model="payment_card_select">
+                            @foreach ($payment_cards as $card)
+                            <option {{$card->is_default ? 'selected' : ''}} value="{{$card->id}}">{{strtoupper($card->brand)}} **** {{$card->last4}}</option>
+                            @endforeach
+                            <option value="">Pay with New Payment Method</option>
+                        </select>
+                    </div>
+                    @endif
                     @if($payment_option == 6)
                     <div class="mt-1">
                         <p>Your Point: {{$user->point}} - Need Point: {{$payment_need}}</p>

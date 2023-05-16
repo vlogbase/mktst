@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Order;
 use App\Models\User;
 use Stripe\Checkout\Session;
 use Stripe\Customer;
@@ -63,5 +64,33 @@ trait StripeHelper{
                 'default_payment_method' => $paymentMethodId,
             ],
         ]);
+    }
+
+    public function paymentIntentWithSession(User $user,Order $order)
+    {
+        $stripe_id = $this->getOrCreateCustomerStripeId($user);
+        $session = Session::create([
+            'customer' => $stripe_id,
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'gbp',
+                    'product_data' => [
+                        'name' => 'ORD Num: '.$order->ordercode,
+                    ],
+                    'unit_amount' => intval(100 * $order->total_price),
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'payment_method_types' => ['card'],
+            'success_url' => config('app.url').'/stripe-callback?session_id={CHECKOUT_SESSION_ID}&result=success&type=payment&redirect_url='.route('user.payments'),
+            'cancel_url' => config('app.url').'/stripe-callback?result=cancel$type=payment&redirect_url=/checkout',
+            'payment_intent_data' => [
+                'capture_method' => 'automatic',
+                'setup_future_usage' => 'off_session',
+            ],
+        ]);
+
+        return $session->url;
     }
 }
