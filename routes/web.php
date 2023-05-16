@@ -44,9 +44,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/addresses', [UserController::class, 'addresses'])->name('addresses');
         Route::get('/orders', [UserController::class, 'orders'])->name('orders');
         Route::get('/payments', [UserController::class, 'payments'])->name('payments');
+        Route::get('/payments/add', [UserController::class, 'payments_add'])->name('payments_add');
         Route::get('/orders/{id}', [UserController::class, 'orders_detail'])->name('orders_detail');
         Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
     });
+
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
     Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout');
@@ -78,5 +80,10 @@ Route::get('/payment/failure', [PaymentController::class, 'failure_payment'])->n
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
+
+
+
+//NEW PAYMENT
+Route::get('/stripe-callback', [PaymentController::class, 'stripe_callback'])->name('stripe_callback');
 
 require __DIR__ . '/admin.php';

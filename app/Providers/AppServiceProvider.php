@@ -6,6 +6,7 @@ use App\Http\Middleware\MaintenanceControl;
 use App\Models\Category;
 use App\Models\Message;
 use App\Models\Order;
+use Stripe\Stripe;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Livewire\Livewire;
@@ -29,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Stripe::setApiKey(config('services.stripe.secret'));
 
 
         $customerpagedata =

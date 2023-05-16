@@ -42,36 +42,9 @@
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
                                         <h3>Payment Methods</h3>
-                                        <button class="btn btn-primary btn-sm">Add New</button>
+                                        <a href="{{route('user.payments_add')}}" class="btn btn-primary btn-sm">Add New</a>
                                     </div>
-                                    <div class="card-body">
-                                        <div class="row mt-4">
-                                            <div class="col d-flex justify-content-between">
-                                                <div class="">
-                                                    MASTERCARD **** 1234 
-                                                    <br>
-                                                    25/2025
-                                                </div>
-                                                <div>
-                                                    <button class="btn btn-primary btn-sm">Default</button>
-                                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-4">
-                                            <div class="col d-flex justify-content-between">
-                                                <div class="">
-                                                    MASTERCARD **** 1234 <span class="badge bg-success">Default</span>
-                                                    <br>
-                                                    25/2025
-                                                </div>
-                                                <div>
-                                                    
-                                                    <button class="btn btn-danger btn-sm">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @livewire('customer.user.payment-list')
                                 </div>
                             </div>
 

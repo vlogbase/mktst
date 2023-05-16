@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Traits\PaymentStripeHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-
-
+    use PaymentStripeHelper;
     public function profile()
     {
         $user = Auth::user();
@@ -35,6 +35,12 @@ class UserController extends Controller
     public function payments()
     {
         return view('customer.user.payments');
+    }
+
+    public function payments_add()
+    {
+        $user = Auth::user();
+        return redirect($this->addNewMethodSession($user));
     }
 
     public function orders_detail($id)
