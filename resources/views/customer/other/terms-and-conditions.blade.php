@@ -1783,7 +1783,7 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">We
                             </span>, and the use of the United Nations Convention of Contracts for the International Sales
                             of Goods is expressly excluded. If your habitual residence is in the EU, and you are a consumer,
                             you additionally possess the protection provided to you by obligatory provisions of the law in
-                            your country to residence. <bdt class="question">Integrated Brand Delivery LTD Savoy Catering
+                            your country to residence. <bdt class="question">TANNER BRODIN LIMITED Savoy Catering
                                 Supplies</bdt> and yourself both agree to submit to the non-exclusive jurisdiction of the
                             courts of <bdt class="question">England</bdt>, which means that you may make a claim to defend
                             your consumer protection rights in regards to these Conditions of Use in <bdt
@@ -2044,7 +2044,7 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">In
                         <div class="MsoNormal" data-custom-class="body_text"
                             style="line-height: 1.5; text-align: left;"><span style="font-size: 15px;"><span
                                     style="color: rgb(89, 89, 89);">
-                                    <bdt class="question"><strong>Integrated Brand Delivery LTD Savoy Catering
+                                    <bdt class="question"><strong>TANNER BRODIN LIMITED Savoy Catering
                                             Supplies</strong></bdt><strong>
                                         <bdt class="block-component"></bdt>
                                     </strong>

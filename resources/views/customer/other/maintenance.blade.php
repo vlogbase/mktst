@@ -742,7 +742,7 @@
 
       <div class="row mt-5 mb-3">
           <div class="col text-center">
-                  <p><i class="ti-world"></i> Integrated Brand Delivery LTD Savoy Catering Supplies</p>        
+                  <p><i class="ti-world"></i> TANNER BRODIN LIMITED Savoy Catering Supplies</p>        
                   <p> <i class="ti-mobile"></i> 01493 855403 | <i class="ti-email"></i> sales@savoycatering.co.uk</p>
                   <p><i class="ti-location-pin"></i>Savoy Catering Supplies S Denes Rd, Great Yarmouth <br> NR30 3PR, United Kingdom</p>  
           </div>
