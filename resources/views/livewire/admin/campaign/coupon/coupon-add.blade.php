@@ -37,7 +37,7 @@
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
                 <select class="form-select form-select-solid @error('type') is-invalid @enderror"  wire:model="type"  aria-label="Select example">
-                    <option>Open this select menu</option>
+                    <option value="">Open this select menu</option>
                     <option value="price">Price Discount</option>
                     <option value="percentage">Percentage Discount</option>
                 </select>

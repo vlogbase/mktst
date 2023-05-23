@@ -13,6 +13,8 @@ class CouponAdd extends Component
     public $status;
     public $type;
     public $discount;
+    public $itemid;
+    public Coupon $item;
 
 
     public function mount($itemid)
@@ -32,7 +34,7 @@ class CouponAdd extends Component
     {
         $data =  $this->validate([
             'code' => $this->itemid != 0 ? 'required|min:2|max:15|unique:coupons,code,' . $this->itemid : 'required|min:2|max:15|unique:coupons,code',
-            'type' => 'required',
+            'type' => 'required|in:price,percentage',
             'discount' => 'required|gt:0',
         ]);
 
