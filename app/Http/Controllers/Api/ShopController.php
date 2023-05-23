@@ -39,7 +39,7 @@ class ShopController extends ApiController
     {
 
         $category = Category::where('id', $request->category_id)->first();
-        $products = $category->products()->where('status', 1)
+        $products = $category->activeProducts()->where('status', 1)
             ->where(function ($query) use ($request, $order) {
                 if ($request->search_text) {
                     $query->where('name', 'LIKE', '%' . $request->search_text . '%')

@@ -16,6 +16,11 @@ class Category extends Model
         return $this->belongsToMany(Product::class);
     }
 
+    public function activeProducts()
+    {
+        return $this->belongsToMany(Product::class)->where('status', 1);
+    }
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'category_id');

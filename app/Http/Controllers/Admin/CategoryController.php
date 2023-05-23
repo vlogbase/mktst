@@ -41,7 +41,7 @@ class CategoryController extends Controller
                     return $img;
                 })
                 ->addColumn('products', function (Category $category) {
-                    return $category->products->count();
+                    return $category->activeProducts->count();
                 })
                 ->addColumn('child', function (Category $category) {
                     return $category->childrenCategories->count();
@@ -83,7 +83,7 @@ class CategoryController extends Controller
     public function category_delete($id)
     {
         $category = Category::findOrFail($id);
-        $category->products()->detach();
+        $category->activeProducts()->detach();
         $category->delete();
 
         return view('admin.categories.category_list');

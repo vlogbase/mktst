@@ -23,7 +23,7 @@ class DeleteButton extends Component
         if ($category->childrenCategories->count() > 0) {
             $this->emit('errorAlert', 'Category has ' . $category->childrenCategories->count() . ' childs!');
         } else {
-            $category->products()->detach();
+            $category->activeProducts()->detach();
             $category->delete();
             $this->emit('succesAlert', 'Deleted!');
             return redirect()->route('admin.categories.list');

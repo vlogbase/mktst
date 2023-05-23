@@ -77,8 +77,8 @@ class ProductList extends Component
             $products_cnt = Product::where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
         } else {
             $category = Category::where('id', $this->categoryCurrent->id)->first();
-            $products = $category->products()->where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->orderBy($query_order, $query_order_direct)->paginate($this->limitPerPage);
-            $products_cnt = $category->products()->where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
+            $products = $category->activeProducts()->where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->orderBy($query_order, $query_order_direct)->paginate($this->limitPerPage);
+            $products_cnt = $category->activeProducts()->where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
         }
 
         $this->emit('changeCount', $products_cnt);

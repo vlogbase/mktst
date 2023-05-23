@@ -39,7 +39,7 @@
                 <ul class="widget_categories">
                     @if($categories->count() > 0)
                         @foreach($categories as $category)
-                        <li><a href="{{route('category_products',$category->slug)}}"><span class="categories_name">{{$category->name.(strlen($category->name)> 100 ? '<br>' : '')}}</span><span class="categories_num">({{$category->products->count()}})</span></a></li>
+                        <li><a href="{{route('category_products',$category->slug)}}"><span class="categories_name">{{$category->name.(strlen($category->name)> 100 ? '<br>' : '')}}</span><span class="categories_num">({{$category->activeProducts->count()}})</span></a></li>
                         @endforeach
                     @else
                     <p>No Sub Categories</p>
