@@ -147,17 +147,21 @@
             <!--begin::Row-->
         <div class="row mb-7">
             <!--begin::Label-->
-            <label class="col-lg-4 col-form-label fw-bold fs-6">Brand</label>
+            <label class="col-lg-4 col-form-label required fw-bold fs-6">Brand</label>
             <!--end::Label-->
             <!--begin::Col-->
-            <div class="col-lg-8" wire:ignore>
-    
-                <select class="form-select form-select-solid" id="select2" data-placeholder="Select a brand">
-                    @foreach($brands as $brand)
-                    <option {{$brand_select == $brand->id ? ' selected="selected"' : ''}} value="{{$brand->id}}">{{$brand->name}}</option>
-                    @endforeach
-                </select>
+            <div class="col-lg-8" >
+                <div wire:ignore>
+                    <select class="form-select form-select-solid" id="select2" data-placeholder="Select a brand" >
+                        <option>Select Brand</option>
+                        @foreach($brands as $brand)
+                        <option {{$brand_select ===$brand->id ? ' selected="selected"' : ''}} value="{{$brand->id}}">{{$brand->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @error('brand_select') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
+            
             <!--end::Col-->
         </div>
         <!--end::Row-->

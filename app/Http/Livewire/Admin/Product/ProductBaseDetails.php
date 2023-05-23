@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 
 class ProductBaseDetails extends Component
 {
-    public $brand_select = '';
+    public $brand_select = null;
     public $categories_select = [];
     public $itemid;
     public $status;
@@ -24,6 +24,8 @@ class ProductBaseDetails extends Component
     public $name;
     public $sku;
     public $item;
+    public $brands;
+    public $categories;
 
 
     public function mount($itemid)
@@ -70,6 +72,7 @@ class ProductBaseDetails extends Component
             'reorder' => 'required|gt:0',
             'taxrate' => 'required|gte:0',
             'per_unit' => 'required|gt:0',
+            'brand_select' => 'required|numeric',
         ]);
 
         if ($this->itemid != 0) {
