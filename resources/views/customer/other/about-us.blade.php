@@ -136,7 +136,7 @@
             	<div class="contact_wrap contact_style3">
                     <div class="contact_text">
                         <span>Company Name</span>
-                        <p>Integrated Brand Delivery LTD Savoy Catering Supplies</p>
+                        <p>TANNER BRODIN LIMITED Savoy Catering Supplies</p>
                     </div>
                 </div>
             </div>
