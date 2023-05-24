@@ -41,7 +41,7 @@ class DashboardController extends Controller
         $order_rec = [];
         $order_cnt = [];
         foreach ($months as $key => $value) {
-            $order_rec[] = Order::where('status', '!=', 'Waiting')->where(DB::raw("DATE_FORMAT(created_at, '%m')"), $value)->sum('total_price');
+            $order_rec[] = Order::where('status', '!=', 'Waiting')->where('pay_status', 'PAID')->where(DB::raw("DATE_FORMAT(created_at, '%m')"), $value)->sum('total_price');
             $order_cnt[] = Order::where('status', '!=', 'Waiting')->where(DB::raw("DATE_FORMAT(created_at, '%m')"), $value)->count();
         }
 
@@ -49,12 +49,10 @@ class DashboardController extends Controller
         $dates_only_graph_count = $order_cnt;
         $dates_only_graph_earn = $order_rec;
 
-        $web_order = $all_orders->where('platform', 'web')->count();
+        $web_order = Order::where('status', '!=', 'Waiting')->where('platform', 'web')->count();
         $app_order = $all_orders_cnt - $web_order;
 
         $items =  Product::where('status', 1)->where('stock', '<=', 0)->take(10)->get();
-
-
 
         $data = [
             'all_customer_cnt' => $all_customer_cnt,
