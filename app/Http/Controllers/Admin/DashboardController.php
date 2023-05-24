@@ -26,10 +26,10 @@ class DashboardController extends Controller
 
 
         $all_orders_cnt = $all_orders->count();
-        $all_orders_earning = $all_orders->sum('total_price');
+        $all_orders_earning = $all_orders->where('pay_status', 'PAID')->sum('total_price');
 
         $all_orders_month_cnt = $all_orders_month->count();
-        $all_orders_month_earning = $all_orders_month->sum('total_price');
+        $all_orders_month_earning = $all_orders_month->where('pay_status', 'PAID')->sum('total_price');
 
         $month_diff = intval(Carbon::now()->startOfYear()->diffInMonths(Carbon::now()->startOfMonth()));
         $months = [];
