@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Customer\Cart;
 
 use App\Models\OrderRule;
+use App\Models\PaymentCard;
 use App\Models\PaymentMethod;
 use App\Models\PointSystem;
 use App\Models\Product;
@@ -56,6 +57,9 @@ class PageCheckout extends Component
         $this->payment_need = floatVal($this->total_price / PointSystem::first()->spend_coefficient);
         $this->min_cart_cost = OrderRule::where('name', 'min_order_cost')->first();
         $this->payment_option = $this->payments->first()->id;
+        if($this->payment_cards->count() > 0){
+            $this->payment_card_select = $this->payment_cards->where('is_default',1)->first()->id;
+        }
     }
 
     public function hydrate()
@@ -67,6 +71,9 @@ class PageCheckout extends Component
     {
         $this->user = Auth::user();
         $this->payment_cards = $this->user->paymentCards;
+
+        
+
         $this->items = \Cart::getContent();
         $this->offices = $this->user->useroffices;
         $this->userdetail = $this->user->userdetail;
@@ -168,15 +175,41 @@ class PageCheckout extends Component
         $order = $this->orderCreate($ordernum, $this->prices, $this->items, $this->user, $this->officeSelect, $this->payment_option, $this->coupon_code, 'web');
 
         if ($this->payment_option == 1) {
-            /* $paymentid = $this->createPayment($ordernum, $this->user, $this->prices['final_cost'], 'web');
-            if ($paymentid == 'ERROR') {
-                return $this->emit('errorAlert', 'Payment Provider Error');
-            } */
 
+            if($this->payment_card_select !== ''){
+                $paymentMethod = PaymentCard::find($this->payment_card_select);
+
+                if($paymentMethod->user_id !== $this->user->id){
+                    return $this->emit('errorAlert', 'Payment Method Not Found');
+                }
+
+                $resultSavedCard = $this->paymentIntentWithSavedCard($this->user,$order,$paymentMethod);
+
+                if($resultSavedCard['status'] == 'success'){
+                    $order->update([
+                        'pay_status' => 'paid',
+                        'status' => 'New Order',
+                    ]);
+                   return $this->completedOrder($ordernum);
+
+                }else if($resultSavedCard['status'] == 'redirect'){
+                    return redirect($resultSavedCard['redirect_url']);
+                }else{
+                    return $this->emit('errorAlert', 'Payment Failed');
+                }
+            }
+
+            //New Card Process
             $redirectUrl = $this->paymentIntentWithSession($this->user,$order);
-
             return redirect($redirectUrl);
+
         } else {
+            $this->completedOrder($ordernum);
+        }
+    }
+
+    public function completedOrder($ordernum)
+    {
             //Completed Process
             //After Order
             $this->updateStock($this->items); //Stock reduce
@@ -193,9 +226,7 @@ class PageCheckout extends Component
             \Cart::clear();
             $this->sendNotification($this->user, $ordernum);
             return redirect()->route('order_complete', $ordernum);
-        }
     }
-
 
     public function stockControl($items)
     {

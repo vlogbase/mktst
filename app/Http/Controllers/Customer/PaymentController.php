@@ -5,49 +5,54 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Traits\PaymentHelper;
 use App\Traits\PaymentStripeHelper;
+use App\Traits\StripeHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Stripe\PaymentIntent;
 
 class PaymentController extends Controller
 {
     use PaymentHelper;
     use PaymentStripeHelper;
-    public function success_payment(Request $request)
-    {
-        $transaction_id = $request->t;
-        $result = $this->findPaymentResult($transaction_id);
+    use StripeHelper;
 
-        if ($result != NULL) {
-            $data = $this->successfulUpdate($result);
-            session()->forget('couponcode');
-            \Cart::clear();
-            return redirect()->route('order_complete', $data['ordernum']);
-        } else {
-            $request->session()->flash('payment_error', 'Payment Failed! Please Try Again...');
-            return redirect()->route('checkout');
+    public function stripe_callback(Request $request)
+    {
+        if ($request->result !== 'cancel') {
+            $session_id = $request->session_id;
+            $session = $this->retrieveCheckoutSession($session_id);
+
+            $this->savePaymentMethodDb(Auth::user(), $session,$request->type);
+
+            if ($request->type === 'payment') {
+                $paymentIntent = $this->retrievePaymentIntentFromSession($session);
+                if ($paymentIntent->status === 'succeeded') {
+                    return $this->successfullReturn($paymentIntent->metadata->order_id);
+                }
+                
+            }
         }
+
+        return redirect($request->redirect_url);
     }
 
-    public function failure_payment(Request $request)
+    public function there_d_callback(Request $request)
     {
+        $paymentIntent = PaymentIntent::retrieve($request->reference);
+
+        if ($paymentIntent->status === 'succeeded') {
+           return $this->successfullReturn($paymentIntent->metadata->order_id);
+        }
+
         $request->session()->flash('payment_error', 'Payment Failed! Please Try Again...');
         return redirect()->route('checkout');
     }
 
-    public function stripe_callback(Request $request)
+    public function successfullReturn($orderId)
     {
-        
-        if($request->result === 'cancel'){
-            return redirect($request->redirect_url);
-        }
-
-        $session_id = $request->session_id;
-        $type = $request->type;
-        
-        if($type === 'setup'){
-            $this->savePaymentMethodDb(Auth::user(),$session_id);
-        }
-
-        return redirect($request->redirect_url);
+        $data = $this->successfulUpdate($orderId);
+        session()->forget('couponcode');
+        \Cart::clear();
+        return redirect()->route('order_complete', $data['ordernum']);
     }
 }

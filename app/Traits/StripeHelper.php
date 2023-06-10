@@ -3,7 +3,10 @@
 namespace App\Traits;
 
 use App\Models\Order;
+use App\Models\PaymentCard;
+use App\Models\PaymentMethod as ModelsPaymentMethod;
 use App\Models\User;
+use Exception;
 use Stripe\Checkout\Session;
 use Stripe\Customer;
 use Stripe\PaymentIntent;
@@ -84,13 +87,67 @@ trait StripeHelper{
             'mode' => 'payment',
             'payment_method_types' => ['card'],
             'success_url' => config('app.url').'/stripe-callback?session_id={CHECKOUT_SESSION_ID}&result=success&type=payment&redirect_url='.route('user.payments'),
-            'cancel_url' => config('app.url').'/stripe-callback?result=cancel$type=payment&redirect_url=/checkout',
+            'cancel_url' => config('app.url').'/stripe-callback?result=cancel&type=payment&redirect_url='.route('checkout'),
             'payment_intent_data' => [
                 'capture_method' => 'automatic',
                 'setup_future_usage' => 'off_session',
+                'description' => 'Payment for '.$order->ordercode,
+                'metadata' => [
+                    'order_id' => $order->id,
+                ],
             ],
         ]);
 
         return $session->url;
+    }
+
+
+    public function paymentIntentWithSavedCard(User $user,Order $order,PaymentCard $paymentMethod){
+        $stripe_id = $this->getOrCreateCustomerStripeId($user);
+        $paymentIntent = PaymentIntent::create([
+            "amount" => intval(100 * $order->total_price),
+            "currency" => 'gbp',
+            "customer" => $stripe_id,
+            "payment_method" => $paymentMethod->stripe_id,
+            'confirm' => false,
+            "use_stripe_sdk" => true,
+            'capture_method' => 'automatic',
+            'metadata' => [
+                'order_id' => $order->id,
+            ],
+            'description' => 'Payment for '.$order->ordercode,
+        ]);
+
+        try {
+            $paymentIntent->confirm([
+                'return_url' => config('app.url')
+                    . '/3ds-callback?reference=' . $paymentIntent->id,
+            ]);
+
+
+            if ($paymentIntent->status === 'succeeded') {
+                return [
+                    'status' => 'success',
+                    'redirect_url' => null
+                ];
+            }
+
+            if ($paymentIntent->status === 'requires_action' && $paymentIntent->next_action->redirect_to_url) {
+                return [
+                    'status' => 'redirect',
+                    'redirect_url' => $paymentIntent->next_action->redirect_to_url->url
+                ];
+            }
+
+            return [
+                'status' => 'error',
+                'redirect_url' => null
+            ];
+        } catch (Exception $e) {
+            return [
+                'status' => 'error',
+                'redirect_url' => null
+            ];
+        }
     }
 }

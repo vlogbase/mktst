@@ -20,4 +20,6 @@ class PaymentCard extends Model
     {
         return Carbon::parse($this->expires_at)->format('m/y');
     }
+
+    
 }

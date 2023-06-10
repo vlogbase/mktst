@@ -25,10 +25,20 @@ trait PaymentStripeHelper{
         return $session->url;
     }
 
-    public function savePaymentMethodDb(User $user,$sessionId){
-        $session = $this->retrieveCheckoutSession($sessionId);
-        $setupIntent = $this->retrieveSetupIntentFromSession($session);
-        $paymentMethod = $this->retrievePaymentMethodFromIntent($setupIntent);
+    public function savePaymentMethodDb(User $user,$session,$type){
+        
+        if($type === 'setup'){
+            $intent = $this->retrieveSetupIntentFromSession($session);
+        }else{
+            $intent = $this->retrievePaymentIntentFromSession($session);
+        }
+        
+        $paymentMethod = $this->retrievePaymentMethodFromIntent($intent);
+
+        if(PaymentCard::where('user_id',$user->id)->where('stripe_id', $paymentMethod->id)->exists())
+        {
+            return $user->paymentCards()->where('stripe_id', $paymentMethod->id)->first();
+        }
 
         $model = PaymentCard::create([
             'user_id' => $user->id,

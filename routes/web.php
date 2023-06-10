@@ -85,5 +85,7 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap')
 
 //NEW PAYMENT
 Route::get('/stripe-callback', [PaymentController::class, 'stripe_callback'])->name('stripe_callback');
+Route::get('/3ds-callback', [PaymentController::class, 'there_d_callback'])->name('3ds_callback');
+
 
 require __DIR__ . '/admin.php';

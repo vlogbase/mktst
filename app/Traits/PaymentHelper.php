@@ -87,9 +87,9 @@ trait PaymentHelper
         return $order;
     }
 
-    protected function successfulUpdate($ordercode)
+    protected function successfulUpdate($orderid)
     {
-        $order = Order::where('ordercode', $ordercode)->first();
+        $order = Order::find( $orderid);
         $user = User::find($order->user_id);
 
         if ($order->status == 'Waiting') {
@@ -101,13 +101,13 @@ trait PaymentHelper
                 $this->couponApplied($order->couponcode, $order->user_id);
             }
 
-            $this->sendNotification($user, $ordercode);
+            $this->sendNotification($user, $order->ordercode);
         }
 
 
         $data = [
             'paymentid' => '',
-            'ordernum' => $ordercode,
+            'ordernum' => $order->ordercode,
             'process' => 'ordercomplete',
             "ordercost" => $order->total_price,
             "earnpoint" => $order->earn_point
