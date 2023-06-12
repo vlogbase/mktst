@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Shop\ProductResource as ShopProductResource;
 use App\Http\Resources\User\UserOfficeResource;
 use App\Models\OrderRule;
+use App\Models\PaymentCard;
 use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Traits\CartHelper;
@@ -123,6 +124,7 @@ class OrderController extends ApiController
 
     public function checkout(Request $request)
     {
+        $user = $request->user();
         //Cart Control
         if (!isset($request->items) || count($request->items) <= 0) {
             return $this->errorResponse('Cart can not be empty', 405);
@@ -132,18 +134,23 @@ class OrderController extends ApiController
         $products = $this->stockControl($request);
         $prices = $this->calcCheckoutData($request);
 
+        $paymentMethods = PaymentMethod::where('status', 1)->get();
+
+        $paymentMethods->each(function ($item) use ($user) {
+            if ($item->id === 1) {
+                $item->cards = PaymentCard::where('user_id', $user->id)->get();
+            }
+        });
 
         $data = [
             'products' => $products,
             'prices' => $prices,
             'address' => UserOfficeResource::collection($request->user()->useroffices),
-            'payments' => PaymentMethod::where('status', 1)->get(),
+            'payments' =>  $paymentMethods,
         ];
 
         return $this->successResponse($data);
     }
-
-
 
     public function order_request(Request $request)
     {
@@ -156,8 +163,6 @@ class OrderController extends ApiController
         if ($products['action'] == 'update_cart') {
             return $this->errorResponse('Stock Not Enough', 405);
         }
-
-
 
         $couponcode = '';
         if ($request->has('coupon_code') && $request->coupon_code != '') {
@@ -173,6 +178,13 @@ class OrderController extends ApiController
             'adres_id' => 'required|exists:user_offices,id',
             'payment_id' => 'required|exists:payment_methods,id',
         ]);
+
+        if($request->payment_id === 1 && $request->card_id !== null){
+            $paymentCard = PaymentCard::where('user_id', $request->user()->id)->where('id', $request->card_id)->first();
+            if($paymentCard === null){
+                return $this->errorResponse('Card not found', 405);
+            }
+        }
 
         if ($validator->fails()) {
             return $this->errorResponse('Validation Error', 403, $validator->errors());
@@ -202,6 +214,7 @@ class OrderController extends ApiController
             $process = 'redirection';
             $message = 'Redirected';
             $paymentid = $this->createPayment($ordernum, $user, $prices['final_cost'], 'app');
+            
             if ($paymentid == 'ERROR') {
                 return $this->errorResponse('Payment Error', 403);
             }
@@ -224,6 +237,8 @@ class OrderController extends ApiController
         //Start Order Record
         //Order Creating
         $this->orderCreate($ordernum, $prices, $items, $user, $request->adres_id, $request->payment_id, $couponcode, 'app');
+
+
         if ($request->payment_id != 1) {
             //After Order
             $this->updateStock($items); //Stock reduce
