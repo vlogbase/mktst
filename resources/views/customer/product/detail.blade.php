@@ -65,7 +65,7 @@
                         <div class="">
                             <ul class="product-meta">
                                 <li>SKU: <span class="">{{$product->sku}}</span></li>
-                                <li>Pack: <span class="">{{$product->per_unit}}</span></li>
+                                <li>Pack: <span class="">{{$product->productdetail->pack}}</span></li>
                                 <li>Brand: <span class="">{{$product->brand->name}}</span></li>
                                 <li>VAT: <span class="">+%{{$product->taxrate}}</span></li>
                                 <li>Status: 
