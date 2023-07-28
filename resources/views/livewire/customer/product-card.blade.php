@@ -7,7 +7,7 @@
         <div class="">
             <a href="{{route('product_detail',$product->slug)}}">
                 <img style="background-size: cover;
-                background-position: center;height: 200px;" src="{{$product->getCoverImage()}}" alt="{{$product->name}}">
+                background-position: center;height: 250px;" src="{{$product->getCoverImage()}}" alt="{{$product->name}}">
             </a>
             {{-- <div class="product_action_box">
                 <ul class="list_none pr_action_btn">
