@@ -66,6 +66,7 @@
                             <ul class="product-meta">
                                 <li>SKU: <span class="">{{$product->sku}}</span></li>
                                 <li>Pack: <span class="">{{$product->productdetail->pack}}</span></li>
+                                <li>Per Price: <span class="">{{is_null($product->unit_per_price) ? '-' : '£'.$product->unit_per_price }}</span></li>
                                 <li>Brand: <span class="">{{$product->brand->name}}</span></li>
                                 <li>VAT: <span class="">+%{{$product->taxrate}}</span></li>
                                 <li>Status: 

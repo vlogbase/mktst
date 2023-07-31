@@ -15,7 +15,7 @@ class ImportProducts extends Command
      *
      * @var string
      */
-    protected $signature = 'products:import {file} {category}'; // php artisan products:import category_name
+    protected $signature = 'products:import'; // php artisan products:import category_name
 
     /**
      * The console command description.
@@ -41,21 +41,29 @@ class ImportProducts extends Command
      */
     public function handle()
     {
-        $file = $this->argument('file');
-        $category = $this->argument('category');
 
-        if (!file_exists($file)) {
-            $this->error('File not found: ' . $file);
-            return;
+        $dataDirectory = 'app/Data'; // Klasör adı
+
+        // Dosya yolu içindeki tüm dosyaları alın
+        $files = glob($dataDirectory . '/*');
+
+        // Her dosya için döngü yapın ve dosya adlarını değişken olarak kullanın
+        foreach ($files as $file) {
+            $category = pathinfo($file, PATHINFO_FILENAME);
+
+            if (!file_exists($file)) {
+                $this->error('File not found: ' . $file);
+                return;
+            }
+
+            $category = Category::firstOrCreate(
+                ['name' => ucfirst($category)],
+                [
+                    'slug' => Str::slug($category),
+                ]
+            );
+
+            Excel::import(new ProductImport($category), $file);
         }
-
-        $category = Category::firstOrCreate(
-            ['name' => ucfirst($category)]
-            ,[
-            'slug' => Str::slug($category),
-        ]);
-
-        Excel::import(new ProductImport($category), $file);
-
     }
 }
