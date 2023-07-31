@@ -62,7 +62,7 @@ class ProductList extends Component
     public function render()
     {
         if ($this->order == 'latest') {
-            $query_order = 'created_at';
+            $query_order = 'id';
             $query_order_direct = 'desc';
         } else if ($this->order == 'cheapest') {
             $query_order = 'unit_price';
