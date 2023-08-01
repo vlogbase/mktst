@@ -23,7 +23,7 @@
             <h6 class="product_title"><a href="{{ route('product_detail', $product->slug) }}">{{ $product->name }}</a>
             </h6>
             <span class="text-secondary">SKU: {{ $product->sku }}</span><br>
-            <span class="text-secondary">In Pack: {{ $product->per_unit }}</span>
+            <span class="text-secondary">In Pack: {{ $product->productdetail->pack }}</span>
             @auth
                 <div class="product_price">
                     <span class="price">£{{ $product->showPrice() }}</span>
