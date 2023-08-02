@@ -30,6 +30,11 @@
         <!-- START SECTION SHOP -->
         <div class="section">
             <div class="container">
+                <div class="row mb-3">
+                    <div class="col">
+                        <small><a class=" text-sm" href="{{url()->previous()}}">Back to List</a></small>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                         <div class="product-image">
