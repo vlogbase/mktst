@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Imports\ProductImport;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
@@ -42,12 +44,31 @@ class ImportProducts extends Command
     public function handle()
     {
 
-        $dataDirectory = 'app/Data'; // Klasör adı
+        $dataDirectory = 'app/Data';
 
-        // Dosya yolu içindeki tüm dosyaları alın
         $files = glob($dataDirectory . '/*');
 
-        // Her dosya için döngü yapın ve dosya adlarını değişken olarak kullanın
+
+        $products = Product::all();
+        foreach($products as $product){
+            $product->delete();
+        }
+
+        $childCategories = Category::where('category_id', '!=', null)->get();
+        foreach($childCategories as $childCategory){
+            $childCategory->delete();
+        }
+
+        $categories = Category::where('category_id', null)->get();
+        foreach($categories as $category){
+            $category->delete();
+        }
+
+        $oldBrands = Brand::all();
+        foreach($oldBrands as $oldBrand){
+            $oldBrand->delete();
+        }
+
         foreach ($files as $file) {
             $category = pathinfo($file, PATHINFO_FILENAME);
 
@@ -65,5 +86,7 @@ class ImportProducts extends Command
 
             Excel::import(new ProductImport($category), $file);
         }
+
+        
     }
 }
