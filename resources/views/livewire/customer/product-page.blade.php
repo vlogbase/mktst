@@ -44,12 +44,17 @@
                                         class="categories_num">({{ $category->activeProducts->count() }})</span></a>
                             </li>
                         @endforeach
+                        @if ($category->category_id !== null)
+                            <a href="{{ route('products') }}"><span
+                                        class="categories_name">Back to Top</span></a>
+                            
+                        @endif
                     @else
                         @if ($categoryCurrent)
                             <p>No Sub Categories</p>
                             @if ($categoryCurrent->parent)
                                 <li><a href="{{ route('category_products', $categoryCurrent->parent->slug) }}"><span
-                                            class="categories_name">Back to Top Category</span><span
+                                            class="categories_name">Back to {{$categoryCurrent->parent->name}}</span><span
                                             class="categories_num">({{ $categoryCurrent->parent->products->count() }})</span></a>
                                 </li>
                             @endif
