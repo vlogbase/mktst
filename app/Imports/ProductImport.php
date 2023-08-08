@@ -91,7 +91,7 @@ class ProductImport implements ToCollection
     
                 return $item;
             }else{
-                echo 'Product is not correct form: ' . $row[0] . PHP_EOL;
+                echo 'Product is not correct form: ' .$this->category->name.' => '. $row[1] . PHP_EOL;
                 return;
             }
             
