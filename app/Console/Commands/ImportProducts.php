@@ -17,7 +17,7 @@ class ImportProducts extends Command
      *
      * @var string
      */
-    protected $signature = 'products:import'; // php artisan products:import category_name
+    protected $signature = 'products:import'; // php artisan products:import
 
     /**
      * The console command description.
