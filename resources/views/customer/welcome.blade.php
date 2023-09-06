@@ -307,7 +307,7 @@
                                     <li class="text-secondary"><i class="ti-calendar"></i> {{$new->humanTime()}}</li>
                                     
                                 </ul>
-                                <p>{{substr($new->text, 0, 150).'...'}}</p>
+                                <p>{!! substr($new->text, 0, 150).'...' !!}</p>
                             </div>
                             <a href="{{route('news.detail',$new->slug)}}" class="mt-3 btn btn-fill-out rounded-0 staggered-animation ">Read More</a>
                         </div>
