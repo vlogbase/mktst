@@ -140,6 +140,8 @@
                 title: 'Added to Cart',
                 showDenyButton: true,
                 confirmButtonText: 'Go to Cart',
+                confirmButtonColor: '#F7901E',
+                denyButtonColor: '#676869',
                 denyButtonText: 'Contiune Shopping',
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */

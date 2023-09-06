@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-lg-6 order-2 order-lg-2">
                     <div class="heading_s1">
-                        <h2>WHY CHOOSE SAVOY FOODS</h2>
+                        <h2>WHY CHOOSE Markket</h2>
                     </div>
                     <p>Savoy Catering Supplies was established in 1985, it has grown over the years from a small corner outlet, to a 65000sqft well-established state of the art multi temperature and multi cultural foodservice distributor.</p>
                     <p>We supply a diverse range of chilled and frozen foods as well as a comprehensive selection of retail, catering products and non-food items. Our products also include established brands as well as a competitively priced own label ranges, creating a ‘one-stop-shop’ for all our clients.</p>
@@ -67,7 +67,7 @@
                         We have an ideal location in Norfolk where our custom built site in Great Yarmouth gives us easy access to all major routes. We provide a daily delivery service to all major towns in Norfolk & Suffolk and ports reaching out to Grimsby, Hull, London Gateway, Cardiff and all the way to Aberdeen – on our own fleet of dual temperature vehicles.
                     </p>
     
-                    <p>Savoy Foods deliver on 24 hour lead time (Offshore deliveries may vary) and offer a full telesales service up to 5pm as well as a 24 hour online ordering platform. We understand the needs our clients have outside of the normal working week and therefore we also provide a Saturday delivery.</p>
+                    <p>Markket deliver on 24 hour lead time (Offshore deliveries may vary) and offer a full telesales service up to 5pm as well as a 24 hour online ordering platform. We understand the needs our clients have outside of the normal working week and therefore we also provide a Saturday delivery.</p>
                     <p><strong>We accept orders by telephone, email and online. Payments are accepted by cash, cheque, direct debit, debit cards and credit cards.</strong></p>
                 </div>
             </div>

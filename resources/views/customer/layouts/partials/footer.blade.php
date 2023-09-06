@@ -112,7 +112,7 @@
                         <li><a ><img src="/customer_assets/images/master_card.png" alt="master_card"></a></li>
                         <li><a ><img src="/customer_assets/images/paypal.png" alt="paypal"></a></li>
                         <li><a ><img src="/customer_assets/images/amarican_express.png" alt="amarican_express"></a></li>
-                        <li><a ><img src="/upload/other/viva2.png" style="width:50px;height:32px;" alt="viva_wallet"></a></li>
+                        <li><a ><img src="/upload/other/stripe.png" style="width:55px;height:45px;" alt="viva_wallet"></a></li>
                     </ul>
                 </div>
             </div>
