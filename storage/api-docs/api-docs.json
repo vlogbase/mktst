@@ -998,7 +998,7 @@
                                     },
                                     "company_name": {
                                         "type": "string",
-                                        "example": "SavoyFoods"
+                                        "example": "Markket"
                                     },
                                     "company_select": {
                                         "description": "this part must taken from get-address suggessions",

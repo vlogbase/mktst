@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title', 'Terms & Conditions - SavoyFoods')
+@section('title', 'Terms & Conditions - Markket')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
     <div class="breadcrumb_section bg_gray page-title-mini">
@@ -37,15 +37,15 @@
                         <div class="term_conditions">
                             <h2>Privacy Policy</h2>
                             <hr>
-                            <p>At SavoyFoods, accessible from https://savoyfoods.uk/, one of our main priorities is the
+                            <p>At Markket, accessible from https://Markket.uk/, one of our main priorities is the
                                 privacy of our visitors. This Privacy Policy document contains types of information that is
-                                collected and recorded by SavoyFoods and how we use it.</p>
+                                collected and recorded by Markket and how we use it.</p>
 
                             <p>If you have additional questions or require more information about our Privacy Policy, do not
                                 hesitate to contact us.</p>
 
                             <p>This Privacy Policy applies only to our online activities and is valid for visitors to our
-                                website with regards to the information that they shared and/or collect in SavoyFoods. This
+                                website with regards to the information that they shared and/or collect in Markket. This
                                 policy is not applicable to any information collected offline or via channels other than
                                 this website. Our Privacy Policy was created with the help of the <a
                                     href="https://www.privacypolicygenerator.info">Free Privacy Policy Generator</a>.</p>
@@ -83,7 +83,7 @@
 
                             <h4>Log Files</h4>
 
-                            <p>SavoyFoods follows a standard procedure of using log files. These files log visitors when
+                            <p>Markket follows a standard procedure of using log files. These files log visitors when
                                 they visit websites. All hosting companies do this and a part of hosting services'
                                 analytics. The information collected by log files include internet protocol (IP) addresses,
                                 browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages,
@@ -94,7 +94,7 @@
 
                             <h4>Cookies and Web Beacons</h4>
 
-                            <p>Like any other website, SavoyFoods uses 'cookies'. These cookies are used to store
+                            <p>Like any other website, Markket uses 'cookies'. These cookies are used to store
                                 information including visitors' preferences, and the pages on the website that the visitor
                                 accessed or visited. The information is used to optimize the users' experience by
                                 customizing our web page content based on visitors' browser type and/or other information.
@@ -109,21 +109,21 @@
                             <h4>Advertising Partners Privacy Policies</h4>
 
                             <P>You may consult this list to find the Privacy Policy for each of the advertising partners of
-                                SavoyFoods.</p>
+                                Markket.</p>
 
                             <p>Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web
                                 Beacons that are used in their respective advertisements and links that appear on
-                                SavoyFoods, which are sent directly to users' browser. They automatically receive your IP
+                                Markket, which are sent directly to users' browser. They automatically receive your IP
                                 address when this occurs. These technologies are used to measure the effectiveness of their
                                 advertising campaigns and/or to personalize the advertising content that you see on websites
                                 that you visit.</p>
 
-                            <p>Note that SavoyFoods has no access to or control over these cookies that are used by
+                            <p>Note that Markket has no access to or control over these cookies that are used by
                                 third-party advertisers.</p>
 
                             <h4>Third Party Privacy Policies</h4>
 
-                            <p>SavoyFoods's Privacy Policy does not apply to other advertisers or websites. Thus, we are
+                            <p>Markket's Privacy Policy does not apply to other advertisers or websites. Thus, we are
                                 advising you to consult the respective Privacy Policies of these third-party ad servers for
                                 more detailed information. It may include their practices and instructions about how to
                                 opt-out of certain options. </p>
@@ -170,7 +170,7 @@
                                 encourage parents and guardians to observe, participate in, and/or monitor and guide their
                                 online activity.</p>
 
-                            <p>SavoyFoods does not knowingly collect any Personal Identifiable Information from children
+                            <p>Markket does not knowingly collect any Personal Identifiable Information from children
                                 under the age of 13. If you think that your child provided this kind of information on our
                                 website, we strongly encourage you to contact us immediately and we will do our best efforts
                                 to promptly remove such information from our records.</p>
@@ -420,8 +420,8 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">These
                                     “<strong>our</strong>”), concerning your access to and use of the <bdt
                                         class="block-container question question-in-editor"
                                         data-id="fdf30452-99b8-c68b-5cdf-34af764cd1fd" data-type="question"><a
-                                            href="https://savoyfoods.uk" target="_blank"
-                                            data-custom-class="link">https://savoyfoods.uk</a></bdt> website as well as any
+                                            href="https://Markket.uk" target="_blank"
+                                            data-custom-class="link">https://Markket.uk</a></bdt> website as well as any
                                     other media form, media channel, mobile website or mobile application related, linked,
                                     or otherwise connected thereto (collectively, the “Site”).<span
                                         style="font-size:11.0pt;line-height:115%;
@@ -1633,8 +1633,8 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;">We
                                 data privacy and security. Please review our Privacy Policy:<strong>&nbsp;<bdt
                                         class="block-container question question-in-editor"
                                         data-id="d10c7fd7-0685-12ac-c717-cbc45ff916d1" data-type="question"><a
-                                            href="https://savoyfoods.uk/terms-and-conditions" target="_blank"
-                                            data-custom-class="link">https://savoyfoods.uk/terms-and-conditions</a></bdt>
+                                            href="https://Markket.uk/terms-and-conditions" target="_blank"
+                                            data-custom-class="link">https://Markket.uk/terms-and-conditions</a></bdt>
                                     </strong>. By using the Site or the Marketplace Offerings, you agree to be bound by our
                                 Privacy Policy, which is incorporated into these Terms of Use. Please be advised the Site
                                 and the Marketplace Offerings are hosted in <bdt class="block-component"></bdt>the <bdt
@@ -2137,7 +2137,7 @@ Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;"><strong>Phone:
                             style="line-height: 1.5; text-align: left;"><strong><span
                                     style="font-size:11.0pt;line-height:115%;font-family:Arial;
 Calibri;color:#595959;mso-themecolor:text1;mso-themetint:166;"><strong>
-                                        <bdt class="question">info@savoyfoods.uk</bdt>
+                                        <bdt class="question">info@Markket.uk</bdt>
                                     </strong></span></strong></div>
                     </div>
                     <style>

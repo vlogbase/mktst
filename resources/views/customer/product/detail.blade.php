@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title', $product->name . ' - SavoyFoods')
+@section('title', $product->name . ' - Markket')
 @section('description', $product->productdetail->meta_description)
 @section('content')
     <!-- START SECTION BREADCRUMB -->

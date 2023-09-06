@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title', (request()->routeIs('products') ? 'Products' : $categoryCurrent->name) . ' - SavoyFoods')
+@section('title', (request()->routeIs('products') ? 'Products' : $categoryCurrent->name) . ' - Markket')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
     <div class="breadcrumb_section bg_gray page-title-mini">

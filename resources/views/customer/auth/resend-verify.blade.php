@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','Need Verification - SavoyFoods')
+@section('title','Need Verification - Markket')
 @section('content')
 
 

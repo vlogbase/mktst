@@ -47,7 +47,7 @@ class OrderReceived extends Notification
             ->greeting('Hello, ' . $this->registeredUser['userName'])
             ->line('Your Order Code is ' . $this->registeredUser['orderCode'])
             ->line("Your order has been received. We will keep you informed of the progress of your order.")
-            ->line('We hope you will be satisfied with SavoyFoods!');
+            ->line('We hope you will be satisfied with Markket!');
     }
 
     /**

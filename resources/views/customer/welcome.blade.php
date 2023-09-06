@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','SavoyFoods | Catering Supplies | UK')
+@section('title','Markket | Catering Supplies | UK')
 @section('css')
 <style>
 .circle-custom {

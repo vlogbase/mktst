@@ -10,7 +10,7 @@
 							</div>
 							<!--end::Copyright-->
 							<!--begin::Menu-->
-							<a href="{{url('/')}}" target="_blank" class="text-gray-800 text-hover-primary">SavoyFoods</a>
+							<a href="{{url('/')}}" target="_blank" class="text-gray-800 text-hover-primary">Markket</a>
 						</div>
 						<!--end::Container-->
 					</div>

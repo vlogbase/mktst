@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','Search - SavoyFoods')
+@section('title','Search - Markket')
 @section('content')
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">

@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-12 col-sm-12">
                 	<div class="widget">
-                        <h6 class="widget_title">Savoy Foods</h6>
+                        <h6 class="widget_title">Markket</h6>
                         <ul class="contact_info">
                             <li>
                                 <i class="ti-world"></i>
@@ -67,7 +67,7 @@
                         <h6 class="widget_title">Social</h6>
                         <ul class="social_icons">
                             <li><a href="https://www.facebook.com/SavoyCateringSupplies" class="sc_facebook" target="_blank"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/savoyfoods" target="_blank" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
+                            <li><a href="https://twitter.com/Markket" target="_blank" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
                             <li><a href="https://www.linkedin.com/company/savoy-catering-supplies/" class="sc_linkedin" target="_blank"><i class="ion-social-linkedin"></i></a></li>
                             <li><a href="https://www.youtube.com/channel/UCSQ4XEn7Ur5nVs08uMKYpLQ/" class="sc_youtube" target="_blank"><i class="ion-social-youtube-outline"></i></a></li>
                             {{-- <li><a href="#" class="sc_instagram"><i class="ion-social-instagram-outline"></i></a></li> --}}
@@ -103,7 +103,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-center text-md-start mb-md-0">© 2022 All Rights Reserved by SavoyFoods</p>
+                    <p class="text-center text-md-start mb-md-0">© 2022 All Rights Reserved by Markket</p>
                 </div>
                 <div class="col-lg-6">
                     <ul class="footer_payment text-center text-md-end">

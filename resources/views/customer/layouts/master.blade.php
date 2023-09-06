@@ -17,7 +17,7 @@
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:description" content="@yield('description')" />
     <meta property="og:url" content="{{Request::url()}}" />
-    <meta property="og:site_name" content="SavoyFoods | Catering Supplies" />
+    <meta property="og:site_name" content="Markket | Catering Supplies" />
     <meta property="og:image" content="{{asset('/upload/logo/logo.jpeg')}}" />
     <meta property="og:image:alt" content="Savoy Logo" />
     <link rel="canonical" href="{{url('/')}}" />

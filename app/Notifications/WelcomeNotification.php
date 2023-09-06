@@ -45,12 +45,12 @@ class WelcomeNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Welcome to SavoyFoods')
+            ->subject('Welcome to Markket')
             ->greeting('Hello, ' . $this->registeredUser['userName'])
             ->line("It's great to see you here. We are sure that we will do great things together.")
             ->line('Please confirm your email. This will help us know that you are a real person.')
             ->action('Verify Your Email', $this->registeredUser['actionURL'])
-            ->line('We hope you will be satisfied with SavoyFoods!');
+            ->line('We hope you will be satisfied with Markket!');
     }
 
     /**

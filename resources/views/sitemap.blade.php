@@ -1,90 +1,90 @@
 <?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://savoyfoods.uk/</loc>
+        <loc>https://Markket.uk/</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/contact-us</loc>
+        <loc>https://Markket.uk/contact-us</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/about-us</loc>
+        <loc>https://Markket.uk/about-us</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/career</loc>
+        <loc>https://Markket.uk/career</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/cart</loc>
+        <loc>https://Markket.uk/cart</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/login</loc>
+        <loc>https://Markket.uk/login</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/register</loc>
+        <loc>https://Markket.uk/register</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/terms-and-conditions</loc>
+        <loc>https://Markket.uk/terms-and-conditions</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/products</loc>
+        <loc>https://Markket.uk/products</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/blogs</loc>
+        <loc>https://Markket.uk/blogs</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/news</loc>
+        <loc>https://Markket.uk/news</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://savoyfoods.uk/gallery</loc>
+        <loc>https://Markket.uk/gallery</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     @foreach($categories as $category)
     <url>
-        <loc>https://savoyfoods.uk/category/{{$category->slug}}</loc>
+        <loc>https://Markket.uk/category/{{$category->slug}}</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     @endforeach
     @foreach($products as $product)
     <url>
-        <loc>https://savoyfoods.uk/products/{{$product->slug}}</loc>
+        <loc>https://Markket.uk/products/{{$product->slug}}</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     @endforeach
     @foreach($news as $new)
     <url>
-        <loc>https://savoyfoods.uk/news/{{$new->slug}}</loc>
+        <loc>https://Markket.uk/news/{{$new->slug}}</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>
     @endforeach
     @foreach($blogs as $blog)
     <url>
-        <loc>https://savoyfoods.uk/blogs/{{$blog->slug}}</loc>
+        <loc>https://Markket.uk/blogs/{{$blog->slug}}</loc>
         <lastmod>2021-12-29T00:25:48+00:00</lastmod>
         <priority>0.60</priority>
     </url>

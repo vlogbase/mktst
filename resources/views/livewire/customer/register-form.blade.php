@@ -135,7 +135,7 @@
             <div class="chek-form">
                 <div class="custome-checkbox">
                     <input class="form-check-input " type="checkbox" wire:model="agreement" id="agreement" value="1">
-                    <label class="form-check-label @error('agreement') text-danger @enderror" for="agreement"><span>I agree to the SavoyFoods <a class="text-info" href="{{route('terms_and_conditions')}}">Terms and conditions</a> and <a class="text-info" href="{{route('terms_and_conditions')}}">Privacy policy</a>*</span></label>
+                    <label class="form-check-label @error('agreement') text-danger @enderror" for="agreement"><span>I agree to the Markket <a class="text-info" href="{{route('terms_and_conditions')}}">Terms and conditions</a> and <a class="text-info" href="{{route('terms_and_conditions')}}">Privacy policy</a>*</span></label>
                 </div>
                 
             </div>

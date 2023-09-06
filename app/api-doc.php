@@ -984,7 +984,7 @@
  *    @OA\Property(
  *        property="company_name", 
  *        type="string", 
- *        example="SavoyFoods", 
+ *        example="Markket", 
  *    ), 
  *    @OA\Property(
  *        property="company_select", 

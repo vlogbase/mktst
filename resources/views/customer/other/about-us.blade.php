@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','About Us - SavoyFoods')
+@section('title','About Us - Markket')
 @section('content')
 <!-- START SECTION BREADCRUMB -->
 <div class="breadcrumb_section bg_gray page-title-mini">
@@ -47,8 +47,8 @@
             <div class="row align-items-center mt-5 mb-5">
                 <div class="col-lg-6 order-2 order-lg-1">
                     <p>We are members of two of the largest buying groups in United Kingdom, UNITAS Wholesalers and Fairway Foodservice – both a national association of independent wholesalers whose combined purchasing power of over £10 billion allows us to compete effectively with the major national distributors. 
-                        With the partnership of this network we continue to expand the enormous range of products and offerings that our clients value, and we bring to our clients the quality of products that they have come to expect from SavoyFoods</p>
-                        <p>With over 13500 products in our range, SavoyFoods offer our customers a diversity of choice and the availability of a ‘one-stop-shop’ for all catering supplies. Professional and correct food handling, along with health and safety, are of paramount importance at SavoyFoods.</p>
+                        With the partnership of this network we continue to expand the enormous range of products and offerings that our clients value, and we bring to our clients the quality of products that they have come to expect from Markket</p>
+                        <p>With over 13500 products in our range, Markket offer our customers a diversity of choice and the availability of a ‘one-stop-shop’ for all catering supplies. Professional and correct food handling, along with health and safety, are of paramount importance at Markket.</p>
                     </div>
                 <div class="col-lg-6 order-1 order-lg-2">
                     <div class="about_img scene mb-4 mb-lg-0">

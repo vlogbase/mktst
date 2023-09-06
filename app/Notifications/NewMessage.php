@@ -45,7 +45,7 @@ class NewMessage extends Notification
         return (new MailMessage)
             ->subject('New Message')
             ->greeting('Hello, ' . $this->registeredUser['userName'])
-            ->line('You have a new message from SavoyFoods website')
+            ->line('You have a new message from Markket website')
             ->line('Name: ' . $this->registeredUser['messageName'])
             ->line('Email: ' . $this->registeredUser['messageEmail'])
             ->line('Phone: ' . $this->registeredUser['messagePhone'])

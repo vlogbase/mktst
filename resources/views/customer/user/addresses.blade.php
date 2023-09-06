@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','Addresses - SavoyFoods')
+@section('title','Addresses - Markket')
 @section('css')
     <style>
         .card-input-element {

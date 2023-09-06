@@ -1,5 +1,5 @@
 @extends('customer.layouts.master')
-@section('title','Detail - SavoyFoods')
+@section('title','Detail - Markket')
 
 @section('content')
 <!-- START SECTION BREADCRUMB -->
