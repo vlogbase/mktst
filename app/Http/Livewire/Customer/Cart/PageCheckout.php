@@ -57,8 +57,8 @@ class PageCheckout extends Component
         $this->payment_need = floatVal($this->total_price / PointSystem::first()->spend_coefficient);
         $this->min_cart_cost = OrderRule::where('name', 'min_order_cost')->first();
         $this->payment_option = $this->payments->first()->id;
-        if($this->payment_cards->count() > 0){
-            $this->payment_card_select = $this->payment_cards->where('is_default',1)->first()->id;
+        if ($this->payment_cards->count() > 0) {
+            $this->payment_card_select = $this->payment_cards->where('is_default', 1)->first()->id ?? '';
         }
     }
 
@@ -72,7 +72,7 @@ class PageCheckout extends Component
         $this->user = Auth::user();
         $this->payment_cards = $this->user->paymentCards;
 
-        
+
 
         $this->items = \Cart::getContent();
         $this->offices = $this->user->useroffices;
@@ -131,7 +131,7 @@ class PageCheckout extends Component
 
 
     public function orderAttempt()
-    {
+    {   
         $data =  $this->validate([
             'payment_option' => 'required|exists:payment_methods,id',
             'officeSelect' => 'required|exists:user_offices,id',
@@ -176,33 +176,31 @@ class PageCheckout extends Component
 
         if ($this->payment_option == 1) {
 
-            if($this->payment_card_select !== ''){
+            if (is_null($this->payment_card_select)) {
+                //New Card Process
+                $redirectUrl = $this->paymentIntentWithSession($this->user, $order);
+                return redirect($redirectUrl);
+            } else {
                 $paymentMethod = PaymentCard::find($this->payment_card_select);
 
-                if($paymentMethod->user_id !== $this->user->id){
+                if ($paymentMethod->user_id !== $this->user->id) {
                     return $this->emit('errorAlert', 'Payment Method Not Found');
                 }
 
-                $resultSavedCard = $this->paymentIntentWithSavedCard($this->user,$order,$paymentMethod);
+                $resultSavedCard = $this->paymentIntentWithSavedCard($this->user, $order, $paymentMethod);
 
-                if($resultSavedCard['status'] == 'success'){
+                if ($resultSavedCard['status'] == 'success') {
                     $order->update([
                         'pay_status' => 'paid',
                         'status' => 'New Order',
                     ]);
-                   return $this->completedOrder($ordernum);
-
-                }else if($resultSavedCard['status'] == 'redirect'){
+                    return $this->completedOrder($ordernum);
+                } else if ($resultSavedCard['status'] == 'redirect') {
                     return redirect($resultSavedCard['redirect_url']);
-                }else{
+                } else {
                     return $this->emit('errorAlert', 'Payment Failed');
                 }
             }
-
-            //New Card Process
-            $redirectUrl = $this->paymentIntentWithSession($this->user,$order);
-            return redirect($redirectUrl);
-
         } else {
             $this->completedOrder($ordernum);
         }
@@ -210,22 +208,22 @@ class PageCheckout extends Component
 
     public function completedOrder($ordernum)
     {
-            //Completed Process
-            //After Order
-            $this->updateStock($this->items); //Stock reduce
+        //Completed Process
+        //After Order
+        $this->updateStock($this->items); //Stock reduce
 
-            if ($this->coupon_code != '') {
-                $this->couponApplied($this->coupon_code, $this->user->id); //Coupon Applied
-                session()->forget('couponcode');
-            }
+        if ($this->coupon_code != '') {
+            $this->couponApplied($this->coupon_code, $this->user->id); //Coupon Applied
+            session()->forget('couponcode');
+        }
 
-            if ($this->payment_option != 6) {
-                //Earn Point From Buying
-                $this->earnPoint($this->prices['earn_point'], $this->user);
-            }
-            \Cart::clear();
-            $this->sendNotification($this->user, $ordernum);
-            return redirect()->route('order_complete', $ordernum);
+        if ($this->payment_option != 6) {
+            //Earn Point From Buying
+            $this->earnPoint($this->prices['earn_point'], $this->user);
+        }
+        \Cart::clear();
+        $this->sendNotification($this->user, $ordernum);
+        return redirect()->route('order_complete', $ordernum);
     }
 
     public function stockControl($items)
