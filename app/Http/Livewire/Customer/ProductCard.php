@@ -17,9 +17,13 @@ class ProductCard extends Component
 
     public $userFavorited = 0;
 
+    public $type = 'card';
 
-    public function mount()
+
+    public function mount($type = null)
     {
+        $this->type = $type;
+
         if (Auth::check()) {
             $this->user = Auth::user();
             $toggle = DB::table('product_user')->where('product_id', $this->product->id)->where('user_id', $this->user->id)->first();
@@ -34,7 +38,24 @@ class ProductCard extends Component
     }
     public function render()
     {
-        return view('livewire.customer.product-card');
+            return view('livewire.customer.product-card', [
+                'badge' => $this->badge()
+            ]);
+    }
+
+    private function badge()
+    {
+       
+
+        if($this->type === 'card' && $this->product->discount > 0){
+            return 'DISCOUNTED';
+        }
+
+        if ($this->type !== 'card') {
+            return strtoupper($this->type);
+        }
+
+        return null;
     }
 
     public function addToCart()

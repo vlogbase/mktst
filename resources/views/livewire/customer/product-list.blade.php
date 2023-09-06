@@ -3,7 +3,7 @@
         @if($products->count() > 0)
         @foreach ($products as $product)
         <div class="col-md-4 col-6">
-            @livewire('customer.product-card', ['product' => $product], key($product->id))
+            @livewire('customer.product-card', ['product' => $product,'type' => 'card'], key($product->id))
         </div>
         @endforeach
         @else

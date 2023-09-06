@@ -182,7 +182,7 @@
                         <div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20"
                             data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
                             @foreach ($related as $product)
-                                @livewire('customer.product-card', ['product' => $product], key($product->id))
+                                @livewire('customer.product-card', ['product' => $product,'type' => 'card'], key($product->id))
                             @endforeach
 
                         </div>

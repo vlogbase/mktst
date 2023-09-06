@@ -1,9 +1,11 @@
 <div>
 
     <div class="product">
-        @if ($product->discount > 0)
-            <span class="pr_flash bg-danger">Discounted</span>
+        @if ($badge)
+            <span class="pr_flash bg-danger">{{$badge}}</span>
         @endif
+
+
         <div class="">
             <a href="{{ route('product_detail', $product->slug) }}">
                 <img style="background-size: cover;
