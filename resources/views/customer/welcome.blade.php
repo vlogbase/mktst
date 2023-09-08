@@ -260,7 +260,7 @@
             	<div class="medium_divider d-none d-md-block clearfix"></div>
             	<div class="trand_banner_text text-center text-md-start">
                     <div class="heading_s1 mb-3">
-                        <span class="sub_heading">Register to Savoy!</span>
+                        <span class="sub_heading">Register for Markket  Access!!</span>
                        
                         <p>We want to give our customers the best service. Sign up and enjoy good product supply, fast and easy service.</p>
                     </div>
