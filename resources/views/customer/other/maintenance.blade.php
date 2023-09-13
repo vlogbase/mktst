@@ -705,7 +705,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
 
-      <img class="logo_light mb-5" src="/upload/logos/savoywhite.png" alt="logo" />
+      <img class="logo_light mb-5" src="/upload/logos/markketlogo2.png" alt="logo" />
       <h2>We're working hard to improve our website and we'll ready to launch after</h2>
       <div class="countdown d-flex justify-content-center" data-count="{{\Carbon\Carbon::today()->addDays(3)->format('Y/m/d')}}">
         <div>

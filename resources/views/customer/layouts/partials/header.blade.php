@@ -7,7 +7,7 @@
     	<div class="container">
         	<div class="nav_block">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img class="logo_light"  src="/upload/logos/savoywhite.png" alt="logo" />
+                    <img class="logo_light"  src="/upload/logos/markketlogo2.png" alt="logo" />
                     <img class="logo_dark"src="/upload/logos/markketlogo.png" alt="logo" />
                 </a>
                 <div class="contact_phone order-md-last">
