@@ -9,11 +9,11 @@
                         <ul class="contact_info">
                             <li>
                                 <i class="ti-world"></i>
-                                <p>TANNER BRODIN LIMITED Savoy Catering Supplies</p>
+                                <p>TANNER BRODIN LIMITED Markket</p>
                             </li>
                             <li>
                                 <i class="ti-location-pin"></i>
-                                <p>Savoy Catering Supplies S Denes Rd, Great Yarmouth | NR30 3PR, United Kingdom</p>
+                                <p>Markket S Denes Rd, Great Yarmouth | NR30 3PR, United Kingdom</p>
                             </li>
                             <li>
                                 <i class="ti-email"></i>

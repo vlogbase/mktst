@@ -38,7 +38,7 @@
                     </div>
                     <div class="contact_text">
                         <span>Address</span>
-                        <p>Savoy Catering Supplies S Denes Rd, Great Yarmouth NR30 3PR, UK</p>
+                        <p>Markket S Denes Rd, Great Yarmouth NR30 3PR, UK</p>
                     </div>
                 </div>
             </div>

@@ -39,7 +39,7 @@
                     <div class="heading_s1">
                         <h2>WHY CHOOSE Markket</h2>
                     </div>
-                    <p>Savoy Catering Supplies was established in 1985, it has grown over the years from a small corner outlet, to a 65000sqft well-established state of the art multi temperature and multi cultural foodservice distributor.</p>
+                    <p>Markket was established in 1985, it has grown over the years from a small corner outlet, to a 65000sqft well-established state of the art multi temperature and multi cultural foodservice distributor.</p>
                     <p>We supply a diverse range of chilled and frozen foods as well as a comprehensive selection of retail, catering products and non-food items. Our products also include established brands as well as a competitively priced own label ranges, creating a ‘one-stop-shop’ for all our clients.</p>
 
                 </div>
@@ -136,7 +136,7 @@
             	<div class="contact_wrap contact_style3">
                     <div class="contact_text">
                         <span>Company Name</span>
-                        <p>TANNER BRODIN LIMITED Savoy Catering Supplies</p>
+                        <p>TANNER BRODIN LIMITED Markket</p>
                     </div>
                 </div>
             </div>
