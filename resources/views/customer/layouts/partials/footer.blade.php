@@ -9,11 +9,14 @@
                         <ul class="contact_info">
                             <li>
                                 <i class="ti-world"></i>
-                                <p>TANNER BRODIN LIMITED Markket</p>
+                                <p>Integrated Brand Delivery Ltd</p>
                             </li>
                             <li>
                                 <i class="ti-location-pin"></i>
-                                <p>Markket S Denes Rd, Great Yarmouth | NR30 3PR, United Kingdom</p>
+                                <p>Registered office
+                                    21 Marina Court,
+                                    Hull,
+                                    HU1 1TJ</p>
                             </li>
                             <li>
                                 <i class="ti-email"></i>

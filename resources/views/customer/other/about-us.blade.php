@@ -136,7 +136,7 @@
             	<div class="contact_wrap contact_style3">
                     <div class="contact_text">
                         <span>Company Name</span>
-                        <p>TANNER BRODIN LIMITED Markket</p>
+                        <p>Integrated Brand Delivery Ltd</p>
                     </div>
                 </div>
             </div>

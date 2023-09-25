@@ -46,6 +46,7 @@
 													<!--begin::Actions-->
 													<div class="d-flex my-4">
 														@livewire('admin.customer.delete-button',['itemid'=> $customer->id])
+														<a href="{{route('admin.customers.edit',$customer->id)}}" class="btn btn-sm btn-secondary me-3" >Edit</a>
 														<a href="{{route('admin.customers.list')}}" class="btn btn-sm btn-primary me-3" >Back to List</a>
 														
 													</div>

@@ -96,6 +96,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::prefix('customers')->name('customers.')->group(function () {
             Route::get('/', [CustomerController::class, 'customer_list'])->name('list');
             Route::get('/{id}', [CustomerController::class, 'customer_detail'])->name('detail');
+            Route::get('/{id}/edit', [CustomerController::class, 'customer_edit'])->name('edit');
         });
 
         //Orders

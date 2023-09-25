@@ -38,7 +38,10 @@
                     </div>
                     <div class="contact_text">
                         <span>Address</span>
-                        <p>Markket S Denes Rd, Great Yarmouth NR30 3PR, UK</p>
+                        <p>Registered office
+                            21 Marina Court,
+                            Hull,
+                            HU1 1TJ</p>
                     </div>
                 </div>
             </div>
