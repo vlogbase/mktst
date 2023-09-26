@@ -9,8 +9,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="/upload/logos/savoyicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="/upload/logos/savoyicon.ico">
+  <link rel="shortcut icon" href="/upload/logos/markket.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/upload/logos/markket.ico">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">

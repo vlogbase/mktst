@@ -22,8 +22,8 @@
     <meta property="og:image:alt" content="Savoy Logo" />
     <link rel="canonical" href="{{url('/')}}" />
 
-    <link rel="shortcut icon" href="/upload/logos/savoyicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/upload/logos/savoyicon.ico">
+    <link rel="shortcut icon" href="/upload/logos/markket.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/upload/logos/markket.ico">
 
 
     <!-- Animation CSS -->
