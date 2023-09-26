@@ -20,7 +20,7 @@
                             </li>
                             <li>
                                 <i class="ti-email"></i>
-                                <a href="mailto:info@sitename.com">sales@savoycatering.co.uk</a>
+                                <a href="mailto:sales@markket.uk<">sales@markket.uk</a>
                             </li>
                             <li>
                                 <i class="ti-mobile"></i>

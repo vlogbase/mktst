@@ -743,8 +743,8 @@
       <div class="row mt-5 mb-3">
           <div class="col text-center">
                   <p><i class="ti-world"></i> Integrated Brand Delivery Ltd</p>        
-                  <p> <i class="ti-mobile"></i> 01493 855403 | <i class="ti-email"></i> sales@savoycatering.co.uk</p>
-                  <p><i class="ti-location-pin"></i>Markket S Denes Rd, Great Yarmouth <br> NR30 3PR, United Kingdom</p>  
+                  <p> <i class="ti-mobile"></i> 01493 855403 | <i class="ti-email"></i> sales@markket.uk</p>
+                  <p><i class="ti-location-pin"></i>Markket Registered office 21 Marina Court, Hull, <br> HU1 1TJ, United Kingdom</p>  
           </div>
       </div>
 

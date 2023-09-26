@@ -52,7 +52,7 @@
                     </div>
                     <div class="contact_text">
                         <span>Email Address</span>
-                        <p>sales@savoycatering.co.uk</p>
+                        <p>sales@markket.uk</p>
                         <p></p>
                     </div>
                 </div>
