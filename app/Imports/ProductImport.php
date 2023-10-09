@@ -43,10 +43,10 @@ class ProductImport implements ToCollection
                     }
                 }else{
                     //This is category row
-                    $currentSubCategory = Category::firstOrCreate(
-                        ['name' => $row[0]],
+                    $currentSubCategory = Category::create(
                         [
-                            'slug' => Str::slug($row[0]),
+                            'name' => $row[0],
+                            'slug' => Str::slug($row[0].'-'.rand(100,999)),
                             'category_id' => $this->category->id,
                         ]
                     );
@@ -86,6 +86,10 @@ class ProductImport implements ToCollection
                     'meta_description' => $row[1],
                     'pack' => $row[7],
                 ]);
+
+                if($row[7] == ""){
+                    echo $item->sku . ' => No pack information' . PHP_EOL;
+                }
     
                 $this->imageSave($row[0], $item->id);
     
