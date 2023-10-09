@@ -40,18 +40,37 @@ class FindNoImageProduct extends Command
         $products = \App\Models\Product::all();
 
         $counterNoImage = 0;
+        $pdfImages = 0;
+        $copied = 0;
 
 
         foreach ($products as $product) {
             $image = $product->productimages->first();
 
             if (strpos($image->path, 'imageholderproduct') !== false) {
-                echo $product->sku."\n";
-                $counterNoImage++; //Not found product image
+                $partialFileName = $product->sku;
+                $files = glob(public_path('upload/product/' . $partialFileName . '.pdf'));
+
+                if (!empty($files)) {
+
+                    $destinationPath = public_path('upload/pdfimages/' . $partialFileName . '.pdf');
+                    if(!file_exists($destinationPath)){
+                        copy($files[0], $destinationPath);
+                        $copied++;
+                    }
+                    $pdfImages++;
+                    echo 'YES->'.$product->sku."\n";
+                }else{
+                    echo $product->sku."\n";
+                    $counterNoImage++; //Not found product image
+                }
+                
             }
         }
 
         $this->info('Total product: ' . $products->count());
         $this->info('Total No image: ' . $counterNoImage);
+        $this->info('Total PDF image: ' . $pdfImages);
+        $this->info('Copied: ' . $copied);
     }
 }
