@@ -7,8 +7,8 @@
     	<div class="container">
         	<div class="nav_block">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img class="logo_light"  src="/upload/logos/markketlogo2.png" alt="logo" />
-                    <img class="logo_dark"src="/upload/logos/markketlogo.png" alt="logo" />
+                    <img style="width: 220px!important;" class="logo_light"  src="/upload/logos/markketlogo2.png" alt="logo" />
+                    <img style="width: 220px!important;" class="logo_dark"src="/upload/logos/markketlogo.png" alt="logo" />
                 </a>
                 <div class="contact_phone order-md-last">
                     <a href="tel:01493 855403"><i class="linearicons-phone-wave"></i>
@@ -97,10 +97,10 @@
                         </button> 
                         <div class="collapse navbar-collapse mobile_side_menu justify-content-end " id="navbarSidetoggle">
                             <ul class="navbar-nav">
-                                <li><a class="nav-link nav_item {{request()->routeIs('home') ? 'active' : ''}}" href="{{route('home')}}">Home</a></li> 
-                                    <li><a class="nav-link nav_item {{request()->routeIs('products') ? 'active' : ''}}" href="{{route('products')}}">Products</a></li>
+                                <li ><a style="font-size: 17px!important;" class="nav-link nav_item {{request()->routeIs('home') ? 'active' : ''}}" href="{{route('home')}}">Home</a></li> 
+                                    <li><a style="font-size: 17px!important;" class="nav-link nav_item {{request()->routeIs('products') ? 'active' : ''}}" href="{{route('products')}}">Products</a></li>
                                     <li class="dropdown">
-                                        <a class="dropdown-toggle nav-link {{request()->routeIs('about_us') || request()->routeIs('contact_us') || request()->routeIs('career')  || request()->routeIs('terms_and_conditions') ? 'active' : ''}}" href="#" data-bs-toggle="dropdown">Company</a>
+                                        <a style="font-size: 17px!important;" class="dropdown-toggle nav-link {{request()->routeIs('about_us') || request()->routeIs('contact_us') || request()->routeIs('career')  || request()->routeIs('terms_and_conditions') ? 'active' : ''}}" href="#" data-bs-toggle="dropdown">Company</a>
                                         <div class="dropdown-menu">
                                             <ul> 
                                                 <li><a class="dropdown-item nav-link nav_item {{request()->routeIs('about_us') ? 'active' : ''}}" href="{{route('about_us')}}">About Us</a></li> 
@@ -112,7 +112,7 @@
                                     </li>
                                     
                                     <li class="dropdown">
-                                        <a class="dropdown-toggle nav-link {{request()->routeIs('blogs.index') || request()->routeIs('news.index') || request()->routeIs('gallery')  || request()->routeIs('video_gallery') ? 'active' : ''}}" href="#" data-bs-toggle="dropdown">Contents</a>
+                                        <a style="font-size: 17px!important;" class="dropdown-toggle nav-link {{request()->routeIs('blogs.index') || request()->routeIs('news.index') || request()->routeIs('gallery')  || request()->routeIs('video_gallery') ? 'active' : ''}}" href="#" data-bs-toggle="dropdown">Contents</a>
                                         <div class="dropdown-menu">
                                             <ul> 
                                                 <li><a class="dropdown-item nav-link nav_item {{request()->routeIs('blogs.index') ? 'active' : ''}}" href="{{route('blogs.index')}}">Blog</a></li> 

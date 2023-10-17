@@ -498,7 +498,7 @@ button:focus:not(:focus-visible) {
 	background-color: #F7901E !important;
 }
 .bg_gray {
-	background-color: #DFDFDF !important;
+	background-color: #FFF1E1 !important;
 }
 .bg_light_blue {
 	background-color: #EBF5FF !important;
