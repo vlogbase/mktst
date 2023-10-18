@@ -7,8 +7,8 @@
     	<div class="container">
         	<div class="nav_block">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img style="width: 220px!important;" class="logo_light"  src="/upload/logos/markketlogo2.png" alt="logo" />
-                    <img style="width: 220px!important;" class="logo_dark"src="/upload/logos/markketlogo.png" alt="logo" />
+                    <img style="width: 270px!important;" class="logo_light"  src="/upload/logos/markketlogo2.png" alt="logo" />
+                    <img style="width: 270px!important;" class="logo_dark"src="/upload/logos/markketlogo.png" alt="logo" />
                 </a>
                 <div class="contact_phone order-md-last">
                     <a href="tel:01493 855403"><i class="linearicons-phone-wave"></i>
@@ -19,9 +19,9 @@
         </div>
     </div>
 
-    <div class="bottom_header dark_skin main_menu_uppercase ">
+    <div class="bottom_header light_skin main_menu_uppercase bg-dark">
     	<div class="container">
-            <div class="row align-items-center"> 
+            <div class="row align-items-center "> 
             	<div class="col-lg-3 col-md-4 col-sm-6 col-3">
                 	<div class="categories_wrap">
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#navCatContent" aria-expanded="false" class="categories_btn categories_menu">
