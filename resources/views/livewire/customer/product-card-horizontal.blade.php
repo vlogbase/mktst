@@ -1,5 +1,5 @@
-<div>
-    <div class="row my-3 border">
+<div> 
+    <div class="row my-3 border ">
         <div class="col-md-4 col-4">
             <div>
                 <a href="{{ route('product_detail', $product->slug) }}">
@@ -15,7 +15,7 @@
             <br>
             <span class="text-secondary">Brand: {{ $product->brand->name }}</span>
         </div>
-        <div class="col-md-3 col-3 text-right my-auto">
+        <div class="col-md-3 col-3 text-right my-auto ">
             @auth
                 <div class="align-items-center text-center">
                     <div class="product_price">
