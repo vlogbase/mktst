@@ -41,6 +41,17 @@ class Category extends Model
         return '/' . $value;
     }
 
+    public function getCoverImage()
+    {
+        if ($this->image != '/') {
+            $path = $this->image;
+        } else {
+            $path = '/upload/product/imageholderproduct.jpg';
+        }
+
+        return $path;
+    }
+
     public function humanTime()
     {
         return Carbon::parse($this->created_at)->diffForHumans();
