@@ -1,21 +1,26 @@
 <div> 
-    <div class="row my-3 border ">
-        <div class="col-md-4 col-4">
-            <div>
+    <div class="row align-items-center my-3 border ">
+        <div class="col-md-2">
+            <h6>{{ $product->sku }}</h6>
+        </div>  
+
+        <div class="col-md-2">
+            
                 <a href="{{ route('product_detail', $product->slug) }}">
                     <img class="" src="{{ $product->getCoverImage() }}" alt="{{ $product->name }}">
                 </a>
-            </div>
+     
         </div>
-        <div class="col-md-5 col-5 mt-4">
-            <h6>{{ $product->sku }}</h6>
+        <div class="col-md-2 text-left">
+            <span class="text-secondary"><img style="width: 24px;" src="/upload/other/box-icon.png" alt=""> In Pack<br>
+                <strong>{{ $product->productdetail->pack }}</strong></span>
+        </div>  
+        <div class="col-md-3 ">
             <h6 class="mb-4"><a href="{{ route('product_detail', $product->slug) }}">{{ $product->name }}</a>
             </h6>
-            <span class="text-secondary">In Pack: {{ $product->productdetail->pack }}</span>
-            <br>
             <span class="text-secondary">Brand: {{ $product->brand->name }}</span>
         </div>
-        <div class="col-md-3 col-3 text-right my-auto ">
+        <div class="col-md-3 text-right py-5" style="background-color: aliceblue">
             @auth
                 <div class="align-items-center text-center">
                     <div class="product_price">
@@ -33,11 +38,11 @@
                             <span class="text-danger mb-2">Out of Stock</span>
                         @endif
                     </div>
-                    <div class=" mt-2 " >
+                    <div class=" " >
                         <a  class="btn btn-sm add_wishlist mb-1 " wire:click="addToFav"><i
                             class="{{ $userFavorited == 0 ? 'far' : 'fas' }} fa-heart text-danger"></i> Add to Favorites</a>
                         @if ($product->calcStock() > 0)
-                            <button wire:click="addToCart" class="btn btn-sm py-2 btn-dark  rounded-0 "><i
+                            <button wire:click="addToCart" class="btn btn-md py-3 btn-dark  rounded-0 "><i
                                     class="icon-basket-loaded"></i> Add to Cart</button>
                         @else
                             <a class="btn btn-sm btn-light  rounded-0  align-left" href="{{ route('contact_us') }}">Contact

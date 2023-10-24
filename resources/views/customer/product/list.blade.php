@@ -36,28 +36,8 @@
 
         <!-- START SECTION SHOP -->
         <div class="section">
-            <div class="container">
-                @if($categoryCurrent != null)
+            <div class="container-fluid px-5">
                     @livewire('customer.product-page', ['categoryCurrent' => $categoryCurrent])
-                @else
-                <div class="row">
-                    @foreach($customerpagedata['categories'] as $category)
-                        <div class="col-md-3 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
-                            <!-- ============================ COMPONENT ITEM BG ================================= -->
-                            <a href="{{route('category_products',$category->slug)}}">
-                            <div class="categorybox card card-banner border-0">
-                                <div class="p-3 text-center" style="width:100%">
-                                    <img src="{{$category->image}}" style="width:180px;" alt="{{$category->name}}">
-                                    <h5 class="card-title mt-2">{{$category->name}}</h5>
-                                </div>
-                            </div>
-                            </a>
-                            <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                        </div> <!-- col.// -->
-                    @endforeach
-                </div> <!-- row.// -->
-                @endif
-                
             </div>
         </div>
         <!-- END SECTION SHOP -->

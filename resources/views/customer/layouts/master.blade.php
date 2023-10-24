@@ -25,7 +25,6 @@
     <link rel="shortcut icon" href="/upload/logos/markket.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/upload/logos/markket.ico">
 
-
     <!-- Animation CSS -->
     <link rel="stylesheet" href="/customer_assets/css/animate.css">
     <!-- Latest Bootstrap min CSS -->
@@ -54,11 +53,14 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="/customer_assets/css/style.css">
     <link rel="stylesheet" href="/customer_assets/css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//code.jivosite.com/widget/R7EojPvkQm" async></script>
+
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLD999SBGV"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
