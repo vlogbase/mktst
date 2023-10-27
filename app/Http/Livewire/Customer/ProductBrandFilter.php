@@ -15,13 +15,16 @@ class ProductBrandFilter extends Component
     public function mount($brands)
     {
         $this->brands = $brands;
-        if($this->brands->count() > 5) {
-            $this->filteredBrands = $this->brands->take(5);
-            $this->showMoreBoolean = true;
-        }else{
-            $this->filteredBrands = $this->brands;
-            $this->showMoreBoolean = false;
+        if($this->brands){
+            if($this->brands->count() > 5) {
+                $this->filteredBrands = $this->brands->take(5);
+                $this->showMoreBoolean = true;
+            }else{
+                $this->filteredBrands = $this->brands;
+                $this->showMoreBoolean = false;
+            }
         }
+        
 
     }
     

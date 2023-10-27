@@ -1,4 +1,5 @@
 <div class="widget">
+  @if (!request()->routeIs('products'))
     <h5 class="widget_title">Price Filter </h5>
     
     <div class="filter_price">
@@ -26,4 +27,5 @@
             
           </div>
      </div>
+     @endif
 </div>
