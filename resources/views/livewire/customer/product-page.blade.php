@@ -50,7 +50,7 @@
         @else
             <div class="row">
                 @foreach ($customerpagedata['categories'] as $category)
-                    <div class="col-md-3 col-6 mt-4 mb-4" style="cursor:pointer;">
+                    <div class="col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;">
                         <!-- ============================ COMPONENT ITEM BG ================================= -->
                         <a href="{{ route('category_products', $category->slug) }}">
                             <div class="categorybox card card-banner border-0">
