@@ -107,6 +107,8 @@
             </div>
             @livewire('customer.price-filter', ['product_max_price' => $product_max_price])
 
+
+
         </div>
     </div>
 </div>
