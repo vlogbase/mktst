@@ -105,10 +105,12 @@
                     @endif
                 </ul>
             </div>
+
             @livewire('customer.price-filter', ['product_max_price' => $product_max_price])
 
-
-
+            @livewire('customer.product-brand-filter', ['brands' => $brands])
+            @livewire('customer.product-discount-filter')
+        
         </div>
     </div>
 </div>
