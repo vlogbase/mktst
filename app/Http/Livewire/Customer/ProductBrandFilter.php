@@ -43,7 +43,7 @@ class ProductBrandFilter extends Component
 
     public function changeBrands($id)
     {
-       dd($id);
+       
     }
 
     public function render()
