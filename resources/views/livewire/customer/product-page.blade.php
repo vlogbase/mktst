@@ -56,7 +56,7 @@
                             <div class="categorybox card card-banner border-0">
                                 <div class="p-3 text-center" style="width:100%">
                                     <img src="{{ $category->image }}" style="width:180px;" alt="{{ $category->name }}">
-                                    <h5 class="card-title mt-2">{{ $category->name }}</h5>
+                                    <h6 class="card-title mt-2">{{ $category->name }}</h6>
                                 </div>
                             </div>
                         </a>
@@ -65,11 +65,7 @@
                 @endforeach
             </div>
         @endif
-        <div class="row " id="test-div">
-            <div class="col-12">
-
-            </div>
-        </div>
+        
     </div>
 
 
@@ -117,33 +113,7 @@
 
 
 <script>
-    var swiper = new Swiper(".mySwiper", {
-
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-
-
-        // Responsive breakpoints
-        breakpoints: {
-            // when window width is >= 320px
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 20
-            },
-            // when window width is >= 480px
-            480: {
-                slidesPerView: 3,
-                spaceBetween: 30
-            },
-            // when window width is >= 640px
-            640: {
-                slidesPerView: 4,
-                spaceBetween: 40
-            }
-        }
-    })
+   
 </script>
 
 <style>

@@ -123,6 +123,7 @@
     <!-- scripts js -->
     <script src="/customer_assets/js/scripts.js"></script>
     @livewireScripts
+    
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -247,6 +248,7 @@
         })
     </script>
     @yield('js')
+    @stack('scripts')
 </body>
 <!--end::Body-->
 

@@ -5,11 +5,12 @@ namespace App\Http\Livewire\Customer;
 use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 
 class ProductList extends Component
 {
-
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public $categoryCurrent;
     public $limitPerPage = 12;
@@ -19,12 +20,10 @@ class ProductList extends Component
     public $min_cost = 0;
 
     protected $listeners = [
-        'loadMore' => 'loadMore',
         'changeOrder' => 'changeOrder',
         'changePrice' => 'changePrice',
         'removedPrice' => 'removedPrice',
     ];
-
 
     public function mount($categoryCurrent)
     {
@@ -57,6 +56,7 @@ class ProductList extends Component
         $this->max_cost = 50000;
         $this->limitPerPage = 12;
     }
+    
 
 
     public function render()
@@ -82,7 +82,6 @@ class ProductList extends Component
         }
 
         $this->emit('changeCount', $products_cnt);
-
         $this->emit('productStore');
         return view('livewire.customer.product-list', [
             'products' => $products

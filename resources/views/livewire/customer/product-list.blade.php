@@ -6,8 +6,17 @@
             @livewire('customer.product-card-horizontal', ['product' => $product,'type' => 'card'], key($product->id))
         </div>
         @endforeach
+        <div class="d-flex justify-content-center">
+            {{ $products->links()  }}
+        </div>
+        
         @else
         <p>No Product Found</p>
         @endif
     </div>
-    
+    @push('scripts')
+        <script>
+            Livewire.restart();
+            
+        </script>
+    @endpush

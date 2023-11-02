@@ -37,7 +37,7 @@
         <!-- START SECTION SHOP -->
         <div class="section">
             <div class="container-fluid px-5">
-                    @livewire('customer.product-page', ['categoryCurrent' => $categoryCurrent])
+                @livewire('customer.product-page', ['categoryCurrent' => $categoryCurrent])
             </div>
         </div>
         <!-- END SECTION SHOP -->
@@ -51,9 +51,37 @@
         window.onscroll = function(ev) {
             var productList = document.getElementById("product-list");
             if ((window.innerHeight + window.scrollY) >= productList.scrollHeight) {
-                window.livewire.emit('loadMore')
+               // window.livewire.emit('loadMore')
 
             }
         };
+
+        var swiper = new Swiper(".mySwiper", {
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 4,
+                    spaceBetween: 40
+                }
+            }
+        })
     </script>
 @endsection
