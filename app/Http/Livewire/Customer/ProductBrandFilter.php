@@ -11,31 +11,39 @@ class ProductBrandFilter extends Component
     public $showMoreBoolean = false;
 
     public $showMoreButtonStatus = false;
+    public $perPage = 5;
+    public $brandCount = 0;
+    public $selectedBrands = [];
+
+
 
     public function mount($brands)
     {
         $this->brands = $brands;
-        if($this->brands){
-            if($this->brands->count() > 5) {
-                $this->filteredBrands = $this->brands->take(5);
+        if ($this->brands) {
+            $this->brandCount = $this->brands->count();
+            if ($this->brands->count() > 5) {
                 $this->showMoreBoolean = true;
-            }else{
-                $this->filteredBrands = $this->brands;
+            } else {
                 $this->showMoreBoolean = false;
             }
         }
-        
-
     }
-    
-    public function applyShowBtn(){
+
+    public function applyShowBtn()
+    {
         $this->showMoreButtonStatus = !$this->showMoreButtonStatus;
 
-        if($this->showMoreButtonStatus){
-            $this->filteredBrands = $this->brands->take(5);
-        }else{
-            $this->filteredBrands = $this->brands;
+        if ($this->showMoreButtonStatus) {
+            $this->perPage = $this->brandCount;
+        } else {
+            $this->perPage = 5;
         }
+    }
+
+    public function changeBrands($id)
+    {
+       dd($id);
     }
 
     public function render()
