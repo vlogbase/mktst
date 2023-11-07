@@ -18,6 +18,7 @@ class UploadAllData extends Command
      */
     protected $signature = 'data:import';
 
+    
     /**
      * The console command description.
      *
