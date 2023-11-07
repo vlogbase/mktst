@@ -41,9 +41,14 @@
                   
                   	<div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                     	<div class="card">
-                        	<div class="card-header">
-                                <h3><a href="{{ url()->previous() }}"><i class="fas fa-backward"></i> </a>{{$order->ordercode}}</h3>
-                                        <p>{{$order->status}} - {{\Carbon\Carbon::parse($order->created_at)->format('d M Y')}}</p>
+                        	<div class="d-flex justify-content-between items-center">
+                                <div>
+                                    <h3><a href="{{ url()->previous() }}"><i class="fas fa-backward"></i> </a>{{$order->ordercode}}</h3>
+                                    <p>{{$order->status}} - {{\Carbon\Carbon::parse($order->created_at)->format('d M Y')}}</p>
+                                </div>
+                                <div class="">
+                                    @livewire('customer.user.order-again-button', ['orderId' => $order->id], key($order->id))
+                                </div>
                             </div>
                             <div class="card-body">
                     			<table class="table">

@@ -35,6 +35,10 @@
 @endsection
 @section('content')
 
+@auth
+    @livewire('customer.last-order-popup')
+@endauth
+
 <!-- START SECTION BANNER -->
 <div class="d-none d-md-block banner_section slide_medium shop_banner_slider staggered-animation-wrap">
     <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
