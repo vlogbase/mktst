@@ -41,9 +41,9 @@ class ProductBrandFilter extends Component
         }
     }
 
-    public function changeBrands($id)
+    public function changeBrands()
     {
-       
+        $this->emit('brandFilter', $this->selectedBrands);
     }
 
     public function render()

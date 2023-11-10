@@ -58,21 +58,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//code.jivosite.com/widget/R7EojPvkQm" async></script>
 
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-ZLD999SBGV');
-    </script>
     @livewireStyles
-
     @yield('css')
 </head>
 <!--end::Head-->
@@ -123,7 +109,7 @@
     <!-- scripts js -->
     <script src="/customer_assets/js/scripts.js"></script>
     @livewireScripts
-    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         const Toast = Swal.mixin({
             toast: true,

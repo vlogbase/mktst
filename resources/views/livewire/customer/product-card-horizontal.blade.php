@@ -16,9 +16,22 @@
                 <strong>{{ $product->productdetail->pack }}</strong></span>
         </div>  
         <div class="col-md-3 ">
-            <h6 class="mb-4"><a href="{{ route('product_detail', $product->slug) }}">{{ $product->name }}</a>
+            <h6 class="mb-2"><a href="{{ route('product_detail', $product->slug) }}">{{ $product->name }}</a>
             </h6>
-            <span class="text-secondary">Brand: {{ $product->brand->name }}</span>
+            <span class="text-secondary mb-4">Brand: {{ $product->brand->name }}</span>
+            @if ($product->discount > 0)
+            <div class="mt-3">
+                <span class="bg-warning p-2 text-dark items-center" >
+                    @php
+                        $discount = $product->discount;
+                        $price = $product->unit_price;
+                        $discounted_price = intval($price - ($price * $discount / 100));    
+                    @endphp
+                    <strong style="font-size: 25px;">%{{$discounted_price}}</strong>
+                    <span>OFFER</span>
+                </span>
+            </div>
+            @endif
         </div>
         <div class="col-md-3 text-right py-5" style="background-color: aliceblue">
             @auth

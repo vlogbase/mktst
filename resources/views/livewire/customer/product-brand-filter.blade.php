@@ -7,7 +7,7 @@
                     @foreach($brands->take($perPage) as $brand)
                         <div class="flex">
                             <div class="form-check" >
-                                <input wire:change="changeBrands({{ $brand['id'] }})"  class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <input wire:change="changeBrands({{ $brand['id'] }})" wire:model="selectedBrands"  class="form-check-input" type="checkbox" value="{{$brand['id']}}" >
                                 <label class="form-check-label" for="flexCheckDefault">
                                 {{$brand['name']}}
                                 </label>

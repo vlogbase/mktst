@@ -111,11 +111,6 @@
     </div>
 </div>
 
-
-<script>
-   
-</script>
-
 <style>
     .swiper-button-next {
         color: black;

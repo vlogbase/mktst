@@ -18,11 +18,15 @@ class ProductList extends Component
     public $order_direct;
     public $max_cost = 50000;
     public $min_cost = 0;
+    public $discountFilter = false;
+    public $selectedBrands = [];
 
     protected $listeners = [
         'changeOrder' => 'changeOrder',
         'changePrice' => 'changePrice',
         'removedPrice' => 'removedPrice',
+        'discountFilter' => 'discountFilter',
+        'brandFilter' => 'brandFilter',
     ];
 
     public function mount($categoryCurrent)
@@ -56,8 +60,22 @@ class ProductList extends Component
         $this->max_cost = 50000;
         $this->limitPerPage = 12;
     }
-    
 
+    public function discountFilter($filter)
+    {
+        if ($filter == true) {
+            $this->discountFilter = true;
+        } else {
+            $this->discountFilter = false;
+        }
+        $this->limitPerPage = 12;
+    }
+
+    public function brandFilter($brands)
+    {
+        $this->selectedBrands = $brands;
+        $this->limitPerPage = 12;
+    }
 
     public function render()
     {
@@ -77,8 +95,21 @@ class ProductList extends Component
             $products_cnt = Product::where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
         } else {
             $category = Category::where('id', $this->categoryCurrent->id)->first();
-            $products = $category->activeProducts()->where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->orderBy($query_order, $query_order_direct)->paginate($this->limitPerPage);
-            $products_cnt = $category->activeProducts()->where('status', 1)->whereBetween('unit_price', [$this->min_cost, $this->max_cost])->count();
+
+            $products_query = $category->activeProducts()->where('status', 1)
+                ->whereBetween('unit_price', [$this->min_cost, $this->max_cost]);
+
+            if ($this->discountFilter == true) {
+                $products_query->where('discount', '>', 0);
+            }
+
+            if (count($this->selectedBrands) > 0) {
+                $products_query->whereIn('brand_id', $this->selectedBrands);
+            }
+
+            $products = $products_query->orderBy($query_order, $query_order_direct);
+            $products_cnt = $products_query->count();
+            $products = $products->paginate($this->limitPerPage);
         }
 
         $this->emit('changeCount', $products_cnt);
