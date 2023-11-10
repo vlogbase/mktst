@@ -21,13 +21,13 @@
             <span class="text-secondary mb-4">Brand: {{ $product->brand->name }}</span>
             @if ($product->discount > 0)
             <div class="mt-3">
-                <span class="bg-warning p-2 text-dark items-center" >
+                <span class="bg-warning px-3 py-3 text-dark items-center" >
                     @php
                         $discount = $product->discount;
                         $price = $product->unit_price;
-                        $discounted_price = intval($price - ($price * $discount / 100));    
+                        $discounted_price = intval(100 - ($product->showPrice() * 100 / $product->unit_price))  ;
                     @endphp
-                    <strong style="font-size: 25px;">%{{$discounted_price}}</strong>
+                    <strong style="font-size: 25px;">{{$discounted_price}}% </strong>
                     <span>OFFER</span>
                 </span>
             </div>
