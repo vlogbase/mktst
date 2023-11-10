@@ -1,9 +1,11 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="row align-items-center mb-4 pb-1">
-            <div wire:ignore class="col-12 mt-2">
+            <div class="col-12 mt-2">
                 @if (!request()->routeIs('products'))
-                    @if (count($categories) > 0)
+                   
+                    <div wire:ignore>
+                        @if (count($categories) > 0)
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper">
                                 @foreach ($categories as $category)
@@ -22,6 +24,7 @@
                             <div class="swiper-button-prev"></div>
                         </div>
                     @endif
+                    </div>
                     <div class="mt-4 product_header">
                         <div class="product_header_left">
 

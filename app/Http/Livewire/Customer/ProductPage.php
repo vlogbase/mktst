@@ -47,9 +47,6 @@ class ProductPage extends Component
             $this->product_count = Product::all()->where('status', 1)->count();
             $this->product_max_price = Product::max('unit_price') + 1;
         }
-
-        
-        
     }
 
     public function changeCount($val)
