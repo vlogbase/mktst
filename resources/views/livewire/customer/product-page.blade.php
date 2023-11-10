@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-9">
         <div class="row align-items-center mb-4 pb-1">
-            <div class="col-12 mt-2">
+            <div wire:ignore class="col-12 mt-2">
                 @if (!request()->routeIs('products'))
                     @if (count($categories) > 0)
                         <div class="swiper mySwiper">

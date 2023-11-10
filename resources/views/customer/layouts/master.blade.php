@@ -5,22 +5,22 @@
 
 <head>
     <base href="">
-    <title>@yield('title',config('app.name'))</title>
+    <title>@yield('title', config('app.name'))</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {{-- <meta name="keywords" content="@yield('keywords')" /> --}}
-    <meta name="description" content="@yield('description','We supply a diverse range of chilled and frozen foods as well as a comprehensive selection of retail, catering products and non-food items. Our products also include established brands as well as a competitively priced own label ranges, creating a ‘one-stop-shop’ for all our clients.')">
+    <meta name="description" content="@yield('description', 'We supply a diverse range of chilled and frozen foods as well as a comprehensive selection of retail, catering products and non-food items. Our products also include established brands as well as a competitively priced own label ranges, creating a ‘one-stop-shop’ for all our clients.')">
     <meta name="author" content="ghospy.com">
     <meta property="og:locale" content="en_EN" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:description" content="@yield('description')" />
-    <meta property="og:url" content="{{Request::url()}}" />
+    <meta property="og:url" content="{{ Request::url() }}" />
     <meta property="og:site_name" content="Markket | Catering Supplies" />
-    <meta property="og:image" content="{{asset('/upload/logo/logo.jpeg')}}" />
+    <meta property="og:image" content="{{ asset('/upload/logo/logo.jpeg') }}" />
     <meta property="og:image:alt" content="Savoy Logo" />
-    <link rel="canonical" href="{{url('/')}}" />
+    <link rel="canonical" href="{{ url('/') }}" />
 
     <link rel="shortcut icon" href="/upload/logos/markket.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/upload/logos/markket.ico">
@@ -31,7 +31,8 @@
     <link rel="stylesheet" href="/customer_assets/bootstrap/css/bootstrap.min.css">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
     <!-- Icon Font CSS -->
     <link rel="stylesheet" href="/customer_assets/css/all.min.css">
     <link rel="stylesheet" href="/customer_assets/css/ionicons.min.css">
@@ -67,10 +68,10 @@
 
 <body>
     @yield('loader')
-    @if(config('app.env') == 'local')
-    <div class="alert alert-warning text-center mx-auto" role="alert">
-        Test Mode
-      </div>
+    @if (config('app.env') == 'local')
+        <div class="alert alert-warning text-center mx-auto" role="alert">
+            Test Mode
+        </div>
     @endif
     @include('customer.layouts.partials.header')
     @yield('content')
@@ -108,8 +109,39 @@
     <script src="/customer_assets/js/jquery.elevatezoom.js"></script>
     <!-- scripts js -->
     <script src="/customer_assets/js/scripts.js"></script>
-    @livewireScripts
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 4,
+                    spaceBetween: 40
+                }
+            }
+        })
+    </script>
+
+    @livewireScripts
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -232,6 +264,15 @@
                 },
             })
         })
+    </script>
+    <script type="text/javascript">
+        window.onscroll = function(ev) {
+            var productList = document.getElementById("product-list");
+            if ((window.innerHeight + window.scrollY) >= productList.scrollHeight) {
+                // window.livewire.emit('loadMore')
+
+            }
+        };
     </script>
     @yield('js')
     @stack('scripts')
