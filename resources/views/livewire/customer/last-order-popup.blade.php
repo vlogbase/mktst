@@ -1,8 +1,11 @@
 <div>
     @if ($showModal)
-        <div class="modal fade show" tabindex="5" role="dialog" style="display: block;" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content" style="width: 500px;">
+        <div class="modal fade show " tabindex="-1" role="dialog" 
+        style="display: block; opacity: 1; background-color:rgba(0,0,0,0.5)!important;"
+        id="myModal">
+            <div class="modal-dialog modal-dialog-centered" style="" tabindex="6" >
+                <div class="modal-content" 
+                style="width: 500px; border-width:7px!important;border-color:black!important; background-color:rgb(255, 241, 223)!important;border-radius:10px!important;">
                     <div class="modal-header">
                         <h5 class="modal-title">Do you want Re-Order?</h5>
                         <button type="button" class="close " data-dismiss="modal" wire:click="closeModal">
@@ -14,49 +17,20 @@
                         <hr>
                         <div class="row">
                             @foreach ($lastOrder->orderproducts as $item)
-                                <div class="col-6 border p-3 mt-2">
-                                    <div class="text-center">
-                                        <div>
-                                            <img style="height:100px;" src="{{ $item->product->getCoverImage() }}"
-                                                alt="{{ $item->product->name }}">
-                                        </div>
-                                        <div class="flex">
-                                            <div class="product_price">
-                                                <span> <span
-                                                        style="font-size: 20px;">{{ intval($item->quantity) }}</span>x</span>
-                                                <span style="font-size: 25px;"
-                                                    class="price">£{{ $item->product->showPrice() }}</span>
-                                                @if ($item->product->discount > 0)
-                                                    <del>£{{ $item->product->unit_price }}</del>
-                                                @endif
-                                            </div>
-                                            <span>{{ $item->product->name }}</span>
-                                        </div>
-                                        <div class="mt-2">
-                                            @if ($item->product->calcStock() > 0)
-                                                @if ($cartItems->contains('id', $item->product->id))
-                                                    <p>Added to Cart</p>
-                                                @else
-                                                    <button wire:click="addToCart({{ $item->product->id }})"
-                                                        class="btn btn-md py-2 btn-dark  rounded-0 ">
-                                                        <i class="icon-basket-loaded"></i> Add to Cart
-                                                    </button>
-                                                @endif
-                                            @else
-                                                <a class="btn btn-sm btn-light  rounded-0  align-left"
-                                                    href="{{ route('contact_us') }}">Contact
-                                                    Us</a>
-                                            @endif
-                                        </div>
-                                    </div>
+                                <div>
+                                    {{ $item->product->sku }} - {{ $item->product->name }} - {{ intval($item->quantity) }}/£{{ $item->product->showPrice() }} - Button
                                 </div>
+                              
                             @endforeach
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button wire:click="addAllOfThem" type="button" class="btn btn-success btn-block">Add All of
-                            Them</button>
+                            <h5 class="mt-2 mb-2">
+                                Total Price (Included VAT): £54.00
+                            </h5>
+                            <button wire:click="addAllOfThem" type="button" class="btn btn-success btn-block">Add All of Them</button><br>
+                            <a class="btn btn-warning btn-block" href="/products">Add Products to Your Order</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +43,7 @@
         $(document).ready(function() {
             // Modal açıldığında
             $('#myModal').on('shown.bs.modal', function() {
-                // JavaScript olaylarını burada etkinleştirin
+                
             });
 
             // Modal kapatıldığında
@@ -79,3 +53,4 @@
         });
     </script>
 @endpush
+

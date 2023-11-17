@@ -27,6 +27,7 @@ class CartPagePrice extends Component
     public $applied_coupon_code = NULL;
     public User $user;
     public $min_cart_cost;
+    public $percentOfFreeDelivery = 0;
 
     public function mount()
     {
@@ -73,6 +74,7 @@ class CartPagePrice extends Component
         } else {
             $shipping_cost = $shipment->price;
         }
+        $this->percentOfFreeDelivery = ($this->cart_price/$shipment->campaign_price)*100;
         return $shipping_cost;
     }
 

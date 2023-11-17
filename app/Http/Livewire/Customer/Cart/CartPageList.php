@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer\Cart;
 
+use App\Models\Product;
 use Livewire\Component;
 
 class CartPageList extends Component

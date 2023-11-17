@@ -39,13 +39,18 @@
                 @livewire('customer.cart.cart-page-price')
             </div>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-12">
             	<div class="medium_divider"></div>
             	<div class="divider center_icon"><i class="ti-shopping-cart-full"></i></div>
             	<div class="medium_divider"></div>
             </div>
-        </div> --}}
+        </div>
+        <div class="row">
+            <div class="col-12">
+                @livewire('customer.cart.special-product-offer')
+            </div>
+        </div>
     </div>
 </div>
 <!-- END SECTION SHOP -->

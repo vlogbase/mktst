@@ -20,7 +20,7 @@
         @endif
     @if(count($cartItems) > 0)
     
-    <table class="table">
+    <table class="table mb-5">
         <thead>
             <tr>
                 <th class="product-thumbnail">&nbsp;</th>

@@ -1,8 +1,17 @@
 <div>
+    
     @if($min_cart_cost->status &&  $min_cart_cost->price > $cart_price)
     <div class="mb-2">
         <div class="alert alert-warning" role="alert">
             Minumum Cart Total must be £{{$min_cart_cost->price}}
+          </div>
+    </div>
+    @endif
+    @if($percentOfFreeDelivery > 0 && $percentOfFreeDelivery < 100)
+    <div class="border p-3 mb-3">
+        <h5>Free Delivery:</h5>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{$percentOfFreeDelivery}}%" aria-valuenow="{{$percentOfFreeDelivery}}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
     </div>
     @endif

@@ -21,7 +21,7 @@
             <span class="text-secondary mb-4">Brand: {{ $product->brand->name }}</span>
             @if ($product->discount > 0)
             <div class="mt-3">
-                <span class="bg-warning px-3 py-3 text-dark items-center" >
+                <span class="pulse bg-warning px-3 py-3 text-dark items-center" >
                     @php
                         $discount = $product->discount;
                         $price = $product->unit_price;
@@ -70,3 +70,19 @@
         </div>
     </div>
 </div>
+
+<style>
+    .pulse {
+  animation: pulse-animation 1s infinite;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 199, 0, 1);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 199, 0, 0.2);
+  }
+}
+
+</style>
