@@ -10,8 +10,8 @@
     @if($percentOfFreeDelivery > 0 && $percentOfFreeDelivery < 100)
     <div class="border p-3 mb-3">
         <h5>Free Delivery:</h5>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: {{$percentOfFreeDelivery}}%" aria-valuenow="{{$percentOfFreeDelivery}}" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress" style="height: 24px;">
+            <div  class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{$percentOfFreeDelivery}}%" aria-valuenow="{{$percentOfFreeDelivery}}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
     </div>
     @endif

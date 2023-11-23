@@ -3,18 +3,14 @@
 
 <!-- START HEADER -->
 <header class="header_wrap fixed-top header_with_topbar">
-	<div class="middle-header dark_skin border-bottom">
-    	<div class="container">
-        	<div class="nav_block">
+
+	<div class="middle-header dark_skin border-bottom text-center" style="background-image: url('/upload/other/grocery-store.jpeg'); background-size: cover; background-position: 50% 45%;">
+    	<div class="container ">
+        	<div class="nav_block ">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img style="width: 470px!important;" class="logo_light"  src="/upload/logos/markketlogo2.png" alt="logo" />
-                    <img style="width: 470px!important;" class="logo_dark"src="/upload/logos/markketlogo.png" alt="logo" />
+                    <img style="width: 470px!important;" class="logo_light"  src="/upload/logos/markketlogo3.png" alt="logo" />
+                    <img style="width: 470px!important;" class="logo_dark"src="/upload/logos/markketlogo3.png" alt="logo" />
                 </a>
-                <div class="contact_phone order-md-last">
-                    <a href="tel:01493 855403"><i class="linearicons-phone-wave"></i>
-                        <span>01493 855403</span></a>
-                </div>
-               
             </div>
         </div>
     </div>

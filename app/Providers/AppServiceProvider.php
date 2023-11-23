@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             [
                 'categories' => Category::whereNull('category_id')
                     ->with('childrenCategories')
+                    ->orderBy('created_at', 'asc')
                     ->get(),
             ];
 

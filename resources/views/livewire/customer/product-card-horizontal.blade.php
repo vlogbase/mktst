@@ -21,14 +21,14 @@
             <span class="text-secondary mb-4">Brand: {{ $product->brand->name }}</span>
             @if ($product->discount > 0)
             <div class="mt-3">
-                <span class="pulse bg-warning px-3 py-3 text-dark items-center" >
+                <span class="pulse px-3 py-3 text-dark items-center" style="background-color:rgb(255, 251, 0);">
                     @php
                         $discount = $product->discount;
                         $price = $product->unit_price;
                         $discounted_price = intval(100 - ($product->showPrice() * 100 / $product->unit_price))  ;
                     @endphp
                     <strong style="font-size: 25px;">{{$discounted_price}}% </strong>
-                    <span>OFFER</span>
+                    <span>DISCOUNT</span>
                 </span>
             </div>
             @endif
@@ -78,10 +78,10 @@
 
 @keyframes pulse-animation {
   0% {
-    box-shadow: 0 0 0 0px rgba(255, 199, 0, 1);
+    box-shadow: 0 0 0 0px rgba(255, 251, 0, 1);
   }
   100% {
-    box-shadow: 0 0 0 10px rgba(255, 199, 0, 0.2);
+    box-shadow: 0 0 0 10px rgba(255, 251, 0, 0.2);
   }
 }
 
