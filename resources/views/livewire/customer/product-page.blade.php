@@ -109,6 +109,7 @@
 
             @livewire('customer.product-brand-filter', ['brands' => $brands])
             @livewire('customer.product-discount-filter')
+            @livewire('customer.special-category-filter')
         
         </div>
     </div>

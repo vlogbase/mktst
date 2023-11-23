@@ -4,12 +4,15 @@
 <!-- START HEADER -->
 <header class="header_wrap fixed-top header_with_topbar">
 
-	<div class="middle-header dark_skin border-bottom text-center" style="background-image: url('/upload/other/grocery-store.jpeg'); background-size: cover; background-position: 50% 45%;">
+	<div class="middle-header dark_skin border-bottom text-center" 
+    style="background-image: url('/upload/other/store-image.jpg'); background-size: cover; background-position: 50% 45%;
+    ;
+    ">
     	<div class="container ">
         	<div class="nav_block ">
                 <a class="navbar-brand" href="{{route('home')}}">
                     <img style="width: 470px!important;" class="logo_light"  src="/upload/logos/markketlogo3.png" alt="logo" />
-                    <img style="width: 470px!important;" class="logo_dark"src="/upload/logos/markketlogo3.png" alt="logo" />
+                    <img  style="width: 780px!important;ilter: brightness(1.0)" class="logo_dark"src="/upload/logos/markketlogo4.png" alt="logo" />
                 </a>
             </div>
         </div>

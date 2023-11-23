@@ -27,6 +27,7 @@ class ProductList extends Component
         'removedPrice' => 'removedPrice',
         'discountFilter' => 'discountFilter',
         'brandFilter' => 'brandFilter',
+        'specialCategoryFilter' => 'specialCategoryFilter',
     ];
 
     public function mount($categoryCurrent)
@@ -74,6 +75,12 @@ class ProductList extends Component
     public function brandFilter($brands)
     {
         $this->selectedBrands = $brands;
+        $this->limitPerPage = 12;
+    }
+
+    public function specialCategoryFilter($specialCategoryFilter)
+    {
+        
         $this->limitPerPage = 12;
     }
 
