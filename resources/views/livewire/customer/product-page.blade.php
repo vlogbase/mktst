@@ -3,27 +3,27 @@
         <div class="row align-items-center mb-4 pb-1">
             <div class="col-12 mt-2">
                 @if (!request()->routeIs('products'))
-                   
+
                     <div wire:ignore>
                         @if (count($categories) > 0)
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                @foreach ($categories as $category)
-                                    <div class="col-md-4 swiper-slide card text-center">
-                                        <a href="{{ route('category_products', $category->slug) }}">
-                                            <img class="card-img-top" src="{{ $category->getCoverImage() }}"
-                                                alt="Card image cap">
-                                            <div class="card-body text-center">
-                                                <p>{{ $category->name }}</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($categories as $category)
+                                        <div class="col-md-4 swiper-slide card text-center">
+                                            <a href="{{ route('category_products', $category->slug) }}">
+                                                <img class="card-img-top" src="{{ $category->getCoverImage() }}"
+                                                    alt="Card image cap">
+                                                <div class="card-body text-center">
+                                                    <p>{{ $category->name }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                        </div>
-                    @endif
+                        @endif
                     </div>
                     <div class="mt-4 product_header">
                         <div class="product_header_left">
@@ -53,22 +53,43 @@
         @else
             <div class="row">
                 @foreach ($customerpagedata['categories'] as $category)
-                    <div class="col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;">
-                        <!-- ============================ COMPONENT ITEM BG ================================= -->
-                        <a href="{{ route('category_products', $category->slug) }}">
-                            <div class="categorybox card card-banner border-0">
-                                <div class="p-3 text-center" style="width:100%">
-                                    <img src="{{ $category->image }}" style="width:180px;" alt="{{ $category->name }}">
-                                    <h6 class="card-title mt-2">{{ $category->name }}</h6>
+                    @if (
+                        $category->name == 'Markket Specials' ||
+                            $category->name == 'Markket Clearance' ||
+                            $category->name == 'Markket Exclusives' ||
+                            $category->name == 'Featured Brands')
+                        <div class="vibration-container vibration col-md-3 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;">
+                            <!-- ============================ COMPONENT ITEM BG ================================= -->
+                            <a href="{{ route('category_products', $category->slug) }}">
+                                <div class="categorybox card card-banner border-0">
+                                    <div class="p-3 text-center" style="width:100%">
+                                        <img src="{{ $category->image }}" style="width:180px;"
+                                            alt="{{ $category->name }}">
+                                        <h5 class="card-title mt-2">{{ $category->name }}</h5>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                    </div> <!-- col.// -->
+                            </a>
+                            <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
+                        </div>
+                    @else
+                        <div class="col-md-2 mx-auto col-4 mt-4 mb-4" style="cursor:pointer;">
+                            <!-- ============================ COMPONENT ITEM BG ================================= -->
+                            <a href="{{ route('category_products', $category->slug) }}">
+                                <div class="categorybox card card-banner border-0">
+                                    <div class="p-3 text-center" style="width:100%">
+                                        <img src="{{ $category->image }}" style="width:180px;"
+                                            alt="{{ $category->name }}">
+                                        <h5 class="card-title mt-2">{{ $category->name }}</h5>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
+                        </div> <!-- col.// -->
+                    @endif
                 @endforeach
-            </div>
+            </div> <!-- row.// -->
         @endif
-        
+
     </div>
 
 
@@ -110,7 +131,7 @@
             @livewire('customer.product-brand-filter', ['brands' => $brands])
             @livewire('customer.product-discount-filter')
             @livewire('customer.special-category-filter')
-        
+
         </div>
     </div>
 </div>
@@ -122,5 +143,40 @@
 
     .swiper-button-prev {
         color: black;
+    }
+
+    .vibration-container {
+        position: relative;
+    }
+
+    .vibration {
+        animation: vibrate 1s infinite;
+    }
+
+    @keyframes vibrate {
+        0% {
+            transform: translateX(0);
+            transform: translateY(0);
+        }
+
+        25% {
+            transform: translateX(-3px);
+            transform: translateY(-3px);
+        }
+
+        50% {
+            transform: translateX(3px);
+            transform: translateY(3px);
+        }
+
+        75% {
+            transform: translateX(-3px);
+            transform: translateY(-3px);
+        }
+
+        100% {
+            transform: translateX(3px);
+            transform: translateY(3px);
+        }
     }
 </style>

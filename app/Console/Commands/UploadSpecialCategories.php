@@ -41,7 +41,7 @@ class UploadSpecialCategories extends Command
     {
         $this->info('Uploading special categories...');
 
-        $category_array = ['Markket Specials','Clearance','Markket Exclusives','Featured Brands'];
+        $category_array = ['Markket Specials','Markket Clearance','Markket Exclusives','Featured Brands'];
         
         foreach($category_array as $category){
             $files = glob(public_path('upload/specialcategories/' . Str::slug($category) . '.*'));
@@ -55,9 +55,10 @@ class UploadSpecialCategories extends Command
                 echo 'Category image not found: ' . $category . PHP_EOL;
                 $path = 'upload/product/imageholderproduct.jpg';
             }
-            Category::create(
+
+            Category::updateOrCreate(
+                ['name' => $category],
                 [
-                    'name' => $category,
                     'slug' => Str::slug($category),
                     'category_id' => null,
                     'image' => $path,
