@@ -41,7 +41,7 @@ class UploadSpecialCategories extends Command
     {
         $this->info('Uploading special categories...');
 
-        $category_array = ['Markket Specials','Markket Clearance','Markket Exclusives','Featured Brands'];
+        $category_array = ['Markket Specials','Markket Clearance','Markket Exclusives','Featured Brands','Farmers Markket'];
         
         foreach($category_array as $category){
             $files = glob(public_path('upload/specialcategories/' . Str::slug($category) . '.*'));

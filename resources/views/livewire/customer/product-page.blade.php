@@ -51,43 +51,7 @@
         @if (!request()->routeIs('products'))
             @livewire('customer.product-list', ['categoryCurrent' => $categoryCurrent])
         @else
-            <div class="row">
-                @foreach ($customerpagedata['categories'] as $category)
-                    @if (
-                        $category->name == 'Markket Specials' ||
-                            $category->name == 'Markket Clearance' ||
-                            $category->name == 'Markket Exclusives' ||
-                            $category->name == 'Featured Brands')
-                        <div class="vibration-container vibration col-md-3 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;">
-                            <!-- ============================ COMPONENT ITEM BG ================================= -->
-                            <a href="{{ route('category_products', $category->slug) }}">
-                                <div class="categorybox card card-banner border-0">
-                                    <div class="p-3 text-center" style="width:100%">
-                                        <img src="{{ $category->image }}" style="width:180px;"
-                                            alt="{{ $category->name }}">
-                                        <h5 class="card-title mt-2">{{ $category->name }}</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                        </div>
-                    @else
-                        <div class="col-md-2 mx-auto col-4 mt-4 mb-4" style="cursor:pointer;">
-                            <!-- ============================ COMPONENT ITEM BG ================================= -->
-                            <a href="{{ route('category_products', $category->slug) }}">
-                                <div class="categorybox card card-banner border-0">
-                                    <div class="p-3 text-center" style="width:100%">
-                                        <img src="{{ $category->image }}" style="width:180px;"
-                                            alt="{{ $category->name }}">
-                                        <h5 class="card-title mt-2">{{ $category->name }}</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-                        </div> <!-- col.// -->
-                    @endif
-                @endforeach
-            </div> <!-- row.// -->
+            @include('customer.component.category')
         @endif
 
     </div>

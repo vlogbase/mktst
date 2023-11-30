@@ -2,7 +2,7 @@
 
 
 <!-- START HEADER -->
-<header class="header_wrap fixed-top header_with_topbar">
+<header class="header_wrap static header_with_topbar">
 
 	<div class="middle-header dark_skin border-bottom text-center" 
     style="background-image: url('/upload/other/store-bg-dark.jpg'); background-size: cover; background-position: 50% 0%;
