@@ -249,7 +249,7 @@
             </div>
             <div class="col-md-5">
                 <div class="text-center trading_img">
-                    <img src="upload/other/memberbecome.png" style="width:300px;" alt="tranding_img"/>
+                    <img class="lazy" data-src="upload/other/memberbecome.png" style="width:300px;" alt="tranding_img"/>
                 </div>
             </div>
         </div>
@@ -276,7 +276,7 @@
                     <div class="blog_post blog_style1 box_shadow1">
                         <div class="blog_img">
                             <a href="{{route('news.detail',$new->slug)}}">
-                                <img src="{{$new->image}}" alt="{{$new->name}}">
+                                <img class="lazy" data-src="{{$new->image}}" alt="{{$new->name}}">
                             </a>
                         </div>
                         <div class="blog_content bg-white">
@@ -314,15 +314,15 @@
                     <div class="heading_s1 mb-3">
                         <h2>Download our Mobile App!</h2>
                     </div>
-                    <a href="https://play.google.com/store/apps/details?id=com.savoyapp"><img src="upload/other/googleplay.png" alt="f1"/></a>
-                    <a href="https://apps.apple.com/tr/app/savoyapp/id1587340149?l=en"><img src="upload/other/appstore.png" alt="f2"/></a>
-                    <a href="https://appgallery.huawei.com/#/app/C104547059"><img src="upload/other/appgallery.png" alt="f2"/></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.savoyapp"><img class="lazy" data-src="upload/other/googleplay.png" alt="f1"/></a>
+                    <a href="https://apps.apple.com/tr/app/savoyapp/id1587340149?l=en"><img class="lazy" data-src="upload/other/appstore.png" alt="f2"/></a>
+                    <a href="https://appgallery.huawei.com/#/app/C104547059"><img class="lazy" data-src="upload/other/appgallery.png" alt="f2"/></a>
                 </div>
             	<div class="medium_divider clearfix"></div>
             </div>
             <div class="col-md-5">
                 <div class="text-center trading_img">
-                    <img src="upload/other/savoymockup.png" alt="tranding_img"/>
+                    <img class="lazy" data-src="upload/other/savoymockup.png" alt="tranding_img"/>
                 </div>
             </div>
         </div>
