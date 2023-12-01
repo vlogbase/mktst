@@ -12,7 +12,7 @@
                         <img style="width: 9000px!important;" class="logo_dark" src="/upload/logos/markketlogo6.png"
                             alt="logo" />
                     @else
-                        <img style="width: 250px!important;" class="logo_dark" src="/upload/logos/markketlogo6.png"
+                        <img style="width: 450px!important;" class="logo_dark" src="/upload/logos/markketlogo6.png"
                             alt="logo" />
                     @endif
                 </a>
