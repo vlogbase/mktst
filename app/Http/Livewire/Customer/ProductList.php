@@ -28,6 +28,7 @@ class ProductList extends Component
         'discountFilter' => 'discountFilter',
         'brandFilter' => 'brandFilter',
         'specialCategoryFilter' => 'specialCategoryFilter',
+        'loadMore' => 'loadMore',
     ];
 
     public function mount($categoryCurrent)

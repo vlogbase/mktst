@@ -146,6 +146,27 @@
 
     @livewireScripts
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = document.querySelectorAll('.lazy');
+
+            var lazyLoad = function() {
+                lazyImages.forEach(function(img) {
+                    if (img.getBoundingClientRect().top < window.innerHeight && img.getAttribute(
+                            'data-src')) {
+                        img.src = img.getAttribute('data-src');
+                        img.removeAttribute('data-src');
+                    }
+                });
+            };
+
+            // Initial load
+            lazyLoad();
+
+            // Lazy load on scroll
+            window.addEventListener('scroll', lazyLoad);
+        });
+    </script>
+    <script>
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -268,15 +289,7 @@
             })
         })
     </script>
-    {{-- <script type="text/javascript">
-        window.onscroll = function(ev) {
-            var productList = document.getElementById("product-list");
-            if ((window.innerHeight + window.scrollY) >= productList.scrollHeight) {
-                // window.livewire.emit('loadMore')
-
-            }
-        };
-    </script> --}}
+    
     @yield('js')
     @stack('scripts')
 </body>

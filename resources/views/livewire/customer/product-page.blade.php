@@ -98,49 +98,50 @@
 
         </div>
     </div>
+    <style>
+        .swiper-button-next {
+            color: black;
+        }
+    
+        .swiper-button-prev {
+            color: black;
+        }
+    
+        .vibration-container {
+            position: relative;
+        }
+    
+        .vibration {
+            animation: vibrate 1s infinite;
+        }
+    
+        @keyframes vibrate {
+            0% {
+                transform: translateX(0);
+                transform: translateY(0);
+            }
+    
+            25% {
+                transform: translateX(-3px);
+                transform: translateY(-3px);
+            }
+    
+            50% {
+                transform: translateX(3px);
+                transform: translateY(3px);
+            }
+    
+            75% {
+                transform: translateX(-3px);
+                transform: translateY(-3px);
+            }
+    
+            100% {
+                transform: translateX(3px);
+                transform: translateY(3px);
+            }
+        }
+    </style>
 </div>
 
-<style>
-    .swiper-button-next {
-        color: black;
-    }
 
-    .swiper-button-prev {
-        color: black;
-    }
-
-    .vibration-container {
-        position: relative;
-    }
-
-    .vibration {
-        animation: vibrate 1s infinite;
-    }
-
-    @keyframes vibrate {
-        0% {
-            transform: translateX(0);
-            transform: translateY(0);
-        }
-
-        25% {
-            transform: translateX(-3px);
-            transform: translateY(-3px);
-        }
-
-        50% {
-            transform: translateX(3px);
-            transform: translateY(3px);
-        }
-
-        75% {
-            transform: translateX(-3px);
-            transform: translateY(-3px);
-        }
-
-        100% {
-            transform: translateX(3px);
-            transform: translateY(3px);
-        }
-    }
-</style>

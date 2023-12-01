@@ -1,13 +1,13 @@
-<div> 
-    <div class="row align-items-center my-3 border ">
+<div > 
+    <div class="row align-items-center my-3 border " >
         <div class="col-md-2">
             <h6>{{ $product->sku }}</h6>
         </div>  
 
-        <div class="col-md-2">
+        <div class="col-md-2" >
             
                 <a href="{{ route('product_detail', $product->slug) }}">
-                    <img class="lazy" style="height:150px;" data-src="{{ $product->getCoverImage() }}" alt="{{ $product->name }}">
+                    <img  style="height:150px;" src="{{ $product->getCoverImage() }}" alt="{{ $product->name }}">
                 </a>
      
         </div>
@@ -69,20 +69,20 @@
             @endguest
         </div>
     </div>
+    <style>
+        .pulse {
+      animation: pulse-animation 1s infinite;
+    }
+    
+    @keyframes pulse-animation {
+      0% {
+        box-shadow: 0 0 0 0px rgba(255, 251, 0, 1);
+      }
+      100% {
+        box-shadow: 0 0 0 10px rgba(255, 251, 0, 0.2);
+      }
+    }
+    
+    </style>
 </div>
 
-<style>
-    .pulse {
-  animation: pulse-animation 1s infinite;
-}
-
-@keyframes pulse-animation {
-  0% {
-    box-shadow: 0 0 0 0px rgba(255, 251, 0, 1);
-  }
-  100% {
-    box-shadow: 0 0 0 10px rgba(255, 251, 0, 0.2);
-  }
-}
-
-</style>

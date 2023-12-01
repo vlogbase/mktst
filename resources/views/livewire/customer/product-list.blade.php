@@ -6,9 +6,6 @@
             @livewire('customer.product-card-horizontal', ['product' => $product,'type' => 'card'], key($product->id))
         </div>
         @endforeach
-        <div class="d-flex justify-content-center">
-            {{ $products->links()  }}
-        </div>
         
         @else
         <p>No Product Found</p>
@@ -16,7 +13,13 @@
     </div>
     @push('scripts')
         <script>
-            Livewire.restart();
+          window.onscroll = function(ev) {
+            var productList = document.getElementById("product-list");
+            if ((window.innerHeight + window.scrollY) >= productList.scrollHeight) {
+                window.livewire.emit('loadMore')
+
+            }
+        };
             
         </script>
     @endpush
