@@ -24,7 +24,8 @@
 
     <link rel="shortcut icon" href="/upload/logos/markket.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="/upload/logos/markket.ico">
-    
+
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
@@ -57,9 +58,62 @@
     @include('customer.layouts.partials.footer')
     <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
 
-    <script src="{{ asset('customer_assets/js/all.js') }}"></script>
-    
+    <!-- Latest jQuery -->
+    <script src="/customer_assets/js/jquery-3.6.0.min.js"></script>
+    <!-- jquery-ui -->
+    <script src="/customer_assets/js/jquery-ui.js"></script>
+    <!-- popper min js -->
+    <script src="/customer_assets/js/popper.min.js"></script>
+    <!-- Latest compiled and minified Bootstrap -->
+    <script src="/customer_assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- owl-carousel min js  -->
+    <script src="/customer_assets/owlcarousel/js/owl.carousel.min.js"></script>
+    <!-- magnific-popup min js  -->
+    <script src="/customer_assets/js/magnific-popup.min.js"></script>
+    <!-- waypoints min js  -->
+    <script src="/customer_assets/js/waypoints.min.js"></script>
+    <!-- parallax js  -->
+    <script src="/customer_assets/js/parallax.js"></script>
+    <!-- countdown js  -->
+    <script src="/customer_assets/js/jquery.countdown.min.js"></script>
+    <!-- imagesloaded js -->
+
+    <script src="/customer_assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- isotope min js -->
+    <script src="/customer_assets/js/isotope.min.js"></script>
+    <!-- jquery.dd.min js -->
+    <script src="/customer_assets/js/jquery.dd.min.js"></script>
+    <!-- slick js -->
+    <script src="/customer_assets/js/slick.min.js"></script>
+    <!-- elevatezoom js -->
+    <script src="/customer_assets/js/jquery.elevatezoom.js"></script>
+    <!-- scripts js -->
+    <script src="/customer_assets/js/scripts.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = document.querySelectorAll('.lazy');
+
+            var lazyLoad = function() {
+                lazyImages.forEach(function(img) {
+                    if (img.getBoundingClientRect().top < window.innerHeight && img.getAttribute(
+                            'data-src')) {
+                        img.src = img.getAttribute('data-src');
+                        img.removeAttribute('data-src');
+                    }
+                });
+            };
+
+            // Initial load
+            lazyLoad();
+
+            // Lazy load on scroll
+            window.addEventListener('scroll', lazyLoad);
+        });
+    </script>
+
     <script>
         var swiper = new Swiper(".mySwiper", {
 
@@ -214,7 +268,7 @@
             })
         })
     </script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         window.onscroll = function(ev) {
             var productList = document.getElementById("product-list");
             if ((window.innerHeight + window.scrollY) >= productList.scrollHeight) {
@@ -222,7 +276,7 @@
 
             }
         };
-    </script>
+    </script> --}}
     @yield('js')
     @stack('scripts')
 </body>

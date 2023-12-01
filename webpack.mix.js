@@ -25,20 +25,4 @@ const mix = require('laravel-mix');
     'public/customer_assets/css/responsive.css',
 ], 'public/customer_assets/css/all.css');
 
-mix.js([
-    'public/customer_assets/js/jquery-3.6.0.min.js',
-    'public/customer_assets/js/jquery-ui.js',
-    'public/customer_assets/js/popper.min.js',
-    'public/customer_assets/bootstrap/js/bootstrap.min.js',
-    'public/customer_assets/owlcarousel/js/owl.carousel.min.js',
-    'public/customer_assets/js/magnific-popup.min.js',
-    'public/customer_assets/js/waypoints.min.js',
-    'public/customer_assets/js/parallax.js',
-    'public/customer_assets/js/jquery.countdown.min.js',
-    'public/customer_assets/js/imagesloaded.pkgd.min.js',
-    'public/customer_assets/js/isotope.min.js',
-    'public/customer_assets/js/jquery.dd.min.js',
-    'public/customer_assets/js/slick.min.js',
-    'public/customer_assets/js/jquery.elevatezoom.js',
-    'public/customer_assets/js/scripts.js',
-], 'public/customer_assets/js/all.js');
+

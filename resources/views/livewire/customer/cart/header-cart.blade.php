@@ -8,7 +8,7 @@
                 @if(!request()->routeIs('checkout'))
                 <a wire:click="removeItem({{$item->id}})" class="item_remove"><i class="ion-close"></i></a>
                 @endif
-                <a href="{{route('product_detail',$item->attributes['slug'])}}"><img src="{{$item->attributes['image']}}" alt="{{$item->name}}">{{$item->name}}</a>
+                <a href="{{route('product_detail',$item->attributes['slug'])}}"><img class="lazy" data-src="{{$item->attributes['image']}}" alt="{{$item->name}}">{{$item->name}}</a>
                 <span class="cart_quantity"> {{$item->quantity}} x <span class="cart_amount"> <span class="price_symbole">£</span></span>{{$item->price}}</span>
             </li>
             @endforeach

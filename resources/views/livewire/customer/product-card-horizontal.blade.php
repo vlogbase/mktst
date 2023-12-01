@@ -7,7 +7,7 @@
         <div class="col-md-2">
             
                 <a href="{{ route('product_detail', $product->slug) }}">
-                    <img style="height:150px;" src="{{ $product->getCoverImage() }}" alt="{{ $product->name }}">
+                    <img class="lazy" style="height:150px;" data-src="{{ $product->getCoverImage() }}" alt="{{ $product->name }}">
                 </a>
      
         </div>

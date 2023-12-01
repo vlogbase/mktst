@@ -11,7 +11,7 @@
                                     @foreach ($categories as $category)
                                         <div class="col-md-4 swiper-slide card text-center">
                                             <a href="{{ route('category_products', $category->slug) }}">
-                                                <img class="card-img-top" src="{{ $category->getCoverImage() }}"
+                                                <img class="card-img-top lazy" data-src="{{ $category->getCoverImage() }}"
                                                     alt="Card image cap">
                                                 <div class="card-body text-center">
                                                     <p>{{ $category->name }}</p>
