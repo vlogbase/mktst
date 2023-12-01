@@ -3,7 +3,6 @@
         <div class="row align-items-center mb-4 pb-1">
             <div class="col-12 mt-2">
                 @if (!request()->routeIs('products'))
-
                     <div wire:ignore>
                         @if (count($categories) > 0)
                             <div class="swiper mySwiper">
@@ -24,7 +23,12 @@
                                 <div class="swiper-button-prev"></div>
                             </div>
                         @endif
+                        @if (request()->getRequestUri() === '/category/featured-brands')
+                            @livewire('customer.featured-brands', ['brands' => $brands])
+                        @endif
                     </div>
+
+
                     <div class="mt-4 product_header">
                         <div class="product_header_left">
 
@@ -48,11 +52,15 @@
             </div>
         </div>
 
-        @if (!request()->routeIs('products'))
-            @livewire('customer.product-list', ['categoryCurrent' => $categoryCurrent])
-        @else
-            @include('customer.component.category')
-        @endif
+
+        <div>
+            @if (!request()->routeIs('products'))
+                @livewire('customer.product-list', ['categoryCurrent' => $categoryCurrent])
+            @else
+                @include('customer.component.category')
+            @endif
+        </div>
+
 
     </div>
 
@@ -60,7 +68,7 @@
     <div class="col-lg-3 order-first mt-4 pt-2 mt-lg-0 pt-lg-0">
         <div class="sidebar">
             <div class="widget">
-                <h5 class="widget_title">Categories</h5>
+                <h2 class="widget_title">Categories</h2>
 
                 <ul class="widget_categories">
                     @if (!request()->routeIs('products'))
@@ -102,46 +110,13 @@
         .swiper-button-next {
             color: black;
         }
-    
+
         .swiper-button-prev {
             color: black;
         }
-    
+
         .vibration-container {
             position: relative;
         }
-    
-        .vibration {
-            animation: vibrate 1s infinite;
-        }
-    
-        @keyframes vibrate {
-            0% {
-                transform: translateX(0);
-                transform: translateY(0);
-            }
-    
-            25% {
-                transform: translateX(-3px);
-                transform: translateY(-3px);
-            }
-    
-            50% {
-                transform: translateX(3px);
-                transform: translateY(3px);
-            }
-    
-            75% {
-                transform: translateX(-3px);
-                transform: translateY(-3px);
-            }
-    
-            100% {
-                transform: translateX(3px);
-                transform: translateY(3px);
-            }
-        }
     </style>
 </div>
-
-

@@ -15,7 +15,9 @@ class ProductBrandFilter extends Component
     public $brandCount = 0;
     public $selectedBrands = [];
 
-
+    protected $listeners = [
+        'brandFilter' => 'checkFilter',
+    ];
 
     public function mount($brands)
     {
@@ -44,6 +46,11 @@ class ProductBrandFilter extends Component
     public function changeBrands()
     {
         $this->emit('brandFilter', $this->selectedBrands);
+    }
+
+    public function checkFilter($brands)
+    {
+        $this->selectedBrands = $brands;
     }
 
     public function render()

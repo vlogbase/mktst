@@ -20,13 +20,13 @@
         </div>
     </div>
 
-    <div class="bottom_header light_skin main_menu_uppercase bg-dark">
+    <div class="bottom_header light_skin main_menu_uppercase bg-dark ">
         <div class="container">
             <div class="row align-items-center ">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-3">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-3 ">
                     <div class="categories_wrap">
-                        <button type="button" data-bs-toggle="collapse" data-bs-target="#navCatContent"
-                            aria-expanded="false" class="categories_btn categories_menu">
+                        <button  type="button" data-bs-toggle="collapse" data-bs-target="#navCatContent"
+                            aria-expanded="false" class="categories_btn categories_menu fs-5 mb-2">
                             <i class="linearicons-menu"></i><span>All Categories</span>
                         </button>
                         <div id="navCatContent" class="navbar collapse">
@@ -100,23 +100,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-8 col-sm-6 col-9">
-                    <nav class="navbar navbar-expand-lg">
+                <div class="col-lg-9 col-md-8 col-sm-6 col-9 ">
+                    <nav class="navbar navbar-expand-lg ">
                         <button class="navbar-toggler side_navbar_toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSidetoggle" aria-expanded="false">
                             <span class="ion-android-menu"></span>
                         </button>
                         <div class="collapse navbar-collapse mobile_side_menu justify-content-end "
                             id="navbarSidetoggle">
-                            <ul class="navbar-nav">
-                                <li><a style="font-size: 17px!important;"
+                            <ul class="navbar-nav ">
+                                <li><a style="font-size: 20px!important;"
                                         class="nav-link nav_item {{ request()->routeIs('home') ? 'active' : '' }}"
                                         href="{{ route('home') }}">Home</a></li>
-                                <li><a style="font-size: 17px!important;"
+                                <li><a style="font-size: 20px!important;"
                                         class="nav-link nav_item {{ request()->routeIs('products') ? 'active' : '' }}"
                                         href="{{ route('products') }}">Products</a></li>
                                 <li class="dropdown">
-                                    <a style="font-size: 17px!important;"
+                                    <a style="font-size: 20px!important;"
                                         class="dropdown-toggle nav-link {{ request()->routeIs('about_us') || request()->routeIs('contact_us') || request()->routeIs('career') || request()->routeIs('terms_and_conditions') ? 'active' : '' }}"
                                         href="#" data-bs-toggle="dropdown">Company</a>
                                     <div class="dropdown-menu">
@@ -135,7 +135,7 @@
                                 </li>
 
                                 <li class="dropdown">
-                                    <a style="font-size: 17px!important;"
+                                    <a style="font-size: 20px!important;"
                                         class="dropdown-toggle nav-link {{ request()->routeIs('blogs.index') || request()->routeIs('news.index') || request()->routeIs('gallery') || request()->routeIs('video_gallery') ? 'active' : '' }}"
                                         href="#" data-bs-toggle="dropdown">Contents</a>
                                     <div class="dropdown-menu">
@@ -194,5 +194,62 @@
         </div>
     </div>
 
+
+    <div class="page-head__ticker">
+        <p class="msg"><span>Free Shipping on orders over £50</span></p>
+    </div>
+
+
+
+
 </header>
 <!-- END HEADER -->
+
+<style>
+    /**
+ * Ticker
+ */
+
+    .page-head__ticker {
+        font-size: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Arial";
+        font-size: 24px;
+        font-weight: Bold;
+        height: 29px;
+        width: 100%;
+        line-height: 2;
+        text-transform: uppercase;
+        background-color: orange;
+    }
+
+    .msg {
+        margin: 0 auto;
+        white-space: nowrap;
+        overflow: hidden;
+        position: absolute;
+        color: black;
+        padding: 10px 0%;
+        width: 100%;
+        background-color: orange; /* Arka plan rengi */
+    }
+
+    .msg span {
+        animation: marquee 20s linear infinite;
+        display: inline-block;
+        padding-left: calc(100% + 50px);
+    }
+
+
+    @keyframes marquee {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        100% {
+            transform: translate(-100%, 0);
+        }
+    }
+</style>
