@@ -24,15 +24,7 @@
 }
 </style>
 @endsection
-@section('loader')
-<!-- LOADER -->
-<div class="preloader">
-    <div class="lds-ellipsis">
-        <img src="/upload/other/loading_gif_main.gif" alt="">
-    </div>
-</div>
-<!-- END LOADER -->
-@endsection
+
 @section('content')
 
 @auth

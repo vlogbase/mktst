@@ -7,7 +7,7 @@
              <a href="{{route('category_products',$category->slug)}}">
                 <div class="categorybox card card-banner border-0">
                     <div class="p-3 text-center" style="width:125%">
-                        <img src="{{$category->image}}" style="width:180px;" alt="{{$category->name}}">
+                        <img src="{{$category->image}}" loading="lazy" style="width:180px;" alt="{{$category->name}}">
                         <h4 class="mt-2">{{$category->name}}</h4>
                     </div>
                 </div>
@@ -25,8 +25,8 @@
              <a href="{{route('category_products',$category->slug)}}">
                 <div class="categorybox card card-banner border-0">
                     <div class="p-3 text-center" style="width:100%">
-                        <img src="{{$category->image}}" style="width:180px;" alt="{{$category->name}}">
-                        <h4 class="mt-2 two-line-truncate">{{$category->name}}</h4>
+                        <img src="{{$category->image}}" loading="lazy" style="width:180px;" alt="{{$category->name}}">
+                        <h5 class="mt-2 two-line-truncate">{{$category->name}}</h5>
                     </div>
                 </div>
                 </a>
