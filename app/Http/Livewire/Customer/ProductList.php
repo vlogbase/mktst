@@ -20,6 +20,7 @@ class ProductList extends Component
     public $min_cost = 0;
     public $discountFilter = false;
     public $selectedBrands = [];
+    public $searchSpecialCategory = [];
 
     protected $listeners = [
         'changeOrder' => 'changeOrder',
@@ -81,7 +82,7 @@ class ProductList extends Component
 
     public function specialCategoryFilter($specialCategoryFilter)
     {
-        
+        $this->searchSpecialCategory = $specialCategoryFilter;
         $this->limitPerPage = 12;
     }
 
@@ -113,6 +114,14 @@ class ProductList extends Component
 
             if (count($this->selectedBrands) > 0) {
                 $products_query->whereIn('brand_id', $this->selectedBrands);
+            }
+
+            if (count($this->searchSpecialCategory) > 0) {
+                // product connected product_infos table search for values
+                $products_query->whereHas('productinfos', function ($query) {
+                    $query->where('key', 'like', '%type%');
+                    $query->whereIn('value', $this->searchSpecialCategory );
+                });
             }
 
             $products = $products_query->orderBy($query_order, $query_order_direct);

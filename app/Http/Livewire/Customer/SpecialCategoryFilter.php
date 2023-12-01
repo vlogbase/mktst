@@ -13,6 +13,7 @@ class SpecialCategoryFilter extends Component
         return view('livewire.customer.special-category-filter');
     }
 
+
     public function filter()
     {
         $this->emit('specialCategoryFilter', $this->specialCategoryFilter);

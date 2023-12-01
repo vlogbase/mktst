@@ -24,7 +24,6 @@ class FeaturedBrands extends Component
     }
 
 
-
     public function selectBrand($brand)
     {
         $this->selectedBrands = [];
