@@ -6,13 +6,13 @@
         <div class="container ">
             <div class="nav_block ">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img style="width: 470px!important;" class="logo_light" src="/upload/logos/markketlogo6.png"
+                    <img style="width: 470px!important;" class="logo_light" src="/upload/logos/markketlogo7.webp"
                         alt="logo" />
                     @if (request()->routeIs('home'))
-                        <img style="width: 9000px!important;" class="logo_dark" src="/upload/logos/markketlogo6.png"
+                        <img style="width: 1000px!important;" class="logo_dark" src="/upload/logos/markketlogo7.webp"
                             alt="logo" />
                     @else
-                        <img style="width: 450px!important;" class="logo_dark" src="/upload/logos/markketlogo6.png"
+                        <img style="width: 450px!important;" class="logo_dark" src="/upload/logos/markketlogo7.webp"
                             alt="logo" />
                     @endif
                 </a>
