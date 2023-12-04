@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class LastOrderPopup extends Component
 {
-    public $showModal = false;
+    public $showModal = true;
     public $orderId;
     public $lastOrder;
     public $cartItems;
@@ -17,7 +17,7 @@ class LastOrderPopup extends Component
     public function mount()
     {
         $this->lastOrder = Auth::user()->userorders->sortByDesc('created_at')->first();
-        $this->showModal = !is_null($this->lastOrder);
+        $this->showModal = true;
         $this->cartItems = \Cart::getContent();
     }
 

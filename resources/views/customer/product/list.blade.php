@@ -2,16 +2,16 @@
 @section('title', (request()->routeIs('products') ? 'Products' : $categoryCurrent->name) . ' - Markket')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <div class="breadcrumb_section bg_gray page-title-mini">
+    <div class="breadcrumb_section page-title-mini" style="background-color:chocolate;">
         <div class="container">
             <!-- STRART CONTAINER -->
             <div class="row align-items-center">
-                <div class="col-md-4">
+                <div class="col-md-12 text-center">
                     <div class="page-title">
-                        <h1>{{ request()->routeIs('products') ? 'Products' : $categoryCurrent->name }}</h1>
+                        <h1 class="text-uppercase text-white">{{ request()->routeIs('products') ? 'Products' : $categoryCurrent->name }}</h1>
                     </div>
                 </div>
-                <div class="col-md-8">
+                {{-- <div class="col-md-8">
                     <ol class="breadcrumb justify-content-md-end">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         @if (request()->routeIs('products'))
@@ -24,7 +24,7 @@
                             <li class="breadcrumb-item active">{{ $categoryCurrent->name }}</li>
                         @endif
                     </ol>
-                </div>
+                </div> --}}
             </div>
         </div><!-- END CONTAINER-->
     </div>
