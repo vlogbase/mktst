@@ -25,7 +25,13 @@ class LoginForm extends Component
                 $user = Auth::user();
                 if ($user->email_verified_at != NULL) {
                     request()->session()->regenerate();
-                    return redirect()->intended('/');
+                    $lastOrder = Auth::user()->userorders->sortByDesc('created_at')->first();
+                    if($lastOrder){
+                       return redirect('/user/orders/'.$lastOrder->id);
+                    }else{
+                        return redirect()->intended('/');
+                    }
+                    
                 } else {
                     Auth::logout();
                     session()->invalidate();
