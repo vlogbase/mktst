@@ -2,13 +2,12 @@
 <div class="row">
     @foreach($customerpagedata['categories'] as $category)
         @if($category->name == 'Markket Specials' || $category->name == 'Markket Clearance' || $category->name == 'Markket Exclusives' || $category->name == 'Featured Brands' || $category->name == 'Markket Best Sellers' || $category->name == 'Markket New Arrivals' || $category->name == 'Farmers Markket' )
-        <div class="animate col-md-2 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
+        <div style="animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3" class="col-md-2 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
              <!-- ============================ COMPONENT ITEM BG ================================= -->
              <a href="{{route('category_products',$category->slug)}}">
                 <div class="categorybox card card-banner border-0">
                     <div class="p-3 text-center" style="width:125%">
                         <img data-src="{{$category->image}}" class="lazy" style="width:180px;" alt="{{$category->name}}">
-                        <h4 class="mt-2">{{$category->name}}</h4>
                     </div>
                 </div>
                 </a>
@@ -47,7 +46,7 @@
         transform: scale(1);
       }
       50% {
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
     }
 
