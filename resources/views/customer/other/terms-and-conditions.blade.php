@@ -2,17 +2,17 @@
 @section('title', 'Terms & Conditions - Markket')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <div class="breadcrumb_section bg_gray page-title-mini">
+    <div class="breadcrumb_section page-title-mini" style="background-color:chocolate;">
         <div class="container">
             <!-- STRART CONTAINER -->
             <div class="row align-items-center">
-                <div class="col-md-6">
+                <div class="col-md-12 text-center">
                     <div class="page-title">
-                        <h1>Terms & Conditions</h1>
+                        <h1 style="color:white!important;">Terms & Conditions</h1>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <ol class="breadcrumb justify-content-md-end">
+                    <ol class="breadcrumb justify-content-md-end" >
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active">Company</li>
                         <li class="breadcrumb-item active">Terms & Conditions</li>

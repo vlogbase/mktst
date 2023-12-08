@@ -7,7 +7,7 @@
                     <div class="flex">
                         <div class="form-check">
                             <input wire:change="changeDiscountFilter" class="form-check-input" wire:model="discountFilter" type="checkbox" value="1" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <label style="color:black!important;font-weight:500!important;font-size:20px!important;" class="form-check-label" for="flexCheckDefault">
                               Discounted Products
                             </label>
                           </div>

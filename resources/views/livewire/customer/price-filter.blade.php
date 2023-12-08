@@ -10,19 +10,19 @@
             <span class="text-danger mb-2">Applied : {{$appliedFilter}} <strong><a wire:click="removeFilter" style="cursor: pointer;">X</a></strong> </span>
             @endif
             <div class="col-6">
-                <label for="price_first" class="form-label">Min</label>
+                <label for="price_first" style="color:black!important;font-weight:500!important;font-size:20px!important;" class="form-label">Min</label>
               <input wire:model="price_first" min='0' type="number" step="0.01" class="form-control" id="price_first">
               
             </div>
             <div class="col-6">
-                <label for="price_second" class="form-label">Max</label>
+                <label for="price_second" style="color:black!important;font-weight:500!important;font-size:20px!important;" class="form-label">Max</label>
                 <input wire:model="price_second"  type="number" step="0.01"  class="form-control" id="price_second">
                
             </div>
           </div>
           <div class="row mt-2 g-3 align-items-center">
             <div class="col-12">
-             <button wire:click="applyFilter" class="btn btn-dark btn-block">Apply</button>
+             <button wire:click="applyFilter" class="btn btn-dark btn-block font-weight-bold">Apply</button>
             </div>
             
           </div>

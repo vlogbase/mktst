@@ -6192,6 +6192,7 @@ select option {
 	margin-bottom: 25px;
 	text-transform: capitalize;
 	font-weight: 600;
+	font-size: 25px;
 	letter-spacing: 0.3px;
 }
 .widget_categories li,

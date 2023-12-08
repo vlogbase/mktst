@@ -8,7 +8,7 @@
                         <div class="flex">
                             <div class="form-check" >
                                 <input wire:change="changeBrands({{ $brand['id'] }})" wire:model="selectedBrands"  class="form-check-input" type="checkbox" value="{{$brand['id']}}" >
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <label style="color:black!important;font-weight:500!important;font-size:20px!important;" class="form-check-label" for="flexCheckDefault">
                                 {{$brand['name']}}
                                 </label>
                             </div>
