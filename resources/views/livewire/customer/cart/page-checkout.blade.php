@@ -98,14 +98,14 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="order_review">
+            <div class="order_review" style="background-color:chocolate!important; ">
                 <div class="heading_s1">
-                    <h4>Your Order</h4>
+                    <h4 style="color:white!important;">Your Order</h4>
                 </div>
                 <div class="table-responsive order_table">
                     <table class="table">
                         
-                        <tfoot>
+                        <tfoot style="color:white!important;">
                             <tr>
                                 <td class="cart_total_label">Cart Subtotal</td>
                                 <td class="cart_total_amount ">£{{number_format($cart_price,2)}}</td>
@@ -137,14 +137,14 @@
                 </div>
                 <div class="payment_method">
                     <div class="heading_s1">
-                        <h4>Payment</h4>
+                        <h4 style="color:white!important;">Payment</h4>
                         @error('payment_option')<span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="payment_option">
                         @foreach ($payments as $payment)
                         <div class="custome-radio">
-                            <input class="form-check-input" type="radio" wire:model="payment_option" id="exampleRadios{{$payment->id}}" value="{{$payment->id}}" >
-                            <label class="form-check-label" for="exampleRadios{{$payment->id}}">{{$payment->name}}</label>
+                            <input style="color:white!important;" class="form-check-input" type="radio" wire:model="payment_option" id="exampleRadios{{$payment->id}}" value="{{$payment->id}}" >
+                            <label style="color:white!important;" class="form-check-label" for="exampleRadios{{$payment->id}}">{{$payment->name}}</label>
                         </div>
                         @endforeach
                     </div>
@@ -160,14 +160,14 @@
                     @endif
                     @if($payment_option == 6)
                     <div class="mt-1">
-                        <p>Your Point: {{$user->point}} - Need Point: {{$payment_need}}</p>
+                        <p style="color:white!important;">Your Point: {{$user->point}} - Need Point: {{$payment_need}}</p>
                     </div>
                     @endif
                 </div>
                 <div class="chek-form mb-4">
                     <div class="custome-checkbox">
                         <input class="form-check-input " type="checkbox" wire:model="agreement" id="agreement" value="1">
-                        <label class="form-check-label @error('agreement') text-danger @enderror" for="agreement"><span>I agree to the Markket <a class="text-info" href="{{route('terms_and_conditions')}}">Terms and conditions</a> and <a class="text-info" href="{{route('terms_and_conditions')}}">Privacy policy</a>*</span></label>
+                        <label style="color:white!important;" class="form-check-label @error('agreement') text-danger @enderror" for="agreement"><span>I agree to the Markket <a class="text-info" href="{{route('terms_and_conditions')}}">Terms and conditions</a> and <a class="text-info" href="{{route('terms_and_conditions')}}">Privacy policy</a>*</span></label>
                     </div>
                     
                 </div>

@@ -11,13 +11,6 @@
                         <h1 style="color:white!important;">Terms & Conditions</h1>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <ol class="breadcrumb justify-content-md-end" >
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Company</li>
-                        <li class="breadcrumb-item active">Terms & Conditions</li>
-                    </ol>
-                </div>
             </div>
         </div><!-- END CONTAINER-->
     </div>
