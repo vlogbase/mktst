@@ -196,7 +196,14 @@
 
 
     <div class="page-head__ticker">
-        <p class="msg"><span>Free Shipping on orders over £50</span></p>
+        <p class="msg">
+            <span>Free Shipping on orders over £50 
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
+                Another Message</span>
+            
+        </p>
     </div>
 
 
