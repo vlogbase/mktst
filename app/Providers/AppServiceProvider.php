@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
                     ->with('childrenCategories')
                     ->orderBy('created_at', 'asc')
                     ->get(),
+                'ticker_tapes' => \App\Models\TickerTape::all(),
             ];
 
         View::share('customerpagedata', $customerpagedata);

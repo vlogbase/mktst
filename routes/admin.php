@@ -42,6 +42,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/web-sliders/edit/{id}', [SliderController::class, 'web_sliders_edit'])->name('web_edit');
                 //App
                 Route::get('/app-sliders', [SliderController::class, 'app_sliders'])->name('app');
+
+                Route::get('/ticker-tapes', [SliderController::class, 'ticker_tapes'])->name('ticker');
             });
             Route::prefix('blogs')->name('blogs.')->group(function () {
                 //Admin Contents Blogs

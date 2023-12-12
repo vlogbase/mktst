@@ -195,16 +195,21 @@
     </div>
 
 
+    @if($customerpagedata['ticker_tapes']->count() > 0)
     <div class="page-head__ticker">
         <p class="msg">
-            <span>Free Shipping on orders over £50 
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 
-                Another Message</span>
+            <span> 
+                @foreach($customerpagedata['ticker_tapes'] as $ticker_tape)
+                    {{$ticker_tape->text}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @endforeach
+            </span>
             
         </p>
     </div>
+    @endif
 
 
 

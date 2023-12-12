@@ -28,4 +28,8 @@ class SliderController extends Controller
     {
         return view('admin.contents.sliders.app_sliders');
     }
+    
+    public function ticker_tapes(){
+        return view('admin.contents.sliders.ticker_tapes');
+    }
 }
