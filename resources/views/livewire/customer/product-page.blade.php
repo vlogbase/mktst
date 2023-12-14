@@ -68,19 +68,19 @@
     <div class="col-lg-3 order-first mt-4 pt-2 mt-lg-0 pt-lg-0">
         <div class="sidebar">
             <div class="widget">
-                <h2 class="widget_title">Categories</h2>
+                <h2 style="font-size: 35px!important;font-weight:600!important;" class="widget_title">Categories</h2>
 
                 <ul class="widget_categories">
                     @if (!request()->routeIs('products'))
                         <li><a href="{{ route('products') }}"><span class="categories_name"
-                                    style="font-size: 20px!important;font-weight:500;">All Categories</span></a>
+                                    style="font-size: 26px!important;font-weight:600;">All Categories</span></a>
                         </li>
                     @endif
                     @if ($categories->count() > 0)
                         @foreach ($categories as $category)
-                            <li ><a href="{{ route('category_products', $category->slug) }}">
+                            <li style="color:black!important;font-size: 20px!important;font-weight:500!important;"><a href="{{ route('category_products', $category->slug) }}">
                                         <span style="color: black!important;"
-                                        class="categories_name">{{ $category->name . (strlen($category->name) > 100 ? '<br>' : '') }}</span>
+                                        class="categories_name">{{  strlen($category->name) > 19 ? substr($category->name,0,19).'...' : $category->name }}</span>
                                         <span style="color: black!important;"
                                         class="categories_num">({{ $category->activeProducts->count() }})</span></a>
                             </li>

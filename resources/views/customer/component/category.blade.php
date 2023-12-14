@@ -1,38 +1,41 @@
 
-<div class="row">
-    @foreach($customerpagedata['categories'] as $category)
-        @if($category->name == 'Markket Specials' || $category->name == 'Markket Clearance' || $category->name == 'Markket Exclusives' || $category->name == 'Featured Brands' || $category->name == 'Markket Best Sellers' || $category->name == 'Markket New Arrivals' || $category->name == 'Farmers Markket' )
-        <div class="col-md-2 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
-             <!-- ============================ COMPONENT ITEM BG ================================= -->
-             <a href="{{route('category_products',$category->slug)}}">
-                <div class="categorybox card card-banner border-0">
-                    <div class="text-center" style="width:220px;">
-                        <img style="animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" class="lazy"   alt="{{$category->name}}">
+<div>
+    <div class="row">
+        @foreach($customerpagedata['categories'] as $category)
+            @if($category->name == 'Markket Specials' || $category->name == 'Markket Clearance' || $category->name == 'Markket Exclusives' || $category->name == 'Featured Brands' || $category->name == 'Markket Best Sellers' || $category->name == 'Markket New Arrivals' || $category->name == 'Farmers Markket' )
+            <div class="col-md-2 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
+                 <!-- ============================ COMPONENT ITEM BG ================================= -->
+                 <a href="{{route('category_products',$category->slug)}}">
+                    <div style="background:transparent!important;" class="categorybox card card-banner border-0">
+                        <div class="text-center " style="width:125%;">
+                            <img 
+                            style="scale:1.3;animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" class="lazy"   alt="{{$category->name}}">
+                        </div>
                     </div>
-                </div>
-                </a>
-                <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-        </div>
-        @endif
-    @endforeach
-</div> <!-- row.// -->
-<div class="row mt-2">
-    @foreach($customerpagedata['categories'] as $category)
-        @if($category->name != 'Markket Specials' && $category->name != 'Markket Clearance' && $category->name != 'Markket Exclusives' && $category->name != 'Featured Brands' && $category->name != 'Markket Best Sellers' && $category->name != 'Markket New Arrivals' && $category->name != 'Farmers Markket' )
-        <div class="col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;" >
-             <!-- ============================ COMPONENT ITEM BG ================================= -->
-             <a href="{{route('category_products',$category->slug)}}">
-                <div class="categorybox card card-banner border-0">
-                    <div class="p-3 text-center" style="width:100%">
-                        <img class="lazy" data-src="{{$category->image}}"  style="width:180px;" alt="{{$category->name}}">
-                        <h5 class="mt-2 two-line-truncate">{{$category->name}}</h5>
+                    </a>
+                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
+            </div>
+            @endif
+        @endforeach
+    </div> <!-- row.// -->
+    <div class="row mt-2">
+        @foreach($customerpagedata['categories'] as $category)
+            @if($category->name != 'Markket Specials' && $category->name != 'Markket Clearance' && $category->name != 'Markket Exclusives' && $category->name != 'Featured Brands' && $category->name != 'Markket Best Sellers' && $category->name != 'Markket New Arrivals' && $category->name != 'Farmers Markket' )
+            <div class="col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;" >
+                 <!-- ============================ COMPONENT ITEM BG ================================= -->
+                 <a href="{{route('category_products',$category->slug)}}">
+                    <div class="categorybox card card-banner border-0">
+                        <div class="p-3 text-center" style="width:125%">
+                            <img class="lazy" data-src="{{$category->image}}"  style="width:180px;" alt="{{$category->name}}">
+                            <h5 class="mt-2 two-line-truncate">{{$category->name}}</h5>
+                        </div>
                     </div>
-                </div>
-                </a>
-                <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
-        </div>
-        @endif
-    @endforeach
+                    </a>
+                    <!-- ============================ COMPONENT ITEM BG  END .// =========================== -->
+            </div>
+            @endif
+        @endforeach
+    </div>
 </div>
 
 <style>
@@ -46,7 +49,7 @@
         transform: scale(1);
       }
       50% {
-        transform: scale(1.2);
+        transform: scale(1.15);
       }
     }
 
