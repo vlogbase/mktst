@@ -35,8 +35,17 @@
                   	<div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                     	<div class="card">
                         	<div class="d-flex justify-content-between items-center px-3 pt-2">
-                                <div class="" >
-                                    <h3><a href="{{ url()->previous() }}"><i class="fas fa-backward"></i> </a>{{$order->ordercode}}</h3>
+                                <div class="mb-5" >
+                                    <div class="d-flex justify-content-between mb-3">
+                                        @if($previousOrder)
+                                        <a class="btn btn-xs btn-secondary" href="/user/orders/{{$previousOrder->id}}"><i class="fas fa-backward"></i> Prev Order</a>
+                                        @endif
+                                        <a class="btn btn-xs btn-secondary" href="/user/orders/"><i class="fas fa-square"></i> List</a>
+                                        @if($nextOrder)
+                                        <a class="btn btn-xs btn-secondary" href="/user/orders/{{$nextOrder->id}}"><i class="fas fa-forward"></i> Next Order</a>
+                                        @endif
+                                    </div>
+                                    <h3>{{$order->ordercode}}</h3>
                                     <p>{{$order->status}} - {{\Carbon\Carbon::parse($order->created_at)->format('d M Y')}}</p>
                                 </div>
                                 <div class="">

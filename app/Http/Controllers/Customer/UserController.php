@@ -47,7 +47,12 @@ class UserController extends Controller
     {
         $order = Order::findOrFail($id);
         if ($order->user_id == Auth::id()) {
-            return view('customer.user.order-detail', compact('order'));
+            //Find Next Order
+            $nextOrder = Order::where('id', '>', $order->id)->where('user_id', Auth::id())->orderBy('id', 'asc')->first();
+            //Find Previous Order
+            $previousOrder = Order::where('id', '<', $order->id)->where('user_id', Auth::id())->orderBy('id', 'desc')->first();
+
+            return view('customer.user.order-detail', compact('order', 'nextOrder', 'previousOrder'));
         } else {
             return redirect()->back();
         }
