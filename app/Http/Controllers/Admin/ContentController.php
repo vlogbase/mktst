@@ -222,4 +222,9 @@ class ContentController extends Controller
             return true;
         }
     }
+
+    public function popup()
+    {
+        return view('admin.contents.other.popup.index');
+    }
 }

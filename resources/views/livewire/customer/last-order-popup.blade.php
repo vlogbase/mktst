@@ -6,17 +6,17 @@
                 <div class="modal-content"
                     style="width: 500px; border-width:7px!important;border-color:black!important; background-color:rgb(255, 241, 223)!important;border-radius:10px!important;">
                     <div class="modal-header">
-                        <h5 class="modal-title text-dark fs-4">Special Offer for YOU!</h5>
+                        <h5 class="modal-title text-dark fs-4">{{$popup->head}}</h5>
                         <button type="button" class="close " data-dismiss="modal" wire:click="closeModal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                       <img src="/upload/popup/MARKKET.jpg" alt="">
+                       <img src="{{$popup->image}}" alt="">
                     </div>
                     <div class="modal-footer">
-                        <a class="btn btn-warning btn-block" href="/category/markket-specials">
-                            <span class="fs-3 fw-bold">Go for Specials!</span>
+                        <a class="btn btn-warning btn-block" href="{{$popup->btn_url}}">
+                            <span class="fs-3 fw-bold">{{$popup->btn_text}}</span>
                         </a>
                     </div>
                 </div>

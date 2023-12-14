@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Customer;
 
+use App\Models\Popup;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -9,16 +10,27 @@ use Livewire\Component;
 class LastOrderPopup extends Component
 {
     public $showModal = true;
-    public $orderId;
-    public $lastOrder;
-    public $cartItems;
+    public $popup;
 
 
     public function mount()
     {
-        $this->lastOrder = Auth::user()->userorders->sortByDesc('created_at')->first();
-        $this->showModal = true;
-        $this->cartItems = \Cart::getContent();
+        $this->popup = Popup::first();
+        // IF popup is not created yet
+        if (!$this->popup) {
+            $popup = new Popup();
+            $popup->head = 'Get 10% off on your first order';
+            $popup->btn_text = 'Shop Now';
+            $popup->btn_url = '#';
+            $popup->image = 'https://via.placeholder.com/500x500?text=Popup+Image';
+            $popup->status = 0;
+            $popup->save();
+            $this->popup = $popup->fresh();
+        }
+
+        $this->showModal = $this->popup->status;
+
+
     }
 
     public function render()
@@ -32,39 +44,4 @@ class LastOrderPopup extends Component
         $this->showModal = false;
     }
 
-    public function addToCart($productId)
-    {   
-        $currentProduct = Product::find($productId);
-        $current_stock = $currentProduct->calcStock();
-        if (Auth::check()) {
-            if ($current_stock > 0) {
-                //Add to Cart
-                \Cart::add([
-                    'id' => $currentProduct->id,
-                    'name' => $currentProduct->name,
-                    'price' => $currentProduct->showPrice(),
-                    'quantity' => 1,
-                    'attributes' => array(
-                        'image' => $currentProduct->getCoverImage(),
-                        'slug' => $currentProduct->slug,
-                        'tax' => $currentProduct->taxrate
-                    )
-                ]);
-                //Added to Cart
-                $this->emit('itemAdded');
-                $this->cartItems = \Cart::getContent();
-            } else {
-                $this->emit('errorShow', 'Not enough stock');
-            }
-        } else {
-            $this->emit('loginShow', 'Login Required!');
-        }
-    }
-
-    public function addAllOfThem(){
-        foreach ($this->lastOrder->orderproducts as $item) {
-           $this->addToCart($item->product_id);
-        }
-        $this->showModal = false;
-    }
 }
