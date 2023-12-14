@@ -79,6 +79,9 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{route('checkout')}}" class="btn btn-block btn-fill-out">Proceed To CheckOut</a>
+        <a href="{{route('checkout')}}" class="btn btn-block btn-success">Proceed To CheckOut</a>
+        <hr>
+        <a href="{{route('products')}}" class="btn btn-block btn-fill-out">Add more products</a>
+
     </div>
 </div>

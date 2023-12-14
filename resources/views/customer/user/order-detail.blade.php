@@ -34,8 +34,8 @@
                   
                   	<div class="tab-pane fade active show" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                     	<div class="card">
-                        	<div class="d-flex justify-content-between items-center">
-                                <div>
+                        	<div class="d-flex justify-content-between items-center px-3 pt-2">
+                                <div class="" >
                                     <h3><a href="{{ url()->previous() }}"><i class="fas fa-backward"></i> </a>{{$order->ordercode}}</h3>
                                     <p>{{$order->status}} - {{\Carbon\Carbon::parse($order->created_at)->format('d M Y')}}</p>
                                 </div>

@@ -7,7 +7,7 @@
              <a href="{{route('category_products',$category->slug)}}">
                 <div class="categorybox card card-banner border-0">
                     <div class="text-center" style="width:220px;">
-                        <img style="animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3" data-src="{{$category->image}}" class="lazy"  alt="{{$category->name}}">
+                        <img style="animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" class="lazy"   alt="{{$category->name}}">
                     </div>
                 </div>
                 </a>
@@ -19,7 +19,7 @@
 <div class="row mt-2">
     @foreach($customerpagedata['categories'] as $category)
         @if($category->name != 'Markket Specials' && $category->name != 'Markket Clearance' && $category->name != 'Markket Exclusives' && $category->name != 'Featured Brands' && $category->name != 'Markket Best Sellers' && $category->name != 'Markket New Arrivals' && $category->name != 'Farmers Markket' )
-        <div class="animative col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;" >
+        <div class="col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;" >
              <!-- ============================ COMPONENT ITEM BG ================================= -->
              <a href="{{route('category_products',$category->slug)}}">
                 <div class="categorybox card card-banner border-0">
