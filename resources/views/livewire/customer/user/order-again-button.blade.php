@@ -1,5 +1,5 @@
 <div>
     <button wire:click="addAllOfThem" class="btn btn-dark">
-        Order Again
+        Add All Of Them
     </button>
 </div>

@@ -2,20 +2,20 @@
 
 namespace App\Http\Livewire\Customer\User;
 
-use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class OrderAgainButton extends Component
+class OrderAddToCart extends Component
 {
-    public $orderId;
+    public $product;
+    public $quantity;
 
-    public function mount($orderId)
+    public function mount($product, $quantity)
     {
-        $this->orderId = $orderId;
+        $this->product = $product;
+        $this->quantity = intval($quantity);
     }
-
 
     public function addToCart($productId, $quantity)
     {   
@@ -45,15 +45,8 @@ class OrderAgainButton extends Component
         }
     }
 
-    public function addAllOfThem(){
-        $order = Order::where('id', $this->orderId)->where('user_id',auth()->user()->id)->firstOrFail();
-        foreach ($order->orderproducts as $item) {
-           $this->addToCart($item->product_id, $item->quantity);
-        }
-        redirect()->route('cart');
-    }
     public function render()
     {
-        return view('livewire.customer.user.order-again-button');
+        return view('livewire.customer.user.order-add-to-cart');
     }
 }

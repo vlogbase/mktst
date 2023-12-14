@@ -34,7 +34,7 @@
         <tbody>
             @foreach($cartItems as $item)
             <tr>
-                <td class="product-thumbnail"><a href="{{route('product_detail',$item->attributes['slug'])}}"><img src="{{$item->attributes['image']}}" alt="product1"></a></td>
+                <td class="product-thumbnail"><a href="{{route('product_detail',$item->attributes['slug'])}}"><img style="height: 140px;width:140px;object-fit: contain;" src="{{$item->attributes['image']}}" alt="product1"></a></td>
                 <td class="product-name" data-title="Product"><a href="{{route('product_detail',$item->attributes['slug'])}}">{{$item->name}}</a></td>
                 <td class="product-price" data-title="Price">£{{$item->price}}</td>
                 <td class="product-quantity" data-title="Quantity">

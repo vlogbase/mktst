@@ -49,6 +49,7 @@
                                         <tr>
                                             <th>Product</th>
                                             <th>Total</th>
+                                            <th>Re-order</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,10 +57,11 @@
                                         <tr>
                                             <td>{{ $product->product->sku}} | {{ $product->product->name}} <span class="product-qty">x {{ $product->quantity}}</span></td>
                                             <td>£{{ $product->sold_price * $product->quantity }}</td>
+                                           <td>@livewire('customer.user.order-add-to-cart',['product' => $product->product,'quantity' => $product->quantity], key($product->id))</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    <tfoot >
                                         <tr>
                                             <th>SubTotal</th>
                                             <td class="product-subtotal">£{{$order->cart_price}}</td>
