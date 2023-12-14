@@ -8,12 +8,12 @@
                             <div class="swiper mySwiper">
                                 <div class="swiper-wrapper">
                                     @foreach ($categories as $category)
-                                        <div class="col-md-4 swiper-slide card text-center">
+                                        <div  class="col-md-4 swiper-slide card text-center">
                                             <a href="{{ route('category_products', $category->slug) }}">
-                                                <img class="card-img-top lazy" data-src="{{ $category->getCoverImage() }}"
+                                                <img class="card-img-top " src="{{ $category->getCoverImage() }}"
                                                     alt="Card image cap">
-                                                <div class="card-body text-center">
-                                                    <p>{{ $category->name }}</p>
+                                                <div style="font-size: 20px!important;font-weight:500!important;" class="card-body text-center">
+                                                    <p style="color:black!important;">{{ $category->name }}</p>
                                                 </div>
                                             </a>
                                         </div>
@@ -30,7 +30,7 @@
 
 
                     <div class="mt-4 product_header">
-                        <div class="product_header_left">
+                        <div style="font-size: 20px;color:black;" class="product_header_left">
 
                             {{ $product_count }} Items Listed
 
@@ -39,8 +39,8 @@
                             <div class="products_view">
 
                             </div>
-                            <div class="custom_select">
-                                <select wire:model="order_select" class="form-control form-control-sm">
+                            <div  class="custom_select">
+                                <select style="font-size: 20px!important;" wire:model="order_select" class="form-control form-control-sm">
                                     <option value="latest">Latest</option>
                                     <option value="cheapest">Cheapest</option>
                                     <option value="expensive">Most Expensive</option>

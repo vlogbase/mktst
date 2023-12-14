@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row mb-3">
                     <div class="col">
-                        <small><a class=" text-sm" href="{{url()->previous()}}">Back to List</a></small>
+                        <small><a style="font-size: 20px;" class="text-md" href="{{url()->previous()}}">Back to List</a></small>
                     </div>
                 </div>
                 <div class="row">
@@ -56,10 +56,10 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="pr_detail">
                             <div class="product_description">
-                                <h4 class="product_title">{{ $product->name }}</h4>
+                                <h4 style="font-size: 40px;" class="product_title">{{ $product->name }}</h4>
                                 @auth
                                     <div class="product_price">
-                                        <span class="price">£{{ $product->showPrice() }}</span>
+                                        <span style="font-size: 35px;" class="price">£{{ $product->showPrice() }}</span>
                                         @if ($product->discount > 0)
                                             <del>£{{ $product->unit_price }}</del>
                                         @endif
@@ -68,7 +68,7 @@
 
                                 <br><br>
 
-                                <div class="">
+                                <div style="font-size: 18px;" class="text-dark">
                                     <ul class="product-meta">
                                         <li>SKU: <span class="">{{ $product->sku }}</span></li>
                                         <li>Pack: <span class="">{{ $product->productdetail->pack }}</span></li>
@@ -174,7 +174,7 @@
                             <h3>Related Products </h3>
                         </div>
                         <div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20"
-                            data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
+                            data-responsive='{"0":{"items": "1"}, "481":{"items": "1"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
                             @foreach ($related as $product)
                                 @livewire('customer.product-card', ['product' => $product,'type' => 'card'], key($product->id))
                             @endforeach
