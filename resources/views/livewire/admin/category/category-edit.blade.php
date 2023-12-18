@@ -62,6 +62,23 @@
             <!--end::Col-->
         </div>
         <!--end::Row-->
+
+        <!--begin::Input group-->
+     <div class="row mb-6">
+        <!--begin::Label-->
+        <label class="col-lg-4 col-form-label required fw-bold fs-6">Status</label>
+        <!--begin::Label-->
+        <!--begin::Label-->
+        <div class="col-lg-8 d-flex align-items-center">
+            <div class="form-check form-check-solid form-switch fv-row">
+                <input wire:model="special" class="form-check-input w-45px h-30px" type="checkbox" id="featured"  />
+                <label class="form-check-label" for="featured"></label>
+            </div>
+        </div>
+        <!--begin::Label-->
+    </div>
+    <!--end::Input group-->
+
      </div>
      <!--end::Card body-->
      <!--begin::Actions-->

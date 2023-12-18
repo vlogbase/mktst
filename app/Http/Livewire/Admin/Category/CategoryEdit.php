@@ -12,6 +12,7 @@ class CategoryEdit extends Component
     use WithFileUploads;
     public $name;
     public $image;
+    public $special;
     public $parent;
     public $categories;
     public $itemid;
@@ -24,6 +25,7 @@ class CategoryEdit extends Component
         $this->categories = Category::all();
         $this->item = Category::find($itemid);
         $this->name = $this->item->name;
+        $this->special = $this->item->special;
         $this->parent = $this->item->category_id;
         $this->nowImage = $this->item->image;
     }
@@ -48,6 +50,7 @@ class CategoryEdit extends Component
         $this->item->update([
             'name' => $this->name,
             'slug' => Str::slug($this->name),
+            'special' => $this->special,
             'category_id' => $this->parent == 'NULL' ? NULL : $this->parent
         ]);
 

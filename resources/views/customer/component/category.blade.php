@@ -1,15 +1,19 @@
 
 <div>
     <div class="row">
+        @php
+            $specialCategoryCount = $customerpagedata['categories']->where('special',1)->count();
+            @endphp
         @foreach($customerpagedata['categories'] as $category)
-            @if($category->name == 'Markket Specials' || $category->name == 'Markket Clearance' || $category->name == 'Markket Exclusives' || $category->name == 'Featured Brands' || $category->name == 'Markket Best Sellers' || $category->name == 'Markket New Arrivals' || $category->name == 'Farmers Markket' )
-            <div class="col-md-2 mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
+            
+            @if($category->special == 1)
+            <div class="{{ $specialCategoryCount > 5 ?  'col-md-4' : 'col-md-2' }} mx-auto col-6 mt-4 mb-4" style="cursor:pointer;" >
                  <!-- ============================ COMPONENT ITEM BG ================================= -->
                  <a href="{{route('category_products',$category->slug)}}">
                     <div style="background:transparent!important;" class="categorybox card card-banner border-0">
-                        <div class="text-center " style="width:125%;">
+                        <div class="text-center "  style="{{ $specialCategoryCount > 5 ?  'width:90%;' : 'width:125%;' }}">
                             <img 
-                            style="scale:1.3;animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" class="lazy"   alt="{{$category->name}}">
+                            style="{{ $specialCategoryCount > 5 ?  '0.9' : 'scale:1.3;' }};animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" class="lazy"   alt="{{$category->name}}">
                         </div>
                     </div>
                     </a>
@@ -20,7 +24,7 @@
     </div> <!-- row.// -->
     <div class="row mt-2">
         @foreach($customerpagedata['categories'] as $category)
-            @if($category->name != 'Markket Specials' && $category->name != 'Markket Clearance' && $category->name != 'Markket Exclusives' && $category->name != 'Featured Brands' && $category->name != 'Markket Best Sellers' && $category->name != 'Markket New Arrivals' && $category->name != 'Farmers Markket' )
+            @if($category->special == 0)
             <div class="col-md-2 col-4 mt-4 mb-4" style="cursor:pointer;" >
                  <!-- ============================ COMPONENT ITEM BG ================================= -->
                  <a href="{{route('category_products',$category->slug)}}">
