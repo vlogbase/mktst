@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\UserOffice;
 use App\Notifications\WelcomeNotification;
+use App\Rules\VatValidation;
 use App\Traits\AddressHelper;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class RegisterForm extends Component
     public $mobile;
     public $phone;
     public $company_name;
-    public $company_select;
+    public $address_select;
     public $vat;
     public $registeration;
     public $email;
@@ -131,12 +132,12 @@ class RegisterForm extends Component
             'code' => 'required|min:1|max:5',
             'phone' => 'nullable|min:10|max:10',
             'company_name' => 'required|min:5|max:160',
-            'vat' => 'nullable|min:5|max:15',
+            'vat' => ['nullable', 'string','min:11','max:11', new VatValidation],
             'registeration' => 'nullable|min:8|max:30',
             'agreement' => 'required',
             'newsletter' =>  'nullable',
             'business_type' => 'required|min:2',
-            'company_select' => !$this->manuallyAdressEnter ? 'required|min:10|max:200' : 'nullable',
+            'address_select' => !$this->manuallyAdressEnter ? 'required|min:10|max:200' : 'nullable',
             'address_line_1' => $this->manuallyAdressEnter ? 'required|min:5|max:150' : 'nullable',
             'address_line_2' => $this->manuallyAdressEnter ? 'nullable|min:5|max:150' : 'nullable',
             'postcode' => $this->manuallyAdressEnter ? 'required|min:3|max:200' : 'nullable',
@@ -171,7 +172,7 @@ class RegisterForm extends Component
 
         if (!$this->manuallyAdressEnter) {
             //Adress
-            $response = $this->getSelectedAddressDetail($this->company_select);
+            $response = $this->getSelectedAddressDetail($this->address_select);
 
             $formatted = '';
             foreach ($response->formatted_address as $fra) {

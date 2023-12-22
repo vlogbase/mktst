@@ -134,10 +134,13 @@
         @if(!$manuallyAdressEnter)
         <div class="form-group row ">
             <div class="form-group col-md-9 mb-3">
-                <input class="form-control @error('search_address_field') is-invalid @enderror" 
+                <input class="form-control @error('search_address_field') is-invalid @enderror @error('address_select') is-invalid @enderror" 
                     type="text" wire:model="search_address_field" placeholder="Search your address">
                 @error('search_address_field')
                     <span class="text-danger">{{ $message }}</span>
+                @enderror
+                @error('address_select')
+                        <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="form-group col-md-3 mb-3">
@@ -146,7 +149,7 @@
 
             @if ($show_address_selection)
                 <div class="form-group col-md-12 mb-3">
-                    <select class="form-control " wire:model="company_select" aria-label="Default select example">
+                    <select class="form-control " wire:model="address_select" aria-label="Default select example">
 
 
                         @if (count($companyOptions) > 0)
@@ -158,7 +161,7 @@
                         @endif
 
                     </select>
-                    @error('company_select')
+                    @error('address_select')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
