@@ -227,4 +227,9 @@ class ContentController extends Controller
     {
         return view('admin.contents.other.popup.index');
     }
+
+    public function advertisement()
+    {
+        return view('admin.contents.other.advertisement.index');
+    }
 }

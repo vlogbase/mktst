@@ -242,7 +242,7 @@
         white-space: nowrap;
         overflow: hidden;
         position: absolute;
-        color: black;
+        color: white;
         padding: 10px 0%;
         width: 100%;
         background-color: orange; /* Arka plan rengi */
