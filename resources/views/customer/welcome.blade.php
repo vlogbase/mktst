@@ -104,7 +104,7 @@
                     @foreach ($adverts as $advert)
                         @if ($advert->side == 'left')
                             <a href="{{ $advert->redirect_url }}" target="_blank">
-                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:110px"
+                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:170px"
                                     class=" my-4">
                             </a>
                         @endif
@@ -117,7 +117,7 @@
                     @foreach ($adverts as $advert)
                         @if ($advert->side == 'right')
                             <a href="{{ $advert->redirect_url }}" target="_blank">
-                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:110px"
+                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:170px"
                                     class=" my-4">
                             </a>
                         @endif

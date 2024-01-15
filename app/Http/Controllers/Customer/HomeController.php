@@ -10,14 +10,18 @@ use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductDetail;
 use App\Models\WebSlider;
+use DateTime;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-
-        $adverts = Advert::where('start_live_date', '<=', date('Y-m-d'))->where('end_live_date', '>=', date('Y-m-d'))->get();
+        $currentDateTime = new DateTime();
+        $adverts = Advert::where('start_live_date', '<=', $currentDateTime->format('Y-m-d H:i:s'))
+                         ->where('end_live_date', '>=', $currentDateTime->format('Y-m-d H:i:s'))
+                         ->get();
+       
         $sliders = WebSlider::latest()->get();
         $sliders_2 = AppSlider::latest()->get();
         $featured = Product::where('status', 1)->whereHas('productdetail', function ($q) {
