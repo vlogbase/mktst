@@ -35,7 +35,7 @@
     @endauth
 
     <!-- START SECTION BANNER -->
-    <div class="d-none d-md-block banner_section slide_medium shop_banner_slider staggered-animation-wrap">
+    <div class=" banner_section slide_medium shop_banner_slider staggered-animation-wrap">
         <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($sliders as $slider)
@@ -74,45 +74,7 @@
     </div>
     <!-- END SECTION BANNER -->
 
-    <!-- START SECTION BANNER PHONES -->
-    <div class="d-block d-md-none banner_section slide_medium shop_banner_slider staggered-animation-wrap">
-        <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach ($sliders_2 as $slider)
-                    <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }} background_bg"
-                        data-img-src="{{ $slider->image }}">
-                        <div class="banner_slide_content">
-                            <div class="container"><!-- STRART CONTAINER -->
-                                <div class="row">
-                                    <div class="col-lg-7 col-9">
-                                        <div class="banner_content overflow-hidden">
-                                            <h5 class="mb-3 staggered-animation font-weight-light {{ $slider->light == 1 ? 'text-white' : '' }}"
-                                                data-animation="slideInLeft" data-animation-delay="0.5s">
-                                                {{ $slider->top_head }}</h5>
-                                            <h2 class="staggered-animation {{ $slider->light == 1 ? 'text-white' : '' }}"
-                                                data-animation="slideInLeft" data-animation-delay="1s">
-                                                {{ $slider->mid_head }}</h2>
-                                            @if ($slider->button_status)
-                                                <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                                                    href="{{ $slider->button_action }}" data-animation="slideInLeft"
-                                                    data-animation-delay="1.5s">{{ $slider->button_text }}</a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- END CONTAINER-->
-                        </div>
-                    </div>
-                @endforeach
 
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev"><i
-                    class="ion-chevron-left"></i></a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next"><i
-                    class="ion-chevron-right"></i></a>
-        </div>
-    </div>
-    <!-- END SECTION BANNER PHONES -->
 
 
     <!-- START SECTION SHOP -->
