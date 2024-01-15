@@ -139,43 +139,27 @@
         <div class="container-fluid mt-5 ">
             <div class="row">
                 <div class="col-md-2 col-12  text-center">
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-1.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-2.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-1.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-2.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-1.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
+                    @foreach ($adverts as $advert)
+                        @if ($advert->side == 'left')
+                            <a href="{{ $advert->redirect_url }}" target="_blank">
+                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:110px"
+                                    class=" my-4">
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="col-md-8 mx-auto col-12">
                     @include('customer.component.category')
                 </div>
                 <div class="col-md-2 col-12  text-center">
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-1.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-2.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-1.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-2.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
-                    <a href="https://google.com" target="_blank">
-                        <img src="/upload/adv/test-1.gif" alt="Resim 1" class="w-50 my-4">
-                    </a>
+                    @foreach ($adverts as $advert)
+                        @if ($advert->side == 'right')
+                            <a href="{{ $advert->redirect_url }}" target="_blank">
+                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:110px"
+                                    class=" my-4">
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div> <!-- container .//  -->
@@ -366,7 +350,8 @@
                                 <div class="blog_content bg-white">
                                     <div class="blog_text">
                                         <h5 class="blog_title"><a
-                                                href="{{ route('news.detail', $new->slug) }}">{{ $new->name }}</a></h5>
+                                                href="{{ route('news.detail', $new->slug) }}">{{ $new->name }}</a>
+                                        </h5>
                                         <ul class="list_none blog_meta">
                                             <li class="text-secondary"><i class="ti-calendar"></i>
                                                 {{ $new->humanTime() }}</li>

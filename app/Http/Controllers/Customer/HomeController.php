@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advert;
 use App\Models\AppSlider;
 use App\Models\Blog;
 use App\Models\News;
@@ -15,6 +16,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+
+        $adverts = Advert::where('start_live_date', '<=', date('Y-m-d'))->where('end_live_date', '>=', date('Y-m-d'))->get();
         $sliders = WebSlider::latest()->get();
         $sliders_2 = AppSlider::latest()->get();
         $featured = Product::where('status', 1)->whereHas('productdetail', function ($q) {
@@ -31,6 +34,6 @@ class HomeController extends Controller
         })->get();
 
         $news = News::orderBy('created_at')->take(3)->get();
-        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'news','sliders_2'));
+        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'news','sliders_2','adverts'));
     }
 }

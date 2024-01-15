@@ -9,15 +9,19 @@
             <!--end::Label-->
             <!--begin::Col-->
             <div class="col-lg-8 fv-row">
-                @if ($image)
-                    <img src="{{ $image->temporaryUrl() }}" class="img-fluid" alt="">
+                @if($image)
+                <img src="{{ $image->temporaryUrl() }}" class="img-fluid" alt="">
+                @else
+                    @if(strlen($nowImage) > 2)
+                    <img src="{{$nowImage}}" class="img-fluid" alt="">
+                    @else
+                    <p>No Image</p>
+                    @endif
                 @endif
-                <input type="file" wire:model="image" class="form-control form-control-lg form-control-solid">
-                <div wire:loading wire:target="image">Uploading...</div>
-                @error('image')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
-            </div>
+                
+                 <input type="file" wire:model="image" class="form-control form-control-lg form-control-solid">
+                 <div wire:loading wire:target="image">Uploading...</div>
+             </div>
             <!--end::Col-->
         </div>
         <!--end::Input group-->

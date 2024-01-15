@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advert;
 use App\Models\Blog;
 use App\Models\JobResume;
 use App\Models\Message;
@@ -231,5 +232,16 @@ class ContentController extends Controller
     public function advertisement()
     {
         return view('admin.contents.other.advertisement.index');
+    }
+
+    public function advertisement_add()
+    {
+        return view('admin.contents.other.advertisement.add');
+    }
+
+    public function advertisement_edit($id)
+    {
+        $advert = Advert::findOrFail($id);
+        return view('admin.contents.other.advertisement.edit', compact('advert'));
     }
 }

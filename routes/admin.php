@@ -74,6 +74,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::delete('/jobresumes/delete/{id}', [ContentController::class, 'jobresume_delete'])->name('jobresumes.delete');
                 Route::get('/popup', [ContentController::class, 'popup'])->name('popup.list');
                 Route::get('/advertisement', [ContentController::class, 'advertisement'])->name('advertisement.list');
+                Route::get('/advertisement/add', [ContentController::class, 'advertisement_add'])->name('advertisement.add');
+                Route::get('/advertisement/{id}/edit', [ContentController::class, 'advertisement_edit'])->name('advertisement.edit');
             });
         });
 
