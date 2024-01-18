@@ -8648,7 +8648,8 @@ button:focus:not(:focus-visible) {
 }
 .background_bg {
 	background-position: center center;
-	background-size: cover;
+	background-size: center;
+  object-fit: cover;
 }
 .bg_size_auto {
     background-size: auto !important;

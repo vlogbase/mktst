@@ -40,24 +40,12 @@
             <div class="carousel-inner">
                 @foreach ($sliders as $slider)
                     <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }} background_bg"
-                        data-img-src="{{ $slider->image }}">
-                        <div class="banner_slide_content">
+                        data-img-src="/upload/other/slider-back.jpg">
+                        <div class="banner_slide_content" style="height:500px!important;">
                             <div class="container"><!-- STRART CONTAINER -->
                                 <div class="row">
-                                    <div class="col-lg-7 col-9">
-                                        <div class="banner_content overflow-hidden">
-                                            <h5 class="mb-3 staggered-animation font-weight-light {{ $slider->light == 1 ? 'text-white' : '' }}"
-                                                data-animation="slideInLeft" data-animation-delay="0.5s">
-                                                {{ $slider->top_head }}</h5>
-                                            <h2 class="staggered-animation {{ $slider->light == 1 ? 'text-white' : '' }}"
-                                                data-animation="slideInLeft" data-animation-delay="1s">
-                                                {{ $slider->mid_head }}</h2>
-                                            @if ($slider->button_status)
-                                                <a class="btn btn-fill-out rounded-0 staggered-animation text-uppercase"
-                                                    href="{{ $slider->button_action }}" data-animation="slideInLeft"
-                                                    data-animation-delay="1.5s">{{ $slider->button_text }}</a>
-                                            @endif
-                                        </div>
+                                    <div class="col-12 text-center">
+                                           <img  style="object-fit: contain;width: 800px;height:500px" src="{{$slider->image}}" >
                                     </div>
                                 </div>
                             </div><!-- END CONTAINER-->
