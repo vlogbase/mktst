@@ -34,34 +34,6 @@
         @livewire('customer.last-order-popup')
     @endauth
 
-    <!-- START SECTION BANNER -->
-    {{-- <div class=" banner_section slide_medium shop_banner_slider staggered-animation-wrap">
-        <div id="carouselExampleControls" class="carousel slide carousel-fade light_arrow" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach ($sliders as $slider)
-                    <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }} background_bg"
-                        data-img-src="/upload/other/slider-back.jpg">
-                        <div class="banner_slide_content" style="height:500px!important;">
-                            <div class="container"><!-- STRART CONTAINER -->
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                           <img  style="object-fit: contain;width: 800px;height:500px" src="{{$slider->image}}" >
-                                    </div>
-                                </div>
-                            </div><!-- END CONTAINER-->
-                        </div>
-                    </div>
-                @endforeach
-
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev"><i
-                    class="ion-chevron-left"></i></a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next"><i
-                    class="ion-chevron-right"></i></a>
-        </div>
-    </div> --}}
-    <!-- END SECTION BANNER -->
-
 
     <div class="py-5">
         <div class="container-fluid">

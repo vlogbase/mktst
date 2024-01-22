@@ -63,6 +63,8 @@ class UploadSpecialCategories extends Command
                     'category_id' => null,
                     'image' => $path,
                     'created_at' => '2023-01-01 00:00:00',
+                    'special' => 1,
+
                  ]
             );
         }

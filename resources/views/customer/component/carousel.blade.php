@@ -45,7 +45,7 @@
     .    .swiper,
     .swiper-wrapper{
         width: 100%;
-        height: 600px;
+        height: 500px;
     }
 
     .swiper-slide {
@@ -56,12 +56,9 @@
     .swiper-slide img {
         display: block;
         margin: 0 auto;
-        top: 0%;
-        left: 0%;
         width: 100%;
         height: 100%;
         object-fit: contain;
-        align-self: auto;
     }
 
     .swiper-slide-prev,
@@ -87,8 +84,8 @@
 
     @media (max-width: 768px) {
         .swiper-slide {
-            width: 768px;
-            height: 300px;
+            width: 100%;
+            height: 100%;
         }
     }
 </style>
