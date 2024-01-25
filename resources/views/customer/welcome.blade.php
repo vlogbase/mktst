@@ -29,6 +29,7 @@
 @endsection
 
 @section('content')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     @auth
         @livewire('customer.last-order-popup')
@@ -37,7 +38,7 @@
 
     <div class="py-5">
         <div class="container-fluid">
-            @include('customer.component.carousel', ['sliders' => $sliders ])
+            @include('customer.component.carousel', ['sliders' => $sliders])
         </div>
     </div>
 
@@ -66,27 +67,23 @@
         <div class="container-fluid mt-5 ">
             <div class="row">
                 <div class="col-md-2 col-12  text-center">
-                    @foreach ($adverts as $advert)
-                        @if ($advert->side == 'left')
-                            <a href="{{ $advert->redirect_url }}" target="_blank">
-                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:170px"
-                                    class=" my-4">
-                            </a>
-                        @endif
-                    @endforeach
+                    <div class="">
+                        @include('customer.component.advert-slider', [
+                            'adverts' => $adverts,
+                            'side' => 'left',
+                        ])
+                    </div>
                 </div>
                 <div class="col-md-8 mx-auto col-12">
                     @include('customer.component.category')
                 </div>
                 <div class="col-md-2 col-12  text-center">
-                    @foreach ($adverts as $advert)
-                        @if ($advert->side == 'right')
-                            <a href="{{ $advert->redirect_url }}" target="_blank">
-                                <img src="{{ $advert->getImageUrl() }}" alt="{{ $advert->name }}" style="width:170px"
-                                    class=" my-4">
-                            </a>
-                        @endif
-                    @endforeach
+                    <div class="d-none d-md-block">
+                        @include('customer.component.advert-slider', [
+                            'adverts' => $adverts,
+                            'side' => 'right',
+                        ])
+                    </div>
                 </div>
             </div>
         </div> <!-- container .//  -->
@@ -378,5 +375,6 @@
     <!-- START SECTION SUBSCRIBE NEWSLETTER -->
     @livewire('customer.newsletter-main')
     <!-- START SECTION SUBSCRIBE NEWSLETTER -->
+
 
 @endsection

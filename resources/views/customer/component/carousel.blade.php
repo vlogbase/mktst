@@ -13,8 +13,6 @@
 
 <!-- Add Pagination -->
 
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     var swiper = new Swiper(".caraouselSlideer", {
         loop: true,
