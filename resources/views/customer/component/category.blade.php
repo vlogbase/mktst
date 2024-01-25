@@ -28,8 +28,8 @@
                  <a href="{{route('category_products',$category->slug)}}">
                     <div class="categorybox card card-banner border-0">
                         <div class="p-3 text-center">
-                            <img class="img-fluid lazy special-category-image" data-src="{{$category->image}}" style="width:180px; max-width:100%; height:auto;" alt="{{$category->name}}">
-                            <h5 class="mt-2 two-line-truncate">{{$category->name}}</h5>
+                            <img class="img-fluid lazy special-category-image" data-src="{{$category->image}}" style="max-width:100%; height:auto;" alt="{{$category->name}}">
+                            <h6 class="mt-4 three-line-truncate">{{$category->name}}</h6>
                         </div>
                     </div>
                  </a>
