@@ -71,4 +71,9 @@ class ProductController extends Controller
         Product::findOrFail($id);
         return view('admin.products.product_detail', compact('id'));
     }
+
+    public function bulk_upload()
+    {
+        return view('admin.products.bulk_upload');
+    }
 }

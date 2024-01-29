@@ -116,6 +116,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/', [ProductController::class, 'product_list'])->name('list');
             Route::get('/add', [ProductController::class, 'product_add'])->name('add');
             Route::get('/{id}', [ProductController::class, 'product_detail'])->name('detail');
+            Route::get('/bulk/upload', [ProductController::class, 'bulk_upload'])->name('bulk_upload');
         });
 
         //Categories

@@ -13,6 +13,7 @@
         <!--end::Heading-->
         <!--begin::Actions-->
         <div class="d-flex flex-wrap my-2">
+            <a href="{{ route('admin.products.bulk_upload') }}" class="btn btn-secondary btn-sm ">Bulk Upload</a>
             <a href="{{ route('admin.products.add') }}" class="btn btn-primary btn-sm">Add Product</a>
         </div>
         <!--end::Actions-->
