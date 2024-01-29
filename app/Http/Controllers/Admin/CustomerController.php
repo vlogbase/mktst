@@ -42,13 +42,13 @@ class CustomerController extends Controller
                     return $spn;
                 })
                 ->addColumn('phone', function (User $user) {
-                    return $user->userdetail->mobile;
+                    return $user->userdetail->mobile ?? "N/A";
                 })
                 ->addColumn('type', function (User $user) {
-                    return $user->userdetail->business_type;
+                    return $user->userdetail->business_type ?? "N/A";
                 })
                 ->addColumn('postcode', function (User $user) {
-                    return $user->userdetail->address->postcode;
+                    return $user->userdetail->address->postcode ?? "N/A";
                 })
                 ->addColumn('price', function (User $user) {
                     return number_format($user->userorders->sum('total_price'), 2);
