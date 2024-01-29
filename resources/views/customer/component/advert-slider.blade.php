@@ -9,11 +9,11 @@
 
 </div>
 <div class="d-md-none advertSlider swiper">
-    <div class="swiper-wrapper">
+    <div class="swiper-wrapper" style="align-items: center;">
         @foreach ($adverts as $advert)
-                <div class="swiper-slide">
+                <div class="swiper-slide" >
                     <a href="{{ $advert->redirect_url }}" target="_blank">
-                        <img src="{{ $advert->getImageUrl() }}" style="width:170px" class=" my-4">
+                        <img src="{{ $advert->getImageUrl() }}" style="width:170px;margin: auto;" class=" my-4">
                     </a>
                 </div>
         @endforeach
