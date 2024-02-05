@@ -26,10 +26,11 @@ class ProductController extends Controller
     public function product_detail($slug)
     {
         $product = Product::where('slug', $slug)->where('status', 1)->firstOrFail();
-        foreach ($product->categories as $category) {
-            $related = Category::find($category->id)->products->where('status', 1)->except($product->id)->take(12);
+        if($product->categories->count() > 0){
+            $related = Category::find($product->categories->first()->id)->products->where('status', 1)->except($product->id)->take(12);
+        }else{
+            $related = Product::where('status', 1)->where('id','!=',$product->id)->take(12)->get();
         }
-
 
         return view('customer.product.detail', compact('product', 'related'));
     }

@@ -15,6 +15,7 @@
           </div>
     </div>
     @endif
+    @if($cart_price > 0)
     <div class="border p-3 mb-3">
         <form wire:submit.prevent="couponAttempt">
             @error('coupon_code')<span class="text-danger">{{ $message }}</span> @enderror
@@ -27,6 +28,7 @@
             </div>
         </form>
     </div>
+    @endif
     @if($applied_coupon_code != NULL)
     <div class="border p-3 mb-3">
         <div class="coupon field_form input-group ">
@@ -49,6 +51,7 @@
         </div>
         <div class="table-responsive">
             <table class="table">
+                @if($cart_price > 0)
                 <tbody>
                     <tr>
                         <td class="cart_total_label">Cart Subtotal</td>
@@ -77,11 +80,22 @@
                         <td class="cart_total_amount "><strong>£{{number_format($total_price,2)}}</strong></td>
                     </tr>
                 </tbody>
+                @else
+                <tbody>
+                    <tr>
+                        <td class="cart_total_label">Your cart is empty</td>
+                        <td class="cart_total_amount "></td>
+                    </tr>
+                </tbody>
+                @endif
             </table>
         </div>
+        @if($cart_price > 0)
         <a href="{{route('checkout')}}" class="btn btn-block btn-success">Proceed To CheckOut</a>
         <hr>
-        <a href="{{route('products')}}" class="btn btn-block btn-fill-out">Add more products</a>
+        @endif
+        
+        <a href="{{route('products')}}" class="btn btn-block btn-fill-out">Add {{$cart_price > 0 ? ' more ' : ''}} products</a>
 
     </div>
 </div>

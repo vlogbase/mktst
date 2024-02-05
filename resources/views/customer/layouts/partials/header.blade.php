@@ -119,7 +119,7 @@
                                     <a style="font-size: 20px!important;"
                                         class="dropdown-toggle nav-link {{ request()->routeIs('about_us') || request()->routeIs('contact_us') || request()->routeIs('career') || request()->routeIs('terms_and_conditions') ? 'active' : '' }}"
                                         href="#" data-bs-toggle="dropdown">Company</a>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" style="margin: -10px!important;">
                                         <ul>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('about_us') ? 'active' : '' }}"
                                                     href="{{ route('about_us') }}">About Us</a></li>
@@ -138,7 +138,7 @@
                                     <a style="font-size: 20px!important;"
                                         class="dropdown-toggle nav-link {{ request()->routeIs('blogs.index') || request()->routeIs('news.index') || request()->routeIs('gallery') || request()->routeIs('video_gallery') ? 'active' : '' }}"
                                         href="#" data-bs-toggle="dropdown">Contents</a>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" style="margin: -10px!important;">
                                         <ul>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('blogs.index') ? 'active' : '' }}"
                                                     href="{{ route('blogs.index') }}">Blog</a></li>
@@ -156,15 +156,14 @@
                         <ul class="navbar-nav attr-nav align-items-center ">
                             <li>
                                 @if (Auth::check())
-                                    <a href="{{ route('user.profile') }}" class="nav-link "><i
-                                            class="linearicons-user"></i>
+                                    <a href="{{ route('user.profile') }}" class="nav-link ">
+                                        Profile
                                     </a>
                                 @endif
                                 @guest
                                     <a href="{{ route('login') }}"
-                                        class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}"><i
-                                            class="linearicons-enter"></i>
-
+                                        class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">
+                                        Login
                                     </a>
                                 @endguest
                             </li>
@@ -249,7 +248,7 @@
     }
 
     .msg span {
-        animation: marquee 20s linear infinite;
+        animation: marquee 50s linear infinite;
         display: inline-block;
         padding-left: calc(100% + 50px);
     }

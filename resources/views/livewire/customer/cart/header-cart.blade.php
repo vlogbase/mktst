@@ -1,6 +1,6 @@
 <li class="dropdown cart_dropdown">
     <a class="nav-link cart_trigger {{request()->routeIs('cart') || request()->routeIs('checkout') ? 'active' : ''}}" href="#" data-bs-toggle="dropdown"><i class="linearicons-cart"></i><span class="cart_count">{{count($cartItems)}}</span></a>
-    <div class="cart_box dropdown-menu dropdown-menu-right">
+    <div class="cart_box dropdown-menu dropdown-menu-right" style="margin: -10px!important;">
         <ul class="cart_list">
             @if(count($cartItems) > 0)
             @foreach($cartItems as $item)
