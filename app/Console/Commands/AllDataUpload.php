@@ -2,22 +2,19 @@
 
 namespace App\Console\Commands;
 
-use App\Imports\ProductImport;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Console\Command;
-use Maatwebsite\Excel\Facades\Excel;
-use Illuminate\Support\Str;
 
-class ImportProducts extends Command
+class AllDataUpload extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'products:import'; // php artisan products:import
+    protected $signature = 'load:all-data';
 
     /**
      * The console command description.
@@ -43,36 +40,39 @@ class ImportProducts extends Command
      */
     public function handle()
     {
-
-        $dataDirectory = 'app/OldData';
-
-        $files = glob($dataDirectory . '/*');
-
+        $this->info('All data upload command is running');
 
         $products = Product::all();
         foreach($products as $product){
             $product->delete();
         }
 
+        $childCategories = Category::where('category_id', '!=', null)->get();
+        foreach($childCategories as $childCategory){
+            $childCategory->delete();
+        }
+
+        $categories = Category::where('category_id', null)->get();
+        foreach($categories as $category){
+            $category->delete();
+        }
+
         $oldBrands = Brand::all();
         foreach($oldBrands as $oldBrand){
             $oldBrand->delete();
         }
+
+        $this->info('Removed all data from the database.');
+
+        $categoryFile = 'app/Data/MainData/new_category_data.csv';
         
+        $this->call('products:import');
+        $this->call('data:import');
+        $this->call('detect:categories');
+        $this->call('upload:special-categories');
 
-        foreach ($files as $file) {
-            $category = pathinfo($file, PATHINFO_FILENAME);
-
-            if (!file_exists($file)) {
-                $this->error('File not found: ' . $file);
-                return;
-            }
-
-            $category = '';
-
-            Excel::import(new ProductImport($category), $file);
-        }
-
-        
+        $this->info('All data upload command has been executed successfully.');
     }
+
+    
 }

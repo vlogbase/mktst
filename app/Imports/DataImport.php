@@ -67,13 +67,13 @@ class DataImport implements ToCollection
                     $mainCategoryId = $mainCategoryModel ? $mainCategoryModel->id : null;
                     $subCategoryModel = $this->categorySave($subCategory,$path,$mainCategoryId);
                 } else {
-                    if ($row[1] != '') {
+                    /* if ($row[1] != '') {
                         $item = $this->productInsert($row,$mainCategoryModel);
                         if ($item) {
                             $arr = [$mainCategoryModel ? $mainCategoryModel->id : null, $subCategoryModel ? $subCategoryModel->id : null];
                             $item->categories()->sync($arr);  
                         }
-                    }
+                    } */
                 }
             }
             $count++;

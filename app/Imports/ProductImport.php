@@ -33,23 +33,23 @@ class ProductImport implements ToCollection
                 if ($row[1]) {
                     //This is product row
                     $item = $this->productInsert($row);
-                    if ($item) {
+                    /* if ($item) {
                         if($currentSubCategory){
                             $arr = [$this->category->id, $currentSubCategory->id];
                             $item->categories()->sync($arr);
                         }else{
                             $item->categories()->sync($this->category->id);
                         }
-                    }
+                    } */
                 }else{
                     //This is category row
-                    $currentSubCategory = Category::create(
+                    /* $currentSubCategory = Category::create(
                         [
                             'name' => $row[0],
                             'slug' => Str::slug($row[0].'-'.rand(100,999)),
                             'category_id' => $this->category->id,
                         ]
-                    );
+                    ); */
 
                 }
             }
@@ -60,7 +60,7 @@ class ProductImport implements ToCollection
     public function productInsert($row)
     {
         if (Product::where('sku', $row[0])->exists()) {
-            echo 'Product already exists: in '.$this->category->name.' => '. $row[0] . PHP_EOL;
+            echo 'Product already exists: in '.' => '. $row[0] . PHP_EOL;
             return;
         } else {
 
@@ -95,7 +95,7 @@ class ProductImport implements ToCollection
     
                 return $item;
             }else{
-                echo 'Product is not correct form: ' .$this->category->name.' => '. $row[1] . PHP_EOL;
+                echo 'Product is not correct form: ' .' => '. $row[1] . PHP_EOL;
                 return;
             }
             

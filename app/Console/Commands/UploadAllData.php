@@ -44,10 +44,7 @@ class UploadAllData extends Command
     public function handle()
     {
 
-        $products = Product::all();
-        foreach($products as $product){
-            $product->delete();
-        }
+        
 
         $childCategories = Category::where('category_id', '!=', null)->get();
         foreach($childCategories as $childCategory){
@@ -57,11 +54,6 @@ class UploadAllData extends Command
         $categories = Category::where('category_id', null)->get();
         foreach($categories as $category){
             $category->delete();
-        }
-
-        $oldBrands = Brand::all();
-        foreach($oldBrands as $oldBrand){
-            $oldBrand->delete();
         }
 
         $dataDirectory = 'app/Data/Data2';
