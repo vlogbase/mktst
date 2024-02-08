@@ -31,7 +31,6 @@
                     <table class="table table-hover  yajra-datatable">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Image</th>
                                 <th>SKU</th>
                                 <th>Name</th>
@@ -39,7 +38,7 @@
                                 <th>Price</th>
                                 <th>Discount</th>
                                 <th>Stock</th>
-                                <th>Unit</th>
+                                <th>Categories</th>
                                 <th>Created Date</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -91,10 +90,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('admin.products.list') }}",
-                columns: [{
-                        data: 'id',
-                        name: 'id'
-                    },
+                columns: [
                     {
                         data: 'image',
                         name: 'image',
@@ -126,8 +122,8 @@
                         name: 'stock'
                     },
                     {
-                        data: 'per_unit',
-                        name: 'per_unit'
+                        data: 'categories',
+                        name: 'categories'
                     },
                     {
                         data: 'created_at_visual',

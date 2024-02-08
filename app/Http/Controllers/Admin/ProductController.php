@@ -52,10 +52,13 @@ class ProductController extends Controller
                 ->addColumn('brand', function (Product $product) {
                     return $product->brand->name;
                 })
+                ->addColumn('categories', function (Product $product) {
+                    return $product->categories->pluck('name')->implode(', ');
+                })
                 ->addColumn('created_at_visual', function (Product $product) {
                     return Carbon::parse($product->created_at)->diffForHumans();
                 })
-                ->rawColumns(['action', 'created_at_visual', 'image', 'last_order', 'status', 'brand'])
+                ->rawColumns(['action', 'created_at_visual', 'image', 'last_order', 'status', 'brand','categories'])
                 ->make(true);
         }
         return view('admin.products.product_list');

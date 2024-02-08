@@ -36,4 +36,22 @@
     <!--end::Col-->
 </div>
 <!--end::Row-->
+<!--begin::Row-->
+<div class="row gy-5 g-xl-8">
+    <!--begin::Col-->
+    <div class="col-xl-12">
+        <!--begin::Basic info-->
+            <div class="card mb-5 mb-xl-10">
+                
+                <!--begin::Content-->
+                <div id="kt_account_profile_details" class="collapse show">
+                   @livewire('admin.category.category-product',['itemid'=> $id])
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Basic info-->
+    </div>
+    <!--end::Col-->
+</div>
+<!--end::Row-->
 @endsection
