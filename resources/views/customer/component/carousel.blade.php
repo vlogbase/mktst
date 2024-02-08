@@ -26,8 +26,8 @@
         slidesPerView: 'auto',
         coverflowEffect: {
             rotate: 0,
-            stretch: 80,
-            depth: 200,
+            stretch: 300,
+            depth: 250,
             modifier: 1,
             slideShadows: false,
         },
@@ -40,10 +40,10 @@
 </script>
 
 <style>
-    .    .swiper,
-    .swiper-wrapper{
+
+    .swiper {
         width: 100%;
-        height: 500px;
+        height: fit-content;
     }
 
     .swiper-slide {
@@ -52,16 +52,14 @@
     }
 
     .swiper-slide img {
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        height: 100%;
+        display: flex;
         object-fit: contain;
     }
 
     .swiper-slide-prev,
     .swiper-slide-next {
         filter: blur(6px) brightness(50%);
+        transition: 1500ms;
     }
 
     .swiper-button-next,
