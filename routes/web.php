@@ -12,6 +12,8 @@ use App\Http\Controllers\Customer\SitemapController;
 use App\Http\Controllers\Customer\UserController;
 use Illuminate\Support\Facades\Route;
 
+// In routes/web.php
+Route::feeds();
 
 //Customer Part
 Route::get('/', [HomeController::class, 'index'])->name('home');

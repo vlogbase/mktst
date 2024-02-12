@@ -17,6 +17,7 @@
         "livewire/livewire": "^2.8",
         "maatwebsite/excel": "^3.1",
         "mediconesystems/livewire-datatables": "^0.6.8",
+        "spatie/laravel-feed": "^4.2",
         "stripe/stripe-php": "^10.13",
         "yajra/laravel-datatables-oracle": "^9.19"
     },
