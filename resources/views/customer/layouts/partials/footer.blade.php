@@ -69,10 +69,10 @@
                 	<div class="widget">
                         <h6 class="widget_title">Social</h6>
                         <ul class="social_icons">
-                            <li><a href="https://www.facebook.com/SavoyCateringSupplies" class="sc_facebook" target="_blank"><i class="ion-social-facebook"></i></a></li>
-                            <li><a href="https://twitter.com/Markket" target="_blank" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/company/savoy-catering-supplies/" class="sc_linkedin" target="_blank"><i class="ion-social-linkedin"></i></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCSQ4XEn7Ur5nVs08uMKYpLQ/" class="sc_youtube" target="_blank"><i class="ion-social-youtube-outline"></i></a></li>
+                            <li><a href="https://www.facebook.com/IBDmarkket" class="sc_facebook" target="_blank"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/Markketuk" target="_blank" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/integrated-brand-delivery/" class="sc_linkedin" target="_blank"><i class="ion-social-linkedin"></i></a></li>
+                           {{--  <li><a href="https://www.youtube.com/channel/UCSQ4XEn7Ur5nVs08uMKYpLQ/" class="sc_youtube" target="_blank"><i class="ion-social-youtube-outline"></i></a></li> --}}
                             {{-- <li><a href="#" class="sc_instagram"><i class="ion-social-instagram-outline"></i></a></li> --}}
                         </ul>
                     </div>
