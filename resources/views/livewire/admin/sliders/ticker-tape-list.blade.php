@@ -6,7 +6,7 @@
         <div class="col-md-6 col-xl-6">
             <div class="card card-flush shadow-sm">
                 <div class="card-header">
-                    <h3 class="card-title">{{$loop->index + 1}}</h3>
+                    <h3 class="card-title">{{$item->tickerTapeCategory ? $item->tickerTapeCategory->head : 'No Categorized'}}</h3>
                     <div class="card-toolbar">
                         <a wire:click="deleteItem({{$item->id}})" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->

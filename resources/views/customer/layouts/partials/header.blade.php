@@ -193,22 +193,8 @@
         </div>
     </div>
 
-
-    @if($customerpagedata['ticker_tapes']->count() > 0)
-    <div class="page-head__ticker">
-        <p class="msg">
-            <span> 
-                @foreach($customerpagedata['ticker_tapes'] as $ticker_tape)
-                    {{$ticker_tape->text}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                @endforeach
-            </span>
-            
-        </p>
-    </div>
-    @endif
+    @include('customer.component.ticker-tape')
+    
 
 
 
@@ -216,51 +202,3 @@
 </header>
 <!-- END HEADER -->
 
-<style>
-    /**
- * Ticker
- */
-
-    .page-head__ticker {
-        font-size: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "Arial";
-        font-size: 24px;
-        font-weight: Bold;
-        height: 29px;
-        width: 100%;
-        line-height: 2;
-        text-transform: uppercase;
-        background-color: orange;
-    }
-
-    .msg {
-        margin: 0 auto;
-        white-space: nowrap;
-        overflow: hidden;
-        position: absolute;
-        color: white;
-        padding: 10px 0%;
-        width: 100%;
-        background-color: orange; /* Arka plan rengi */
-    }
-
-    .msg span {
-        animation: marquee 50s linear infinite;
-        display: inline-block;
-        padding-left: calc(100% + 50px);
-    }
-
-
-    @keyframes marquee {
-        0% {
-            transform: translate(0, 0);
-        }
-
-        100% {
-            transform: translate(-100%, 0);
-        }
-    }
-</style>
