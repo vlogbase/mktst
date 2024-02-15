@@ -69,10 +69,11 @@ class ProductController extends Controller
         return view('admin.products.product_add');
     }
 
-    public function product_detail($id)
+    public function product_detail(Request $request,$id)
     {
+        $getBackCategoryUrl = $request->get('categoryFromUrl') ?? null;
         Product::findOrFail($id);
-        return view('admin.products.product_detail', compact('id'));
+        return view('admin.products.product_detail', compact('id','getBackCategoryUrl'));
     }
 
     public function bulk_upload()

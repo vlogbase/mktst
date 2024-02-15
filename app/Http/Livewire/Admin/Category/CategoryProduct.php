@@ -12,6 +12,7 @@ class CategoryProduct extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $category;
+    public $path;
 
     public function mount($itemid)
     {
@@ -20,9 +21,11 @@ class CategoryProduct extends Component
 
     public function render()
     {
+        $this->path = url()->current();
         $items = $this->category->products();
         return view('livewire.admin.category.category-product', [
             'items' => $items->latest()->paginate(20, ['*'], 'productsPage'),
+            'path' => $this->path,
         ]);
     }
 }

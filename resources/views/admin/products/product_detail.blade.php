@@ -11,6 +11,9 @@
     <div class="d-flex flex-wrap my-2">
         @livewire('admin.product.delete-product',['itemid' => $id])
         <a href="{{route('admin.products.list')}}" class="btn btn-primary btn-sm" >Back to List</a>
+        @if($getBackCategoryUrl != null)
+        <a href="{{'/'.$getBackCategoryUrl}}" class="btn btn-secondary btn-sm" >Back to Category</a>
+        @endif
     </div>
     <!--end::Actions-->
 </div>
