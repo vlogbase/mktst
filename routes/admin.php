@@ -76,6 +76,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/advertisement', [ContentController::class, 'advertisement'])->name('advertisement.list');
                 Route::get('/advertisement/add', [ContentController::class, 'advertisement_add'])->name('advertisement.add');
                 Route::get('/advertisement/{id}/edit', [ContentController::class, 'advertisement_edit'])->name('advertisement.edit');
+                Route::get('/rss-feed', [ContentController::class, 'rss'])->name('rss.list');
             });
         });
 

@@ -278,7 +278,7 @@
 											</a>
 										</div>
 										<div class="menu-item">
-											<a class="menu-link {{request()->routeIs('admin.contents.other.advertisement.list') ? 'active' : ''}}" href="{{route('admin.contents.other.advertisement.list')}}">
+											<a class="menu-link {{request()->routeIs('admin.contents.other.rss.list') ? 'active' : ''}}" href="{{route('admin.contents.other.rss.list')}}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>

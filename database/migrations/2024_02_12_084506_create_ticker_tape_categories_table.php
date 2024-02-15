@@ -13,11 +13,14 @@ class CreateTickerTapeCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticker_tape_categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('head');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('ticker_tape_categories')){
+            Schema::create('ticker_tape_categories', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('head');
+                $table->timestamps();
+            });
+        }   
+        
     }
 
     /**

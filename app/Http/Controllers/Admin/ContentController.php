@@ -244,4 +244,9 @@ class ContentController extends Controller
         $advert = Advert::findOrFail($id);
         return view('admin.contents.other.advertisement.edit', compact('advert'));
     }
+
+    public function rss()
+    {
+        return view('admin.contents.other.rss.index');
+    }
 }
