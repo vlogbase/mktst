@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\News;
+use App\Traits\FeedHelper;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
+    use FeedHelper;
     public function gallery()
     {
 
@@ -26,6 +28,12 @@ class ContentController extends Controller
     {
 
         return view('customer.blog.list');
+    }
+
+    public function rss_feed()
+    {
+        $feeds = $this->getAllRssFeed();
+        return view('customer.feeds.list', compact('feeds'));
     }
 
     public function blogs_detail($slug)

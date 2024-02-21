@@ -189,6 +189,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        willvincent\Feeds\FeedsServiceProvider::class,
 
     ],
 
@@ -245,7 +246,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
 
 
     ],

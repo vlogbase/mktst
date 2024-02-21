@@ -20,6 +20,7 @@ class Blog extends Model implements Feedable
             ->title($this->name)
             ->summary($this->name)
             ->updated($this->updated_at)
+            ->image($this->image)
             ->link(route('blogs.detail', $this->slug))
             ->authorName('Markket');
     }

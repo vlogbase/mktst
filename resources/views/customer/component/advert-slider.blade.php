@@ -47,6 +47,5 @@
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        // Diğer seçenekler ve özelleştirmeler
     });
 </script>

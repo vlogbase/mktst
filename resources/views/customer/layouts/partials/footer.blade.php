@@ -39,6 +39,8 @@
                             <li><a href="{{route('career')}}">Career</a></li>
                             <li><a href="{{route('terms_and_conditions')}}">Terms & Conditions</a></li>
                             <li><a href="{{route('login')}}">Login</a></li>
+                            <li><a href="/feed">Our RSS Feed</a></li>
+                            <li><a href="/sitemap.xml">Sitemap</a></li>
 
                         </ul>
                     </div>

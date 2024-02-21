@@ -6,17 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\Advert;
 use App\Models\AppSlider;
 use App\Models\Blog;
+use App\Models\Feed;
 use App\Models\News;
 use App\Models\Product;
-use App\Models\ProductDetail;
 use App\Models\WebSlider;
+use App\Traits\FeedHelper;
 use DateTime;
-use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
+    use FeedHelper;
     public function index()
     {
+       
+       
+        
         $currentDateTime = new DateTime();
         $adverts = Advert::where('start_live_date', '<=', $currentDateTime->format('Y-m-d H:i:s'))
                          ->where('end_live_date', '>=', $currentDateTime->format('Y-m-d H:i:s'))
@@ -37,7 +42,10 @@ class HomeController extends Controller
             $q->where('special_offer', '=', '1');
         })->get();
 
-        $news = News::orderBy('created_at')->take(3)->get();
-        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'news','sliders_2','adverts'));
+        $blogs = Blog::orderBy('created_at')->take(3)->get();
+
+        $rssFeeds = $this->getLatestRssFeed();        
+
+        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'blogs','sliders_2','adverts','rssFeeds'));
     }
 }

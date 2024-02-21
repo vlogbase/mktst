@@ -256,14 +256,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="heading_s1 text-center">
-                        <h2>Latest News</h2>
+                        <h2>Markket Latest Blogs</h2>
                     </div>
-                    <p class="leads text-center">Read the latest news on the Savoy</p>
+                    <p class="leads text-center">Read the latest blogs on the Marrket</p>
                 </div>
             </div>
             <div class="row justify-content-center">
-                @if (count($news) > 0)
-                    @foreach ($news as $new)
+                @if (count($blogs) > 0)
+                    @foreach ($blogs as $new)
                         <div class="col-lg-4 col-md-6">
                             <div class="blog_post blog_style1 box_shadow1">
                                 <div class="blog_img">
@@ -284,7 +284,7 @@
                                         <p>{!! substr($new->text, 0, 150) . '...' !!}</p>
                                     </div>
                                     <a href="{{ route('news.detail', $new->slug) }}"
-                                        class="mt-3 btn btn-fill-out rounded-0 staggered-animation ">Read More</a>
+                                        class="mt-3 btn btn-fill-out rounded-0  ">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -328,6 +328,26 @@
         </div>
     </div>
     <!-- END SECTION SINGLE BANNER -->
+
+
+     <!-- START SECTION BLOG -->
+     <div class="section small_pt pb_70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="heading_s1 text-center">
+                        <h2>Latest News</h2>
+                    </div>
+                    <p class="leads text-center">Latest news on the Marrket</p>
+                </div>
+            </div>
+            <div class="row ">
+                @include('customer.component.latest-rss', ['feeds' => $rssFeeds])
+            </div>
+        </div>
+    </div>
+    <!-- END SECTION BLOG -->
+   
 
 
     <!-- START SECTION SHOP INFO -->

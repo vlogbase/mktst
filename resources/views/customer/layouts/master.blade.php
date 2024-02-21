@@ -17,14 +17,20 @@
     <meta property="og:title" content="@yield('title')" />
     <meta property="og:description" content="@yield('description')" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta property="og:site_name" content="Markket | Catering Supplies" />
+    <meta property="og:site_name" content="Markket | UK" />
     <meta property="og:image" content="{{ asset('/upload/logo/logo.jpeg') }}" />
-    <meta property="og:image:alt" content="Savoy Logo" />
+    <meta property="og:image:alt" content="Marrket Logo" />
     <link rel="canonical" href="{{ url('/') }}" />
 
-    <link rel="shortcut icon" href="/upload/logos/markket.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="/upload/logos/markket.ico">
 
+    <link rel="icon" type="image/x-icon" href="/upload/favicons/favicon.ico">
+    <link rel="shortcut icon" href="/upload/favicons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/upload/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/upload/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/upload/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/upload/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/upload/favicons/site.webmanifest">
+    
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
@@ -289,7 +295,7 @@
             })
         })
     </script>
-    
+
     @yield('js')
     @stack('scripts')
 </body>

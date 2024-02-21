@@ -25,7 +25,7 @@
             <div class="row align-items-center ">
                 <div class="col-lg-3 col-md-4 col-sm-6 col-3 ">
                     <div class="categories_wrap">
-                        <button  type="button" data-bs-toggle="collapse" data-bs-target="#navCatContent"
+                        <button type="button" data-bs-toggle="collapse" data-bs-target="#navCatContent"
                             aria-expanded="false" class="categories_btn categories_menu fs-5 mb-2">
                             <i class="linearicons-menu"></i><span>All Categories</span>
                         </button>
@@ -136,14 +136,16 @@
 
                                 <li class="dropdown">
                                     <a style="font-size: 20px!important;"
-                                        class="dropdown-toggle nav-link {{ request()->routeIs('blogs.index') || request()->routeIs('news.index') || request()->routeIs('gallery') || request()->routeIs('video_gallery') ? 'active' : '' }}"
+                                        class="dropdown-toggle nav-link {{ request()->routeIs('blogs.index') || request()->routeIs('news.index') || request()->routeIs('gallery') || request()->routeIs('rss_feed') || request()->routeIs('video_gallery') ? 'active' : '' }}"
                                         href="#" data-bs-toggle="dropdown">Contents</a>
                                     <div class="dropdown-menu" style="margin: -10px!important;">
                                         <ul>
+                                            <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('rss_feed') ? 'active' : '' }}"
+                                                href="{{ route('rss_feed') }}">Latest News</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('blogs.index') ? 'active' : '' }}"
                                                     href="{{ route('blogs.index') }}">Blog</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('news.index') ? 'active' : '' }}"
-                                                    href="{{ route('news.index') }}">News</a></li>
+                                                    href="{{ route('news.index') }}">Our News</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('gallery') ? 'active' : '' }}"
                                                     href="{{ route('gallery') }}">Gallery</a></li>
                                             {{-- <li><a class="dropdown-item nav-link nav_item {{request()->routeIs('video_gallery') ? 'active' : ''}}" href="{{route('video_gallery')}}">Video Gallery</a></li>  --}}
@@ -194,11 +196,10 @@
     </div>
 
     @include('customer.component.ticker-tape')
-    
+
 
 
 
 
 </header>
 <!-- END HEADER -->
-
