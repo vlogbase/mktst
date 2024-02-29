@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Feed extends Model
+class FeedCategory extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function feedCategory()
+    public function feeds()
     {
-        return $this->belongsTo(FeedCategory::class);
+        return $this->hasMany(Feed::class);
     }
 }

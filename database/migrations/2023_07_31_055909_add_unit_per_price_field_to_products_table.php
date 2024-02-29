@@ -26,7 +26,7 @@ class AddUnitPerPriceFieldToProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropIfExists('unit_per_price');
+            $table->dropColumn('unit_per_price');
         });
     }
 }

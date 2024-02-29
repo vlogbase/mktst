@@ -20,7 +20,6 @@ class CreateCategoriesTable extends Migration
             $table->string('image', 250)->nullable();
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
-
             $table->timestamps();
         });
     }

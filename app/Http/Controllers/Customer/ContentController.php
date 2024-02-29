@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\FeedCategory;
 use App\Models\Gallery;
 use App\Models\News;
 use App\Traits\FeedHelper;
@@ -30,10 +31,27 @@ class ContentController extends Controller
         return view('customer.blog.list');
     }
 
-    public function rss_feed()
+    public function rss_feed(Request $request)
     {
-        $feeds = $this->getAllRssFeed();
-        return view('customer.feeds.list', compact('feeds'));
+        $categorySlug = $request->c;
+
+        if ($categorySlug) {
+            $feedCategory = FeedCategory::where('slug', $categorySlug)->first();
+            if ($feedCategory) {
+                $slug = $feedCategory->slug;
+                $feeds = $this->getAllRssFeed($feedCategory->id);
+            }else{
+                $slug = null;
+                $feeds = $this->getAllRssFeed();
+            }
+        } else {
+            $slug = null;
+            $feeds = $this->getAllRssFeed();
+        }
+
+        $feedCategories = FeedCategory::all();
+
+        return view('customer.feeds.list', compact('feeds', 'feedCategories', 'slug'));
     }
 
     public function blogs_detail($slug)

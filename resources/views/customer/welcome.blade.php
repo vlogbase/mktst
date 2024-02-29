@@ -336,9 +336,9 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="heading_s1 text-center">
-                        <h2>Latest News</h2>
+                        <h2>Industry News</h2>
                     </div>
-                    <p class="leads text-center">Latest news on the Marrket</p>
+                    <p class="leads text-center">Latest news from industry publications</p>
                 </div>
             </div>
             <div class="row ">

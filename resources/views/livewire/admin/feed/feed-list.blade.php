@@ -44,7 +44,7 @@
                                                 <div class="d-flex flex-column w-100 me-2">
                                                     
                                                         <span class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{$item->head}}</span>
-                                                        {{-- <span class="text-muted fw-bold d-block fs-7">{{$item->orderproducts->count()}} Item</span> --}}
+                                                        <span class="text-muted fw-bold d-block fs-7">{{$item->feedCategory ? $item->feedCategory->name : ''}}</span>
                                                     
                                                 </div>
                                             </td>

@@ -13,13 +13,11 @@ class AddCategoryIdToTickerTapesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('ticker_tapes', 'category_id')) {
+        
             Schema::table('ticker_tapes', function (Blueprint $table) {
-
-                $table->integer('category_id')->unsigned()->nullable();
-                $table->foreign('category_id')->references('id')->on('ticker_tapes_categories')->onDelete('cascade');
+                $table->integer('category_id')->nullable();
             });
-        }
+        
     }
 
     /**
@@ -30,8 +28,7 @@ class AddCategoryIdToTickerTapesTable extends Migration
     public function down()
     {
         Schema::table('ticker_tapes', function (Blueprint $table) {
-
-            $table->dropIfExists('category_id');
+            $table->dropColumn('category_id');
         });
     }
 }

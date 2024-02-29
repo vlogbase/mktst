@@ -141,7 +141,7 @@
                                     <div class="dropdown-menu" style="margin: -10px!important;">
                                         <ul>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('rss_feed') ? 'active' : '' }}"
-                                                href="{{ route('rss_feed') }}">Latest News</a></li>
+                                                href="{{ route('rss_feed') }}">Industry News</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('blogs.index') ? 'active' : '' }}"
                                                     href="{{ route('blogs.index') }}">Blog</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('news.index') ? 'active' : '' }}"

@@ -72,7 +72,7 @@ Route::prefix('news')->name('news.')->group(function () {
     Route::get('/{slug}', [ContentController::class, 'news_detail'])->name('detail');
 });
 Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery');
-Route::get('/rss-feeds', [ContentController::class, 'rss_feed'])->name('rss_feed');
+Route::get('/industry-news', [ContentController::class, 'rss_feed'])->name('rss_feed');
 // Route::get('/video-gallery', [ContentController::class, 'video_gallery'])->name('video_gallery');
 
 

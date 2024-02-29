@@ -14,7 +14,7 @@ class CreateTickerTapesTable extends Migration
     public function up()
     {
         Schema::create('ticker_tapes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('text');
             $table->timestamps();
         });

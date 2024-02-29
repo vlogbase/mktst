@@ -9,94 +9,95 @@ use willvincent\Feeds\Facades\FeedsFacade;
 trait FeedHelper
 {
 
-    public function createRssArray()
-    {
+  public function createRssArray($query = null)
+  {
+    if ($query != null) {
+      $allFeeds = Feed::where('feed_category_id', $query)->get();
+    } else {
       $allFeeds = Feed::all();
-      $rssFeeds = [];
-      foreach ($allFeeds as $feed) {
-        $tempFeed = $this->parse($feed->url);
-        array_push($rssFeeds, $tempFeed);
-      }
-
-      return $rssFeeds;
+    }
+    $rssFeeds = [];
+    foreach ($allFeeds as $feed) {
+      $tempFeed = $this->parse($feed->url);
+      array_push($rssFeeds, $tempFeed);
     }
 
-    private function parse($feedUrl)
-    {
-        $feed = FeedsFacade::make($feedUrl);
-        $items = $this->parseItem($feed->get_items(), $feed->get_title());
+    return $rssFeeds;
+  }
 
-        $data = array(
-          'title'     => $feed->get_title(),
-          'permalink' => $feed->get_permalink(),
-          'items'     => $items,
-          'image'    => $feed->get_image_url(),
-        );
+  private function parse($feedUrl)
+  {
+    $feed = FeedsFacade::make($feedUrl);
+    $items = $this->parseItem($feed->get_items(), $feed->get_title());
 
-        return $data;
+    $data = array(
+      'title'     => $feed->get_title(),
+      'permalink' => $feed->get_permalink(),
+      'items'     => $items,
+      'image'    => $feed->get_image_url(),
+    );
+
+    return $data;
+  }
+
+  private function parseItem($items, $name)
+  {
+    $tempArr = [];
+
+    foreach ($items as $item) {
+      $tempItem = array(
+        'title' => $item->get_title(),
+        'permalink' => $item->get_permalink(),
+        'description' => $item->get_description(),
+        'date' => $item->get_date('Y-m-d h:i:s'),
+        'humanDate' => Carbon::parse($item->get_date('Y-m-d h:i:s'))->diffForHumans(),
+        'image' => $item->get_enclosure()->link ?? '/upload/contents/rss-content.jpg',
+        'name' => $name,
+      );
+
+      array_push($tempArr, $tempItem);
     }
 
-    private function parseItem($items, $name)
-    {
-        $tempArr = [];
+    return $tempArr;
+  }
 
-        foreach ($items as $item) {
-          $tempItem = array(
-            'title' => $item->get_title(),
-            'permalink' => $item->get_permalink(),
-            'description' => $item->get_description(),
-            'date' => $item->get_date('Y-m-d h:i:s'),
-            'humanDate' => Carbon::parse($item->get_date('Y-m-d h:i:s'))->diffForHumans(),
-            'image' => $item->get_enclosure()->link ?? '/upload/contents/rss-content.jpg',
-            'name' => $name,
-          );
+  public function getRssFeedsCollection()
+  {
+    $rssFeeds = $this->createRssArray();
+    return collect($rssFeeds);
+  }
 
-          array_push($tempArr, $tempItem);
-        }
-
-        return $tempArr;
+  public function getLatestRssFeed()
+  {
+    $rssFeeds = $this->createRssArray();
+    $latestNews = [];
+    foreach ($rssFeeds as $feed) {
+      $latestNews = array_merge($latestNews, $feed['items']);
     }
 
-   public function getRssFeedsCollection()
-   {
-      $rssFeeds = $this->createRssArray();
-      return collect($rssFeeds);
-   }
+    usort($latestNews, function ($a, $b) {
+      $carbonA = new Carbon($a['date']);
+      $carbonB = new Carbon($b['date']);
+      return $carbonA->diffInHours($carbonB);
+    });
 
-    public function getLatestRssFeed()
-    {
-      $rssFeeds = $this->createRssArray();
-      $latestNews = [];
-      foreach ($rssFeeds as $feed) {
-        $latestNews = array_merge($latestNews, $feed['items']);
-      }
+    return array_slice($latestNews, 0, 6);
+  }
 
-      usort($latestNews, function($a, $b) {
-        $carbonA = new Carbon($a['date']);
-        $carbonB = new Carbon($b['date']);
-        return $carbonA->diffInHours($carbonB);
-      });
-
-      return array_slice($latestNews, 0, 6);
-        
+  public function getAllRssFeed($query = null)
+  {
+    $rssFeeds = $this->createRssArray($query);
+    $latestNews = [];
+    foreach ($rssFeeds as $feed) {
+      $latestNews = array_merge($latestNews, $feed['items']);
     }
 
-    public function getAllRssFeed()
-    {
-      $rssFeeds = $this->createRssArray();
-      $latestNews = [];
-      foreach ($rssFeeds as $feed) {
-        $latestNews = array_merge($latestNews, $feed['items']);
-      }
+    usort($latestNews, function ($a, $b) {
+      $carbonA = new Carbon($a['date']);
+      $carbonB = new Carbon($b['date']);
+      return $carbonA->diffInHours($carbonB);
+    });
 
-      usort($latestNews, function($a, $b) {
-        $carbonA = new Carbon($a['date']);
-        $carbonB = new Carbon($b['date']);
-        return $carbonA->diffInHours($carbonB);
-      });
-
-      return $latestNews;
-        
-    }
-    
+    return $latestNews;
+  }
 }

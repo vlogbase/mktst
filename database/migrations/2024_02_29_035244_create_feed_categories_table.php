@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTickerTapeCategoriesTable extends Migration
+class CreateFeedCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTickerTapeCategoriesTable extends Migration
      */
     public function up()
     {
-            Schema::create('ticker_tape_categories', function (Blueprint $table) {
-                $table->increments('id');
-                $table->string('head');
-                $table->timestamps();
-            });
+        Schema::create('feed_categories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +28,6 @@ class CreateTickerTapeCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ticker_tape_categories');
+        Schema::dropIfExists('feed_categories');
     }
 }
