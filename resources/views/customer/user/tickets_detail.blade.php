@@ -1,17 +1,16 @@
 @extends('customer.layouts.master')
-@section('title', 'Profile - Markket')
+@section('title', 'Ticket Detail - Markket')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <div class="breadcrumb_section page-title-mini" style="background-color:chocolate;">
-        <div class="container">
-            <!-- STRART CONTAINER -->
+    <div class="breadcrumb_section  page-title-mini" style="background-color:chocolate;">
+        <div class="container"><!-- STRART CONTAINER -->
             <div class="row align-items-center">
                 <div class="col-md-12 text-center">
                     <div class="page-title">
-                        <h1 style="color:white!important;">Profile</h1>
+                        <h1 style="color:white!important;">Ticket Detail</h1>
                     </div>
                 </div>
-                
+
             </div>
         </div><!-- END CONTAINER-->
     </div>
@@ -35,12 +34,25 @@
                                 aria-labelledby="dashboard-tab">
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <h3>Payment Methods</h3>
-                                        <a href="{{route('user.tickets_add')}}" class="btn btn-fill-out btn-sm">Add New</a>
+                                        <div>
+                                            <h3>Ticket Detail</h3>
+                                        </div>
+                                        <a href="{{ route('user.tickets') }}" class="btn btn-fill-out btn-sm">Back to List</a>
+
                                     </div>
-                                    @livewire('customer.user.payment-list')
+                                    <div class="card-body">
+                                        {{$item->title}} <br>
+                                        {{$item->description}} <br>
+                                        {{$item->topic}} -
+                                        {{$item->status}} - 
+                                        {{$item->created_at}}
+                                        <div class="mt-5">
+                                            @livewire('customer.ticket.ticket-message', ['ticket_id' => $item->id,'author' => 'customer'])
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

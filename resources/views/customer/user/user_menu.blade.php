@@ -19,6 +19,9 @@
         <a class="nav-link {{request()->routeIs('user.favorites') ? 'active' : ''}}" id="account-detail-tab" href="{{route('user.favorites')}}"><i class="ti-star"></i>My Favorites</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link {{request()->routeIs('user.tickets') ? 'active' : ''}}" id="account-detail-tab" href="{{route('user.tickets')}}"><i class="ti-help"></i>Support Ticket</a>
+      </li>
+      <li class="nav-item">
         <form method="POST" action="{{route('user.logout')}}">
           {{csrf_field()}}
           <a href="" class="nav-link" onclick="event.preventDefault();

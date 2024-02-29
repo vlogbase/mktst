@@ -1,17 +1,16 @@
 @extends('customer.layouts.master')
-@section('title', 'Profile - Markket')
+@section('title', 'Support Tickets - Markket')
 @section('content')
     <!-- START SECTION BREADCRUMB -->
-    <div class="breadcrumb_section page-title-mini" style="background-color:chocolate;">
-        <div class="container">
-            <!-- STRART CONTAINER -->
+    <div class="breadcrumb_section  page-title-mini" style="background-color:chocolate;">
+        <div class="container"><!-- STRART CONTAINER -->
             <div class="row align-items-center">
                 <div class="col-md-12 text-center">
                     <div class="page-title">
-                        <h1 style="color:white!important;">Profile</h1>
+                        <h1 style="color:white!important;">Support Tickets</h1>
                     </div>
                 </div>
-                
+
             </div>
         </div><!-- END CONTAINER-->
     </div>
@@ -35,12 +34,16 @@
                                 aria-labelledby="dashboard-tab">
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <h3>Payment Methods</h3>
-                                        <a href="{{route('user.tickets_add')}}" class="btn btn-fill-out btn-sm">Add New</a>
+                                        <h3>Support Tickets</h3>
+                                        <a href="{{route('user.tickets_new')}}" class="btn btn-fill-out btn-sm">Add New</a>
                                     </div>
-                                    @livewire('customer.user.payment-list')
+                                    <div class="card-body">
+                                        @livewire('customer.ticket.ticket-list')
+                                    
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

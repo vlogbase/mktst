@@ -1,0 +1,26 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Topic</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($tickets as $item)
+                <tr>
+                    <td>{{$item->title}}</td>
+                    <td>{{$item->topic}}</td>
+                    <td>{{$item->status}}</td>
+                    <td>{{$item->created_at}}</td>
+                    <td>
+                        <a href="{{route('user.tickets_detail', $item->id)}}">View</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>

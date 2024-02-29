@@ -27,18 +27,7 @@ class UserSeeder extends Seeder
         $addresses = Address::factory(10)->create();
         $select_address = $addresses->random();
 
-        $users = User::factory(10)
-            ->has(
-                UserDetail::factory()
-                    ->count(1)
-                    ->for($select_address)
-            )
-            ->has(
-                UserOffice::factory()
-                    ->count(1)
-                    ->for($select_address)
-            )
-            ->create();
+        $users = User::factory(10)->has(UserDetail::factory()->count(1)->for($select_address))->has(UserOffice::factory()->count(1)->for($select_address))->create();
 
         /* $products = Product::all();
         User::all()->each(function ($user) use ($products) {

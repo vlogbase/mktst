@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Ticket;
 use App\Traits\PaymentStripeHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,5 +62,21 @@ class UserController extends Controller
     public function favorites()
     {
         return view('customer.user.favorites');
+    }
+
+    public function tickets()
+    {
+        return view('customer.user.tickets');
+    }
+
+    public function tickets_detail($id)
+    {
+        $item = Ticket::findOrFail($id);
+        return view('customer.user.tickets_detail', compact('item'));
+    }
+
+    public function tickets_new()
+    {
+        return view('customer.user.tickets_new');
     }
 }

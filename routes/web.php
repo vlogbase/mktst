@@ -49,6 +49,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/payments/add', [UserController::class, 'payments_add'])->name('payments_add');
         Route::get('/orders/{id}', [UserController::class, 'orders_detail'])->name('orders_detail');
         Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
+        Route::get('/tickets', [UserController::class, 'tickets'])->name('tickets');
+        Route::get('/tickets/new', [UserController::class, 'tickets_new'])->name('tickets_new');
+        Route::get('/tickets/detail/{id}', [UserController::class, 'tickets_detail'])->name('tickets_detail');
     });
 
 

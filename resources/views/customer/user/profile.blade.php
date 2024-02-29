@@ -47,7 +47,14 @@
                                     <p><strong class="fs-3 fw-bold">{{$user->point}}</strong><br>Total Point</p>
                             </div>
                             <div class="col-md-3 mx-auto mt-2 mb-2 col-6 border rounded-pill p-1 text-center">
-                                <p><strong class="fs-3 fw-bold">{{\Carbon\Carbon::parse($user->userorders->max('created_at'))->diffForHumans()}}</strong><br>Last Order</p>
+                                <p>
+                                    @if($user->userorders->count() > 0)
+                                    <strong class="fs-3 fw-bold">{{\Carbon\Carbon::parse($user->userorders->max('created_at'))->diffForHumans()}}</strong>
+                                    @else
+                                    <strong>-</strong>
+                                    @endif
+                                    <br>Last Order
+                                </p>
                         </div>
                                 </div>
                             </div>
