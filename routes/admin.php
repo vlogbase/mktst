@@ -77,6 +77,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/advertisement/add', [ContentController::class, 'advertisement_add'])->name('advertisement.add');
                 Route::get('/advertisement/{id}/edit', [ContentController::class, 'advertisement_edit'])->name('advertisement.edit');
                 Route::get('/rss-feed', [ContentController::class, 'rss'])->name('rss.list');
+                Route::get('/support-tickets', [ContentController::class, 'tickets'])->name('tickets.list');
+                Route::get('/support-tickets/{id}/detail', [ContentController::class, 'tickets_detail'])->name('tickets.detail');
             });
         });
 

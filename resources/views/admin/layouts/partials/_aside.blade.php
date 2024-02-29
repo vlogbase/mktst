@@ -285,6 +285,14 @@
 												<span class="menu-title">Extra RSS Feed</span>
 											</a>
 										</div>
+										<div class="menu-item">
+											<a class="menu-link {{request()->routeIs('admin.contents.other.tickets.list') ? 'active' : ''}}" href="{{route('admin.contents.other.tickets.list')}}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">Support Tickets</span>
+											</a>
+										</div>
 									</div>
 								</div>
 								<div class="menu-item">

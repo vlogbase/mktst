@@ -45,7 +45,7 @@
                                         {{$item->description}} <br>
                                         {{$item->topic}} -
                                         {{$item->status}} - 
-                                        {{$item->created_at}}
+                                        {{$item->humanTime()}}
                                         <div class="mt-5">
                                             @livewire('customer.ticket.ticket-message', ['ticket_id' => $item->id,'author' => 'customer'])
                                         </div>
