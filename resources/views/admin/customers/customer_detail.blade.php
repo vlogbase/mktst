@@ -231,9 +231,10 @@
                                                     <!--begin::Heading-->
                                                     <div class="d-flex align-items-center justify-content-between flex-wrap">
                                                         <!--begin::Label-->
-                                                        <span class="fs-4 fw-bolder pe-2">Offices <span class="text-muted fw-bold fs-7">{{$customer->useroffices->count()}} Record</span></span>
+                                                        <span class="fs-4 fw-bolder pe-2">Offices <span class="text-muted fw-bold fs-7">{{$customer->useroffices->count()}} Record</span>
+														<a href="/admin/offices/{{$customer->id}}/create" class="btn btn-xs btn-secondary">Add New</a>
+													</span>
                                                         <!--end::Label-->
-                                                
                                                         <!--begin::Carousel Indicators-->
                                                         <ol class="p-0 m-0 carousel-indicators carousel-indicators-dots">
                                                             @for($i = 0; $i < $customer->useroffices->count(); $i++)
@@ -352,7 +353,7 @@
                                                                  <!--begin::Input group-->
                                                                  <div class="row mb-7">
                                                                      <!--begin::Label-->
-                                                                     <label class="col-lg-4 fw-bold text-muted">Mobile</label>
+                                                                     <label class="col-lg-4 fw-bold text-muted">Email</label>
                                                                      <!--end::Label-->
                                                                      <!--begin::Col-->
                                                                      <div class="col-lg-8">
@@ -400,7 +401,7 @@
                                                                   <!--begin::Input group-->
                                                                   <div class="row mb-7">
                                                                      <!--begin::Label-->
-                                                                     <label class="col-lg-4 fw-bold text-muted">Default</label>
+                                                                     <label class="col-lg-4 fw-bold text-muted">Shipping Def.</label>
                                                                      <!--end::Label-->
                                                                      <!--begin::Col-->
                                                                      <div class="col-lg-8">
@@ -411,6 +412,20 @@
                                                                  <!--end::Input group-->
                                                                 </div>
                                                             </div>
+															<div class="mt-5 row">
+																<div class="col-md-12 justify-between">
+																	@if(!$office->is_shipping)
+																		<a href="/admin/offices/{{$customer->id}}/{{$office->id}}/set-shipping" class="btn btn-primary">Default Shipping</a>
+																	@endif
+																	@if(!$office->is_billing)
+																		<a href="/admin/offices/{{$customer->id}}/{{$office->id}}/set-billing" class="btn btn-primary">Default Billing</a>
+																	@endif
+
+																	@if(!$office->is_billing && !$office->is_shipping)
+																	<a href="/admin/offices/{{$customer->id}}/{{$office->id}}/delete" class="btn btn-danger">Delete</a>
+																	@endif
+																</div>
+															</div>
                                                         </div>
                                                         <!--end::Item-->
                                                         @endforeach   

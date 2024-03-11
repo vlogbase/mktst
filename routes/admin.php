@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DropzoneController;
+use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -104,8 +105,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         //Customers
         Route::prefix('customers')->name('customers.')->group(function () {
             Route::get('/', [CustomerController::class, 'customer_list'])->name('list');
+            Route::get('/create', [CustomerController::class, 'customer_create'])->name('create');
             Route::get('/{id}', [CustomerController::class, 'customer_detail'])->name('detail');
             Route::get('/{id}/edit', [CustomerController::class, 'customer_edit'])->name('edit');
+        });
+
+        Route::prefix('offices')->name('offices.')->group(function () {
+            Route::get('{customerId}/create', [OfficeController::class, 'create_office'])->name('create');
+            Route::get('{customerId}/{id}/set-billing', [OfficeController::class, 'set_billing'])->name('set_billing');
+            Route::get('{customerId}/{id}/set-shipping', [OfficeController::class, 'set_shipping'])->name('set_shipping');
+            Route::get('{customerId}/{id}/delete', [OfficeController::class, 'delete'])->name('delete');
         });
 
         //Orders

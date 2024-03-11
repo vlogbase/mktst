@@ -20,8 +20,10 @@ class DatabaseSeeder extends Seeder
         //$this->call(OrderSeeder::class);
         //$this->call(CampaignSeeder::class);
 
-        $this->call(OtherSeeder::class);
-        $this->call(AdminSeeder::class);
+        //$this->call(OtherSeeder::class);
+        //$this->call(AdminSeeder::class);
+
+        $this->call(CountrySeeder::class);
         
     }
 }

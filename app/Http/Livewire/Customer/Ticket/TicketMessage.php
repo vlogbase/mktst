@@ -5,14 +5,17 @@ namespace App\Http\Livewire\Customer\Ticket;
 use App\Models\Ticket;
 use App\Models\TicketMessage as ModelsTicketMessage;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class TicketMessage extends Component
 {
 
+    use WithFileUploads;
     public $ticket;
     public $ticket_messages;
     public $text_message;
     public $author;
+    public $file;
 
     public function mount($ticket_id, $author)
     {
@@ -40,7 +43,7 @@ class TicketMessage extends Component
                 }
             }
 
-            if ($count == 6) {
+            if ($count == 3) {
                 $this->emit('errorAlert', 'You have reached the maximum number of messages allowed, please wait for a response.');
                 return;
             }
@@ -51,12 +54,23 @@ class TicketMessage extends Component
             'text_message' => 'required'
         ]);
 
+        if ($this->file) {
+            $this->validate([
+                'file' => 'max:1024', // 1MB Max
+            ]);
+            $file_path = $this->file->store('upload/ticket_files', 'public');
+        } else {
+            $file_path = null;
+        }
+
         ModelsTicketMessage::create([
             'message' => $this->text_message,
             'author' => $this->author,
-            'ticket_id' => $this->ticket->id
+            'ticket_id' => $this->ticket->id,
+            'file' => $file_path
         ]);
 
+        $this->file = null;
         $this->getItems();
     }
 

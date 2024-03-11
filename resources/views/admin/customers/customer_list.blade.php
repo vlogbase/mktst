@@ -6,6 +6,18 @@
 
 @endsection
 @section('content')
+     <!--begin::Toolbar-->
+     <div class="d-flex flex-wrap flex-stack mb-6">
+        <!--begin::Heading-->
+        <h3 class="fw-bolder my-2">Customer Table</h3>
+        <!--end::Heading-->
+        <!--begin::Actions-->
+        <div class="d-flex flex-wrap my-2">
+            <a href="{{ route('admin.customers.create') }}" class="btn btn-primary btn-sm">Add Customer</a>
+        </div>
+        <!--end::Actions-->
+    </div>
+    <!--end::Toolbar-->
     <div class="card mt-5 mb-5 " id="kt_profile_details_view">
 
         <!--begin::Card body-->

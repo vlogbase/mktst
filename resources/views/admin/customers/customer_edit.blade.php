@@ -81,6 +81,8 @@
             <!--end::Card body-->
         </div>
         <!--end::details View-->
+
+
         <!--begin::Row-->
         <div class="row gy-5 g-xl-10">
             <!--begin::Col-->
@@ -94,22 +96,14 @@
                             <!--begin::Heading-->
                             <div class="d-flex align-items-center justify-content-between flex-wrap">
                                 <!--begin::Label-->
-                                <span class="fs-4 fw-bolder pe-2">Offices <span class="text-muted fw-bold fs-7">{{$customer->useroffices->count()}} Record</span></span>
+                                <span class="fs-4 fw-bolder pe-2">Password Change</span>
                                 <!--end::Label-->
-                        
-                                <!--begin::Carousel Indicators-->
-                                <ol class="p-0 m-0 carousel-indicators carousel-indicators-dots">
-                                    @for($i = 0; $i < $customer->useroffices->count(); $i++)
-                                    <li data-bs-target="#kt_carousel_1_carousel" data-bs-slide-to="{{$i}}" class="ms-1 {{$i == 0 ? 'active' : ''}}"></li>
-                                    @endfor
-                                </ol>
-                                <!--end::Carousel Indicators-->
                             </div>
                             <!--end::Heading-->
-                        
-                            
                         </div>
-                       
+                        <div class="mt-5">
+                            @livewire('admin.customer.edit-password',['customer' => $customer]);
+                        </div>
                     </div>
                     <!--end::Body-->
                 </div>

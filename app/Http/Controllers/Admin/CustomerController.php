@@ -73,4 +73,9 @@ class CustomerController extends Controller
         $customer = User::findorFail($id);
         return view('admin.customers.customer_edit', compact('customer'));
     }
+
+    public function customer_create()
+    {
+        return view('admin.customers.customer_create');
+    }
 }
