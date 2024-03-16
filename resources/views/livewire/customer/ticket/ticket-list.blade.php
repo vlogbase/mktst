@@ -1,4 +1,5 @@
 <div class="table-responsive">
+    @if($tickets->count() > 0)
     <table class="table">
         <thead>
             <tr>
@@ -23,4 +24,10 @@
             @endforeach
         </tbody>
     </table>
+    @else
+
+    <div class="alert alert-warning">
+        No tickets found
+    </div>
+    @endif
 </div>

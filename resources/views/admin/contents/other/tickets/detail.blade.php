@@ -33,6 +33,18 @@
                                     <!--begin::Input group-->
                                     <div class="row mb-6" >
                                         <!--begin::Label-->
+                                        <label class="col-lg-4 col-form-label fw-bold fs-6">Urgency</label>
+                                        <!--begin::Label-->
+                                        <!--begin::Label-->
+                                        <div class="col-lg-8 fv-row">
+                                            <p class="col-form-label  fs-6">{!!$item->urgencyText()!!}</p>
+                                        </div>
+                                        <!--begin::Label-->
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="row mb-6" >
+                                        <!--begin::Label-->
                                         <label class="col-lg-4 col-form-label fw-bold fs-6">Topic</label>
                                         <!--begin::Label-->
                                         <!--begin::Label-->

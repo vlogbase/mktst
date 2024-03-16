@@ -41,11 +41,12 @@
 
                                     </div>
                                     <div class="card-body">
-                                        {{$item->title}} <br>
-                                        {{$item->description}} <br>
-                                        {{$item->topic}} -
-                                        {{$item->status}} - 
-                                        {{$item->humanTime()}}
+                                        <h5>{{$item->title}}</h5>
+                                        <strong>Urgency:</strong> {!!$item->urgencyText() !!} <br>
+                                        <strong>Status:</strong> {{$item->status}} <br>
+                                        {{$item->topic}} - 
+                                        {{$item->humanTime()}} <br>
+                                        {{$item->description}}
                                         <div class="mt-5">
                                             @livewire('customer.ticket.ticket-message', ['ticket_id' => $item->id,'author' => 'customer'])
                                         </div>

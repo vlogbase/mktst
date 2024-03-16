@@ -11,6 +11,7 @@ class NewTicket extends Component
     public $title;
     public $description;
     public $topic;
+    public $urgency;
     public $ticket_message;
 
     public function submit(){
@@ -18,6 +19,7 @@ class NewTicket extends Component
             'title' => 'required',
             'description' => 'required',
             'topic' => 'required',
+            'urgency' => 'required',
             'ticket_message' => 'required',
         ]);
 
@@ -25,6 +27,7 @@ class NewTicket extends Component
         $ticket->title = $this->title;
         $ticket->description = $this->description;
         $ticket->topic = $this->topic;
+        $ticket->urgency = $this->urgency;
         $ticket->user_id = auth()->user()->id;
         $ticket->status = 'Created';
         $ticket->save();
@@ -34,6 +37,8 @@ class NewTicket extends Component
         $ticket_message->message = $this->ticket_message;
         $ticket_message->author = 'customer';
         $ticket_message->save();
+
+
 
 
         session()->flash('message', 'Ticket successfully created.');

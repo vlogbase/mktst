@@ -25,4 +25,20 @@ class Ticket extends Model
     {
         return Carbon::parse($this->created_at)->diffForHumans();
     }
+
+    public function lastMessage()
+    {
+        return $this->messages()->latest()->first();
+    }
+
+    public function urgencyText()
+    {
+        if($this->urgency == 'high'){
+            return '<span class="text-danger">High</span>';
+        }elseif($this->urgency == 'medium'){
+            return '<span class="text-warning">Middle</span>';
+        }elseif($this->urgency == 'low'){
+            return '<span class="text-success">Low</span>';
+        }
+    }
 }

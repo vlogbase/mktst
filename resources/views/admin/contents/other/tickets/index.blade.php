@@ -20,6 +20,7 @@
                                 <th>ID</th>
                                 <th>User</th>
                                 <th>Title</th>
+                                <th>Urgency</th>
                                 <th>Topic</th>
                                 <th>Status</th>
                                 <th>Created Date</th>
@@ -75,6 +76,10 @@
                     {
                         data: 'user_detail',
                         name: 'user_id'
+                    },
+                    {
+                        data: 'urgency_visual',
+                        name: 'urgency'
                     },
                     {
                         data: 'title',

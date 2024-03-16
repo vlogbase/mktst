@@ -20,6 +20,15 @@
             @error('topic') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
         <div class="form-group mb-3">
+            <select required="" class="form-control form-control-solid @error('urgency') is-invalid @enderror" wire:model="urgency">
+                <option value="">Select Urgency</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            @error('urgency') <span class="text-danger">{{ $message }}</span> @enderror
+        </div>
+        <div class="form-group mb-3">
             <textarea required="" class="form-control @error('ticket_message') is-invalid @enderror" wire:model="ticket_message" placeholder="Message">
             </textarea>
             @error('message') <span class="text-danger">{{ $message }}</span> @enderror

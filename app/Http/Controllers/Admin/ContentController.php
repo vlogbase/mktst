@@ -281,6 +281,10 @@ class ContentController extends Controller
 
                     return $spn;
                 })
+                ->addColumn('urgency_visual', function (Ticket $ticket) {
+
+                    return $ticket->urgencyText();
+                })
                 ->addColumn('user_detail', function (Ticket $ticket) {
 
                     $spn = $ticket->user->name;
@@ -290,7 +294,7 @@ class ContentController extends Controller
                 ->addColumn('created_at_visual', function (Ticket $message) {
                     return Carbon::parse($message->created_at)->diffForHumans();
                 })
-                ->rawColumns(['action', 'created_at_visual', 'user_detail','status_at_visuals'])
+                ->rawColumns(['action', 'created_at_visual', 'user_detail','status_at_visuals','urgency_visual'])
                 ->make(true);
         }
         return view('admin.contents.other.tickets.index');
