@@ -40,7 +40,7 @@ class EditCustomerDetailForm extends Component
             'name' => 'required',
             'vat' => 'required',
             'registeration' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,' . $this->user->id,
             'type' => 'required',
             'point' => 'required',
             'mobile' => 'required',

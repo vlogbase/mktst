@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DropzoneController;
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SellerController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
@@ -108,6 +109,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/create', [CustomerController::class, 'customer_create'])->name('create');
             Route::get('/{id}', [CustomerController::class, 'customer_detail'])->name('detail');
             Route::get('/{id}/edit', [CustomerController::class, 'customer_edit'])->name('edit');
+        });
+
+        //Customers
+        Route::prefix('sellers')->name('sellers.')->group(function () {
+            Route::get('/', [SellerController::class, 'index'])->name('list');
+            Route::get('/create', [SellerController::class, 'create'])->name('create');
+            Route::get('/{id}', [SellerController::class, 'edit'])->name('edit');
         });
 
         Route::prefix('offices')->name('offices.')->group(function () {
