@@ -11,14 +11,17 @@ class SendNewTicketNotification extends Notification
 {
     use Queueable;
 
+    private $data;
+    private $ticketDetail;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data, $ticketDetail)
     {
-        //
+        $this->data = $data;
+        $this->ticketDetail = $ticketDetail;
     }
 
     /**
@@ -41,9 +44,11 @@ class SendNewTicketNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject($this->ticketDetail['subject'])
+                    ->line('Ticket title is: ' . $this->data['title'])
+                    ->line('Ticket urgency is: ' . $this->data['urgency'])
+                    ->action('Go to Ticket Detail', $this->ticketDetail['url'])
+                    ->line('Have a nice day!');
     }
 
     /**

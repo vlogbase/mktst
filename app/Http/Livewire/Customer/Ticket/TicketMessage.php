@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Customer\Ticket;
 
+use App\Models\Admin;
+use App\Models\AdminAlert;
 use App\Models\Ticket;
 use App\Models\TicketMessage as ModelsTicketMessage;
+use App\Notifications\SendNewTicketNotification;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -70,6 +73,15 @@ class TicketMessage extends Component
             'file' => $file_path
         ]);
 
+        $to = $this->author === 'customer' ? 'admin' : 'customer';
+        $ticketDetailUrl = $to === 'admin' ? '/admin/contents/other/support-tickets/'.$this->ticket->id.'/detail' : '/user/tickets/detail/'.$this->ticket->id;
+         $ticketDetail = [
+            'subject' => 'Ticket Updated',
+            'url' => url('/'). $ticketDetailUrl
+        ];
+
+        $this->sendNotifications($this->ticket,$ticketDetail,$to);
+
         $this->file = null;
         $this->getItems();
     }
@@ -91,4 +103,15 @@ class TicketMessage extends Component
             'messages' => $this->ticket_messages
         ]);
     }
+
+    public function sendNotifications($ticket,$ticketDetail,$to){
+        if($to == 'admin'){
+            $adminsIds = AdminAlert::where('message_alert',1)->pluck('admin_id')->toArray();
+            Admin::whereIn('id',$adminsIds)->get()->each(function($admin) use ($ticket,$ticketDetail){
+                $admin->notify(new SendNewTicketNotification($ticket,$ticketDetail));
+            });
+        }else{
+            $ticket->user->notify(new SendNewTicketNotification($ticket,$ticketDetail));
+        }
+     }
 }

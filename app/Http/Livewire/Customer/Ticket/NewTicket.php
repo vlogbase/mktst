@@ -2,8 +2,11 @@
 
 namespace App\Http\Livewire\Customer\Ticket;
 
+use App\Models\Admin;
+use App\Models\AdminAlert;
 use App\Models\Ticket;
 use App\Models\TicketMessage;
+use App\Notifications\SendNewTicketNotification;
 use Livewire\Component;
 
 class NewTicket extends Component
@@ -39,7 +42,12 @@ class NewTicket extends Component
         $ticket_message->save();
 
 
+        $ticketDetail = [
+            'subject' => 'New Ticket Created',
+            'url' => url('/').'/admin/contents/other/support-tickets/'.$ticket->id.'/detail'
+        ];
 
+        $this->sendNotifications($ticket,$ticketDetail);
 
         session()->flash('message', 'Ticket successfully created.');
         return redirect()->to('/user/tickets/detail/'.$ticket->id);
@@ -50,5 +58,12 @@ class NewTicket extends Component
     public function render()
     {
         return view('livewire.customer.ticket.new-ticket');
+    }
+
+    public function sendNotifications($ticket,$ticketDetail){
+       $adminsIds = AdminAlert::where('message_alert',1)->pluck('admin_id')->toArray();
+       Admin::whereIn('id',$adminsIds)->get()->each(function($admin) use ($ticket,$ticketDetail){
+            $admin->notify(new SendNewTicketNotification($ticket,$ticketDetail));
+        });
     }
 }
