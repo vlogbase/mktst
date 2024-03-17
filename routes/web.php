@@ -95,3 +95,4 @@ Route::get('/3ds-callback', [PaymentController::class, 'there_d_callback'])->nam
 
 
 require __DIR__ . '/admin.php';
+require __DIR__ . '/seller.php';
