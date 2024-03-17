@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Seller\AuthSellerController;
 use App\Http\Controllers\Seller\GeneralController;
+use App\Http\Controllers\Seller\SellerProductController;
 use Illuminate\Support\Facades\Route;
 
 //Admin Part
@@ -20,6 +21,12 @@ Route::prefix('seller')->name('seller.')->group(function () {
         Route::post('/logout', [AuthSellerController::class, 'logout'])->name('logout');
         Route::get('/profile-settings', [GeneralController::class, 'settings'])->name('settings');
 
+        Route::prefix('products')->name('products.')->group(function () {
+            Route::get('/', [SellerProductController::class, 'product_list'])->name('list');
+            Route::get('/add', [SellerProductController::class, 'product_add'])->name('add');
+            Route::get('/{id}', [SellerProductController::class, 'product_detail'])->name('detail');
+            Route::get('/bulk/upload', [SellerProductController::class, 'bulk_upload'])->name('bulk_upload');
+        });
         
     });
 

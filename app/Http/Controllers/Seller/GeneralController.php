@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {
     public function index()
     {
-        return view('seller.dashboard');
+        $productCount = Product::where('seller_id', auth('seller')->user()->id)->count();
+        $data = [
+            'all_orders_cnt' => $productCount,
+        ];
+        return view('seller.dashboard', compact('data'));
     }
 
     public function settings()

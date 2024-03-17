@@ -15,6 +15,7 @@
     </div>
     <!--end::Toolbar-->
 
+    @if(false)
     <!--begin::Row-->
     <div class="row gy-5 g-xl-8">
         <!--begin::Col-->
@@ -160,4 +161,7 @@
         <!--end::Col-->
     </div>
     <!--end::Row-->
+    @endif
+
+    <h1>Coming Soon</h1>
 @endsection

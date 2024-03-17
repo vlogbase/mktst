@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class DeleteProduct extends Component
@@ -20,7 +21,13 @@ class DeleteProduct extends Component
     {
         Product::find($postId)->delete();
         $this->emit('succesAlert', 'Deleted!');
-        return redirect()->route('admin.products.list');
+        
+        if(Auth::guard('admin')->check()){
+            return redirect()->route('admin.products.list');
+        }
+        if(Auth::guard('seller')->check()){
+            return redirect()->route('seller.products.list');
+        }
     }
     public function render()
     {

@@ -6,6 +6,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductDetail;
+use App\Models\Seller;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -26,12 +28,23 @@ class ProductBaseDetails extends Component
     public $item;
     public $brands;
     public $categories;
+    public $sellers;
+
+    public $seller_select = null;
 
 
     public function mount($itemid)
     {
+        
+        if(Auth::guard('admin')->check()){
+            $this->seller_select = NULL;
+        }elseif(Auth::guard('seller')->check()){
+            $this->seller_select = Auth::guard('seller')->user()->id;
+        }
+
         $this->brands = Brand::all();
         $this->categories = Category::all();
+        $this->sellers = Seller::all();
         if ($itemid == 0) {
             $this->taxrate = 0;
             $this->discount = 0;
@@ -53,6 +66,7 @@ class ProductBaseDetails extends Component
             $this->unit_price = $this->item->unit_price;
             $this->brand_select = $this->item->brand_id;
             $this->categories_select = $this->item->categories->pluck('id');
+            $this->seller_select = $this->item->seller_id;
         }
     }
 
@@ -88,6 +102,7 @@ class ProductBaseDetails extends Component
                 'per_unit' => $this->per_unit,
                 'status' => $this->status ? 1 : 0,
                 'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
+                'seller_id' => $this->seller_select != '' ? $this->seller_select  : NULL,
             ]);
 
             $this->item->categories()->sync($this->categories_select);
@@ -105,6 +120,7 @@ class ProductBaseDetails extends Component
                 'per_unit' => $this->per_unit,
                 'status' => $this->status ? 1 : 0,
                 'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
+                'seller_id' => $this->seller_select != '' ? $this->seller_select  : NULL,
             ]);
 
             ProductDetail::create([
@@ -115,7 +131,14 @@ class ProductBaseDetails extends Component
 
             $item->categories()->sync($this->categories_select);
 
-            return redirect()->route('admin.products.detail', $item->id);
+            if(Auth::guard('admin')->check()){
+                return redirect()->route('admin.products.detail', $item->id);
+            }
+            if(Auth::guard('seller')->check()){
+                return redirect()->route('seller.products.detail', $item->id);
+            }
+
+            
         }
     }
 

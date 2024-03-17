@@ -9,15 +9,18 @@
                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                @auth('admin')
                                    <div class="symbol-label fs-3 bg-light-danger text-danger">
-                                       {{ Auth::guard('admin')->user()->name[0] }}</div>
+                                       {{ Auth::guard('admin')->user()->name[0] }}
+                                    </div>
                                @endauth
                                @auth('seller')
                                    <div class="symbol-label fs-3 bg-light-danger text-danger">
-                                       {{ Auth::guard('seller')->user()->name[0] }}</div>
+                                       {{ Auth::guard('seller')->user()->name[0] }}
+                                    </div>
                                @endauth
                            </div>
                        </div>
                        <!--end::Avatar-->
+                       
                        <!--begin::Username-->
                        @auth('admin')
                            <div class="d-flex flex-column">
@@ -34,12 +37,11 @@
                                <div class="fw-bolder d-flex align-items-center fs-5">
                                    {{ Auth::guard('seller')->user()->name }}
                                </div>
-
                            </div>
-
                            <!--end::Username-->
-                       </div>
-                   @endauth
+                       @endauth
+                   </div>
+
                </div>
                <!--end::Menu item-->
                <!--begin::Menu separator-->
@@ -47,11 +49,13 @@
                <!--end::Menu separator-->
 
                <!--begin::Menu item-->
-               @auth('seller')
+
                <div class="menu-item px-5 my-1">
-                   <a href="{{route('seller.settings')}}" class="menu-link px-5">Account Settings</a>
+                   @auth('seller')
+                       <a href="{{ route('seller.settings') }}" class="menu-link px-5">Account Settings</a>
+                   @endauth
                </div>
-               @endauth
+
                <!--end::Menu item-->
 
 

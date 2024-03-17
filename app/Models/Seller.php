@@ -23,4 +23,9 @@ class Seller extends Authenticatable
     {
         return $this->hasOne(SellerDetail::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -44,6 +44,7 @@
             </div>
         </div>
         <!--end::Navbar-->
+
         <!--begin::details View-->
         <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
             <!--begin::Card header-->
@@ -65,6 +66,7 @@
             <!--end::Card body-->
         </div>
         <!--end::details View-->
+
         <!--begin::Row-->
         <div class="row gy-5 g-xl-10">
             <!--begin::Col-->
@@ -85,6 +87,37 @@
                         </div>
                         <div class="mt-5">
                             @livewire('admin.customer.edit-password',['customer' => $seller]);
+                        </div>
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Charts Widget 1-->
+            </div>
+            <!--end::Col-->
+            
+        </div>
+        <!--end::Row-->
+
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-10">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::Charts Widget 1-->
+                <div class="card card-xl-stretch mb-xl-10">
+                    
+                    <!--begin::Body-->
+                    <div class="card-body">
+                        <div id="kt_carousel_1_carousel" class="carousel carousel-custom slide" data-bs-ride="carousel" data-bs-interval="8000">
+                            <!--begin::Heading-->
+                            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                <!--begin::Label-->
+                                <span class="fs-4 fw-bolder pe-2">Seller Products</span>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Heading-->
+                        </div>
+                        <div class="mt-5">
+                            @livewire('admin.seller.product-list',['seller' => $seller]);
                         </div>
                     </div>
                     <!--end::Body-->
