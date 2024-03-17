@@ -1,6 +1,6 @@
 @extends('admin.layouts.templates.panel')
-@section('title','Seller')
-@section('sub-title','Edit')
+@section('title','Profile Settings')
+@section('sub-title','')
 @section('content')
 <!--begin::Post-->
 <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -19,7 +19,7 @@
                             <div class="d-flex flex-column">
                                 <!--begin::Name-->
                                 <div class="d-flex align-items-center mb-2">
-                                    <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Edit Seller</span></a>
+                                    <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Edit Profile</span></a>
                                     
                                 </div>
                                 <!--end::Name-->
@@ -31,7 +31,7 @@
                             <!--end::User-->
                             <!--begin::Actions-->
                             <div class="d-flex my-4">
-                                <a href="{{route('admin.sellers.list')}}" class="btn btn-sm btn-primary me-3" >Back to List</a>
+                               
                             </div>
                             <!--end::Actions-->
                         </div>

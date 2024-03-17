@@ -18,7 +18,9 @@ Route::prefix('seller')->name('seller.')->group(function () {
         //Admin Authenticated
         Route::get('/', [GeneralController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AuthSellerController::class, 'logout'])->name('logout');
-        //Admin
+        Route::get('/profile-settings', [GeneralController::class, 'settings'])->name('settings');
+
+        
     });
 
     

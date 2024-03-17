@@ -11,4 +11,10 @@ class GeneralController extends Controller
     {
         return view('seller.dashboard');
     }
+
+    public function settings()
+    {
+        $seller = auth('seller')->user();
+        return view('seller.profile.settings', compact('seller'));
+    }
 }

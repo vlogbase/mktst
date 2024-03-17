@@ -67,7 +67,7 @@ class EditSeller extends Component
             'registry_code' => $this->registeration,
         ]);
 
-        return redirect()->route('admin.sellers.list');
+        $this->emit('succesAlert', 'Updated!');
     }
     public function render()
     {
