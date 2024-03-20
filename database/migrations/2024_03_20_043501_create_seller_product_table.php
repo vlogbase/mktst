@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSellerIdToProductsTable extends Migration
+class CreateSellerProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddSellerIdToProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->integer('seller_id')->unsigned()->nullable();
+        Schema::create('seller_product', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('seller_id')->unsigned();
+            $table->integer('product_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddSellerIdToProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropIfExists('seller_id');
-        });
+        Schema::dropIfExists('table_seller_product');
     }
 }

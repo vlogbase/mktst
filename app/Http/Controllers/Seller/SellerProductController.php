@@ -13,8 +13,9 @@ class SellerProductController extends Controller
     public function product_list(Request $request)
     {
         $seller = auth()->guard('seller')->user();
+
         if ($request->ajax()) {
-            $data = Product::where('seller_id',$seller->id)->latest()->get();
+            $data = $seller->products;
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function (Product $product) {
@@ -72,7 +73,8 @@ class SellerProductController extends Controller
 
     public function product_detail($id)
     {
-        $product = Product::where('id',$id)->where('seller_id',auth()->guard('seller')->user()->id)->firstOrFail();
+        $user = auth()->guard('seller')->user();
+        $product = $user->products->where('id',$id)->firstOrFail();
         return view('seller.product.detail', compact('id'));
     }
 

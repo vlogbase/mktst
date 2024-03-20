@@ -10,7 +10,7 @@
     <!--begin::Actions-->
     <div class="d-flex flex-wrap my-2">
         @livewire('admin.product.delete-product',['itemid' => $id])
-        <a href="{{route('seller.products.list')}}" class="btn btn-primary btn-sm" >Back to List</a>
+        <a href="{{route('seller.products.list')}}" class="btn btn-primary btn-sm" >Back to List</a>       
     </div>
     <!--end::Actions-->
 </div>

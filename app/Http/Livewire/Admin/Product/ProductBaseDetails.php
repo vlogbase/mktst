@@ -15,6 +15,7 @@ class ProductBaseDetails extends Component
 {
     public $brand_select = null;
     public $categories_select = [];
+    public $seller_select = [];
     public $itemid;
     public $status;
     public $per_unit;
@@ -30,7 +31,6 @@ class ProductBaseDetails extends Component
     public $categories;
     public $sellers;
 
-    public $seller_select = null;
 
 
     public function mount($itemid)
@@ -66,7 +66,7 @@ class ProductBaseDetails extends Component
             $this->unit_price = $this->item->unit_price;
             $this->brand_select = $this->item->brand_id;
             $this->categories_select = $this->item->categories->pluck('id');
-            $this->seller_select = $this->item->seller_id;
+            $this->seller_select = $this->item->sellers->pluck('id');
         }
     }
 
@@ -102,10 +102,10 @@ class ProductBaseDetails extends Component
                 'per_unit' => $this->per_unit,
                 'status' => $this->status ? 1 : 0,
                 'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
-                'seller_id' => $this->seller_select != '' ? $this->seller_select  : NULL,
             ]);
 
             $this->item->categories()->sync($this->categories_select);
+            $this->item->sellers()->sync($this->seller_select);
             $this->emit('succesAlert', 'Updated!');
         } else {
             $item = Product::create([
@@ -120,7 +120,7 @@ class ProductBaseDetails extends Component
                 'per_unit' => $this->per_unit,
                 'status' => $this->status ? 1 : 0,
                 'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
-                'seller_id' => $this->seller_select != '' ? $this->seller_select  : NULL,
+                
             ]);
 
             ProductDetail::create([
@@ -130,6 +130,7 @@ class ProductBaseDetails extends Component
             ]);
 
             $item->categories()->sync($this->categories_select);
+            $item->sellers()->sync($this->seller_select);
 
             if(Auth::guard('admin')->check()){
                 return redirect()->route('admin.products.detail', $item->id);

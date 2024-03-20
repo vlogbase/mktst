@@ -14,6 +14,9 @@
         @if($getBackCategoryUrl != null)
         <a href="{{'/'.$getBackCategoryUrl}}" class="btn btn-secondary btn-sm" >Back to Category</a>
         @endif
+        @if($getBackSellerUrl != null)
+        <a href="{{'/'.$getBackSellerUrl}}" class="btn btn-secondary btn-sm" >Back to Seller</a>
+        @endif
     </div>
     <!--end::Actions-->
 </div>

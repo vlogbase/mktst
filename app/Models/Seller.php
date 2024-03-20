@@ -26,6 +26,6 @@ class Seller extends Authenticatable
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class,'seller_product');
     }
 }

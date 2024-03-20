@@ -27,7 +27,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="{{route('admin.products.detail',$item->id)}}">
+                                <a href="{{route('admin.products.detail',$item->id)}}?sellerFromUrl={{$path}}">
                                     <span class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{$item->name}}</span>
                                 </a>
                                 <span class="text-muted fw-bold d-block fs-7">{{$item->sku}}</span>

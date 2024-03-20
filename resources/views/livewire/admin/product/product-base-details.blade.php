@@ -177,21 +177,22 @@
                 <label class="col-lg-4 col-form-label required fw-bold fs-6">Seller</label>
                 <!--end::Label-->
                 <!--begin::Col-->
-                <div class="col-lg-8">
-                    <div wire:ignore>
-                        <select class="form-select form-select-solid" id="select2" data-placeholder="Select a brand">
-                            <option>Select Seller</option>
-                            @foreach ($sellers as $seller)
-                                <option {{ $seller_select === $seller->id ? ' selected="selected"' : '' }}
-                                    value="{{ $seller->id }}">{{ $seller->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @error('brand_select')
+                <!--begin::Col-->
+                <div class="col-lg-8" wire:ignore>
+
+                    <select class="form-select form-select-solid" id="select222" multiple
+                        data-placeholder="Select sellers">
+                        @foreach ($sellers as $seller)
+                            <option {{ collect($seller_select)->contains($seller->id) ? 'selected' : '' }}
+                                value="{{ $seller->id }}">{{ $seller->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <small>You can enter name of seller. Multiple selection is available.</small>
+                </div>
+                    @error('seller_select')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                </div>
-
                 <!--end::Col-->
             </div>
             <!--end::Row-->
@@ -268,6 +269,12 @@
             $('#select22').on('change', function(e) {
                 var data = $('#select22').select2("val");
                 @this.set('categories_select', data);
+            });
+
+            $('#select222').select2();
+            $('#select222').on('change', function(e) {
+                var data = $('#select222').select2("val");
+                @this.set('seller_select', data);
             });
         });
     </script>

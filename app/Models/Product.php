@@ -42,6 +42,11 @@ class Product extends Model
         return $this->belongsToMany(User::class);
     }
 
+    public function sellers()
+    {
+        return $this->belongsToMany(Seller::class,'seller_product');
+    }
+
     public function getCoverImage()
     {
         if ($this->productimages->count() > 0) {
