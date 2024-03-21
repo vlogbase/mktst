@@ -36,7 +36,7 @@
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
                                         <h3>Payment Methods</h3>
-                                        <a href="{{route('user.tickets_add')}}" class="btn btn-fill-out btn-sm">Add New</a>
+                                        <a href="{{route('user.payments_add')}}" class="btn btn-fill-out btn-sm">Add New</a>
                                     </div>
                                     @livewire('customer.user.payment-list')
                                 </div>
