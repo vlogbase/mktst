@@ -15,7 +15,7 @@
     </div>
     <!--end::Toolbar-->
 
-    @if(false)
+    
     <!--begin::Row-->
     <div class="row gy-5 g-xl-8">
         <!--begin::Col-->
@@ -149,6 +149,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p>Upload your csv file for uploading all products, brands and categories.</p>
+                                <span>Not ready to upload</span>
                                 @livewire('admin.product.upload-c-s-v')
                             </div>
                         </div>
@@ -161,7 +162,7 @@
         <!--end::Col-->
     </div>
     <!--end::Row-->
-    @endif
+   
 
-    <h1>Coming Soon</h1>
+    
 @endsection

@@ -159,7 +159,7 @@
                 </span>
                 <!--end::Svg Icon-->
             </span>
-            <span class="menu-title">Sellers</span>
+            <span class="menu-title">Brand Owners</span>
         </a>
     </div>
     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

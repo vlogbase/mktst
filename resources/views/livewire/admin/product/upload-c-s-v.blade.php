@@ -8,7 +8,7 @@
                 @enderror
             </div>
             <div class="col-md-6 text-right">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button disabled type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </form>

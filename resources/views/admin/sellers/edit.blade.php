@@ -1,5 +1,5 @@
 @extends('admin.layouts.templates.panel')
-@section('title','Seller')
+@section('title','Brand Owner')
 @section('sub-title','Edit')
 @section('content')
 <!--begin::Post-->
@@ -19,7 +19,7 @@
                             <div class="d-flex flex-column">
                                 <!--begin::Name-->
                                 <div class="d-flex align-items-center mb-2">
-                                    <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Edit Seller</span></a>
+                                    <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Edit Brand Owner</span></a>
                                     
                                 </div>
                                 <!--end::Name-->
@@ -51,7 +51,7 @@
             <div class="card-header cursor-pointer">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Seller Details</h3>
+                    <h3 class="fw-bolder m-0">Brand Owner Details</h3>
                 </div>
                 <!--end::Card title-->
                 <!--begin::Action-->
@@ -111,7 +111,7 @@
                             <!--begin::Heading-->
                             <div class="d-flex align-items-center justify-content-between flex-wrap">
                                 <!--begin::Label-->
-                                <span class="fs-4 fw-bolder pe-2">Seller Products</span>
+                                <span class="fs-4 fw-bolder pe-2">Brand Owner Products</span>
                                 <!--end::Label-->
                             </div>
                             <!--end::Heading-->

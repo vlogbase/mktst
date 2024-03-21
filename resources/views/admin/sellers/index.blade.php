@@ -1,5 +1,5 @@
 @extends('admin.layouts.templates.panel')
-@section('title', 'Seller')
+@section('title', 'Brand Owner')
 @section('sub-title', 'List')
 @section('css')
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -9,11 +9,11 @@
      <!--begin::Toolbar-->
      <div class="d-flex flex-wrap flex-stack mb-6">
         <!--begin::Heading-->
-        <h3 class="fw-bolder my-2">Seller Table</h3>
+        <h3 class="fw-bolder my-2">Brand Owner Table</h3>
         <!--end::Heading-->
         <!--begin::Actions-->
         <div class="d-flex flex-wrap my-2">
-            <a href="{{ route('admin.sellers.create') }}" class="btn btn-primary btn-sm">Add Seller</a>
+            <a href="{{ route('admin.sellers.create') }}" class="btn btn-primary btn-sm">Add Brand Owner</a>
         </div>
         <!--end::Actions-->
     </div>
