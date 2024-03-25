@@ -149,7 +149,6 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p>Upload your csv file for uploading all products, brands and categories.</p>
-                                <span>Not ready to upload</span>
                                 @livewire('admin.product.upload-c-s-v')
                             </div>
                         </div>

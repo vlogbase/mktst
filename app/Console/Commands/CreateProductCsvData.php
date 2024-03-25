@@ -44,9 +44,10 @@ class CreateProductCsvData extends Command
         $fp = fopen($csvFileName, 'w');
 
         // İsteğe bağlı: CSV dosyasının başlığını ekle
-        fputcsv($fp, ['SKU', 'Name', 'Tax', 'Unit Price', 'Unit Per Price', 'Brand Name', 'Pack Size', 'Category', 'Sub Category']);
+        $headers = ['sku', 'product_name', 'tax_rate', 'unit_price', 'unit_per_price', 'stock', 'brand_name', 'pack_size', 'unit_weight', 'product_description', 'image_file_name', 'category_1', 'category_2'];
+        fputcsv($fp, $headers);
 
-                $products = Product::all();
+                $products = Product::take(3)->get();
                 foreach ($products as $product) {
                     $category = $product->categories->where('category_id', null)->first();
                     if(!is_null($category)){
@@ -62,8 +63,12 @@ class CreateProductCsvData extends Command
                         $product->taxrate,
                         floatval($product->unit_price),
                         floatval($product->unit_per_price),
-                        $product->brand->name,
-                        $product->productdetail->pack,
+                        $product->stock,
+                        optional($product->brand)->name,
+                        optional($product->productdetail)->pack,
+                        optional($product->productdetail)->unit_weight,
+                        optional($product->productdetail)->description,
+                        basename($product->getCoverImage()),
                         $category ? $category->name : '',
                         $sub_category ? $sub_category->name : '',
                     ]);

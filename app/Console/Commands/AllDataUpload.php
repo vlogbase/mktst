@@ -9,6 +9,7 @@ use Illuminate\Console\Command;
 
 class AllDataUpload extends Command
 {
+    // RECOVERY FOR THE LOST DATA
     /**
      * The name and signature of the console command.
      *

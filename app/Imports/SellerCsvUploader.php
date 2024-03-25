@@ -11,11 +11,17 @@ use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Illuminate\Support\Str;
 
-class CsvUploader implements ToCollection
+class SellerCsvUploader implements ToCollection
 {
+    public $user;
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
+
     /**
-     * @param Collection $collection
-     */
+    * @param Collection $collection
+    */
     public function collection(Collection $collection)
     {
         $count = 0;
@@ -29,11 +35,19 @@ class CsvUploader implements ToCollection
                     if ($row[11] && $row[12]) {
                         $mainCategoryModel = $this->categorySave($row[11], null);
                         $subCategoryModel = $this->categorySave($row[12], $mainCategoryModel->id);
-                        $arr = [$mainCategoryModel->id, $subCategoryModel->id];
-                        $item->categories()->sync($arr);
+
+                        if($mainCategoryModel && $subCategoryModel){
+                            $arr = [$mainCategoryModel->id, $subCategoryModel->id];
+                            $item->categories()->sync($arr);
+                        }else if($mainCategoryModel){
+                            $item->categories()->sync($mainCategoryModel->id);
+                        }
+ 
                     }else if ($row[11]) {
                         $mainCategoryModel = $this->categorySave($row[11], null);
-                        $item->categories()->sync($mainCategoryModel->id);
+                        if($mainCategoryModel){
+                            $item->categories()->sync($mainCategoryModel->id);
+                        }
                     }
 
                     $products++;
@@ -58,7 +72,7 @@ class CsvUploader implements ToCollection
                 'reorder' => 10,
                 'taxrate' => intval($row[2]) == 2 ? 20 : 0,
                 'per_unit' => 1,
-                'status' => 1,
+                'status' => 0,
                 'brand_id' => $this->brandGetOrCreate($row[6]),
             ]);
 
@@ -83,6 +97,7 @@ class CsvUploader implements ToCollection
         if ($brand_name) {
             $brand = Brand::firstOrCreate([
                 'name' => $brand_name,
+                'seller_id' => $this->user->id,
             ]);
 
             return $brand->id;
@@ -97,22 +112,25 @@ class CsvUploader implements ToCollection
 
     public function imageSave($name, $id)
     {
-        $files = public_path('upload/product/' . $name);
+        if($name){
+            $files = public_path('upload/product/' . $name);
 
-
-        if (!empty($files)) {
-            $fileInfo = pathinfo($files);
-            $fileExtension = $fileInfo['extension'];
-            $fileName = $fileInfo['filename'];
-
-
-
-            if ($fileExtension == 'pdf') {
-                $path = 'upload/product/imageholderproduct.jpg';
+            if (!empty($files)) {
+                $fileInfo = pathinfo($files);
+                $fileExtension = $fileInfo['extension'];
+                $fileName = $fileInfo['filename'];
+    
+    
+    
+                if ($fileExtension == 'pdf') {
+                    $path = 'upload/product/imageholderproduct.jpg';
+                } else {
+                    $path = 'upload/product/' . $fileName . '.' . $fileExtension;
+                }
             } else {
-                $path = 'upload/product/' . $fileName . '.' . $fileExtension;
+                $path = 'upload/product/imageholderproduct.jpg';
             }
-        } else {
+        }else{
             $path = 'upload/product/imageholderproduct.jpg';
         }
 
@@ -122,33 +140,15 @@ class CsvUploader implements ToCollection
         ]);
     }
 
-    public function categorySave($name, $topId): Category
+    public function categorySave($name,$topId): Category
     {
-        return Category::firstOrCreate(
-            ['name' => $name,
-            'category_id' => $topId ?? null,
-            ],
-            [
-
-                'slug' => Str::slug($name . '-' . rand(100, 999)),
-                'image' => $this->categoryImageSaver($name),
-            ]
-        );
-    }
-
-    public function categoryImageSaver($name)
-    {
-        $files = glob(public_path('upload/categoryImage/' . $name . '.*'));
-
-        if (!empty($files)) {
-            $fileInfo = pathinfo($files[0]);
-            $fileExtension = $fileInfo['extension'];
-            $fileName = $fileInfo['filename'];
-            $path = 'upload/categoryImage/' . $fileName . '.' . $fileExtension;
-        } else {
-            $path = 'upload/product/imageholderproduct.jpg';
+        if($topId){
+            $category = Category::where('name', $name)->where('category_id',$topId)->first();
+        }else{
+            $category = Category::where('name', $name)->where('category_id',null)->first();
         }
 
-        return $path;
+        return $category ?? null;
+        
     }
 }

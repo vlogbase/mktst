@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Imports\CsvUploader;
+use App\Imports\SellerCsvUploader;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -14,23 +15,46 @@ class UploadCSV extends Component
 {
     use WithFileUploads;
     public $csvFile;
+    public $deleteOldData = false;
+    public $user;
+
+    public function mount(){
+       if(auth()->guard('admin')->check()){
+           $this->user = auth()->guard('admin')->user();
+       }
+
+       if(auth()->guard('seller')->check()){
+           $this->user = auth()->guard('seller')->user();
+       }
+    }
 
     public function upload()
     {
         $this->validate([
-            'csvFile' => 'required|file|mimes:csv,txt|max:5048', // Dosya validasyon kuralları
+            'csvFile' => 'required|file|mimes:csv', // Dosya validasyon kuralları
         ]);
 
         // Dosyayı geçici bir yola kaydet
         $path = $this->csvFile->getRealPath();
 
-        $this->removeData();
-        Excel::import(new CsvUploader(), $path);
+        if ($this->deleteOldData && auth()->guard('admin')->check()) {
+            $this->removeData();
+        }
 
-        // Başarılı yükleme mesajı göster
-        session()->flash('message', 'Uploaded your items.');
+        
+        if(auth()->guard('admin')->check()){
+            Excel::import(new CsvUploader(), $path);
+            $this->emit('succesAlert', 'Upload Your Data!');
+        }
+
+        if(auth()->guard('seller')->check()){
+            Excel::import(new SellerCsvUploader($this->user), $path);
+            $this->emit('succesAlert', 'Upload Your Data!');
+        }
+        
+       
     }
-    
+
 
     public function render()
     {
@@ -38,24 +62,25 @@ class UploadCSV extends Component
     }
 
 
-    public function removeData(){
+    public function removeData()
+    {
         $products = Product::all();
-        foreach($products as $product){
+        foreach ($products as $product) {
             $product->delete();
         }
 
         $childCategories = Category::where('category_id', '!=', null)->get();
-        foreach($childCategories as $childCategory){
+        foreach ($childCategories as $childCategory) {
             $childCategory->delete();
         }
 
         $categories = Category::where('category_id', null)->get();
-        foreach($categories as $category){
+        foreach ($categories as $category) {
             $category->delete();
         }
 
         $oldBrands = Brand::all();
-        foreach($oldBrands as $oldBrand){
+        foreach ($oldBrands as $oldBrand) {
             $oldBrand->delete();
         }
     }

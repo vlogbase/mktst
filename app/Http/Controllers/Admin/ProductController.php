@@ -58,7 +58,7 @@ class ProductController extends Controller
                 ->addColumn('created_at_visual', function (Product $product) {
                     return Carbon::parse($product->created_at)->diffForHumans();
                 })
-                ->rawColumns(['action', 'created_at_visual', 'image', 'last_order', 'status', 'brand','categories'])
+                ->rawColumns(['action', 'created_at_visual', 'image', 'last_order', 'status', 'brand', 'categories'])
                 ->make(true);
         }
         return view('admin.products.product_list');
@@ -69,16 +69,61 @@ class ProductController extends Controller
         return view('admin.products.product_add');
     }
 
-    public function product_detail(Request $request,$id)
+    public function product_detail(Request $request, $id)
     {
         $getBackCategoryUrl = $request->get('categoryFromUrl') ?? null;
         $getBackSellerUrl = $request->get('sellerFromUrl') ?? null;
         Product::findOrFail($id);
-        return view('admin.products.product_detail', compact('id','getBackCategoryUrl','getBackSellerUrl'));
+        return view('admin.products.product_detail', compact('id', 'getBackCategoryUrl', 'getBackSellerUrl'));
     }
 
     public function bulk_upload()
     {
         return view('admin.products.bulk_upload');
+    }
+
+    public function bulk_export()
+    {
+
+        $csvFileName = 'upload/csv/result_data_' . now()->format('Y_m_d_His') . '.csv';
+        $csvFilePath = public_path($csvFileName);
+
+
+        $fp = fopen($csvFileName, 'w');
+
+
+        $headers = ['sku', 'product_name', 'tax_rate', 'unit_price', 'unit_per_price', 'stock', 'brand_name', 'pack_size', 'unit_weight', 'product_description', 'image_file_name', 'category_1', 'category_2'];
+        fputcsv($fp, $headers);
+
+        $products = Product::all();
+        foreach ($products as $product) {
+            $category = $product->categories->where('category_id', null)->first();
+            if (!is_null($category)) {
+                $sub_category = $product->categories->where('category_id', $category->id)->first();
+            } else {
+                $sub_category = null;
+            }
+
+            fputcsv($fp, [
+                $product->sku,
+                $product->name,
+                $product->taxrate,
+                floatval($product->unit_price),
+                floatval($product->unit_per_price),
+                $product->stock,
+                optional($product->brand)->name,
+                optional($product->productdetail)->pack,
+                optional($product->productdetail)->unit_weight,
+                optional($product->productdetail)->description,
+                basename($product->getCoverImage()),
+                $category ? $category->name : '',
+                $sub_category ? $sub_category->name : '',
+            ]);
+        }
+
+        fclose($fp);
+
+
+        return response()->download($csvFilePath, basename($csvFilePath))->deleteFileAfterSend(true);
     }
 }
