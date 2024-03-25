@@ -1,5 +1,5 @@
 @extends('admin.layouts.templates.panel')
-@section('title','Seller')
+@section('title','Brand Owner')
 @section('sub-title','Create')
 @section('content')
 <!--begin::Post-->
@@ -50,7 +50,7 @@
             <div class="card-header cursor-pointer">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Seller Details</h3>
+                    <h3 class="fw-bolder m-0">Brand Owner Details</h3>
                 </div>
                 <!--end::Card title-->
                 <!--begin::Action-->

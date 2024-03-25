@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Seller;
 
+use App\Models\Brand;
 use App\Models\Country;
 use App\Models\Seller;
 use App\Models\SellerDetail;
@@ -23,10 +24,14 @@ class EditSeller extends Component
 
     public $code;
     public $seller;
+    public $brands;
+    public $brand_select = [];
 
     public function mount($sellerId)
     {
+        $this->brands = Brand::all();
         $this->seller = Seller::findOrFail($sellerId);
+        $this->brand_select = $this->seller->brands->pluck('id')->toArray();
         $this->name = $this->seller->name;
         $this->email = $this->seller->email;
         $this->address = $this->seller->sellerDetail->address;
@@ -53,6 +58,7 @@ class EditSeller extends Component
             'vat' => ['nullable', 'string', 'min:11', 'max:11', new VatValidation],
             'registeration' => 'nullable|min:8|max:30',
             'address' => 'required|min:5|max:160',
+            'brand_select' => 'nullable'
         ]);
 
         $this->seller->update([
@@ -66,6 +72,16 @@ class EditSeller extends Component
             'vat_number' => $this->vat,
             'registry_code' => $this->registeration,
         ]);
+
+        
+
+        foreach($this->brand_select as $brand){
+            Brand::where('id', $brand)->update(['seller_id' => $this->seller->id]);
+        }
+
+        //Delete Others
+        Brand::where('seller_id', $this->seller->id)->whereNotIn('id', $this->brand_select)->update(['seller_id' => null]);
+
 
         $this->emit('succesAlert', 'Updated!');
     }

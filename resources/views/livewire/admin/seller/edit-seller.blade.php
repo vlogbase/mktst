@@ -64,6 +64,29 @@
                     @enderror
                 </div>
             </div>
+
+
+            <!--begin::Row-->
+            <div class="row mb-7 @auth('seller') hidden @endauth" >
+                <!--begin::Label-->
+                <label class="col-lg-4 col-form-label fw-bold fs-6">Brands</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8" wire:ignore>
+
+                    <select class="form-select form-select-solid" id="select123" multiple
+                        data-placeholder="Select brands">
+                        @foreach ($brands as $brand)
+                            <option {{ collect($brand_select)->contains($brand->id) ? 'selected' : '' }}
+                                value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <small>You can enter name of brand. Multiple selection is available.</small>
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
     
             <div class="card-footer d-flex justify-content-end py-6 px-9">
                 <div wire:target="registerAttempt" wire:loading.block>Processing...</div>
@@ -74,3 +97,18 @@
     </div>
     
 </div>
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+
+            $('#select123').select2();
+            $('#select123').on('change', function(e) {
+                var data = $('#select123').select2("val");
+                @this.set('brand_select', data);
+            });
+
+          
+        });
+    </script>
+@endpush

@@ -20,4 +20,9 @@ class Brand extends Model
     {
         return Carbon::parse($this->created_at)->diffForHumans();
     }
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class);
+    }
 }

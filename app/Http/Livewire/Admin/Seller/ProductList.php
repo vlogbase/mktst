@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Seller;
 
+use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,10 +22,11 @@ class ProductList extends Component
 
     public function render()
     {
-        $items = $this->seller->products();
+        $brands = $this->seller->brands->pluck('id');
+        $items = Product::latest()->whereIn('brand_id',  $brands);
         $this->path = 'admin/sellers/'.$this->seller->id.($this->currentPage ? '?productsPage='.$this->currentPage : '') ;
         return view('livewire.admin.seller.product-list',[
-            'items' => $items->latest()->paginate(5, ['*'], 'favoritesPage'),
+            'items' => $items->paginate(5, ['*'], 'favoritesPage'),
             'path' => $this->path,
         ]);
     }

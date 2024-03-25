@@ -30,6 +30,7 @@ class ProductBaseDetails extends Component
     public $brands;
     public $categories;
     public $sellers;
+    public $brands_seller;
 
 
 
@@ -40,8 +41,9 @@ class ProductBaseDetails extends Component
             $this->seller_select = NULL;
         }elseif(Auth::guard('seller')->check()){
             $this->seller_select = Auth::guard('seller')->user()->id;
+            $this->brands_seller = Seller::find(Auth::guard('seller')->user()->id)->brands;
         }
-
+       
         $this->brands = Brand::all();
         $this->categories = Category::all();
         $this->sellers = Seller::all();

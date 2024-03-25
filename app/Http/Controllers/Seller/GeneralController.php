@@ -12,9 +12,12 @@ class GeneralController extends Controller
     public function index()
     {
         $user = Auth::guard('seller')->user();
-        $productCount = $user->products->count();
+        $brands_count = $user->brands->count();
+        $brands_ids = $user->brands->pluck('id');
+        $products_count = Product::latest()->whereIn('brand_id',  $brands_ids)->count();
         $data = [
-            'all_orders_cnt' => 0,
+            'brands_cnt' => $brands_count,
+            'products_cnt' => $products_count,
         ];
         return view('seller.dashboard', compact('data'));
     }

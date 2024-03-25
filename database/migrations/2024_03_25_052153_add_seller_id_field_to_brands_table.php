@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSellerProductTable extends Migration
+class AddSellerIdFieldToBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSellerProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('seller_product', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('seller_id')->unsigned();
-            $table->integer('product_id')->unsigned();
-            $table->timestamps();
+        Schema::table('brands', function (Blueprint $table) {
+            $table->integer('seller_id')->unsigned()->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateSellerProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seller_product');
+        Schema::table('brands', function (Blueprint $table) {
+            $table->dropIfExists('seller_id');
+        });
     }
 }

@@ -170,33 +170,9 @@
             </div>
             <!--end::Input group-->
 
-            @auth('admin')
-            <!--begin::Row-->
-            <div class="row mb-7">
-                <!--begin::Label-->
-                <label class="col-lg-4 col-form-label required fw-bold fs-6">Seller</label>
-                <!--end::Label-->
-                <!--begin::Col-->
-                <!--begin::Col-->
-                <div class="col-lg-8" wire:ignore>
 
-                    <select class="form-select form-select-solid" id="select222" multiple
-                        data-placeholder="Select sellers">
-                        @foreach ($sellers as $seller)
-                            <option {{ collect($seller_select)->contains($seller->id) ? 'selected' : '' }}
-                                value="{{ $seller->id }}">{{ $seller->name }}</option>
-                        @endforeach
-                    </select>
 
-                    <small>You can enter name of seller. Multiple selection is available.</small>
-                </div>
-                    @error('seller_select')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                <!--end::Col-->
-            </div>
-            <!--end::Row-->
-            @endauth
+
 
             <!--begin::Row-->
             <div class="row mb-7">
@@ -205,15 +181,27 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8">
+
                     <div wire:ignore>
                         <select class="form-select form-select-solid" id="select2" data-placeholder="Select a brand">
-                            <option>Select Brand</option>
-                            @foreach ($brands as $brand)
-                                <option {{ $brand_select === $brand->id ? ' selected="selected"' : '' }}
-                                    value="{{ $brand->id }}">{{ $brand->name }}</option>
-                            @endforeach
+                            @auth('admin')
+                                <option>Select Brand</option>
+                                @foreach ($brands as $brand)
+                                    <option {{ $brand_select === $brand->id ? ' selected="selected"' : '' }}
+                                        value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
+                            @endauth
+                            @auth('seller')
+                                @foreach ($brands_seller as $brand)
+                                    <option {{ $brand_select === $brand->id ? ' selected="selected"' : '' }}
+                                        value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                @endforeach
+                            @endauth
+
                         </select>
                     </div>
+
+
                     @error('brand_select')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -222,6 +210,7 @@
                 <!--end::Col-->
             </div>
             <!--end::Row-->
+
 
             <!--begin::Row-->
             <div class="row mb-7">
