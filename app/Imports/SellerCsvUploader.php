@@ -24,12 +24,16 @@ class SellerCsvUploader implements ToCollection
     */
     public function collection(Collection $collection)
     {
+        session(['products_count' => 0]);
         $count = 0;
         $products = 0;
         foreach ($collection as $row) {
+            
             if ($count != 0 && $row[0]) {
-                $item = $this->productInsert($row);
-
+                
+                $productRow = $this->checkTheSeperated($row);
+                $item = $this->productInsert($productRow);
+                
                 if ($item) {
                     
                     if ($row[11] && $row[12]) {
@@ -55,12 +59,23 @@ class SellerCsvUploader implements ToCollection
             }
             $count++;
         }
+        session(['products_count' => $products]);
         return $products;
     }
 
-    public function productInsert($row)
+    public function checkTheSeperated($row)
     {
-        if (!Product::where('sku', $row[0])->exists() && $row[0]) {
+        if($row[1] == null && $row[2] == null){
+            $data = str_getcsv($row[0]);
+            return $data;
+        }else {
+            return $row;
+        }
+    }
+
+    public function productInsert($row)
+    { 
+        if (!Product::where('sku', $row[0])->exists() && $row[0] && $row[1]) {
             $item = Product::create([
                 'sku' =>  $row[0],
                 'name' =>  $row[1],

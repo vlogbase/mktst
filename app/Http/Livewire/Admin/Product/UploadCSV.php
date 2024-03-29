@@ -30,11 +30,17 @@ class UploadCSV extends Component
 
     public function upload()
     {
+
+        //Find the mime type of the file
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $this->csvFile->getRealPath());
+        finfo_close($finfo);
+
+
         $this->validate([
-            'csvFile' => 'required|file|mimes:csv', // Dosya validasyon kuralları
+            'csvFile' => 'required|file|mimes:csv,txt',
         ]);
 
-        // Dosyayı geçici bir yola kaydet
         $path = $this->csvFile->getRealPath();
 
         if ($this->deleteOldData && auth()->guard('admin')->check()) {
@@ -48,9 +54,11 @@ class UploadCSV extends Component
         }
 
         if(auth()->guard('seller')->check()){
-            Excel::import(new SellerCsvUploader($this->user), $path);
-            $this->emit('succesAlert', 'Upload Your Data!');
+           Excel::import(new SellerCsvUploader($this->user), $path);
+           $productsCount = session('products_count', 0);
+           $this->emit('succesAlert', 'Uploaded '. $productsCount . ' Products');
         }
+
         
        
     }
