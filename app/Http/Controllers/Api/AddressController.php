@@ -29,11 +29,19 @@ class AddressController extends ApiController
     {
        
         $validated = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'topic' => 'required',
-            'urgency' => 'required',
-            'ticket_message' => 'required',
+            'email' => 'required|email',
+            'name' => 'required|min:2|max:50',
+            'surname' => 'required|min:2|max:50',
+            'mobile' => 'required|min:10|max:10',
+            'code' => 'required|min:1|max:5',
+            'phone' => 'nullable|min:13|max:13',
+            'office_name' => 'required|min:5|max:15',
+            'address_line_1' => 'required|min:5|max:150',
+            'address_line_2' => 'nullable|min:5|max:150',
+            'postcode' => 'required|min:3|max:200',
+            'district' => 'nullable|min:2|max:200',
+            'county' => 'nullable|min:2|max:200',
+            'country' => 'required|min:5|max:200',
         ]);
 
         $address = Address::create([
@@ -58,6 +66,8 @@ class AddressController extends ApiController
             'is_shipping' => 0,
             'is_billing' => 0,
         ]);
+
+        $office->address;
 
         return $this->successResponse($office, 'Address created successfully.');
     }
