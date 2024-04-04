@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\ApiController;
+use App\Models\PaymentCard;
+use App\Models\Ticket;
+use App\Models\TicketMessage;
+use App\Traits\PaymentStripeHelper;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+
+class CreditCardsController extends ApiController
+{
+    use PaymentStripeHelper;
+
+    public function index()
+    {
+        $tickets = PaymentCard::where('user_id', auth()->id())->take(10)->get();
+        return $this->successResponse($tickets);
+    }
+
+    public function store(Request $request)
+    {
+        $user = auth()->user();
+        $data = [
+            'url' => $this->addNewMethodSession($user),
+        ];
+
+
+        return $this->successResponse($data, 'Redirection url created successfully.');
+    }
+
+   
+    public function delete(PaymentCard $paymentCard)
+    {
+        if ($paymentCard->user_id != auth()->id()) {
+            return $this->errorResponse('You are not authorized to view this payment card.', 403);
+        }
+
+        $this->deletePaymentMethod($paymentCard);
+        
+        return $this->successResponse('Deleted your card successfully.');
+    }
+
+    
+    public function update(PaymentCard $request, PaymentCard $paymentCard)
+    {
+        if ($paymentCard->user_id != auth()->id()) {
+            return $this->errorResponse('You are not authorized to view this payment card.', 403);
+        }
+        
+        $this->setDefaultPaymentMethod($paymentCard);
+        
+        return $this->successResponse('Set Default your card successfully.');
+    }
+}

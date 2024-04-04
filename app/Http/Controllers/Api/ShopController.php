@@ -35,12 +35,12 @@ class ShopController extends ApiController
         return $this->successResponse($items);
     }
 
-    public function category_product_get(Request $request, $order, $type, $offset)
+    public function category_product_get(Request $request, $order, $type, $offset, $brands)
     {
 
         $category = Category::where('id', $request->category_id)->first();
         $products = $category->activeProducts()->where('status', 1)
-            ->where(function ($query) use ($request, $order) {
+            ->where(function ($query) use ($request, $order,$brands) {
                 if ($request->search_text) {
                     $query->where('name', 'LIKE', '%' . $request->search_text . '%')
                         ->orWhere('sku', 'LIKE', '%' . $request->search_text . '%');
@@ -51,6 +51,20 @@ class ShopController extends ApiController
                 if ($request->max_cost) {
                     $query->where('unit_price', '<=', $request->max_cost);
                 }
+                if ($request->brands) {
+                    $query->whereIn('brand_id', $brands);
+                }
+                if($request->min_price > 0){
+                    $query->where('unit_price', '>=', $request->min_price);
+                }
+                if($request->max_price > 0){
+                    $query->where('unit_price', '<=', $request->max_price);
+                }
+                if($request->discounted_products == 1){
+                    $query->where('discount', '>', 0);
+                }
+               
+                
             })
             ->orderBy($order, $type)
             ->offset($offset)
@@ -105,11 +119,19 @@ class ShopController extends ApiController
             $offset = 0;
         }
 
+        if($request->brands){
+            $brands = explode(',', $request->brands);
+        }else{
+            $brands = [];
+        }
+
+        
+
         if ($request->search_text) {
             $products = $this->search_product_get($request, $query_order, $query_order_direct, $offset);
         } else {
             if ($request->category_id) {
-                $products = $this->category_product_get($request, $query_order, $query_order_direct, $offset);
+                $products = $this->category_product_get($request, $query_order, $query_order_direct, $offset, $brands);
             } else {
                 $products = $this->search_product_get($request, $query_order, $query_order_direct, $offset);
             }

@@ -166,7 +166,7 @@ class RegisterForm extends Component
             'password' => bcrypt($this->password),
             'vat' => $this->vat,
             'registeration' => $this->registeration,
-            'code' => 'SVY-' . Str::random(7),
+            'code' => 'MRKT-' . Str::random(7),
             'verify_token' => $verify_token
         ]);
 

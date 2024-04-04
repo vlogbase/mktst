@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
+use App\Http\Controllers\Api\ApiOtherController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CreditCardsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ShopController;
+use App\Http\Controllers\Api\TicketController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/api-info', [HomeController::class, 'api_info'])->name('api_info');
 Route::get('/sliders', [HomeController::class, 'sliders'])->name('api_sliders');
 Route::get('/home-products', [HomeController::class, 'home_products'])->name('api_home_products');
+Route::get('ticker-tapes/', [ApiOtherController::class, 'index']);
+Route::get('get-filters/', [ApiOtherController::class, 'filters']);
 
 //Shop
 Route::get('/products', [ShopController::class, 'products_list'])->name('api_products_list');
@@ -54,6 +60,27 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/checkout-price', [OrderController::class, 'checkout'])->name('api_checkout');
     Route::post('/coupon-apply', [OrderController::class, 'coupon_apply'])->name('api_coupon_apply');
     Route::post('/order-request', [OrderController::class, 'order_request'])->name('api_order_request');
+
+    Route::get('tickets/', [TicketController::class, 'index']);
+    Route::post('tickets/', [TicketController::class, 'store']);
+    Route::get('tickets/{ticket}', [TicketController::class, 'show']);
+    Route::put('tickets/{ticket}/update', [TicketController::class, 'update']);
+
+
+    Route::get('credit-cards/', [CreditCardsController::class, 'index']);
+    Route::post('credit-cards/', [CreditCardsController::class, 'store']);
+    Route::put('credit-cards/{paymentMethod}/default', [CreditCardsController::class, 'update']);
+    Route::delete('credit-cards/{paymentMethod}/delete', [CreditCardsController::class, 'delete']);
+
+
+    Route::get('addresses/', [AddressController::class, 'index']);
+    Route::get('addresses/countries', [AddressController::class, 'countries']);
+    Route::post('addresses/', [AddressController::class, 'store']);
+    Route::get('addresses/{address}', [AddressController::class, 'show']);
+    Route::put('addresses/{address}/update', [AddressController::class, 'update']);
+    Route::delete('addresses/{address}/delete', [AddressController::class, 'delete']);
+
+    
 });
 
 //PaymentResults

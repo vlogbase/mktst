@@ -15,6 +15,7 @@ use App\Models\UserOffice;
 use App\Notifications\ForgetPasswordNotification;
 use App\Notifications\VerifyNotification;
 use App\Notifications\WelcomeNotification;
+use App\Rules\VatValidation;
 use App\Traits\AddressHelper;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -72,14 +73,21 @@ class AuthController extends ApiController
             'email' => 'required|email|unique:users,email',
             'name' => 'required|min:2|max:50',
             'surname' => 'required|min:2|max:50',
-            'mobile' => 'required|min:13|max:13',
-            'phone' => 'nullable|min:13|max:13',
+            'mobile' => 'required|min:10|max:10',
+            'code' => 'required|min:1|max:5',
+            'phone' => 'nullable|min:10|max:10',
             'company_name' => 'required|min:5|max:160',
-            'company_select' => 'required|min:10|max:200',
-            'vat' => 'nullable|min:5|max:15',
-            'registeration' => 'nullable|min:10|max:30',
+            'vat' => ['nullable', 'string', 'min:11', 'max:11', new VatValidation],
+            'registeration' => 'nullable|min:8|max:30',
             'agreement' => 'required',
-            'business_type' => 'required'
+            'business_type' => 'required|min:2',
+            'address_select' => 'required|min:10|max:200' ,
+            'address_line_1' => 'required|min:5|max:150' ,
+            'address_line_2' =>  'nullable|min:5|max:150' ,
+            'postcode' => 'required|min:3|max:200' ,
+            'district' => 'nullable|min:2|max:200' ,
+            'county' => 'nullable|min:2|max:200' ,
+            'country' => 'required|min:5|max:200' ,
         ]);
 
         if ($validator->fails()) {
@@ -94,33 +102,27 @@ class AuthController extends ApiController
             'password' => bcrypt($request->password),
             'vat' => $request->vat,
             'registeration' => $request->registeration,
-            'code' => 'SVY-' . Str::random(7),
+            'code' => 'MRKT-' . Str::random(7),
             'verify_token' => $verify_token
         ]);
 
-        //Adress
-        $response = $this->getSelectedAddressDetail($request->company_select);
-
-        $formatted = '';
-        foreach ($response->formatted_address as $fra) {
-            $formatted = $formatted . ' ' . $fra;
-        }
+       
 
         $address = Address::create([
-            'postcode' => $response->postcode,
-            'country' => $response->country,
-            'district' => $response->district,
-            'county' => $response->county,
-            'latitude' => $response->latitude,
-            'longitude' => $response->longitude,
-            'formatted_address' => $formatted,
+            'postcode' => $request->postcode,
+            'country' => $request->country,
+            'district' => $request->district ? $request->district : '',
+            'county' => $request->county ? $request->county : '',
+            'latitude' => 0,
+            'longitude' => 0,
+            'formatted_address' => $request->address_line_1 . ' ' . $request->address_line_2 . ', ' . $request->district . ', ' . $request->county . ', ' . $request->postcode . ', '. $request->country,
         ]);
 
         UserDetail::create([
             'name' => $request->name,
             'surname' => $request->surname,
-            'phone' => $request->phone,
-            'mobile' => $request->mobile,
+            'phone' =>  $request->phone,
+            'mobile' => $request->code . '-' .$request->mobile,
             'user_id' => $user->id,
             'address_id' => $address->id,
             'business_type' => $request->business_type
