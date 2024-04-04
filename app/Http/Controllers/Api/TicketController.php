@@ -43,8 +43,6 @@ class TicketController extends ApiController
         $ticket_message->author = 'customer';
         $ticket_message->save();
 
-       
-        $ticket = Ticket::create($validated);
 
         return $this->successResponse($ticket, 'Ticket created successfully.');
     }
