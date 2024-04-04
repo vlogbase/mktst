@@ -54,6 +54,7 @@ class AddressController extends ApiController
             'formatted_address' => $request->address_line_1 . ' ' . $request->address_line_2 . ', ' . $request->district . ', ' . $request->county . ', ' . $request->postcode . ', '. $request->country,
         ]);
 
+        $user = auth()->user();
         $office = UserOffice::create([
             'office_name' => $request->office_name,
             'email' => $request->email,
@@ -61,7 +62,7 @@ class AddressController extends ApiController
             'surname' => $request->surname,
             'phone' => $request->phone,
             'mobile' => $request->code . '-' .$request->mobile,
-            'user_id' => $request->user->id,
+            'user_id' => $user->id,
             'address_id' => $address->id,
             'is_shipping' => 0,
             'is_billing' => 0,
