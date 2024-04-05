@@ -22,6 +22,11 @@
     <meta property="og:image:alt" content="Marrket Logo" />
     <link rel="canonical" href="{{ url('/') }}" />
 
+    <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+
 
     <link rel="icon" type="image/x-icon" href="/upload/favicons/favicon.ico">
     <link rel="shortcut icon" href="/upload/favicons/favicon.ico" type="image/x-icon" />
@@ -30,7 +35,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/upload/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/upload/favicons/favicon-16x16.png">
     <link rel="manifest" href="/upload/favicons/site.webmanifest">
-    
+
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
@@ -44,6 +49,20 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//code.jivosite.com/widget/R7EojPvkQm" async></script>
 
+    <style>
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        @media (min-width: 768px) {
+            .bottom-nav {
+                display: none;
+            }
+        }
+    </style>
     @livewireStyles
     @yield('css')
 </head>
@@ -62,8 +81,31 @@
     @yield('content')
 
     @include('customer.layouts.partials.footer')
-    <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
-
+    {{-- <a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a> --}}
+    <div class="bottom-nav text-dark">
+        <div class="container">
+            <div class="row text-center py-3 " style="background-color: orange;">
+                <div class="col-3">
+                    <a href="{{route('home')}}" class=" {{ request()->routeIs('home') ? 'text-white bg-dark p-2' : 'text-dark' }}" style="font-weight: 700;">
+                        Home
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="{{route('products')}}" class="{{ request()->routeIs('products') ? 'text-white bg-dark p-2' : 'text-dark' }}" style="font-weight: 700;">
+                        Products
+                    </a>
+                </div>
+                <div class="col-3">
+                    <a href="{{route('cart')}}" class="{{ request()->routeIs('cart') ? 'text-white bg-dark p-2' : 'text-dark' }}" style="font-weight: 700;">
+                        Cart
+                    </a>
+                </div>
+                <div class="col-3">
+                    <p class="text-white"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Latest jQuery -->
     <script src="/customer_assets/js/jquery-3.6.0.min.js"></script>
     <!-- jquery-ui -->
@@ -294,6 +336,15 @@
                 },
             })
         })
+    </script>
+
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
     </script>
 
     @yield('js')

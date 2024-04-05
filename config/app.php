@@ -177,6 +177,7 @@ return [
         /*
          * Package Service Providers...
          */
+        
 
         /*
          * Application Service Providers...
@@ -190,6 +191,7 @@ return [
         Darryldecode\Cart\CartServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         willvincent\Feeds\FeedsServiceProvider::class,
+        Ladumor\LaravelPwa\PWAServiceProvider::class,
 
     ],
 
@@ -248,6 +250,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
+        'LaravelPwa' => \Ladumor\LaravelPwa\LaravelPwa::class,
 
 
     ],

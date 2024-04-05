@@ -1,9 +1,9 @@
 <div class="swiper caraouselSlideer">
     <div class="swiper-wrapper">
         @foreach ($sliders as $slider)
-        <div class="swiper-slide">
-            <img src="{{$slider->image}}" alt="">
-        </div>
+            <div class="swiper-slide">
+                <img src="{{ $slider->image }}" alt="">
+            </div>
         @endforeach
     </div>
     <!-- Add Arrows -->
@@ -40,7 +40,6 @@
 </script>
 
 <style>
-
     .swiper {
         width: 100%;
         height: fit-content;
@@ -82,6 +81,12 @@
         .swiper-slide {
             width: 100%;
             height: 100%;
+        }
+
+        .swiper-slide-prev,
+        .swiper-slide-next {
+            filter: blur(0px) brightness(100%);
+            transition: 1500ms;
         }
     }
 </style>

@@ -1,0 +1,17 @@
+{
+    "name": "Markket",
+    "short_name": "MRKT",
+    "start_url": "/",
+    "background_color": "#6777ef",
+    "description": "Markket UK ",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "logo.PNG",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
