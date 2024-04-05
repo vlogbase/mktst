@@ -16,7 +16,7 @@ class CreditCardsController extends ApiController
 
     public function index()
     {
-        $tickets = PaymentCard::where('user_id', auth()->id())->take(10)->get();
+        $tickets = PaymentCard::where('user_id', auth()->id())->get();
         return $this->successResponse($tickets);
     }
 
@@ -26,7 +26,6 @@ class CreditCardsController extends ApiController
         $data = [
             'url' => $this->addNewMethodSession($user),
         ];
-
 
         return $this->successResponse($data, 'Redirection url created successfully.');
     }

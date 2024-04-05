@@ -7,6 +7,7 @@ use App\Models\Ticket;
 use App\Models\TicketMessage;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TicketController extends ApiController
 {
@@ -19,14 +20,17 @@ class TicketController extends ApiController
 
     public function store(Request $request)
     {
-       
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
             'topic' => 'required',
             'urgency' => 'required',
             'ticket_message' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return $this->errorResponse('Validation Error', 403, $validator->errors());
+        }
 
         $ticket = new Ticket();
         $ticket->title = $request->title;

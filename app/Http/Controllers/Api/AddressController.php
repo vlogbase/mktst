@@ -5,11 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\ApiController;
 use App\Models\Address;
 use App\Models\Country;
-use App\Models\Ticket;
-use App\Models\TicketMessage;
 use App\Models\UserOffice;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AddressController extends ApiController
 {
@@ -27,8 +25,7 @@ class AddressController extends ApiController
 
     public function store(Request $request)
     {
-       
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'name' => 'required|min:2|max:50',
             'surname' => 'required|min:2|max:50',
@@ -44,6 +41,10 @@ class AddressController extends ApiController
             'country' => 'required|min:5|max:200',
         ]);
 
+        if ($validator->fails()) {
+            return $this->errorResponse('Validation Error', 403, $validator->errors());
+        }
+        
         $address = Address::create([
             'postcode' => $request->postcode,
             'country' => $request->country,
