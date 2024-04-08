@@ -161,74 +161,9 @@ trait OrderHelper
 
     protected function createPayment($ordercode, $user, $price, $type)
     {
-        $request =  config('app.wiva_wallet_url') . 'api/orders';
-
-        $merchant_id = config('app.wiva_wallet_mercant_id');
-        $api_key = config('app.wiva_wallet_api_key');
-
-        if ($type == 'app') {
-            $source = config('app.wiva_wallet_app_source');
-        } else {
-            $source = config('app.wiva_wallet_web_source');
-        }
+        
 
 
-        $amount = intval(100 * $price);    // Amount in cents
-        $customerTrns = "Pay for " . $ordercode . " ORDER";
-        $merchantTrns = $ordercode;
-        $paymentTimeOut = 300;
-
-        //Set some optional parameters (Full list available here: https://developer.vivawallet.com/api-reference-guide/payment-api/#tag/Payments/paths/~1orders/post)
-        $allow_recurring = 'true'; // If set to true, this flag will prompt the customer to accept recurring payments in the future.
-        $request_lang = 'en-US'; //This will display the payment page in English (default language is Greek)
-        $maxInstallments = 9;
-
-        $postargs = 'Amount=' . urlencode($amount) . '&customerTrns=' . $customerTrns . '&merchantTrns=' . $merchantTrns . '&paymentTimeOut=' . $paymentTimeOut .
-            '&email=' . $user->email . '&phone=' . $user->userdetail->mobile . '&maxInstallments=' . $maxInstallments . '&AllowRecurring=' . $allow_recurring . '&RequestLang=' . $request_lang . '&SourceCode=' . $source;
-
-        // Get the curl session object
-        $session = curl_init($request);
-
-        // Set the POST options.
-        curl_setopt($session, CURLOPT_POST, true);
-        curl_setopt($session, CURLOPT_POSTFIELDS, $postargs);
-        curl_setopt($session, CURLOPT_HEADER, true);
-        curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($session, CURLOPT_USERPWD, $merchant_id . ':' . $api_key);
-        curl_setopt($session, CURLOPT_SSL_CIPHER_LIST, 'TLSv1.2');
-
-        //FOR DEVELOPMENT
-        if (config('app.wiva_wallet_development')) {
-            curl_setopt($session, CURLOPT_SSL_VERIFYPEER, false);
-        }
-
-        // Do the POST and then close the session
-        $response = curl_exec($session);
-
-        // Separate Header from Body
-        $header_len = curl_getinfo($session, CURLINFO_HEADER_SIZE);
-        $res_header = substr($response, 0, $header_len);
-        $res_body =  substr($response, $header_len);
-
-        try {
-            if (is_object(json_decode($res_body))) {
-                $result_obj = json_decode($res_body);
-            } else {
-                $redirection = 'ERROR';
-            }
-        } catch (Exception $e) {
-            $redirection = 'ERROR';
-        }
-
-        if ($result_obj->ErrorCode == 0) {    //success when ErrorCode = 0
-            $redirection = config('app.wiva_wallet_url') . "web/checkout?ref=" . $result_obj->OrderCode;
-        } else {
-            $redirection = 'ERROR';
-        }
-
-        curl_close($session);
-
-
-        return $redirection;
+        
     }
 }

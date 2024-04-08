@@ -12,6 +12,7 @@ use App\Models\PaymentMethod;
 use App\Models\Product;
 use App\Traits\CartHelper;
 use App\Traits\OrderHelper;
+use App\Traits\StripeHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -20,6 +21,7 @@ class OrderController extends ApiController
 {
     use CartHelper;
     use OrderHelper;
+    use StripeHelper;
 
     public function coupon_apply(Request $request)
     {
@@ -177,11 +179,12 @@ class OrderController extends ApiController
         $validator = Validator::make($request->all(), [
             'adres_id' => 'required|exists:user_offices,id',
             'payment_id' => 'required|exists:payment_methods,id',
+            'card_id' => 'required_if:payment_id,1',
         ]);
 
-        if($request->payment_id === 1 && $request->card_id !== null){
+        if ($request->payment_id === 1 && $request->card_id !== null) {
             $paymentCard = PaymentCard::where('user_id', $request->user()->id)->where('id', $request->card_id)->first();
-            if($paymentCard === null){
+            if ($paymentCard === null) {
                 return $this->errorResponse('Card not found', 405);
             }
         }
@@ -199,9 +202,6 @@ class OrderController extends ApiController
             return $this->errorResponse('Cart Minimum Price Error', 405);
         }
 
-
-
-
         $items = $request->items;
         $user = $request->user();
         $process = '';
@@ -209,17 +209,48 @@ class OrderController extends ApiController
         $ordernum = 'SOA-' . strtoupper(Str::random(12));
         $paymentid = '';
 
+        //Start Order Record
+        //Order Creating
+        $order = $this->orderCreate($ordernum, $prices, $items, $user, $request->adres_id, $request->payment_id, $couponcode, 'app');
+
         if ($request->payment_id == 1) {
             //Online Payment Process
             $process = 'redirection';
             $message = 'Redirected';
-            $paymentid = $this->createPayment($ordernum, $user, $prices['final_cost'], 'app');
-            
-            if ($paymentid == 'ERROR') {
-                return $this->errorResponse('Payment Error', 403);
+
+            $paymentMethod = PaymentCard::find($request->card_id);
+
+            $user = auth()->user();
+            if ($paymentMethod->user_id !== $user->id) {
+                return $this->errorResponse('You are not authorized to use this.', 403);
             }
 
-            //Status Redirected | Pay Status Not Paid
+            $resultSavedCard = $this->paymentIntentWithSavedCard($user, $order, $paymentMethod);
+
+            if ($resultSavedCard['status'] == 'success') {
+                $order->update([
+                    'pay_status' => 'paid',
+                    'status' => 'New Order',
+                ]);
+
+
+                $this->updateStock($items); //Stock reduce
+
+                if ($request->has('coupon_code') && $request->coupon_code != '') {
+                    $this->couponApplied($request->coupon_code, $request->user()->id); //Coupon Applied
+                }
+
+                if ($request->payment_id != 6) {
+                    //Earn Point From Buying
+                    $this->earnPoint($prices['earn_point'], $user);
+                }
+
+                $this->sendNotification($user, $ordernum);
+            } else if ($resultSavedCard['status'] == 'redirect') {
+                return redirect($resultSavedCard['redirect_url']);
+            } else {
+                return $this->emit('errorAlert', 'Payment Failed');
+            }
         } else if ($request->payment_id == 6) {
             //Point Payment Process
             //Check Customer Point Available
@@ -234,9 +265,7 @@ class OrderController extends ApiController
             $message = 'Order Completed';
         }
 
-        //Start Order Record
-        //Order Creating
-        $this->orderCreate($ordernum, $prices, $items, $user, $request->adres_id, $request->payment_id, $couponcode, 'app');
+
 
 
         if ($request->payment_id != 1) {

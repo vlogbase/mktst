@@ -33,7 +33,6 @@ class CreditCardsController extends ApiController
    
     public function delete(PaymentCard $paymentMethod)
     {
-        return $paymentMethod->user_id;
         if ($paymentMethod->user_id != auth()->user()->id) {
             return $this->errorResponse('You are not authorized to view this payment card.', 403);
         }
