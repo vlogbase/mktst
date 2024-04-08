@@ -68,7 +68,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::get('credit-cards/', [CreditCardsController::class, 'index']);
-    Route::post('credit-cards/', [CreditCardsController::class, 'store']);
+    Route::post('credit-cards/create', [CreditCardsController::class, 'store']);
     Route::put('credit-cards/{paymentMethod}/default', [CreditCardsController::class, 'update']);
     Route::delete('credit-cards/{paymentMethod}/delete', [CreditCardsController::class, 'delete']);
 
