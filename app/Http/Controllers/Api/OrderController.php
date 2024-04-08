@@ -248,7 +248,7 @@ class OrderController extends ApiController
 
                 $this->sendNotification($user, $ordernum);
             } else if ($resultSavedCard['status'] == 'redirect') {
-                $paymentId = $resultSavedCard['redirect_url'];
+                $paymentid = $resultSavedCard['redirect_url'];
             } else {
                 return $this->emit('errorAlert', 'Payment Failed');
             }
