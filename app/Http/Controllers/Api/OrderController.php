@@ -233,6 +233,7 @@ class OrderController extends ApiController
                     'status' => 'New Order',
                 ]);
 
+                $process = 'ordercomplete';
 
                 $this->updateStock($items); //Stock reduce
 
