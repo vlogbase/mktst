@@ -250,7 +250,7 @@ class OrderController extends ApiController
             } else if ($resultSavedCard['status'] == 'redirect') {
                 $paymentid = $resultSavedCard['redirect_url'];
             } else {
-                return $this->emit('errorAlert', 'Payment Failed');
+                return $this->errorResponse('Payment Error.', 401);
             }
         } else if ($request->payment_id == 6) {
             //Point Payment Process
