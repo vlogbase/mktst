@@ -13,7 +13,7 @@ class Seller extends Authenticatable
 
     protected $guard = 'seller';
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','is_master','phone','seller_detail_id'
     ];
     protected $hidden = [
         'password', 'remember_token',
@@ -21,16 +21,11 @@ class Seller extends Authenticatable
 
     public function sellerdetail()
     {
-        return $this->hasOne(SellerDetail::class);
+        return $this->belongsTo(SellerDetail::class, 'seller_detail_id');
     }
 
     public function products()
     {
         return [];
-    }
-
-    public function brands()
-    {
-        return $this->hasMany(Brand::class);
     }
 }

@@ -14,7 +14,7 @@ class AddSellerIdFieldToBrandsTable extends Migration
     public function up()
     {
         Schema::table('brands', function (Blueprint $table) {
-            $table->integer('seller_id')->unsigned()->nullable();
+            $table->integer('seller_detail_id')->unsigned()->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddSellerIdFieldToBrandsTable extends Migration
     public function down()
     {
         Schema::table('brands', function (Blueprint $table) {
-            $table->dropIfExists('seller_id');
+            $table->dropColumn('seller_detail_id');
         });
     }
 }

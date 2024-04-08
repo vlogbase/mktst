@@ -10,8 +10,13 @@ class SellerDetail extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function seller()
+    public function sellers()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->hasMany(Seller::class);
+    }
+
+    public function brands()
+    {
+        return $this->hasMany(Brand::class);
     }
 }

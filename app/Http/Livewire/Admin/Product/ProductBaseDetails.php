@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductDetail;
 use App\Models\Seller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -15,7 +16,6 @@ class ProductBaseDetails extends Component
 {
     public $brand_select = null;
     public $categories_select = [];
-    public $seller_select = [];
     public $itemid;
     public $status;
     public $per_unit;
@@ -32,21 +32,18 @@ class ProductBaseDetails extends Component
     public $sellers;
     public $brands_seller;
 
+    public $seller_team_members;
+    public $seller_select = null;
 
 
     public function mount($itemid)
     {
         
         if(Auth::guard('admin')->check()){
-            $this->seller_select = NULL;
-        }elseif(Auth::guard('seller')->check()){
-            $this->seller_select = Auth::guard('seller')->user()->id;
-            $this->brands_seller = Seller::find(Auth::guard('seller')->user()->id)->brands;
+            $this->brands = Brand::all();
         }
        
-        $this->brands = Brand::all();
         $this->categories = Category::all();
-        $this->sellers = Seller::all();
         if ($itemid == 0) {
             $this->taxrate = 0;
             $this->discount = 0;
@@ -68,7 +65,21 @@ class ProductBaseDetails extends Component
             $this->unit_price = $this->item->unit_price;
             $this->brand_select = $this->item->brand_id;
             $this->categories_select = $this->item->categories->pluck('id');
-            $this->seller_select = $this->item->sellers->pluck('id');
+
+            if(Auth::guard('seller')->check()){
+                $sellerDetail = Auth::guard('seller')->user()->sellerDetail;
+                $this->brands_seller = $sellerDetail->brands;
+            }
+
+
+            if(Auth::guard('seller')->user()->is_master){
+                $this->seller_team_members = Seller::where('seller_detail_id', Auth::guard('seller')->user()->sellerDetail->id)->where('is_master',0)->get();
+                $sellerID = DB::table('seller_product')->where('product_id', $this->itemid)->get();
+                if($sellerID->count() > 0){
+                    $this->seller_select = $sellerID[0]->seller_id;
+                }
+               
+            }
         }
     }
 

@@ -15,8 +15,15 @@ class BrandAdd extends Component
             'name' => 'required|min:2|max:100|unique:brands,name',
         ]);
 
+       if(auth()->guard('seller')){
+            $sellerId = auth()->guard('seller')->user()->sellerDetail->id;
+       }else{
+            $sellerId = null;
+       }
+
         Brand::create([
-            'name' => $this->name
+            'name' => $this->name,
+            'seller_detail_id' => $sellerId
         ]);
 
         $this->emit('succesAlert', 'Added!');

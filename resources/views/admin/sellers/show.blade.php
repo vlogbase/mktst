@@ -19,7 +19,7 @@
                             <div class="d-flex flex-column">
                                 <!--begin::Name-->
                                 <div class="d-flex align-items-center mb-2">
-                                    <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Edit Brand Owner</span></a>
+                                    <a  class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Edit Member</span></a>
                                     
                                 </div>
                                 <!--end::Name-->
@@ -31,7 +31,7 @@
                             <!--end::User-->
                             <!--begin::Actions-->
                             <div class="d-flex my-4">
-                                <a href="{{route('admin.sellers.list')}}" class="btn btn-sm btn-primary me-3" >Back to List</a>
+                                <a href="{{route('admin.sellers.edit',$seller->id)}}" class="btn btn-sm btn-primary me-3" >Back to Brand Owner</a>
                             </div>
                             <!--end::Actions-->
                         </div>
@@ -51,7 +51,7 @@
             <div class="card-header cursor-pointer">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Brand Owner Details</h3>
+                    <h3 class="fw-bolder m-0">Member Details</h3>
                 </div>
                 <!--end::Card title-->
                 <!--begin::Action-->
@@ -61,11 +61,12 @@
             <!--begin::Card header-->
             <!--begin::Card body-->
             <div class="card-body p-9">
-               @livewire('admin.seller.edit-seller',['sellerId'=>$seller->id])
+               @livewire('admin.seller.edit-member',['memberId'=>$member->id])
             </div>
             <!--end::Card body-->
         </div>
         <!--end::details View-->
+
 
          <!--begin::Row-->
          <div class="row gy-5 g-xl-10">
@@ -80,16 +81,13 @@
                             <!--begin::Heading-->
                             <div class="d-flex align-items-center justify-content-between flex-wrap">
                                 <!--begin::Label-->
-                                <span class="fs-4 fw-bolder pe-2">Brand Owner Team</span>
+                                <span class="fs-4 fw-bolder pe-2">Password Change</span>
                                 <!--end::Label-->
-                                <div class="d-flex flex-wrap my-2">
-                                    <a href="{{ route('admin.sellers.memberCreate',$seller->id) }}" class="btn btn-primary btn-sm">Add Team Member</a>
-                                </div>
                             </div>
                             <!--end::Heading-->
                         </div>
                         <div class="mt-5">
-                            @livewire('admin.seller.team-list',['seller' => $seller]);
+                            @livewire('admin.customer.edit-password',['customer' => $member]);
                         </div>
                     </div>
                     <!--end::Body-->
@@ -101,36 +99,6 @@
         </div>
         <!--end::Row-->
 
-        <!--begin::Row-->
-        <div class="row gy-5 g-xl-10">
-            <!--begin::Col-->
-            <div class="col-xl-12">
-                <!--begin::Charts Widget 1-->
-                <div class="card card-xl-stretch mb-xl-10">
-                    
-                    <!--begin::Body-->
-                    <div class="card-body">
-                        <div id="kt_carousel_1_carousel" class="carousel carousel-custom slide" data-bs-ride="carousel" data-bs-interval="8000">
-                            <!--begin::Heading-->
-                            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                                <!--begin::Label-->
-                                <span class="fs-4 fw-bolder pe-2">Brand Owner Products</span>
-                                <!--end::Label-->
-                            </div>
-                            <!--end::Heading-->
-                        </div>
-                        <div class="mt-5">
-                            @livewire('admin.seller.product-list',['seller' => $seller]);
-                        </div>
-                    </div>
-                    <!--end::Body-->
-                </div>
-                <!--end::Charts Widget 1-->
-            </div>
-            <!--end::Col-->
-            
-        </div>
-        <!--end::Row-->
     </div>
     <!--end::Container-->
 </div>

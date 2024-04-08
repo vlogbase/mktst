@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Seller;
+use App\Models\SellerDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -13,10 +14,10 @@ class SellerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Seller::latest()->get();
+            $data = SellerDetail::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function (Seller $seller) {
+                ->addColumn('action', function (SellerDetail $seller) {
 
                     $btn = '<a href="/admin/sellers/' . $seller->id . '" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                     <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
@@ -31,10 +32,16 @@ class SellerController extends Controller
                     ';
                     return $btn;
                 })
-                ->addColumn('created_at_visual', function (Seller $seller) {
+                ->addColumn('email', function (SellerDetail $seller) {
+                    return Seller::where('seller_detail_id', $seller->id)->where('is_master',1)->first()->email;
+                })
+                ->addColumn('activation', function (SellerDetail $seller) {
+                    return $seller->active ? '<span class="badge badge-light-success">Active</span>' : '<span class="badge badge-light-danger">Inactive</span>';
+                })
+                ->addColumn('created_at_visual', function (SellerDetail $seller) {
                     return Carbon::parse($seller->created_at)->diffForHumans();
                 })
-                ->rawColumns(['action', 'created_at_visual'])
+                ->rawColumns(['action', 'created_at_visual','activation','email'])
                 ->make(true);
         }
 
@@ -48,8 +55,21 @@ class SellerController extends Controller
 
     public function edit($id)
     {
-        $seller = Seller::findOrFail($id);
+        $seller = SellerDetail::findOrFail($id);
         return view('admin.sellers.edit', compact('seller'));
+    }
+
+    public function member_create($id)
+    {
+        $seller = SellerDetail::findOrFail($id);
+        return view('admin.sellers.store', compact('seller'));
+    }
+
+    public function member_edit($id,$memberId)
+    {
+        $seller = SellerDetail::findOrFail($id);
+        $member = Seller::findOrFail($memberId);
+        return view('admin.sellers.show', compact('seller','member'));
     }
 
 }

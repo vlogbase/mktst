@@ -12,8 +12,9 @@ class GeneralController extends Controller
     public function index()
     {
         $user = Auth::guard('seller')->user();
-        $brands_count = $user->brands->count();
-        $brands_ids = $user->brands->pluck('id');
+        $sellerDetail = $user->sellerDetail;
+        $brands_count = $sellerDetail->brands->count();
+        $brands_ids = $sellerDetail->brands->pluck('id');
         $products_count = Product::latest()->whereIn('brand_id',  $brands_ids)->count();
         $data = [
             'brands_cnt' => $brands_count,
@@ -25,6 +26,7 @@ class GeneralController extends Controller
     public function settings()
     {
         $seller = auth('seller')->user();
-        return view('seller.profile.settings', compact('seller'));
+        $sellerDetail = $seller->sellerDetail;
+        return view('seller.profile.settings', compact('sellerDetail','seller'));
     }
 }

@@ -30,6 +30,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Activation</th>
                                 <th>Company</th>
                                 <th>Email</th>
                                 <th>Created Date</th>
@@ -81,6 +82,10 @@
                 columns: [{
                         data: 'id',
                         name: 'id'
+                    },
+                    {
+                        data: 'activation',
+                        name: 'active'
                     },
                     {
                         data: 'name',

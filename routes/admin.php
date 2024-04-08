@@ -116,6 +116,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/', [SellerController::class, 'index'])->name('list');
             Route::get('/create', [SellerController::class, 'create'])->name('create');
             Route::get('/{id}', [SellerController::class, 'edit'])->name('edit');
+            Route::get('/{id}/team/create', [SellerController::class, 'member_create'])->name('memberCreate');
+            Route::get('/{id}/team/{memberId}', [SellerController::class, 'member_edit'])->name('memberEdit');
+            
         });
 
         Route::prefix('offices')->name('offices.')->group(function () {

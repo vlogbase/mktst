@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class SellerProductController extends Controller
@@ -13,10 +14,19 @@ class SellerProductController extends Controller
     public function product_list(Request $request)
     {
         $seller = auth()->guard('seller')->user();
+        if ($seller->is_master) {
+            $sellerDetail = $seller->sellerDetail;
+            $brands = $sellerDetail->brands->pluck('id');
+            $data = Product::latest()->whereIn('brand_id',  $brands);
+        } else {
+            $productList = DB::table('seller_product')->where('seller_id', $seller->id)->get();
+            $productIds = $productList->pluck('product_id');
+            $data = Product::latest()->whereIn('id',  $productIds);
+        }
+
 
         if ($request->ajax()) {
-            $brands = $seller->brands->pluck('id');
-            $data = Product::latest()->whereIn('brand_id',  $brands);
+
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function (Product $product) {
@@ -61,7 +71,7 @@ class SellerProductController extends Controller
                 ->addColumn('created_at_visual', function (Product $product) {
                     return Carbon::parse($product->created_at)->diffForHumans();
                 })
-                ->rawColumns(['action', 'created_at_visual', 'image', 'last_order', 'status', 'brand','categories'])
+                ->rawColumns(['action', 'created_at_visual', 'image', 'last_order', 'status', 'brand', 'categories'])
                 ->make(true);
         }
         return view('seller.product.list');
@@ -74,9 +84,10 @@ class SellerProductController extends Controller
 
     public function product_detail($id)
     {
-        $user = auth()->guard('seller')->user();
-        $brands = $user->brands->pluck('id');
-        $product = Product::where('id',$id)->whereIn('brand_id',$brands)->firstOrFail();
+        $seller = auth()->guard('seller')->user();
+        $sellerDetail = $seller->sellerDetail;
+        $brands = $sellerDetail->brands->pluck('id');
+        $product = Product::where('id', $id)->whereIn('brand_id', $brands)->firstOrFail();
         return view('seller.product.detail', compact('id'));
     }
 

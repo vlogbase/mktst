@@ -53,11 +53,21 @@ class BrandList extends Component
     public function render()
     {
         $search_text = $this->search;
-        $items = Brand::latest()->where(function ($query) use ($search_text) {
-            if ($search_text) {
-                $query->where('name', 'LIKE', '%' . $search_text . '%');
-            }
-        })->paginate(5);
+        if(auth()->guard('seller')){
+            $items = Brand::latest()->where('seller_detail_id', auth()->guard('seller')->user()->sellerDetail->id)->where(function ($query) use ($search_text) {
+                if ($search_text) {
+                    $query->where('name', 'LIKE', '%' . $search_text . '%');
+                }
+            })->paginate(5);
+        }else{
+            $items = Brand::latest()->where(function ($query) use ($search_text) {
+                if ($search_text) {
+                    $query->where('name', 'LIKE', '%' . $search_text . '%');
+                }
+            })->paginate(5);
+        }
+
+        
         return view('livewire.admin.brand.brand-list', [
             'items' => $items,
         ]);

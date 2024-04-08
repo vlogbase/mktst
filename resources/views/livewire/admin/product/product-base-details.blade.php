@@ -154,24 +154,22 @@
             <!--end::Input group-->
 
             @auth('admin')
-
-            <!--begin::Input group-->
-            <div class="row mb-6">
-                <!--begin::Label-->
-                <label class="col-lg-4 col-form-label required fw-bold fs-6">Status</label>
-                <!--begin::Label-->
-                <!--begin::Label-->
-                <div class="col-lg-8 d-flex align-items-center">
-                    <div class="form-check form-check-solid form-switch fv-row">
-                        <input wire:model="status" class="form-check-input w-45px h-30px" type="checkbox"
-                            id="allowmarketing" />
-                        <label class="form-check-label" for="allowmarketing"></label>
+                <!--begin::Input group-->
+                <div class="row mb-6">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6">Status</label>
+                    <!--begin::Label-->
+                    <!--begin::Label-->
+                    <div class="col-lg-8 d-flex align-items-center">
+                        <div class="form-check form-check-solid form-switch fv-row">
+                            <input wire:model="status" class="form-check-input w-45px h-30px" type="checkbox"
+                                id="allowmarketing" />
+                            <label class="form-check-label" for="allowmarketing"></label>
+                        </div>
                     </div>
+                    <!--begin::Label-->
                 </div>
-                <!--begin::Label-->
-            </div>
-            <!--end::Input group-->
-
+                <!--end::Input group-->
             @endauth
 
 
@@ -236,6 +234,39 @@
             </div>
             <!--end::Row-->
 
+
+            @if (auth()->guard('seller')->user()->is_master)
+
+                <!--begin::Row-->
+                <div class="row mb-7">
+                    <!--begin::Label-->
+                    <label class="col-lg-4 col-form-label required fw-bold fs-6">Team Member</label>
+                    <!--end::Label-->
+                    <!--begin::Col-->
+                    <div class="col-lg-8">
+
+                        <div wire:ignore>
+                            <select class="form-select form-select-solid" id="select222"
+                                data-placeholder="Select a team member">
+                                <option value="">Select a team member</option>
+                                @foreach ($seller_team_members as $seller)
+                                    <option {{ $seller_select === $seller->id ? ' selected="selected"' : '' }}
+                                        value="{{ $seller->id }}">{{ $seller->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
+                        @error('seller_select')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <!--end::Col-->
+                </div>
+                <!--end::Row-->
+
+            @endif
 
         </div>
         <!--end::Card body-->

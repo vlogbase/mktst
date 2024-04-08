@@ -18,6 +18,9 @@ class CreateSellersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('password');
+            $table->integer('phone')->nullable();
+            $table->boolean('is_master')->default(0);
+            $table->integer('seller_detail_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

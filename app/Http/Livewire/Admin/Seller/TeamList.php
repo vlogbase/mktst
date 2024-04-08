@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire\Admin\Seller;
 
-use App\Models\Product;
+use App\Models\Seller;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ProductList extends Component
+class TeamList extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
@@ -20,14 +20,20 @@ class ProductList extends Component
         $this->currentPage = request()->query('sellerProductList', 1);
     }
 
+    public function deleteItem($id)
+    {
+        $item = Seller::findOrFail($id);
+        $item->delete();
+        $this->emit('succesAlert', 'Deleted!');
+    }
+
     public function render()
     {
-        $brands = $this->seller->brands->pluck('id');
-        $items = Product::latest()->whereIn('brand_id',  $brands);
+        $items = Seller::latest()->where('seller_detail_id', $this->seller->id);
         $this->path = 'admin/sellers/'.$this->seller->id.($this->currentPage ? '?productsPage='.$this->currentPage : '') ;
-        return view('livewire.admin.seller.product-list',[
+        return view('livewire.admin.seller.team-list',[
             'items' => $items->paginate(5, ['*'], 'sellerProductList'),
-            'path' => $this->path,
         ]);
     }
+
 }

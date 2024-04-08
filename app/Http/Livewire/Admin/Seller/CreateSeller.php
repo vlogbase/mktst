@@ -15,13 +15,15 @@ class CreateSeller extends Component
 {
    
     public $phone;
-    public $name;
     public $vat;
     public $registeration;
-    public $email;
+    public $company_name;
     public $address;
+    public $name;
+    public $email;
     public $password;
     public $password_confirmation;
+    public $activation;
 
     public $countries;
     public $companyOptions;
@@ -53,20 +55,26 @@ class CreateSeller extends Component
             'vat' => ['nullable', 'string', 'min:11', 'max:11', new VatValidation],
             'registeration' => 'nullable|min:8|max:30',
             'address' => 'required|min:5|max:160',
+            'company_name' => 'required|min:5|max:160',
         ]);
 
-        $seller = Seller::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'password' => bcrypt($this->password),
-        ]);
 
-        SellerDetail::create([
+        $sellerDetail = SellerDetail::create([
+            'name' => $this->company_name,
             'address' => $this->address,
             'phone' => $this->code . '-' . $this->phone,
             'vat_number' => $this->vat,
             'registry_code' => $this->registeration,
-            'seller_id' => $seller->id,
+            'active' => $this->activation ? 1 : 0,
+           
+        ]);
+
+        Seller::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+            'seller_detail_id' => $sellerDetail->id,
+            'is_master' => 1,
         ]);
 
         return redirect()->route('admin.sellers.list');

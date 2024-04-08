@@ -13,8 +13,10 @@
         <!--end::Heading-->
         <!--begin::Actions-->
         <div class="d-flex flex-wrap my-2">
+            @if(auth()->user()->is_master)
             <a href="{{ route('seller.products.bulk_upload') }}" class="btn btn-secondary btn-sm ">Bulk Upload</a>
             <a href="{{ route('seller.products.add') }}" class="btn btn-primary btn-sm">Add Product</a>
+            @endif
         </div>
         <!--end::Actions-->
     </div>

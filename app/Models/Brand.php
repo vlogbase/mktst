@@ -23,6 +23,6 @@ class Brand extends Model
 
     public function seller()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->belongsTo(SellerDetail::class,'seller_detail_id');
     }
 }
