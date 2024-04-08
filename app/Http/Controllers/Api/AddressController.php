@@ -18,8 +18,9 @@ class AddressController extends ApiController
         return $this->successResponse($addresses);
     }
 
-    public function countries(){
-       $countries = Country::orderBy('name', 'asc')->get();
+    public function countries()
+    {
+        $countries = Country::orderBy('name', 'asc')->get();
         return $this->successResponse($countries);
     }
 
@@ -45,7 +46,7 @@ class AddressController extends ApiController
             return $this->errorResponse('Validation Error', 403, $validator->errors());
         }
 
-    
+
         $address = Address::create([
             'postcode' => $request->postcode,
             'country' => $request->country,
@@ -53,7 +54,7 @@ class AddressController extends ApiController
             'county' => $request->county ? $request->county : '',
             'latitude' => 0,
             'longitude' => 0,
-            'formatted_address' => $request->address_line_1 . ' ' . $request->address_line_2 . ', ' . $request->district . ', ' . $request->county . ', ' . $request->postcode . ', '. $request->country,
+            'formatted_address' => $request->address_line_1 . ' ' . $request->address_line_2 . ', ' . $request->district . ', ' . $request->county . ', ' . $request->postcode . ', ' . $request->country,
         ]);
 
         $user = auth()->user();
@@ -63,7 +64,7 @@ class AddressController extends ApiController
             'name' => $request->name,
             'surname' => $request->surname,
             'phone' => $request->phone,
-            'mobile' => $request->code . '-' .$request->mobile,
+            'mobile' => $request->code . '-' . $request->mobile,
             'user_id' => $user->id,
             'address_id' => $address->id,
             'is_shipping' => 0,
@@ -75,19 +76,19 @@ class AddressController extends ApiController
         return $this->successResponse($office, 'Address created successfully.');
     }
 
-   
+
     public function show(UserOffice $address)
     {
         if ($address->user_id != auth()->id()) {
             return $this->errorResponse('You are not authorized to view this address.', 403);
         }
 
-       $address->address;
-        
+        $address->address;
+
         return $this->successResponse($address);
     }
 
-    
+
     public function update(UserOffice $address)
     {
         if ($address->user_id != auth()->id()) {
@@ -104,7 +105,7 @@ class AddressController extends ApiController
         $address->update([
             'is_shipping' => 1,
         ]);
-        
+
         $address->address;
 
         return $this->successResponse($address);
@@ -121,19 +122,16 @@ class AddressController extends ApiController
 
             if ($address->is_shipping) {
                 $nextAddress = UserOffice::where('user_id', $user->id)->where('id', '!=', $address->id)->first();
-                if($nextAddress){
+                if ($nextAddress) {
                     $nextAddress->update([
                         'is_shipping' => 1,
                     ]);
-                    $address->delete();
-                    return $this->successResponse('Address deleted successfully.');
                 }
             }
-
-            
+            $address->delete();
+            return $this->successResponse('Address deleted successfully.');
         }
-        
-       return $this->errorResponse('You can not delete this address.', 403);
-       
+
+        return $this->errorResponse('You can not delete this address.', 403);
     }
 }
