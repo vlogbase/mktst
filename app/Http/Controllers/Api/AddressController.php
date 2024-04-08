@@ -44,12 +44,13 @@ class AddressController extends ApiController
         if ($validator->fails()) {
             return $this->errorResponse('Validation Error', 403, $validator->errors());
         }
-        
+
+    
         $address = Address::create([
             'postcode' => $request->postcode,
             'country' => $request->country,
-            'district' => $request->district,
-            'county' => $request->county,
+            'district' => $request->district ? $request->district : '',
+            'county' => $request->county ? $request->county : '',
             'latitude' => 0,
             'longitude' => 0,
             'formatted_address' => $request->address_line_1 . ' ' . $request->address_line_2 . ', ' . $request->district . ', ' . $request->county . ', ' . $request->postcode . ', '. $request->country,

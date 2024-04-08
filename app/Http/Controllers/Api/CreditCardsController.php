@@ -31,25 +31,26 @@ class CreditCardsController extends ApiController
     }
 
    
-    public function delete(PaymentCard $paymentCard)
+    public function delete(PaymentCard $paymentMethod)
     {
-        if ($paymentCard->user_id != auth()->id()) {
+        return $paymentMethod->user_id;
+        if ($paymentMethod->user_id != auth()->user()->id) {
             return $this->errorResponse('You are not authorized to view this payment card.', 403);
         }
 
-        $this->deletePaymentMethod($paymentCard);
+        $this->deletePaymentMethod($paymentMethod);
         
         return $this->successResponse('Deleted your card successfully.');
     }
 
     
-    public function update(PaymentCard $request, PaymentCard $paymentCard)
+    public function update(PaymentCard $paymentMethod)
     {
-        if ($paymentCard->user_id != auth()->id()) {
+        if ($paymentMethod->user_id != auth()->id()) {
             return $this->errorResponse('You are not authorized to view this payment card.', 403);
         }
         
-        $this->setDefaultPaymentMethod($paymentCard);
+        $this->setDefaultPaymentMethod($paymentMethod);
         
         return $this->successResponse('Set Default your card successfully.');
     }
