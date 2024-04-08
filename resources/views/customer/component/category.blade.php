@@ -11,7 +11,7 @@
                  <a href="{{route('category_products',$category->slug)}}">
                     <div class="categorybox card card-banner border-0">
                         <div class="text-center">
-                            <img class="img-fluid lazy special-category-image" style="height:auto; animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" alt="{{$category->name}}">
+                            <img class="img-fluid lazy special-category-image" style="width:100px;height:100px;object-fit: contain; animation: pulse 2s ease-in-out {{'0.'.$loop->index * 2}}s 3;" data-src="{{$category->image}}" alt="{{$category->name}}">
                         </div>
                     </div>
                  </a>
@@ -28,7 +28,7 @@
                  <a href="{{route('category_products',$category->slug)}}">
                     <div class="categorybox card card-banner border-0">
                         <div class="p-3 text-center">
-                            <img class="img-fluid lazy special-category-image" data-src="{{$category->image}}" style="max-width:100%; height:auto;" alt="{{$category->name}}">
+                            <img class="img-fluid lazy special-category-image" data-src="{{$category->image}}" style="width:100px;height:100px;object-fit: contain;" alt="{{$category->name}}">
                             <h6 class="mt-4 three-line-truncate">{{$category->name}}</h6>
                         </div>
                     </div>
