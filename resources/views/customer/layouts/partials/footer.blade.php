@@ -13,19 +13,18 @@
                             </li>
                             <li>
                                 <i class="ti-location-pin"></i>
-                                <p>Registered office
-                                    21 Marina Court,
-                                    Hull,
-                                    HU1 1TJ</p>
+                                <p>Registered office<br>
+                                    21 Marina Court,<br>
+                                    Hull,HU1 1TJ</p>
                             </li>
                             <li>
                                 <i class="ti-email"></i>
                                 <a href="mailto:sales@markket.uk<">sales@markket.uk</a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <i class="ti-mobile"></i>
                                 <p>01493 855403</p>
-                            </li>
+                            </li> --}}
                         </ul>
                         
                     </div>
@@ -34,7 +33,7 @@
                 	<div class="widget">
                         <h6 class="widget_title">Useful Links</h6>
                         <ul class="widget_links">
-                            <li><a href="{{route('about_us')}}">About Us</a></li>
+                            <li><a href="{{route('about_us')}}">Why Choose Markket</a></li>
                             <li><a href="{{route('contact_us')}}">Contact Us</a></li>
                             <li><a href="{{route('career')}}">Career</a></li>
                             <li><a href="{{route('terms_and_conditions')}}">Terms & Conditions</a></li>
@@ -84,26 +83,6 @@
         </div>
     </div>
     
-    <div class="middle_footer mt-5">
-    	<div class="container">
-        	<div class="row">
-            	<div class="col-12 text-center">
-                	<div class="">
-                        <div class="row justify-content-center">
-                            
-                            
-                            <div class="col-md-6 col-6 mx-auto">
-                                <div class="text-center trading_img">
-                                    <img src="/upload/other/unitas200.png" alt="tranding_img"/>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="bottom_footer border-top-tran">
         <div class="container">
             <div class="row">

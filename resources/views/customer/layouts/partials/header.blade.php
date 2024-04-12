@@ -122,7 +122,7 @@
                                     <div class="dropdown-menu" style="margin: -10px!important;">
                                         <ul>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('about_us') ? 'active' : '' }}"
-                                                    href="{{ route('about_us') }}">About Us</a></li>
+                                                    href="{{ route('about_us') }}">Why Choose Markket</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('contact_us') ? 'active' : '' }}"
                                                     href="{{ route('contact_us') }}">Contact Us</a></li>
                                             <li><a class="dropdown-item nav-link nav_item {{ request()->routeIs('career') ? 'active' : '' }}"

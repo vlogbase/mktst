@@ -19,7 +19,7 @@ Route::feeds();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //Customer Others
-Route::get('/about-us', [OtherController::class, 'about_us'])->name('about_us');
+Route::get('/why-choose-markket', [OtherController::class, 'about_us'])->name('about_us');
 Route::get('/contact-us', [OtherController::class, 'contact_us'])->name('contact_us');
 Route::get('/career', [OtherController::class, 'career'])->name('career');
 Route::get('/career/{job}', [OtherController::class, 'career_detail'])->name('career_detail');

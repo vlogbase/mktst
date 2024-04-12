@@ -32,10 +32,9 @@
                     </div>
                     <div class="contact_text">
                         <span>Address</span>
-                        <p>Registered office
-                            21 Marina Court,
-                            Hull,
-                            HU1 1TJ</p>
+                        <p>Registered office<br>
+                            21 Marina Court,<br>
+                            Hull, HU1 1TJ</p>
                     </div>
                 </div>
             </div>
