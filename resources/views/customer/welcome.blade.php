@@ -89,22 +89,22 @@
         </div> <!-- container .//  -->
     </section>
 
-    <div class="section bg_light_blue2 pb-0 pt-md-0">
+    <div class="section  pb-0 pt-md-0" style="color:white!important;background-color:chocolate;background-image: linear-gradient(rgb(204, 116, 41), rgb(240, 172, 72));}">
         <div class="container">
             <div class="row">
                 <div class="col-9 mx-auto text-center pt-5 pb-5">
-                    <p>
+                    <p style="color:white!important;">
                         Reliable access to ingredients is crucial for the success of any restaurant or café. Without a
                         consistent supply from trusted food suppliers, a restaurant's kitchen may not be able to offer
                         certain items from their menu.
                     </p>
-                    <p class="mt-2">
+                    <p style="color:white!important;" class="mt-2">
                         Having all the necessary ingredients readily available is essential for preparing both hot and cold
                         meals, salads, and beverages. As wholesale food suppliers in the UK, we guarantee that we will take
                         care of all your needs.
                     </p>
 
-                    <p class="mt-2">
+                    <p style="color:white!important;" class="mt-2">
                         We offer fresh stock at competitive prices, ensuring that you can serve all the items on your menu.
                         With the convenience of online grocery shopping, you can easily browse and purchase the items you
                         require. However, with so many options available, it can be challenging to find the right wholesale
@@ -221,26 +221,26 @@
 
     @guest
         <!-- START SECTION SINGLE BANNER -->
-        <div class="section bg_light_blue2 pb-0 pt-md-0">
+        <div class="section pb-0 pt-md-0" >
             <div class="container">
                 <div class="row align-items-center flex-row-reverse pt-5">
                     <div class="col-md-6 offset-md-1">
                         <div class="medium_divider d-none d-md-block clearfix"></div>
                         <div class="trand_banner_text text-center text-md-start">
                             <div class="heading_s1 mb-3">
-                                <span class="sub_heading">Register for Markket Access!!</span>
+                                <span style="font-size: 30px;font-weight:600;" class="sub_heading">Register for Markket Access!!</span>
 
                                 <p>We want to give our customers the best service. Sign up and enjoy good product supply, fast
                                     and easy service.</p>
                             </div>
-                            <a href="{{ route('register') }}" class="btn btn-fill-out rounded-0 staggered-animation">Become a
+                            <a href="{{ route('register') }}" class="btn btn-fill-out rounded-0 ">Become a
                                 Member!</a>
                         </div>
                         <div class="medium_divider clearfix"></div>
                     </div>
                     <div class="col-md-5">
-                        <div class="text-center trading_img">
-                            <img class="lazy" data-src="upload/other/memberbecome.png" style="width:300px;"
+                        <div class="text-center trading_img mt-3">
+                            <img class="lazy" data-src="customer_assets/images/register-img.png" style="width:400px;"
                                 alt="tranding_img" />
                         </div>
                     </div>
@@ -301,27 +301,25 @@
 
 
     <!-- START SECTION SINGLE BANNER -->
-    <div class="section bg_light_blue2 pb-0 pt-md-0">
+    <div class="section pb-0 pt-md-0" style="background-color:chocolate;background-image: linear-gradient(rgb(204, 116, 41), rgb(240, 172, 72));}">
         <div class="container">
             <div class="row align-items-center flex-row-reverse pt-5">
                 <div class="col-md-6 offset-md-1">
                     <div class="medium_divider d-none d-md-block clearfix"></div>
                     <div class="trand_banner_text text-center text-md-start">
                         <div class="heading_s1 mb-3">
-                            <h2>Download our Mobile App!</h2>
+                            <h2 style="font-size: 40px;">Download our Mobile App!</h2>
                         </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.savoyapp"><img class="lazy"
+                        <a href="#"><img style="width: 200px;" class="lazy"
                                 data-src="upload/other/googleplay.png" alt="f1" /></a>
-                        <a href="https://apps.apple.com/tr/app/savoyapp/id1587340149?l=en"><img class="lazy"
+                        <a href="#"><img style="width: 200px;" class="lazy"
                                 data-src="upload/other/appstore.png" alt="f2" /></a>
-                        <a href="https://appgallery.huawei.com/#/app/C104547059"><img class="lazy"
-                                data-src="upload/other/appgallery.png" alt="f2" /></a>
                     </div>
                     <div class="medium_divider clearfix"></div>
                 </div>
                 <div class="col-md-5">
                     <div class="text-center trading_img">
-                        <img class="lazy" data-src="upload/other/savoymockup.png" alt="tranding_img" />
+                        <img class="lazy" data-src="customer_assets/images/mobile-app-img.png" alt="tranding_img" />
                     </div>
                 </div>
             </div>

@@ -1,25 +1,25 @@
 <!-- START FOOTER -->
-<footer class="bg_gray">
+<footer class="" style="background-color:chocolate;background-image: linear-gradient(rgb(204, 116, 41), rgb(240, 172, 72));}">
 	<div class="footer_top small_pt pb_20">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-12 col-sm-12">
-                	<div class="widget">
-                        <h6 class="widget_title">Markket</h6>
-                        <ul class="contact_info">
+                <div class="col-lg-4 col-md-12 col-sm-12" >
+                	<div style="color: white!important;" class="widget">
+                        <h4 style="color: white!important;" class="mb-4">Markket</h4>
+                        <ul  class="contact_info">
                             <li>
                                 <i class="ti-world"></i>
-                                <p>Integrated Brand Delivery Ltd</p>
+                                <p style="color: white!important;">Integrated Brand Delivery Ltd</p>
                             </li>
                             <li>
                                 <i class="ti-location-pin"></i>
-                                <p>Registered office<br>
+                                <p style="color: white!important;">Registered office<br>
                                     21 Marina Court,<br>
                                     Hull,HU1 1TJ</p>
                             </li>
                             <li>
                                 <i class="ti-email"></i>
-                                <a href="mailto:sales@markket.uk<">sales@markket.uk</a>
+                                <a style="color: white!important;" href="mailto:sales@markket.uk<">sales@markket.uk</a>
                             </li>
                             {{-- <li>
                                 <i class="ti-mobile"></i>
@@ -31,44 +31,43 @@
         		</div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                 	<div class="widget">
-                        <h6 class="widget_title">Useful Links</h6>
-                        <ul class="widget_links">
-                            <li><a href="{{route('about_us')}}">Why Choose Markket</a></li>
-                            <li><a href="{{route('contact_us')}}">Contact Us</a></li>
-                            <li><a href="{{route('career')}}">Career</a></li>
-                            <li><a href="{{route('terms_and_conditions')}}">Terms & Conditions</a></li>
-                            <li><a href="{{route('login')}}">Login</a></li>
-                            <li><a href="/feed">Our RSS Feed</a></li>
-                            <li><a href="/sitemap.xml">Sitemap</a></li>
+                        <h4 style="color: white!important;" class="mb-4">Useful Links</h4>
+                        <ul  class="widget_links">
+                            <li><a style="color: white!important;" href="{{route('about_us')}}">Why Choose Markket</a></li>
+                            <li><a style="color: white!important;" href="{{route('contact_us')}}">Contact Us</a></li>
+                            <li><a style="color: white!important;" href="{{route('career')}}">Career</a></li>
+                            <li><a style="color: white!important;" href="{{route('terms_and_conditions')}}">Terms & Conditions</a></li>
+                            <li><a style="color: white!important;" href="{{route('login')}}">Login</a></li>
+                            <li><a style="color: white!important;" href="/feed">Our RSS Feed</a></li>
+                            <li><a style="color: white!important;" href="/sitemap.xml">Sitemap</a></li>
 
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6">
                 	<div class="widget">
-                        <h6 class="widget_title">My Account</h6>
+                        <h4 style="color: white!important;" class="mb-4">My Account</h4>
                         <ul class="widget_links">
-                            <li><a href="{{route('user.profile')}}">My Account</a></li>
-                            <li><a href="{{route('user.detail')}}">My Detail</a></li>
-                            <li><a href="{{route('user.addresses')}}">My Addresses</a></li>
-                            <li><a href="{{route('user.orders')}}">My Orders</a></li>
-                            <li><a href="{{route('user.favorites')}}">My Favorites</a></li>
+                            <li><a style="color: white!important;" href="{{route('user.profile')}}">My Account</a></li>
+                            <li><a style="color: white!important;" href="{{route('user.detail')}}">My Detail</a></li>
+                            <li><a style="color: white!important;" href="{{route('user.addresses')}}">My Addresses</a></li>
+                            <li><a style="color: white!important;" href="{{route('user.orders')}}">My Orders</a></li>
+                            <li><a style="color: white!important;" href="{{route('user.favorites')}}">My Favorites</a></li>
                             
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                 	<div class="widget">
-                    	<h6 class="widget_title">Download App</h6>
+                        <h4 style="color: white!important;" class="mb-4">Download App</h4>
                         <ul class="app_list">
-                            <li><a href="https://play.google.com/store/apps/details?id=com.savoyapp"><img src="/upload/other/googleplay.png" alt="f1"/></a></li>
-                            <li><a href="https://apps.apple.com/tr/app/savoyapp/id1587340149?l=en"><img src="/upload/other/appstore.png" alt="f2"/></a></li>
-                            <li><a href="https://appgallery.huawei.com/#/app/C104547059"><img src="/upload/other/appgallery.png" alt="f2"/></a></li>
+                            <li><a href="#"><img src="/upload/other/googleplay.png" alt="f1"/></a></li>
+                            <li><a href="#"><img src="/upload/other/appstore.png" alt="f2"/></a></li>
                            
                         </ul>
                     </div>
                 	<div class="widget">
-                        <h6 class="widget_title">Social</h6>
+                        <h4 style="color: white!important;" class="mb-4">Social</h4>
                         <ul class="social_icons">
                             <li><a href="https://www.facebook.com/IBDmarkket" class="sc_facebook" target="_blank"><i class="ion-social-facebook"></i></a></li>
                             <li><a href="https://twitter.com/Markketuk" target="_blank" class="sc_twitter"><i class="ion-social-twitter"></i></a></li>
@@ -87,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="text-center text-md-start mb-md-0">© 2022 All Rights Reserved by Markket</p>
+                    <p style="color: white!important;" class="text-center text-md-start mb-md-0">© 2022 All Rights Reserved by Markket</p>
                 </div>
                 <div class="col-lg-6">
                     <ul class="footer_payment text-center text-md-end">
