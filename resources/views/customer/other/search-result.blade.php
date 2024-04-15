@@ -1,21 +1,8 @@
 @extends('customer.layouts.master')
 @section('title','Search - Markket')
 @section('content')
-<!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section  page-title-mini" style="background-color:chocolate;">
-    <div class="container"><!-- STRART CONTAINER -->
-        <div class="row align-items-center">
-        	<div class="col-md-12 text-center">
-                <div class="page-title">
-            		<h1 style="color:white!important;">Searched for {{$search}}</h1>
-                </div>
-            </div>
-            
-        </div>
-    </div><!-- END CONTAINER-->
-</div>
-<!-- END SECTION BREADCRUMB -->
 
+@include('customer.component.breadcrumb' , ['title' => 'Searched for '.$search])
 
 <!-- START MAIN CONTENT -->
 <div class="main_content">

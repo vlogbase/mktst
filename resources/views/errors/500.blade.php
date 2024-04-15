@@ -2,12 +2,12 @@
 @section('title','500 - Markket')
 @section('content')
 <!-- START SECTION BREADCRUMB -->
-<div class="breadcrumb_section bg_gray page-title-mini" style="background-color:chocolate;">
+<div class="breadcrumb_section bg_gray page-title-mini" style="color:white!important;background-color:chocolate;background-image: linear-gradient(rgb(204, 116, 41), rgb(240, 172, 72));">
     <div class="container"><!-- STRART CONTAINER -->
         <div class="row align-items-center">
         	<div class="col-md-6">
                 <div class="page-title">
-            		<h1>500 Page Not Found</h1>
+            		<h1 style="color:white!important;">500 Page Not Found</h1>
                 </div>
             </div>
             <div class="col-md-6">
