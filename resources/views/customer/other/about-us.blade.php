@@ -33,9 +33,6 @@
                     </div>
                     <div class="col-lg-6 order-2 order-lg-2">
                         <div class="px-5">
-                            <p>Markket was established in 1985, it has grown over the years from a small corner outlet, to a
-                                well-established state of the art multi temperature and multi cultural foodservice
-                                distributor.</p>
                             <p>We supply a diverse range of chilled and frozen foods as well as a comprehensive selection of
                                 retail, catering products and non-food items. Our products also include established brands
                                 as well as a competitively priced own label ranges, creating a ‘one-stop-shop’ for all our
