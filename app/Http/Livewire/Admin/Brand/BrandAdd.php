@@ -15,7 +15,7 @@ class BrandAdd extends Component
             'name' => 'required|min:2|max:100|unique:brands,name',
         ]);
 
-       if(auth()->guard('seller')){
+       if(auth()->guard('seller')->check()){
             $sellerId = auth()->guard('seller')->user()->sellerDetail->id;
        }else{
             $sellerId = null;

@@ -74,6 +74,7 @@ class ProductController extends Controller
         $getBackCategoryUrl = $request->get('categoryFromUrl') ?? null;
         $getBackSellerUrl = $request->get('sellerFromUrl') ?? null;
         Product::findOrFail($id);
+        
         return view('admin.products.product_detail', compact('id', 'getBackCategoryUrl', 'getBackSellerUrl'));
     }
 

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Route;
 
 class ProductBaseDetails extends Component
 {
@@ -34,10 +35,14 @@ class ProductBaseDetails extends Component
 
     public $seller_team_members;
     public $seller_select = null;
+    public $routeName;
 
 
     public function mount($itemid)
     {
+        //get current route name
+
+        $this->routeName = Route::currentRouteName();
         
         if(Auth::guard('admin')->check()){
             $this->brands = Brand::all();
@@ -67,12 +72,15 @@ class ProductBaseDetails extends Component
             $this->categories_select = $this->item->categories->pluck('id');
 
             if(Auth::guard('seller')->check()){
+               
                 $sellerDetail = Auth::guard('seller')->user()->sellerDetail;
                 $this->brands_seller = $sellerDetail->brands;
+                
             }
 
 
-            if(Auth::guard('seller')->user()->is_master){
+            if(Auth::guard('seller')->check() && Auth::guard('seller')->user()->is_master){
+                
                 $this->seller_team_members = Seller::where('seller_detail_id', Auth::guard('seller')->user()->sellerDetail->id)->where('is_master',0)->get();
                 $sellerID = DB::table('seller_product')->where('product_id', $this->itemid)->get();
                 if($sellerID->count() > 0){
@@ -81,6 +89,24 @@ class ProductBaseDetails extends Component
                
             }
         }
+        ///////////////////////////////////////////////////
+        //The above if case is restricting these checks, taking this out will allow the code to run
+        if (Auth::guard('seller')->check()) {
+
+            $sellerDetail = Auth::guard('seller')->user()->sellerDetail;
+            $this->brands_seller = $sellerDetail->brands;
+        }
+
+
+        if (Auth::guard('seller')->check() && Auth::guard('seller')->user()->is_master) {
+
+            $this->seller_team_members = Seller::where('seller_detail_id', Auth::guard('seller')->user()->sellerDetail->id)->where('is_master', 0)->get();
+            $sellerID = DB::table('seller_product')->where('product_id', $this->itemid)->get();
+            if ($sellerID->count() > 0) {
+                $this->seller_select = $sellerID[0]->seller_id;
+            }
+        }
+        //////////////////////////////////////////////////
     }
 
     public function generateCode()
@@ -104,17 +130,17 @@ class ProductBaseDetails extends Component
 
         if ($this->itemid != 0) {
             $this->item->update([
-                'sku' =>  $this->sku,
-                'name' =>  $this->name,
-                'slug' => Str::slug($this->name),
+                //'sku' =>  $this->sku,
+                //'name' =>  $this->name,
+                //'slug' => Str::slug($this->name),
                 'unit_price' => $this->unit_price,
                 'discount' => $this->discount,
-                'stock' => $this->stock,
-                'reorder' => $this->reorder,
-                'taxrate' => $this->taxrate,
-                'per_unit' => $this->per_unit,
-                'status' => $this->status ? 1 : 0,
-                'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
+                //'stock' => $this->stock,
+                //'reorder' => $this->reorder,
+                //'taxrate' => $this->taxrate,
+                //'per_unit' => $this->per_unit,
+                //'status' => $this->status ? 1 : 0,
+                //'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
             ]);
 
             $this->item->categories()->sync($this->categories_select);
@@ -145,10 +171,10 @@ class ProductBaseDetails extends Component
             $item->categories()->sync($this->categories_select);
             $item->sellers()->sync($this->seller_select);
 
-            if(Auth::guard('admin')->check()){
+            if(Auth::guard('admin')->check() && ($this->routeName == 'admin.products.add' || $this->routeName == 'admin.products.detail')){
                 return redirect()->route('admin.products.detail', $item->id);
             }
-            if(Auth::guard('seller')->check()){
+            if(Auth::guard('seller')->check() && ($this->routeName == 'seller.products.add' || $this->routeName == 'seller.products.detail')){
                 return redirect()->route('seller.products.detail', $item->id);
             }
 

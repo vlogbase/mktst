@@ -16,7 +16,10 @@
                 <td>{{\Carbon\Carbon::parse($order->created_at)->format('d M Y')}}</td>
                 <td>{{$order->status }}</td>
                 <td>£{{$order->total_price }} for {{$order->orderproducts->count() }} items</td>
-                <td><a href="{{route('user.orders_detail',$order->id)}}" class="btn btn-fill-out btn-sm">View</a></td>
+                <td>
+                    <a href="{{route('user.orders_detail',$order->id)}}" class="btn btn-fill-out btn-sm">View</a>
+                    <a href="{{route('user.download_invoice',$order->id)}}" class="btn btn-danger btn-sm" title="Download Invoice"><i class="fas fa-file-invoice"></i></a>
+                </td>
             </tr>
             @endforeach
         </tbody>
