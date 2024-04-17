@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use App\Traits\PaymentStripeHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UserController extends Controller
 {
@@ -54,6 +55,25 @@ class UserController extends Controller
             $previousOrder = Order::where('id', '<', $order->id)->where('user_id', Auth::id())->orderBy('id', 'desc')->first();
 
             return view('customer.user.order-detail', compact('order', 'nextOrder', 'previousOrder'));
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    public function download_invoice($id){
+        $order = Order::findOrFail($id);
+        if ($order->user_id == Auth::id()) {
+            //Find Next Order
+
+            //return redirect()->back();
+            $pdf = Pdf::loadView('customer.user.invoice-detail', compact('order'));
+            //change the name of the pdf file
+            //$pdf->setPaper('a4', 'portrait');
+            //name of the file
+            //$pdf->setOption('filename', 'invoice-'.$order->order_code.'.pdf');
+
+            return $pdf->download('Invoice-' . $order->ordercode . '.pdf');
+            //return view('customer.user.invoice-detail', compact('order'));
         } else {
             return redirect()->back();
         }

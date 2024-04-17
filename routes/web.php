@@ -19,7 +19,7 @@ Route::feeds();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //Customer Others
-Route::get('/why-choose-markket', [OtherController::class, 'about_us'])->name('about_us');
+Route::get('/about-us', [OtherController::class, 'about_us'])->name('about_us');
 Route::get('/contact-us', [OtherController::class, 'contact_us'])->name('contact_us');
 Route::get('/career', [OtherController::class, 'career'])->name('career');
 Route::get('/career/{job}', [OtherController::class, 'career_detail'])->name('career_detail');
@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/payments', [UserController::class, 'payments'])->name('payments');
         Route::get('/payments/add', [UserController::class, 'payments_add'])->name('payments_add');
         Route::get('/orders/{id}', [UserController::class, 'orders_detail'])->name('orders_detail');
+        Route::get('/orders/invoice/{id}', [UserController::class, 'download_invoice'])->name('download_invoice');
         Route::get('/favorites', [UserController::class, 'favorites'])->name('favorites');
         Route::get('/tickets', [UserController::class, 'tickets'])->name('tickets');
         Route::get('/tickets/new', [UserController::class, 'tickets_new'])->name('tickets_new');

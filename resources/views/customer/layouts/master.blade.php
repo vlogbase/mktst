@@ -39,8 +39,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <!-- Icon Font CSS -->
     <link rel="stylesheet" href="{{ asset('customer_assets/css/all.css') }}">
 
@@ -73,9 +72,9 @@
 <body>
     @yield('loader')
     @if (config('app.env') == 'local')
-        <div class="alert alert-warning text-center mx-auto" role="alert">
-            Test Mode
-        </div>
+    <div class="alert alert-warning text-center mx-auto" role="alert">
+        Test Mode
+    </div>
     @endif
     @include('customer.layouts.partials.header')
     @yield('content')
@@ -249,7 +248,7 @@
             Toast.fire({
                 icon: 'success',
                 title: 'Cart Updated'
-            })
+            });
         })
         Livewire.on('itemDeleted', postId => {
             Toast.fire({
@@ -267,7 +266,21 @@
             Toast.fire({
                 icon: 'success',
                 title: postId
-            })
+            });
+            //lazyLoad();
+
+
+            let lazyLoad_4_fav_issue = function() {
+                let lazyImages = document.querySelectorAll('.lazy');
+                lazyImages.forEach(function(img) {
+                    if (img.getBoundingClientRect().top < window.innerHeight && img.getAttribute(
+                            'data-src')) {
+                        img.src = img.getAttribute('data-src');
+                        img.removeAttribute('data-src');
+                    }
+                });
+            }();
+
         })
         Livewire.on('loginShow', postId => {
             Swal.fire({
@@ -336,6 +349,8 @@
                 },
             })
         })
+
+        //livewire event listener
     </script>
 
     <script src="{{ asset('/sw.js') }}"></script>

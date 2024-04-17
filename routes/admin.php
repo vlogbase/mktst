@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CampaignController;
@@ -111,6 +112,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/{id}/edit', [CustomerController::class, 'customer_edit'])->name('edit');
         });
 
+
+        //Admin Accounts
+        Route::prefix('accounts')->name('accounts.')->group(function () {
+            Route::get('/', [AdminController::class, 'index'])->name('list');
+            Route::get('/create', [AdminController::class, 'create'])->name('create');
+            //Route::get('/{id}', [SellerController::class, 'edit'])->name('edit');
+            //Route::get('/{id}/team/create', [SellerController::class, 'member_create'])->name('memberCreate');
+            //Route::get('/{id}/team/{memberId}', [SellerController::class, 'member_edit'])->name('memberEdit');
+        });
+        
+        
         //Customers
         Route::prefix('sellers')->name('sellers.')->group(function () {
             Route::get('/', [SellerController::class, 'index'])->name('list');

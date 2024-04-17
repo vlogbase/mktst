@@ -10,8 +10,7 @@
                         <span class="card-label fw-bolder fs-3 mb-1">Brand List</span>
                     </h3>
                     <div class="card-toolbar">
-                        <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Search"
-                            wire:model="search">
+                        <input type="text" class="form-control form-control-lg form-control-solid" placeholder="Search" wire:model="search">
                     </div>
 
                 </div>
@@ -39,58 +38,48 @@
                                     <!--begin::Table body-->
                                     <tbody>
                                         @foreach ($items as $item)
-                                            <tr>
+                                        <tr>
 
-                                                <td class="">
-                                                    @livewire('admin.brand.brand-edit', ['item' => $item], key($item->id))
-                                                    
-                                                </td>
-                                                @auth('admin')
-                                                <td>
-                                                    @if ($item->seller)
-                                                        <div class="block">
-                                                            <a href="{{ route('admin.sellers.edit', $item->seller->id) }}"
-                                                                class="btn btn-block btn-bg-light btn-active-color-primary btn-lg me-1">
-                                                               
-                                                                <span
-                                                                class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ $item->seller->name }}</span>
-                                                               
-                                                            </a>
-                                                        </div>
-                                                    @endif
-                                                </td>
-                                                @endauth
-                                                <td>
-                                                    <div class="d-flex flex-column w-100 me-2">
+                                            <td class="">
+                                                @livewire('admin.brand.brand-edit', ['item' => $item], key($item->id))
 
-                                                        <span
-                                                            class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ $item->products->count() }}
-                                                            Products</span>
+                                            </td>
 
-                                                    </div>
-                                                </td>
-                                                <td class="text-end">
-                                                    <a wire:click="deleteItem({{ $item->id }})"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
-                                                        <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-                                                        <span class="svg-icon svg-icon-3">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path
-                                                                    d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"
-                                                                    fill="black" />
-                                                                <path opacity="0.5"
-                                                                    d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"
-                                                                    fill="black" />
-                                                                <path opacity="0.5"
-                                                                    d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z"
-                                                                    fill="black" />
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
+                                            @auth('admin')
+                                            <td>
+                                                @if ($item->seller)
+                                                <div class="block">
+                                                    <a href="{{ route('admin.sellers.edit', $item->seller->id) }}" class="btn btn-block btn-bg-light btn-active-color-primary btn-lg me-1">
+
+                                                        <span class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ $item->seller->name }}</span>
+
                                                     </a>
-                                                </td>
-                                            </tr>
+                                                </div>
+                                                @endif
+                                            </td>
+                                            @endauth
+                                            <td>
+                                                <div class="d-flex flex-column w-100 me-2">
+
+                                                    <span class="text-dark fw-bolder text-hover-primary mb-1 fs-6">{{ $item->products->count() }}
+                                                        Products</span>
+
+                                                </div>
+                                            </td>
+                                            <td class="text-end">
+                                                <a wire:click="deleteItem({{ $item->id }})" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                                                    <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                            <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
+                                                            <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
+                                                            <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </a>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                     <!--end::Table body-->
