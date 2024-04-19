@@ -12,7 +12,7 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8 fv-row">
-                    <input type="text" wire:model="name" class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror" @if($name && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Product Name" readonly @endif />
+                    <input type="text" wire:model="name" class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror" @if($name && $routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Product Name" readonly @endif />
                     @error('name')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -38,7 +38,7 @@
                                 <!--end::Svg Icon-->
                             </a>
                         </span>
-                        <input type="text" wire:model="sku" class="form-control form-control-lg form-control-solid @error('sku') is-invalid @enderror" @if($sku && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) data-toggle="tooltip" data-placement="top" title="Add another Product to Change SKU" readonly @endif />
+                        <input type="text" wire:model="sku" class="form-control form-control-lg form-control-solid @error('sku') is-invalid @enderror" @if($sku && $routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change SKU" readonly @endif />
                     </div>
                     @error('sku')
                     <span class="text-danger">{{ $message }}</span>
@@ -87,7 +87,7 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8 fv-row">
-                    <input type="number" step="0.01" wire:model="stock" class="form-control form-control-lg form-control-solid @error('stock') is-invalid @enderror" @if($stock && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Stock Value" readonly @endif />
+                    <input type="number" step="0.01" wire:model="stock" class="form-control form-control-lg form-control-solid @error('stock') is-invalid @enderror" @if($stock && $routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Stock Value" readonly @endif />
                     @error('stock')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -103,7 +103,7 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8 fv-row">
-                    <input type="number" step="0.01" wire:model="reorder" class="form-control form-control-lg form-control-solid @error('reorder') is-invalid @enderror" @if($reorder && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Re-Order Stock Value" readonly @endif />
+                    <input type="number" step="0.01" wire:model="reorder" class="form-control form-control-lg form-control-solid @error('reorder') is-invalid @enderror" @if($reorder && $routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Re-Order Stock Value" readonly @endif />
                     @error('reorder')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -119,7 +119,7 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8 fv-row">
-                    <input type="number" step="0.01" wire:model="taxrate" class="form-control form-control-lg form-control-solid @error('taxrate') is-invalid @enderror" @if($taxrate && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Tax" readonly @endif />
+                    <input type="number" step="0.01" wire:model="taxrate" class="form-control form-control-lg form-control-solid @error('taxrate') is-invalid @enderror" @if($taxrate && $routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Tax" readonly @endif />
                     @error('taxrate')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -135,7 +135,7 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8 fv-row">
-                    <input type="number" step="0.01" wire:model="per_unit" class="form-control form-control-lg form-control-solid @error('per_unit') is-invalid @enderror" @if($per_unit && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Unit Value" readonly @endif />
+                    <input type="number" step="0.01" wire:model="per_unit" class="form-control form-control-lg form-control-solid @error('per_unit') is-invalid @enderror" @if($per_unit && $routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Unit Value" readonly @endif />
                     @error('per_unit')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -153,7 +153,7 @@
                 <!--begin::Label-->
                 <div class="col-lg-8 d-flex align-items-center">
                     <div class="form-check form-check-solid form-switch fv-row">
-                        <input wire:model="status" class="form-check-input w-45px h-30px" type="checkbox" id="allowmarketing" @if($status && ($routeName=='admin.products.detail' || $routeName=='seller.products.detail' )) disabled @endif />
+                        <input wire:model="status" class="form-check-input w-45px h-30px" type="checkbox" id="allowmarketing" @if($status && $routeName=='seller.products.detail') disabled @endif />
                         <label class="form-check-label" for="allowmarketing"></label>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
 
                     <div wire:ignore>
                         {{-- Segregation Code, This code segregates add and view routes --}}
-                        <select class="form-select form-select-solid" id="select2" data-placeholder="Select a brand" @if($routeName=='admin.products.detail' || $routeName=='seller.products.detail' ) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Brand" disabled @endif>
+                        <select class="form-select form-select-solid" id="select2" data-placeholder="Select a brand" @if($routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Brand" disabled @endif>
                             <option>Select Brand</option>
                             @if(auth()->guard('admin')->user() !== null && ($routeName=='admin.products.detail' || $routeName=='admin.products.add'))
                             @auth('admin')
@@ -217,7 +217,7 @@
                 <!--begin::Col-->
                 <div class="col-lg-8" wire:ignore>
 
-                    <select class="form-select form-select-solid" id="select22" multiple data-placeholder="Select categories" @if($routeName=='admin.products.detail' || $routeName=='seller.products.detail' ) data-toggle="tooltip" data-placement="top" title="Add another Product to Change Categories" disabled @endif>
+                    <select class="form-select form-select-solid" id="select22" multiple data-placeholder="Select categories" @if($routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Categories" disabled @endif>
 
                         @foreach ($categories as $category)
                         <option {{ collect($categories_select)->contains($category->id) ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
