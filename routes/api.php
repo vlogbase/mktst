@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\ApiOtherController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BulkUploadController;
 use App\Http\Controllers\Api\CreditCardsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\OrderController;
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Bulk Upload BulkUploadController
+Route::post('/bulkupload', [BulkUploadController::class, 'bulkupload'])->name('api_bulkupload');
+
 
 //Home
 Route::get('/api-info', [HomeController::class, 'api_info'])->name('api_info');
