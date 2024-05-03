@@ -24,6 +24,9 @@ class ApiKeyMiddleware
             if ($request->is('api/payment/*')) {
                 return $next($request);
             } else {
+                if($request->is('api/bulkupload')) {
+                    return $next($request);
+                }
                 return $this->errorResponse('Not Authorized', 403);
             }
         } else {
