@@ -13,6 +13,7 @@ class CategoryAdd extends Component
     public $name;
     public $image;
     public $parent = '';
+    public $parent_categories;
     public $categories;
     public $slug;
 
@@ -20,6 +21,7 @@ class CategoryAdd extends Component
     {
         $this->categories = Category::all();
         $this->parent = NULL;
+        $this->parent_categories = Category::where('category_id', NULL)->get();
     }
 
     public function submit()

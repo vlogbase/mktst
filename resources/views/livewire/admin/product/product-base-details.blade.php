@@ -217,15 +217,17 @@
                 <!--begin::Col-->
                 <div class="col-lg-8" wire:ignore>
 
-                    <select class="form-select form-select-solid" id="select22" multiple data-placeholder="Select categories" @if($routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Categories" disabled @endif>
+                    <select class="form-select form-select-solid" data-placeholder="Select categories" @if($routeName=='seller.products.detail') data-toggle="tooltip" data-placement="top" title="Add another Product to Change Categories" disabled @endif>
 
                         @foreach ($categories as $category)
-                        <option {{ collect($categories_select)->contains($category->id) ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option {{ collect($categories_select)->contains($category->id) ? 'selected' : '' }} value="{{ $category->id }}"
+                        @if($category->category_id == null) disabled style="font-weight:bold" @endif
+                        >{{ $category->name }}</option>
                         @endforeach
 
                     </select>
 
-                    <small>You can enter name of category. Multiple selection is available.</small>
+                    {{-- <small>You can enter name of category. Multiple selection is available.</small> --}}
                 </div>
                 <!--end::Col-->
             </div>
