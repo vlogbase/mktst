@@ -1552,7 +1552,7 @@ button:focus:not(:focus-visible) {
 	color: #333 !important;
 }
 .cart_list img {
-	border: 1px solid #ddd
+	border: 1px solid #ddd;
 	background-color: #ffffff;
 	float: left;
 	margin-right: 10px;
@@ -5471,6 +5471,29 @@ footer .widget_title {
 .slick-list {
 	padding: 0 !important;
 }
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+#pr_item_gallery .slick-list .slick-track{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	align-items: center;
+	box-sizing: border-box;
+	width: inherit !important;
+
+}
+
+#pr_item_gallery .slick-list .slick-track .item{
+	padding: 5px;
+	box-sizing: border-box;
+	margin: 0;
+}
+#pr_item_gallery .slick-list .slick-track .item a img{
+	width: 100%;
+}
+
 .product_gallery_item.slick-slider .slick-slide {
 	margin-right: 5px;
 	margin-left: 5px;
@@ -5536,12 +5559,18 @@ footer .widget_title {
 	bottom: 0px;
 	right: 0;
 }
+.zoomWindowContainer{
+	padding: 8px;
+}
+
 .product_img_box {
-    padding: 8px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
+    /* border: 1px solid #ddd; */
+    /* margin-bottom: 10px; */
     overflow: hidden;
 	position: relative;
+	box-sizing: border-box;
+
+	
 }
 .product_img_zoom {
 	position: absolute;

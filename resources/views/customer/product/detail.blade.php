@@ -16,18 +16,27 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+                    <div class="col-lg-6 col-md-6 mb-4 mb-md-0"> 
                         <div class="product-image">
-                            <div class="product_img_box">
-                                <img id="product_img" src='{{ $product->getCoverImage() }}'
-                                    data-zoom-image="{{ $product->getCoverImage() }}" alt="product_img1" />
-                                <a href="#" class="product_img_zoom" title="Zoom">
-                                    <span class="linearicons-zoom-in"></span>
-                                </a>
+                            <div style="box-sizing: border-box; padding:8px; border: 1px solid #ddd;">
+                                <div class="product_img_box">
+                                    <img id="product_img" src='{{ $product->getCoverImage() }}'
+                                        data-zoom-image="{{ $product->getCoverImage() }}" alt="product_img1" />
+                                    {{-- <a href="#" class="product_img_zoom" title="Zoom">
+                                        <span class="linearicons-zoom-in"></span>
+                                    </a> --}}
+                                </div>
                             </div>
-                            <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4"
-                                data-slides-to-scroll="1" data-infinite="false">
+                            <div id="pr_item_gallery" class="slick_slider" data-slides-to-show="4"
+                                data-slides-to-scroll="1" data-infinite="false" data-dots="false" data-arrows="false">
+                                @php
+                                $count = 0;
+                                @endphp
                                 @foreach ($product->productimages as $image)
+                                    @if ($count > 0 && $count % 4 ==0)
+                                        <div class="break"></div>
+                                    @endif
+                                    
                                     <div class="item">
                                         <a href="#"
                                             class="product_gallery_item {{ $loop->index == 0 ? 'active' : '' }}"
@@ -35,6 +44,9 @@
                                             <img src="{{ $image->path }}" alt="product_small_img1" />
                                         </a>
                                     </div>
+                                    @php
+                                    $count++;
+                                    @endphp
                                 @endforeach
                             </div>
                         </div>
