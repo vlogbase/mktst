@@ -3,7 +3,8 @@
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\ApiOtherController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\BulkUploadController;
+use App\Http\Controllers\Api\BulkUploadControllerSeller;
+use App\Http\Controllers\Api\BulkUploadControllerAdmin;
 use App\Http\Controllers\Api\CreditCardsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\OrderController;
@@ -25,7 +26,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //Bulk Upload BulkUploadController
-Route::post('/bulkupload', [BulkUploadController::class, 'bulkupload'])->name('api_bulkupload');
+Route::post('/bulkupload/brand-owner', [BulkUploadControllerSeller::class, 'bulkupload'])->name('api_bulkupload_seller');
+Route::post('/bulkupload/admin', [BulkUploadControllerAdmin::class, 'bulkupload'])->name('api_bulkupload_admin');
 
 
 //Home

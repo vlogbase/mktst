@@ -92,6 +92,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/payment-method', [SettingsController::class, 'payment_method'])->name('payment_method');
             Route::get('/point-system', [SettingsController::class, 'point_system'])->name('point_system');
             Route::get('/general-settings', [SettingsController::class, 'general_settings'])->name('general_settings');
+            Route::get('/api-settings', [SettingsController::class, 'api_settings'])->name('api_settings_admin');
+
         });
 
         //Campaigns

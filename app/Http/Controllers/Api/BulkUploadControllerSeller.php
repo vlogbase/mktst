@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\ApiController;
+use App\Models\Seller;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,11 +26,11 @@ use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\SellerCsvUploader;
 
-class BulkUploadController extends ApiController
+class BulkUploadControllerSeller extends ApiController
 {
-    public $email;
-    public $password;
-    public $user;
+    public $api_key;
+    public $sellerId;
+    public $seller;
     public $csvFile;
     public $zipFile;
     public $admin_zip_path_name = 'upload/admin_uploads/product_zip/';
@@ -37,46 +38,48 @@ class BulkUploadController extends ApiController
     public $error_message = '';
     public $error_code = 0;
 
-    public function loginAttempt(Request $request)
+    public function attemptByKey(Request $request)
     {
+        //check if the api key is valid
+        //get bearer token from the request
+        $token = $request->bearerToken();
+        Log::info('Token: ' . $token);
+        $this->api_key = $token;
+        Log::info('Api key: ' . $this->api_key);
 
-        try {
-        $data =  $request->validate([
-            'password' => 'required|min:6',
-            'email' => 'required|email|min:2',
-        ]);
-    } catch (\Exception $e) {
-        Log::info(print_r($e->getMessage(), true));
-        //send response with message validation failed and status code 403
-        $this->error_message = 'Validation failed';
-        $this->error_code = 403;
-        return;
-    }
-
-        Log::info($data);
-        //if data is validated then attempt login
-        if (Auth::guard('seller')->attempt($data)) {
-            $this->user = auth()->guard('seller')->user();
-            $this->seller_zip_path_name = 'upload/seller_uploads/product_zip/' . $this->user->id . '/';
-            //request()->session()->regenerate();
-            //return redirect()->intended('/seller');
-            //Log::info('inside if condition seller', ['email' => $request->email, 'password' => $request->password]);
-            //send response with message login successful and status code 200
+        $this->seller = Seller::where('api_key', $this->api_key)->first();
+        //check if valid_till is greater than current date and is_autoextended = 0
+        if ($this->seller->valid_till < Carbon::now() && $this->seller->is_autoextended == 0) {
+            //send response with message api key expired and status code 403
+            $this->error_message = 'Invalid Api key';
+            $this->error_code = 403;
+            return;
+        }elseif($this->seller->valid_till > Carbon::now() || $this->seller->is_autoextended == 1){
+            //extend the api key for 30 days
+            if($this->seller->is_autoextended == 1){
+                $this->seller->update([
+                    'valid_till' => Carbon::now()->addDays(30)
+                ]);   
+            }
+            $this->seller_zip_path_name = 'upload/seller_uploads/product_zip/' . $this->seller->id . '/';
             return true;
-        } else {
-            return false;
+        }else{
+            //send response with message api key expired and status code 403
+            $this->error_message = 'Invalid Api key';
+            $this->error_code = 403;
+            return;
         }
     }
     public function bulkupload(Request $request)
     {
-        if(!$this->loginAttempt($request)){
+        if (!$this->attemptByKey($request)) {
             //Log::info('Login attempt failed', ['email' => $request->email, 'password' => $request->password]);
             //send response with message login failed and status code 401
-            $this->error_message = 'Login failed, Please check your credentials';
+            $this->error_message = 'Authentication Failed, Please check your API Key.';
             $this->error_code = 401;
             return $this->errorResponse($this->error_message, $this->error_code);
         }
-        
+
         //Log::info('Login attempt successful', ['email' => $request->email, 'password' => $request->password]);
         //if the csv file is uploaded
         if ($request->hasFile('csvFile')) {
@@ -95,7 +98,7 @@ class BulkUploadController extends ApiController
                 $this->error_code = 403;
                 return $this->errorResponse($this->error_message, $this->error_code);
             }
-        }else{
+        } else {
             //send response with message please upload a csv file and status code 403
             $this->error_message = 'Please upload a csv file';
             $this->error_code = 403;
@@ -119,15 +122,14 @@ class BulkUploadController extends ApiController
                 $this->error_code = 403;
                 return $this->errorResponse($this->error_message, $this->error_code);
             }
-        }else{
+        } else {
             //send response with message please upload a zip file and status code 403
             $this->error_message = 'Please upload a zip file';
             $this->error_code = 403;
             return $this->errorResponse($this->error_message, $this->error_code);
         }
 
-        $this->email = $request->email;
-        $this->password = $request->password;
+        $this->api_key = $request->api_key;
         $this->csvFile = $request->file('csvFile');
         $this->zipFile = $request->file('zipFile');
 
@@ -154,7 +156,7 @@ class BulkUploadController extends ApiController
             }
         }
 
-        Excel::import(new SellerCsvUploader($this->user, $this->seller_zip_path_name), $path);
+        Excel::import(new SellerCsvUploader($this->seller, $this->seller_zip_path_name), $path);
         if (isset($_SESSION['bulkupl_csv_error'])) {
             $this->error_message = $_SESSION['bulkupl_csv_error'];
             $this->error_code = 403;
@@ -167,7 +169,6 @@ class BulkUploadController extends ApiController
             //send response with message uploaded products count and status code 200
             $data = ['message' => 'Uploaded ' . $productsCount . ' Products'];
             return $this->successResponse($data, 'Uploaded ' . $productsCount . ' Products');
-
         }
 
 
@@ -175,10 +176,10 @@ class BulkUploadController extends ApiController
 
 
 
-        
+
         //Log::info('Move ahead with bulk upload');
         //send response with message login successful and status code 200
         $data = ['message' => 'Bulk upload successful'];
-        return $this->successResponse($data,'Bulk upload successful');
+        return $this->successResponse($data, 'Bulk upload successful');
     }
 }
