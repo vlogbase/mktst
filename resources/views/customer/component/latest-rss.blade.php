@@ -9,7 +9,22 @@
         <div class="blog_content bg-white">
             <div class="blog_text">
                 <h5 class="blog_title"><a
-                    target="_blank"  href="{{$feed['permalink']}}">{{ $feed['title'] }}</a>
+                    target="_blank"  href="{{$feed['permalink']}}">
+                    @if(strlen($feed['title']) < 80)
+                                @php
+                                    Log::info($feed['title']);
+                                    $space = 80 - strlen($feed['title']);
+                                @endphp
+                                {{$feed['title']}}
+                                @for ($i = 0; $i < $space; $i++)
+                                    &nbsp;
+                                @endfor
+                                
+                            @else
+                                {!!substr($feed['title'], 0, 80).'...'!!}
+                            @endif
+                    {{-- {{ $feed['title'] }} --}}
+                    </a>
                 </h5>
                 <ul class="list_none blog_meta">
                     <li class="text-secondary"><i class="ti-calendar"></i>

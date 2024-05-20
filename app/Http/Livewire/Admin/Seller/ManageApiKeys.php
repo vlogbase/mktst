@@ -52,9 +52,19 @@ class ManageApiKeys extends Component
 
 
         if ($this->auto_extend) {
-            $this->emit('succesAlert', 'Updated! Api key will be auto extended');
+            $this->emit('autoExtendSelected', [
+                'title' => 'API Key Updated',
+                'line1' => 'Auto-Extending API Key Selected',
+                'line2' => 'Your API key is set to automatically renew every 30 days.',
+                'line3' => 'While this option offers convenience, please be aware of the following:',
+                'line4' => 'Regular Review: Ensure you periodically review your key usage and permissions to maintain security.',
+                'line5' => 'Monitoring: Keep an eye on your API usage patterns for any unauthorized activity.'
+            ]);
         } else {
-            $this->emit('succesAlert', 'Updated! Api key will not be auto extended');
+            $this->emit('autoExtendNotSelected', [
+                'title' => 'API Key Updated',
+                'line1' => 'Api key will not be auto extended'
+            ]);
         }
         //$this->emit('succesAlert', 'Updated!');
     }

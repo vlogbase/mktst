@@ -7,6 +7,9 @@
         <a class="nav-link {{request()->routeIs('user.orders') ? 'active' : ''}}" id="orders-tab" href="{{route('user.orders')}}"><i class="ti-shopping-cart-full"></i>Orders</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link {{request()->routeIs('user.stockpurchase') ? 'active' : ''}}" id="orders-tab" href="{{route('user.stockpurchase')}}"><i class="ti-clipboard"></i>Stock Purchase</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link {{request()->routeIs('user.addresses') ? 'active' : ''}}" id="address-tab" href="{{route('user.addresses')}}"><i class="ti-location-pin"></i>Addresses</a>
       </li>
       <li class="nav-item">

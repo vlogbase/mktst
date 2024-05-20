@@ -12172,10 +12172,10 @@ footer .widget_title {
 	width: 100%;
 }
 .breadcrumb_section.page-title-mini {
-	padding: 70px 0;
+	padding: 35px 0;
 }
 .page-title-mini .page-title h1 {
-	font-size: 40px;
+	font-size: 60px;
 }
 .page-title-mini .breadcrumb li {
 	font-size: 14px;
@@ -16304,7 +16304,7 @@ div.banner_large_pad {
 	padding: 30px;
 }
 .breadcrumb_section.page-title-mini {
-	padding: 50px 0;
+	padding: 25px 0;
 }
 .footer_top {
 	padding: 50px 0 20px;
@@ -16635,7 +16635,7 @@ p {
 	padding: 50px 0;
 }
 .breadcrumb_section.page-title-mini {
-	padding: 30px 0;
+	padding: 15px 0;
 }
 .footer_top {
 	padding: 30px 0 15px;
@@ -17019,7 +17019,7 @@ footer .widget_title,
 	padding: 0 25px;
 }
 .page-title-mini .page-title h1 {
-	font-size: 24px;
+	font-size: 36px;
 }
 .countdown_box .countdown {
 	font-size: 30px;

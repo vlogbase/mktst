@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DropzoneController;
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SellerController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SliderController;
@@ -106,6 +107,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
             });
         });
 
+        //Reports
+        Route::prefix('reports')->name('reports.')->group(function () {
+            //Routes for Reports
+            Route::get('/stocksale', [ReportController::class, 'stock_sale'])->name('stocksale');
+            Route::get('/apilogs', [ReportController::class, 'bulk_api_logs'])->name('bulkapilogs');
+        });
+
         //Customers
         Route::prefix('customers')->name('customers.')->group(function () {
             Route::get('/', [CustomerController::class, 'customer_list'])->name('list');
@@ -125,7 +133,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         
         
-        //Customers
+        //Suppliers
         Route::prefix('sellers')->name('sellers.')->group(function () {
             Route::get('/', [SellerController::class, 'index'])->name('list');
             Route::get('/create', [SellerController::class, 'create'])->name('create');

@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\SellerCsvUploader;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class BulkUploadControllerAdmin extends ApiController
 {
@@ -39,16 +40,24 @@ class BulkUploadControllerAdmin extends ApiController
     public $error_message = '';
     public $error_code = 0;
 
+   
+
     public function attemptByKey(Request $request)
     {
         //check if the api key is valid
         //get bearer token from the request
         $token = $request->bearerToken();
-        Log::info('Token: ' . $token);
-        $this->api_key = $token;
-        Log::info('Api key: ' . $this->api_key);
+        //Log::info('Token: ' . $token);
+        //$this->api_key = $token;
+        //Log::info('Api key: ' . $this->api_key);
 
-        $this->admin = Admin::where('api_key', $this->api_key)->first();
+        foreach (Admin::all() as $admin) {
+            if (Hash::check($admin->api_key, $token)) {
+                $this->admin = $admin;
+                $this->api_key = $admin->api_key;
+            }
+        }
+        //$this->admin = Admin::where('api_key', $this->api_key)->first();
         //check if valid_till is greater than current date and is_autoextended = 0
         if ($this->admin->valid_till < Carbon::now() && $this->admin->is_autoextended == 0) {
             //send response with message api key expired and status code 403
@@ -63,6 +72,8 @@ class BulkUploadControllerAdmin extends ApiController
                 ]);   
             }
             $this->admin_zip_path_name = 'upload/seller_uploads/product_zip/' . $this->admin->id . '/';
+            $add_log = new ApiLogController();
+            $add_log->add_api_key_log_admin($this->api_key, $this->admin->id);
             return true;
         }else{
             //send response with message api key expired and status code 403

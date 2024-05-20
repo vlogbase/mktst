@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/detail', [UserController::class, 'detail'])->name('detail');
         Route::get('/addresses', [UserController::class, 'addresses'])->name('addresses');
         Route::get('/orders', [UserController::class, 'orders'])->name('orders');
+        Route::get('/stockpurchase', [UserController::class, 'stock_purchase'])->name('stockpurchase');
         Route::get('/payments', [UserController::class, 'payments'])->name('payments');
         Route::get('/payments/add', [UserController::class, 'payments_add'])->name('payments_add');
         Route::get('/orders/{id}', [UserController::class, 'orders_detail'])->name('orders_detail');

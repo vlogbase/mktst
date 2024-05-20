@@ -11,12 +11,24 @@
                 </div>
                 <div class="blog_content bg-white">
                     <div class="blog_text">
-                        <h5 class="blog_title"><a href="{{route('news.detail',$item->slug)}}">{{$item->name}}</a></h5>
+                        <h5 class="blog_title"><a href="{{route('news.detail',$item->slug)}}">@if(strlen($item->name) < 50)
+                                @php
+                                    $space = 50 - strlen($item->name);
+                                @endphp
+                                {{$item->name}}
+                                @for ($i = 0; $i < $space; $i++)
+                                    &nbsp;
+                                @endfor
+                                
+                            @else
+                                {{!!substr($item->name, 0, 50).'...'!!}}
+                            @endif
+                        </a></h5>
                         <ul class="list_none blog_meta">
                             <li class="text-secondary"><i class="ti-calendar"></i> {{$item->humanTime()}}</li>
                             
                         </ul>
-                        <p>{!!substr($item->text, 0, 150).'...'!!}</p>
+                        <p>{!!substr($item->text, 0, 200).'...'!!}</p>
                     </div>
                     <a href="{{route('news.detail',$item->slug)}}" class="mt-3 btn btn-dark ">Read More</a>
                 </div>
