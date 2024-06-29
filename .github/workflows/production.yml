@@ -1,0 +1,33 @@
+name: Production Deploy to Azure App Service
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to Azure App Service
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.PROD_SFTP_HOST }}
+        username: ${{ secrets.PROD_SFTP_USER }}
+        password: ${{ secrets.PROD_SFTP_PASS }}
+        local-dir: ./
+        server-dir: /site/wwwroot/
+        protocol: ftps  # Ensure FTPS is being used
+        log-level: verbose  # Enable verbose logging
+        exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
+            **/public/**
+            test.php
+            .gitignore
