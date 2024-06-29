@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
 
       - name: Deploy via FTPS to Azure Staging Server
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -20,4 +22,4 @@ jobs:
           ftp-username: ${{ secrets.STG_SFTP_USER }}
           ftp-password: ${{ secrets.STG_SFTP_PASS }}
           local-dir: .
-          git-ftp-args: "--remote-root /site/wwwroot/ --ftp-ssl --exclude .git* --exclude .git*/** --exclude node_modules/** --exclude vendor/** --exclude public/** --exclude test.php --exclude .gitignore"
+          git-ftp-args: "--remote-root /site/wwwroot/ --ftp-ssl --exclude-glob .git* --exclude-glob node_modules/** --exclude-glob vendor/** --exclude-glob public/** --exclude-glob test.php --exclude-glob .gitignore"
