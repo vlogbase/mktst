@@ -1,4 +1,4 @@
-name: Staging Deploy to Azure App Service
+name: Production Deploy to Azure App Service
 
 on:
   push:
