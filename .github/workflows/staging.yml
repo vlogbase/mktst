@@ -1,0 +1,36 @@
+name: Deploy to Azure Staging Server via FTPS
+
+on:
+  push:
+    branches:
+      - CS-Dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Staging Deployment
+        uses: actions/checkout@v2
+
+      # Example: Build step (if applicable)
+      # - name: Build
+      #   run: |
+      #     npm install
+      #     npm run build
+
+      - name: Deploy via FTPS to Azure Staging Server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.STG_SFTP_HOST }}
+          username: ${{ secrets.STG_SFTP_USER }}
+          password: ${{ secrets.STG_SFTP_PASS }}
+          server-dir: /site/wwwroot
+          protocol: ftps
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
+            test.php
+            .gitignore
