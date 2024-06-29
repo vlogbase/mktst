@@ -32,6 +32,7 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/vendor/**
+            **/public/**
             test.php
             .gitignore
           timeout: 60000   
