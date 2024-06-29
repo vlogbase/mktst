@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Staging Deployment
+      - name: Deploy via FTPS to Azure Staging Server
         uses: actions/checkout@v2
 
       # Example: Build step (if applicable)
@@ -20,7 +20,7 @@ jobs:
       #     npm run build
 
       - name: Deploy via FTPS to Azure Staging Server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.STG_SFTP_HOST }}
           username: ${{ secrets.STG_SFTP_USER }}
@@ -34,3 +34,4 @@ jobs:
             **/vendor/**
             test.php
             .gitignore
+          timeout: 60000   
