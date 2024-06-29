@@ -25,7 +25,7 @@ jobs:
           server: ${{ secrets.STG_SFTP_HOST }}
           username: ${{ secrets.STG_SFTP_USER }}
           password: ${{ secrets.STG_SFTP_PASS }}
-          server-dir: /site/wwwroot
+          server-dir: /site/wwwroot/
           protocol: ftps
           exclude: |
             **/.git*
