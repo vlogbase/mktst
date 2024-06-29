@@ -1,4 +1,4 @@
-name: Deploy to Azure App Service
+name: Staging Deploy to Azure App Service
 
 on:
   push:
@@ -23,3 +23,11 @@ jobs:
         server-dir: /site/wwwroot/
         protocol: ftps  # Ensure FTPS is being used
         log-level: verbose  # Enable verbose logging
+        exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
+            **/public/**
+            test.php
+            .gitignore
