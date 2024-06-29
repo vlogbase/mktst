@@ -1,7 +1,9 @@
-name: Connection Texting to Azure Staging Server via FTPS
+name: Deploy to Azure Staging Server via FTPS
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - CS-Dev
 
 jobs:
   test-ftp-connection:
@@ -20,3 +22,4 @@ jobs:
         local-dir: .
         server-dir: /site/wwwroot
         dry-run: true  # Perform a dry run to list files without making changes
+
