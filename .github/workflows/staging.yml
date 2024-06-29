@@ -1,4 +1,4 @@
-name: Test FTP Connection
+name: Deploy to Azure App Service
 
 on:
   push:
@@ -6,14 +6,14 @@ on:
       - CS-Dev
 
 jobs:
-  test-ftp-connection:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: List Remote Directory
+    - name: Deploy to Azure App Service
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.STG_SFTP_HOST }}
@@ -21,6 +21,5 @@ jobs:
         password: ${{ secrets.STG_SFTP_PASS }}
         local-dir: ./
         server-dir: /site/wwwroot/
-        dry-run: true  # Perform a dry run to list files without making changes
         protocol: ftps  # Ensure FTPS is being used
         log-level: verbose  # Enable verbose logging
