@@ -20,6 +20,6 @@ jobs:
         username: ${{ secrets.STG_SFTP_USER }}
         password: ${{ secrets.STG_SFTP_PASS }}
         local-dir: ./
-        server-dir: /site/wwwroot/
+        server-dir: /
         dry-run: true  # Perform a dry run to list files without making changes
 
