@@ -10,16 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Deploy via FTPS to Azure Staging Server
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
+
+      # Example: Build step (if applicable)
+      # - name: Build
+      #   run: |
+      #     npm install
+      #     npm run build
 
       - name: Deploy via FTPS to Azure Staging Server
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          ftp-server: ${{ secrets.STG_SFTP_HOST }}
-          ftp-username: ${{ secrets.STG_SFTP_USER }}
-          ftp-password: ${{ secrets.STG_SFTP_PASS }}
-          local-dir: .
-          git-ftp-args: "--remote-root /site/wwwroot/ --ftp-ssl --exclude-glob .git* --exclude-glob node_modules/** --exclude-glob vendor/** --exclude-glob public/** --exclude-glob test.php --exclude-glob .gitignore"
+          server: ${{ secrets.STG_SFTP_HOST }}
+          username: ${{ secrets.STG_SFTP_USER }}
+          password: ${{ secrets.STG_SFTP_PASS }}
+          server-dir: /home/site/wwwroot/
+          protocol: ftps
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
+            **/public/**
+            test.php
+            .gitignore
+          timeout: 60000   
