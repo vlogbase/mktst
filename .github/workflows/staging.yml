@@ -1,9 +1,7 @@
-name: Deploy to Azure Staging Server via FTPS
+name: Test FTP Connection
 
 on:
-  push:
-    branches:
-      - CS-Dev
+  workflow_dispatch:
 
 jobs:
   test-ftp-connection:
@@ -19,7 +17,8 @@ jobs:
         server: ${{ secrets.STG_SFTP_HOST }}
         username: ${{ secrets.STG_SFTP_USER }}
         password: ${{ secrets.STG_SFTP_PASS }}
-        local-dir: ./
-        server-dir: /
+        local-dir: .
+        server-dir: /site/wwwroot
         dry-run: true  # Perform a dry run to list files without making changes
-
+        protocol: ftps  # Ensure FTPS is being used
+        log-level: verbose  # Enable verbose logging
