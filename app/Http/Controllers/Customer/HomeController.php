@@ -45,7 +45,7 @@ class HomeController extends Controller
         $blogs = Blog::orderBy('created_at')->take(3)->get();
 
         $rssFeeds = $this->getLatestRssFeed();        
-        //return view('customer.converti');
-        return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'blogs','sliders_2','adverts','rssFeeds'));
+        return view('customer.converti');
+        //return view('customer.welcome', compact('sliders', 'featured', 'best_seller', 'special_offer', 'new_arrival', 'blogs','sliders_2','adverts','rssFeeds'));
     }
 }
