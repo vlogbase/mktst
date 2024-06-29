@@ -157,8 +157,16 @@ class BulkUploadControllerSeller extends ApiController
                 if (!file_exists($this->seller_zip_path_name)) {
                     mkdir($this->seller_zip_path_name, 0777, true);
                 }
-                $zip->extractTo($this->seller_zip_path_name);
-                $zip->close();
+                try{
+                    $zip->extractTo($this->seller_zip_path_name);
+                    $zip->close();
+                }catch(\Exception $e){
+                    //$this->error_message = 'Error: ' . $e->getMessage();
+                    //$this->error_code = 403;
+                    Log::info('Error: ' . $e->getMessage());
+                    //return $this->errorResponse($this->error_message, $this->error_code);
+                }
+                
             } else {
                 $this->error_message = 'Error: ' . $res;
                 $this->error_code = 403;

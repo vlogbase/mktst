@@ -24,7 +24,7 @@
                         </span>
                         <input type="text" wire:model="api_key"
                             class="form-control form-control-lg form-control-solid @error('api_key') is-invalid @enderror"
-                            data-toggle="tooltip" data-placement="top" title="Add another Product to Change SKU"
+                            data-toggle="tooltip" data-placement="top" title="click key icon to generate new key"
                             readonly />
                     </div>
                     @error('api_key')
