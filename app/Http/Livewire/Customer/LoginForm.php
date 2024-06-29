@@ -29,7 +29,9 @@ class LoginForm extends Component
                     if($lastOrder){
                        return redirect('/user/orders/'.$lastOrder->id);
                     }else{
-                        return redirect()->intended('/');
+                        //return redirect()->intended('/');
+                        //return to '/products' link
+                        return redirect('/products');
                     }
                     
                 } else {

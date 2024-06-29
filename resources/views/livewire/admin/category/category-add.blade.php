@@ -50,7 +50,7 @@
     
                 <select class="form-select form-select-solid" id="select2" data-placeholder="Select an option">
                     <option value="NULL">Main Category</option>
-                    @foreach($categories as $category)
+                    @foreach($parent_categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>

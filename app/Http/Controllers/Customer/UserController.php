@@ -9,6 +9,8 @@ use App\Traits\PaymentStripeHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
@@ -98,5 +100,52 @@ class UserController extends Controller
     public function tickets_new()
     {
         return view('customer.user.tickets_new');
+    }
+
+    public function stock_purchase(Request $request)
+    {
+        if ($request->ajax()) {
+           $buyer_id = Auth::id();
+
+            $raw_sql = "SELECT
+            order_products.id as id,
+            orders.created_at as created_at, 
+            orders.ordercode as order_number,
+            products.name as product_name,
+            products.sku as product_sku,
+            brands.name as brand_name,
+            seller_details.name as supplier_name,
+            users.name as buyer_name, 
+            order_products.sold_price as unit_price,
+            order_products.quantity as quantity,
+            ROUND(order_products.sold_price * order_products.quantity, 2) as total_price
+            FROM orders 
+            JOIN order_products ON orders.id = order_products.order_id
+            JOIN products ON order_products.product_id = products.id 
+            LEFT JOIN brands ON products.brand_id = brands.id
+            LEFT JOIN seller_details ON brands.seller_detail_id = seller_details.id
+            LEFT JOIN users ON orders.user_id = users.id
+            WHERE orders.status != 'Waiting'";
+
+            if ($request->filled('from_date') && $request->filled('to_date')) {
+                $from_date = $request->from_date;
+                $to_date = $request->to_date;
+                $raw_sql .= " AND orders.created_at BETWEEN '$from_date' AND '$to_date'";
+            }
+            $raw_sql .= " AND orders.user_id = $buyer_id";
+
+            $raw_sql .= " ORDER BY orders.created_at DESC";
+
+            $data = DB::select($raw_sql);
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('supplier_name', function ($row) {
+                    return ($row->supplier_name) ? $row->supplier_name : 'Admin';
+                })
+                //filter by supplier_name
+                ->make(true);
+        }
+        return view('customer.user.stock_purchase');
     }
 }

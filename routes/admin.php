@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DropzoneController;
 use App\Http\Controllers\Admin\OfficeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SellerController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SliderController;
@@ -92,6 +93,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::get('/payment-method', [SettingsController::class, 'payment_method'])->name('payment_method');
             Route::get('/point-system', [SettingsController::class, 'point_system'])->name('point_system');
             Route::get('/general-settings', [SettingsController::class, 'general_settings'])->name('general_settings');
+            Route::get('/api-settings', [SettingsController::class, 'api_settings'])->name('api_settings_admin');
+
         });
 
         //Campaigns
@@ -102,6 +105,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::get('/add', [CampaignController::class, 'coupon_add'])->name('add');
                 Route::get('/{id}', [CampaignController::class, 'coupon_detail'])->name('edit');
             });
+        });
+
+        //Reports
+        Route::prefix('reports')->name('reports.')->group(function () {
+            //Routes for Reports
+            Route::get('/stocksale', [ReportController::class, 'stock_sale'])->name('stocksale');
+            Route::get('/apilogs', [ReportController::class, 'bulk_api_logs'])->name('bulkapilogs');
         });
 
         //Customers
@@ -123,7 +133,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
         
         
-        //Customers
+        //Suppliers
         Route::prefix('sellers')->name('sellers.')->group(function () {
             Route::get('/', [SellerController::class, 'index'])->name('list');
             Route::get('/create', [SellerController::class, 'create'])->name('create');

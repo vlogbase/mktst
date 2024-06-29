@@ -95,6 +95,36 @@
             
         </div>
         <!--end::Row-->
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-10">
+            <!--begin::Col-->
+            <div class="col-xl-12">
+                <!--begin::Charts Widget 1-->
+                <div class="card card-xl-stretch mb-xl-10">
+                    
+                    <!--begin::Body-->
+                    <div class="card-body">
+                        <div id="kt_carousel_1_carousel" class="carousel carousel-custom slide" data-bs-ride="carousel" data-bs-interval="8000">
+                            <!--begin::Heading-->
+                            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                <!--begin::Label-->
+                                <span class="fs-4 fw-bolder pe-2">Generate API Key</span>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Heading-->
+                        </div>
+                        <div class="mt-5">
+                            @livewire('admin.seller.manage-api-keys',['sellerId'=>$seller->id]);
+                        </div>
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Charts Widget 1-->
+            </div>
+            <!--end::Col-->
+            
+        </div>
+        <!--end::Row-->
     </div>
     <!--end::Container-->
 </div>

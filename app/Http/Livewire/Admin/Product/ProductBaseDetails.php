@@ -43,11 +43,11 @@ class ProductBaseDetails extends Component
         //get current route name
 
         $this->routeName = Route::currentRouteName();
-        
-        if(Auth::guard('admin')->check()){
+
+        if (Auth::guard('admin')->check()) {
             $this->brands = Brand::all();
         }
-       
+
         $this->categories = Category::all();
         if ($itemid == 0) {
             $this->taxrate = 0;
@@ -71,22 +71,20 @@ class ProductBaseDetails extends Component
             $this->brand_select = $this->item->brand_id;
             $this->categories_select = $this->item->categories->pluck('id');
 
-            if(Auth::guard('seller')->check()){
-               
+            if (Auth::guard('seller')->check()) {
+
                 $sellerDetail = Auth::guard('seller')->user()->sellerDetail;
                 $this->brands_seller = $sellerDetail->brands;
-                
             }
 
 
-            if(Auth::guard('seller')->check() && Auth::guard('seller')->user()->is_master){
-                
-                $this->seller_team_members = Seller::where('seller_detail_id', Auth::guard('seller')->user()->sellerDetail->id)->where('is_master',0)->get();
+            if (Auth::guard('seller')->check() && Auth::guard('seller')->user()->is_master) {
+
+                $this->seller_team_members = Seller::where('seller_detail_id', Auth::guard('seller')->user()->sellerDetail->id)->where('is_master', 0)->get();
                 $sellerID = DB::table('seller_product')->where('product_id', $this->itemid)->get();
-                if($sellerID->count() > 0){
+                if ($sellerID->count() > 0) {
                     $this->seller_select = $sellerID[0]->seller_id;
                 }
-               
             }
         }
         ///////////////////////////////////////////////////
@@ -129,19 +127,39 @@ class ProductBaseDetails extends Component
         ]);
 
         if ($this->itemid != 0) {
-            $this->item->update([
-                //'sku' =>  $this->sku,
-                //'name' =>  $this->name,
-                //'slug' => Str::slug($this->name),
-                'unit_price' => $this->unit_price,
-                'discount' => $this->discount,
-                //'stock' => $this->stock,
-                //'reorder' => $this->reorder,
-                //'taxrate' => $this->taxrate,
-                //'per_unit' => $this->per_unit,
-                //'status' => $this->status ? 1 : 0,
-                //'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
-            ]);
+            if (
+                Auth::guard('admin')->check() && $this->routeName == 'admin.products.detail'
+            ) {
+                //let admin update the product
+                $this->item->update([
+                    'sku' =>  $this->sku,
+                    'name' =>  $this->name,
+                    'slug' => Str::slug($this->name),
+                    'unit_price' => $this->unit_price,
+                    'discount' => $this->discount,
+                    'stock' => $this->stock,
+                    'reorder' => $this->reorder,
+                    'taxrate' => $this->taxrate,
+                    'per_unit' => $this->per_unit,
+                    'status' => $this->status ? 1 : 0,
+                    'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
+                ]);
+            } else {
+                $this->item->update([
+                    //'sku' =>  $this->sku,
+                    //'name' =>  $this->name,
+                    //'slug' => Str::slug($this->name),
+                    'unit_price' => $this->unit_price,
+                    'discount' => $this->discount,
+                    //'stock' => $this->stock,
+                    //'reorder' => $this->reorder,
+                    //'taxrate' => $this->taxrate,
+                    //'per_unit' => $this->per_unit,
+                    //'status' => $this->status ? 1 : 0,
+                    //'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
+                ]);
+            }
+
 
             $this->item->categories()->sync($this->categories_select);
             $this->item->sellers()->sync($this->seller_select);
@@ -159,7 +177,7 @@ class ProductBaseDetails extends Component
                 'per_unit' => $this->per_unit,
                 'status' => $this->status ? 1 : 0,
                 'brand_id' => $this->brand_select != '' ? $this->brand_select  : NULL,
-                
+
             ]);
 
             ProductDetail::create([
@@ -171,14 +189,12 @@ class ProductBaseDetails extends Component
             $item->categories()->sync($this->categories_select);
             $item->sellers()->sync($this->seller_select);
 
-            if(Auth::guard('admin')->check() && ($this->routeName == 'admin.products.add' || $this->routeName == 'admin.products.detail')){
+            if (Auth::guard('admin')->check() && ($this->routeName == 'admin.products.add' || $this->routeName == 'admin.products.detail')) {
                 return redirect()->route('admin.products.detail', $item->id);
             }
-            if(Auth::guard('seller')->check() && ($this->routeName == 'seller.products.add' || $this->routeName == 'seller.products.detail')){
+            if (Auth::guard('seller')->check() && ($this->routeName == 'seller.products.add' || $this->routeName == 'seller.products.detail')) {
                 return redirect()->route('seller.products.detail', $item->id);
             }
-
-            
         }
     }
 

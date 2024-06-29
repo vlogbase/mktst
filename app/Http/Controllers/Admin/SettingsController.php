@@ -31,4 +31,10 @@ class SettingsController extends Controller
     {
         return view('admin.settings.general_settings');
     }
+
+    public function api_settings()
+    {
+        return view('admin.settings.api_settings');
+    }
+    
 }

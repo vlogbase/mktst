@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Product;
 
 use App\Models\ProductImage;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -26,7 +27,7 @@ class ProductGalleryAdd extends Component
 
         foreach ($this->photos as $photo) {
             $background = $photo->store('upload/product', 'public');
-
+            //Log::info($background);
             ProductImage::create([
                 'path' => $background,
                 'product_id' => $this->itemid,

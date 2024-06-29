@@ -15,6 +15,7 @@ class CategoryEdit extends Component
     public $special;
     public $parent;
     public $categories;
+    public $parent_categories;
     public $itemid;
     public $item;
     public $nowImage;
@@ -28,6 +29,7 @@ class CategoryEdit extends Component
         $this->special = $this->item->special;
         $this->parent = $this->item->category_id;
         $this->nowImage = $this->item->image;
+        $this->parent_categories = Category::where('category_id', NULL)->get();
     }
 
     public function submit()

@@ -2,14 +2,14 @@
     <form wire:submit.prevent="upload">
         @auth('admin')
         <div class="row">
-            <div>
+            {{-- <div>
                 Your categories image should be in the following format:
                 <ul>
                     <li>Structure: <strong>Category Name.extension</strong></li>
                     <li>Ex:  <strong>Adult Drinks.jpeg</strong></li>
                     <li>Accept: <strong>png, webp, jpeg, jpg</strong></li>
                 </ul>
-            </div>
+            </div> --}}
 
         </div>
         <!--begin::Input group-->
@@ -39,6 +39,24 @@
                     <input type="file" wire:model="csvFile"
                         class="form-control @error('csvFile') is-invalid @enderror">
                     @error('csvFile')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <!--begin::Label-->
+        </div>
+        <!--end::Input group-->
+
+        <!--begin::Input group-->
+        <div class="row mb-6">
+            <!--begin::Label-->
+            <label class="col-lg-4 col-form-label required fw-bold fs-6">ZIP File (Images)</label>
+            <!--begin::Label-->
+            <div class="col-lg-8">
+                <div class="form-file  fv-row">
+                    <input type="file" wire:model="zipFile"
+                        class="form-control @error('zipFile') is-invalid @enderror">
+                    @error('zipFile')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>

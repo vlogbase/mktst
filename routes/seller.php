@@ -4,6 +4,7 @@ use App\Http\Controllers\Seller\AuthSellerController;
 use App\Http\Controllers\Seller\GeneralController;
 use App\Http\Controllers\Seller\SellerBrandsController;
 use App\Http\Controllers\Seller\SellerProductController;
+use App\Http\Controllers\Seller\SellerReportController;
 use App\Http\Controllers\Seller\SellerTeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,7 @@ Route::prefix('seller')->name('seller.')->group(function () {
         Route::get('/', [GeneralController::class, 'index'])->name('dashboard');
         Route::post('/logout', [AuthSellerController::class, 'logout'])->name('logout');
         Route::get('/profile-settings', [GeneralController::class, 'settings'])->name('settings');
-
+        
         Route::prefix('products')->name('products.')->group(function () {
             Route::get('/', [SellerProductController::class, 'product_list'])->name('list');
             Route::get('/add', [SellerProductController::class, 'product_add'])->name('add');
@@ -38,6 +39,13 @@ Route::prefix('seller')->name('seller.')->group(function () {
             Route::get('/', [SellerTeamController::class, 'team_list'])->name('list'); 
             Route::get('/create', [SellerTeamController::class, 'member_create'])->name('memberCreate');
             Route::get('/{memberId}', [SellerTeamController::class, 'member_edit'])->name('memberEdit');
+        });
+
+        //Reports
+        Route::prefix('reports')->name('reports.')->group(function () {
+            //Routes for Reports
+            Route::get('/stocksale', [SellerReportController::class, 'stock_sale'])->name('stocksale');
+            Route::get('/apilogs', [SellerReportController::class, 'bulk_api_logs'])->name('bulkapilogs');
         });
         
     });

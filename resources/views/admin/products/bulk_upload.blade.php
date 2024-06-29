@@ -21,7 +21,7 @@
         <!--begin::Col-->
         <div class="col-xl-12">
 
-            <div class="card mb-5 mb-xl-10">
+            {{-- <div class="card mb-5 mb-xl-10">
                 <!--begin::Card header-->
                 <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
                     data-bs-target="#kt_account_profile_details1" aria-expanded="true"
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <!--end::Content-->
-            </div>
+            </div> --}}
 
 
             <!--begin::Basic info-->

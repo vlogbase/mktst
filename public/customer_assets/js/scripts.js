@@ -455,7 +455,8 @@ PAGE JS
 				slidesToScroll: $slick_carousel.data("slides-to-scroll"),
 				asNavFor: $slick_carousel.data("as-nav-for"),
 				focusOnSelect: $slick_carousel.data("focus-on-select"),
-				responsive: $slick_carousel.data("responsive")
+				responsive: $slick_carousel.data("responsive"),
+				adaptiveHeight: false
 			});
 		});
 	}
@@ -666,10 +667,10 @@ PAGE JS
 	21. QUICKVIEW POPUP + ZOOM IMAGE + PRODUCT SLIDER JS
 	*===================================*/
 	var image = $('#product_img');
-	//var zoomConfig = {};
-	var zoomActive = false;
+	var zoomConfig = {};
+	var zoomActive = true;
 
-	zoomActive = !zoomActive;
+	//zoomActive = !zoomActive;
 	if (zoomActive) {
 		if ($(image).length > 0) {
 			$(image).elevateZoom({
@@ -702,19 +703,22 @@ PAGE JS
 	};
 
 	// Set up gallery on click
+	
 	var galleryZoom = $('#pr_item_gallery');
 	galleryZoom.magnificPopup({
 		delegate: 'a',
 		type: 'image',
 		gallery: {
-			enabled: true
+			enabled: false
 		},
 		callbacks: {
 			elementParse: function (item) {
 				item.src = item.el.attr('data-zoom-image');
+				//console.log("item -> ",item);
 			}
 		}
 	});
+	
 
 	// Zoom image when click on icon
 	$('.product_img_zoom').on('click', function () {

@@ -24,10 +24,16 @@ class MessageForm extends Component
             'name' => 'required|min:2|max:50',
             'phone' => 'nullable|min:13|max:13',
             'subject' => 'nullable|max:50',
-            'message' => 'required|min:10|max:1000',
+            //'message' => 'min:1|max:1000',
         ]);
 
-        Message::create($data);
+        Message::create([
+            'email' => $data['email'],
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'subject' => $data['subject'],
+            'message' => $data['subject'],
+        ]);
 
         $adminAlerts = AdminAlert::where('message_alert', 1)->get();
         foreach ($adminAlerts as $adminalert) {
