@@ -1,7 +1,9 @@
 name: Test FTP Connection
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - CS-Dev
 
 jobs:
   test-ftp-connection:
